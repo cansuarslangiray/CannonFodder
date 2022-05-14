@@ -190,7 +190,7 @@ public class Player {
             return 3;
     }
     public int healthPoint(){
-        double hp = (0.7*vitality) + 0.2*strength +0.1*intelligence;
+        double hp = (0.7*getVitality()) + 0.2*getStrength() +0.1*getIntelligence();
         return (int) Math.round(hp);
     }
     /*public int calculateDamage(){
