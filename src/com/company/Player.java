@@ -110,6 +110,7 @@ public class Player {
     public int changeStrenght(){
         SecureRandom sc = new SecureRandom();
         if(getType().equals("Wizard")) {
+            setStrength(sc.nextInt(1, 5));
             return sc.nextInt(1, 5);
         }
         else if (getType().equals("Knight")){
@@ -133,6 +134,7 @@ public class Player {
     public int changeVitality(){
         SecureRandom sc = new SecureRandom();
         if(getType().equals("Wizard")) {
+            setVitality(sc.nextInt(1, 6));
             return sc.nextInt(1, 6);
         }
         else if (getType().equals("Knight")){
@@ -158,16 +160,20 @@ public class Player {
     public int changeIntelligence(){
         SecureRandom sc = new SecureRandom();
         if(getType().equals("Wizard")) {
+            setIntelligence(sc.nextInt(6, 12));
             return sc.nextInt(6, 12);
         }
         else if (getType().equals("Knight")){
+            setIntelligence(sc.nextInt(1,5));
             return sc.nextInt(1,5);
 
         }
         else if(getType().equals("Worrier")){
+            setIntelligence(sc.nextInt(4,8));
             return sc.nextInt(4,8);
         }
         else if(getType().equals("Elf")){
+            setIntelligence( sc.nextInt(9,13));
             return sc.nextInt(9,13);
 
         }
@@ -180,25 +186,38 @@ public class Player {
     }
 
     public int rarity(){
-        if(healthPoint()>=5.9){
+        if(healthPoint()>=4.9){
             return 5;
         }
-        else if(healthPoint()<5.9 && healthPoint()>= 4){
+        else if(healthPoint()<4.9 && healthPoint()>=3){
             return 4;
         }
-        else
+        else {
             return 3;
+        }
     }
     public int healthPoint(){
         double hp = (0.7*getVitality()) + 0.2*getStrength() +0.1*getIntelligence();
+        setHealth((int) Math.round(hp));
         return (int) Math.round(hp);
     }
     /*public int calculateDamage(){
         if(getType().equals("Wizard")) {
             return getDamage()*changeIntelligence();
         }
-        else if()
-    }*/
+        else if (getType().equals("Knight")){
+            return getDamage()*getStrength();
+        }
+        else if(getType().equals("Worrier")){
+            return getDamage()*getStrength();
+        }
+        else if(getType().equals("Elf")){
+            return getDamage()*changeIntelligence();
+        }
+        else if(getType().equals("Lancer")){
+
+        }
+        }*/
 
     public void wishCharacter(){
         SecureRandom secureRandom = new SecureRandom();

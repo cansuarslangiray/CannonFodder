@@ -10,8 +10,6 @@ public class Wizard extends Player {
         super(type, characterName, money);
 
     }
-
-
     public static void wizardPrintInfo(){
         ArrayList<Wizard> wizardArrayList = new ArrayList<>();
         Wizard wizard = new Wizard("Wizard","Barbara",100);
@@ -23,7 +21,8 @@ public class Wizard extends Player {
         System.out.println("i: " + wizard.changeIntelligence());
         System.out.println("s: " + wizard.changeStrenght());
         System.out.println("v: " + wizard.changeVitality());
-        System.out.println("h" + wizard.getHealth());
+        System.out.println("h: " + wizard.healthPoint());
+        System.out.println("r: " + wizard.getRarity());
 
 
     }
