@@ -19,6 +19,7 @@ public class Game {
         System.out.println("Secondly, If you are not healthy enough, you can buy food with the coins you earned during the fight, or you can make your own with the materials you earned during the fight.");
         System.out.println("You can also buy items that will increase your character's powers.");
         System.out.println("if you press the m key on the keyboard, you will see the game map");
+        System.out.println("You can collect objects on the ground when you press the f key.");
         System.out.println("Finally, You may encounter different numbers and different enemies in every battlefield you go to.");
         System.out.println("Before fighting, you can get information about the enemies there, such as their damage value and health, and you can decide accordingly. Fight or run");
         System.out.println("DO NOT FORGET, if you lose against the enemy you will lose 10 Primogen");

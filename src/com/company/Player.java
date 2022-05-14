@@ -8,7 +8,7 @@ public class Player {
     private int damage;
     private int health = healthPoint();
     private int money;
-    private int rarity;
+    private int rarity = rarity();
     private int strength; // güç
     private int vitality; // canlılık
     private int intelligence ; // zeka
@@ -186,18 +186,21 @@ public class Player {
     }
 
     public int rarity(){
-        if(healthPoint()>=4.9){
+        if(getHealth()>=69){
+            setRarity(5);
             return 5;
         }
-        else if(healthPoint()<4.9 && healthPoint()>=3){
+        else if(getHealth()<69 && getHealth()>=50){
+            setRarity(4);
             return 4;
         }
         else {
+            setRarity(3);
             return 3;
         }
     }
     public int healthPoint(){
-        double hp = (0.7*getVitality()) + 0.2*getStrength() +0.1*getIntelligence();
+        double hp = (7*getVitality()) + 2.3*getStrength() +1.9*getIntelligence();
         setHealth((int) Math.round(hp));
         return (int) Math.round(hp);
     }

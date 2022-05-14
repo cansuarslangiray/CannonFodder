@@ -22,7 +22,7 @@ public class Wizard extends Player {
         System.out.println("s: " + wizard.changeStrenght());
         System.out.println("v: " + wizard.changeVitality());
         System.out.println("h: " + wizard.healthPoint());
-        System.out.println("r: " + wizard.getRarity());
+        System.out.println("r: " + wizard.rarity());
 
 
     }
