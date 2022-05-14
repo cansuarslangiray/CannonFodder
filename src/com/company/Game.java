@@ -28,7 +28,43 @@ public class Game {
         Wizard.wizardPrintInfo();
 
     }
-    public static void start(){
+    public static void map(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("currently displaying the map.....");
+        System.out.println("press 1 to view safe areas");
+        System.out.println("press 2 to view battlefields");
+        System.out.println("press 3 to leave this page");
+        System.out.println("Where do you want to go ?");
+         int choice = sc.nextInt();
+         boolean a = true;
+         while (a) {
+             switch (choice) {
+                 case 1:
+                     System.out.println("press 1 to return home");
+                     System.out.println("press 2 to go to the food shop");
+                     System.out.println("press 3 to go to the weapons shop");
+                     System.out.println("press 4 to go to the cloths shop");
+                     break;
+
+                 case 2:
+                     System.out.println("press 1 to Moonhallow. In this area, you may encounter siren or demon hunter. ");
+                     System.out.println("press 2 to Wildfront. In this area, you may encounter goblin, rouge or monk ");
+                     System.out.println("press 3 to Oceangulf. In this, you may encounter death knight, demon hunter or siren ");
+                     break;
+
+                 case 3:
+                     System.out.println("currently leaving this page....");
+                     a=false;
+                     break;
+
+                 default:
+                     System.out.println("You entered a character other than 1 , 2 or 3 !!!");
+                     System.out.println("Please enter the numbers 1 , 2 or 3");
+                     System.out.println("Your choice ?");
+                     choice = sc.nextInt();
+                     break;
+             }
+         }
 
     }
 
