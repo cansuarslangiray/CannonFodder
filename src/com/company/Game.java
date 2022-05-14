@@ -21,14 +21,18 @@ public class Game {
         System.out.println("You can collect objects on the ground when you press the f key.");
         System.out.println("Finally, You may encounter different numbers and different enemies in every battlefield you go to.");
         System.out.println("Before fighting, you can get information about the enemies there, such as their damage value and health, and you can decide accordingly. Fight or run");
-        System.out.println("DO NOT FORGET, if you lose against the enemy you will lose 10 Primogen");
+        System.out.println("DO NOT FORGET, if you lose your one character against the enemy you will lose 10 Primogen, if you you lose your two characters against the enemy you will lose 10 Primogen");
+        System.out.println("VERY IMPORTANCE!!!, if you lose three character against the enemy you will die");
+        System.out.println("and the game is over :(");
         System.out.println("You can start now , have fun :)");
         System.out.println();
-        Wizard.wizardPrintInfo();
+        //Wizard.wizardPrintInfo();
 
     }
     public static void map(){
         Scanner sc = new Scanner(System.in);
+        System.out.println();
+        System.out.println("------------------------------------");
         System.out.println("currently displaying the map.....");
         System.out.println("press 1 to view safe areas");
         System.out.println("press 2 to view battlefields");

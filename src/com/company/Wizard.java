@@ -6,11 +6,11 @@ import java.util.ArrayList;
 public class Wizard extends Player {
 
 
-    public Wizard(String type, String characterName, int money) {
-        super(type, characterName, money);
+    public Wizard(String type, String characterName, int money,Ability ability) {
+        super(type, characterName, money,ability);
 
     }
-    public static void wizardPrintInfo(){
+   /* public static void wizardPrintInfo(){
         ArrayList<Wizard> wizardArrayList = new ArrayList<>();
         Wizard wizard = new Wizard("Wizard","Barbara",100);
         wizardArrayList.add(wizard);
@@ -23,7 +23,5 @@ public class Wizard extends Player {
         System.out.println("v: " + wizard.changeVitality());
         System.out.println("h: " + wizard.healthPoint());
         System.out.println("r: " + wizard.rarity());
-
-
-    }
+       }*/
 }

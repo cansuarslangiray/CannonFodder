@@ -13,10 +13,10 @@ public class Player {
     private int vitality; // canlılık
     private int intelligence ; // zeka
     private Inventory inventory;
+    private Ability ability;
 
 
-
-    public Player(String type,String characterName, int money) {
+    public Player(String type,String characterName, int money,Ability ability) {
         this.type = type;
         this.characterName = characterName;
         this.health = healthPoint();
@@ -25,6 +25,7 @@ public class Player {
         this.strength=changeStrenght();
         this.vitality = changeVitality();
         this.intelligence = changeIntelligence();
+        this.ability = ability;
     }
 
     public int getDamage() {
@@ -105,6 +106,14 @@ public class Player {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Ability getAbility() {
+        return ability;
+    }
+
+    public void setAbility(Ability ability) {
+        this.ability = ability;
     }
 
     public int changeStrenght(){
