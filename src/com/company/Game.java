@@ -9,6 +9,7 @@ public class Game {
 
     public static void logIn(){
         Scanner sc = new Scanner(System.in);
+        Game game = new Game();
         System.out.println("Welcome the game!!!");
         System.out.println("Before to start game, you have to know something....");
         System.out.println("Firstly, When you start the game, you will have characters with 3 different abilities , and have one wish. With this wish, you will get the character or items that will help you during the game, such as weapons..");
@@ -27,11 +28,11 @@ public class Game {
         System.out.println("and the game is over :(");
         System.out.println("You can start now , have fun :)");
         System.out.println();
-        //Wizard.wizardPrintInfo();
+        player= new Wizard("Wizard","Barbara",100); // böyle yap!!!
+        Wizard.wizardPrintInfo();
 
     }
-    public static void map(){
-        Scanner sc = new Scanner(System.in);
+    public static void mapList(){
         System.out.println();
         System.out.println("------------------------------------");
         System.out.println("currently displaying the map.....");
@@ -39,8 +40,11 @@ public class Game {
         System.out.println("press 2 to view battlefields");
         System.out.println("press 3 to leave this page");
         System.out.println("Where do you want to go ?");
-
-         int choice = sc.nextInt();
+    }
+    public static void map(){
+        Scanner sc = new Scanner(System.in);
+            mapList();
+            int choice = sc.nextInt();
          boolean a = true;
          while (a) {
              switch (choice) {
@@ -54,9 +58,32 @@ public class Game {
                      int number =sc.nextInt();
                      switch (number){
                          case 1:
-                      location = new Home(player);
+                           location = new Home(player);
+                           location.getLocation();
 
+                           break;
+                         case 2:
+                             location = new FoodShop(player);
+                             location.getLocation();
 
+                             break;
+                         case 3:
+                             location = new WeaponsShop(player);
+                             location.getLocation();
+
+                             break;
+                         case 4:
+                             location = new ClothsShop(player);
+                             location.getLocation();
+
+                             break;
+                         case 5:
+                             mapList();
+                             choice = sc.nextInt();
+                             break;
+                         default:
+                             System.out.println("You entered numbers other than 1, 2, 3, 4. Please enter one of these numbers");
+                             break;
                      }
                      break;
 
@@ -66,7 +93,12 @@ public class Game {
                      System.out.println("press 3 to Oceangulf. In this, you may encounter death knight, demon hunter or siren ");
                      System.out.println("press 4 to go to first page");
                      System.out.println("Where do you want to go ?");
-                     break;
+                     int number2 = sc.nextInt();
+                    /* switch (number2){
+                         case 1:
+                             location = new Moonhallow(player,)
+                     }
+                     break;*/
 
                  case 3:
                      System.out.println("currently leaving this page....");

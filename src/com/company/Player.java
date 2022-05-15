@@ -6,7 +6,7 @@ public class Player {
     private String type;
     private String characterName;
     private int damage;
-    private int health ;
+    private int health  ;
     private int money;
     private int rarity ;
     private int strength; // güç
@@ -17,7 +17,7 @@ public class Player {
     private int rHealthy;
 
 
-    public Player(String type,String characterName, int money,Ability ability) {
+    public Player(String type,String characterName, int money) {
         this.type = type;
         this.characterName = characterName;
         this.health = healthPoint();
@@ -26,8 +26,8 @@ public class Player {
         this.strength=changeStrenght();
         this.vitality = changeVitality();
         this.intelligence = changeIntelligence();
-        this.ability = ability;
-        this.rHealthy=healthPoint();
+       // this.ability = ability;
+        this.rHealthy=getrHealthy();
     }
 
     public int getDamage() {
@@ -221,6 +221,7 @@ public class Player {
     public int healthPoint(){
         double hp = (7*getVitality()) + 2.3*getStrength() +1.9*getIntelligence();
         setHealth((int) Math.round(hp));
+        rHealthy = (int) Math.round(hp);
         return (int) Math.round(hp);
     }
     /*public int calculateDamage(){
