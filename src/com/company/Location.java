@@ -8,7 +8,7 @@ public abstract class Location {
       this.player=player;
    }
 
-   public abstract void getLocation();
+   public abstract boolean getLocation();
 
    public Player getPlayer() {
       return player;
