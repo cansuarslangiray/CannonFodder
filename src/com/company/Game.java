@@ -4,12 +4,11 @@ import java.util.Scanner;
 
 public class Game {
     static Player player; // static ??
-
     static Location location; // static ???
-
+    static Scanner sc = new Scanner(System.in);
 
     public static void logIn(){
-        Scanner sc = new Scanner(System.in);
+
         Game game = new Game();
         System.out.println("Welcome the game!!!");
         System.out.println("Before to start game, you have to know something....");
@@ -29,7 +28,7 @@ public class Game {
         System.out.println("and the game is over :(");
         System.out.println("You can start now , have fun :)");
         System.out.println();
-        player= new Wizard("Wizard","Barbara",100); // böyle yap!!!
+        //player= new Wizard("Wizard","Barbara",100); // böyle yap!!!
 
         System.out.println("Information of the wizards in the game");
         System.out.println("------------------------------------------");
@@ -44,9 +43,44 @@ public class Game {
 
         for(int i = 0 ; i< 3 ; i++){
             Characters characters = new Characters();
-            player = characters.get().get(i);
+            player = characters.wizardsGet().get(i);
             Characters.wizardPrintInfo(player);
             System.out.println(player.getCharacterName());
+        }
+
+    }
+
+    public static void charactersInfo(){
+        System.out.println("Characters Information");
+        System.out.println("--------------------------");
+        System.out.println("press 1 for information about Wizards");
+        System.out.println("press 2 for information about Worriers");
+        System.out.println("press 3 for information about Elves");
+        System.out.println("press 4 for information about Knight");
+        System.out.println("press 5 for information about Lancer");
+        System.out.println("press 6 to go to first page");
+        System.out.println("press 7 to exit this page");
+        System.out.println("Your choice ?");
+        int choice = sc.nextInt();
+
+        boolean b = true;
+        while (b){
+            switch (choice){
+                case 1:
+                    System.out.println("Character's name: \t" + "Character's weapon: \t" + "Character's ability: \t" + "Character's rarity: \t" + "Character's money: \t" + "Character's health: \t" + "Character's damage: \t\n" );
+                    for(int i = 0 ; i< 5; i++){
+                        Characters characters = new Characters();
+                        player = characters.wizardsGet().get(i);
+                        Characters.wizardPrintInfo(player);
+                        System.out.println("Character's name: \t" + "Character's weapon: \t" + "Character's ability: \t" + "Character's rarity: \t" + "Character's money: \t" + "Character's health: \t" + "Character's damage: \t\n" );
+                       // System.out.println(player.getCharacterName() \n + player.);
+
+
+                    }
+
+
+            }
+
         }
 
     }
@@ -60,8 +94,7 @@ public class Game {
         System.out.println("Where do you want to go ?");
     }
     public static void map(){
-        Scanner sc = new Scanner(System.in);
-            mapList();
+        mapList();
             int choice = sc.nextInt();
          boolean a = true;
          while (a) {

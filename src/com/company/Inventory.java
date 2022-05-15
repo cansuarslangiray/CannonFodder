@@ -2,25 +2,18 @@ package com.company;
 
 public class Inventory {
     private String name;
-    private double weight;
     private String itemType;
-    private int quality;
     private int rarity;
     private double priceOfItem;
-    private int level;
-    private int damage;
-    private int avoid;
 
-    public Inventory() {
-        this.name = "unknown";
-        this.weight = 0.0;
-        this.itemType = "unknown";
-        this.quality = 0;
-        this.rarity = 0;
-        this.priceOfItem =0.0;
-        this.level = 0;
-        this.damage =0;
-        this.avoid = 0;
+
+   // private int avoid;
+
+    public Inventory(String name, String itemType, int rarity, int priceOfItem) {
+        this.name = name;
+        this.itemType = itemType;
+        this.rarity = rarity;
+        this.priceOfItem =priceOfItem;
     }
 
     public String getName() {
@@ -31,13 +24,7 @@ public class Inventory {
         this.name = name;
     }
 
-    public double getWeight() {
-        return weight;
-    }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
 
     public String getType() {
         return itemType;
@@ -47,13 +34,7 @@ public class Inventory {
         this.itemType= itemType;
     }
 
-    public int getItemLevel() {
-        return quality;
-    }
 
-    public void setItemLevel(int quality) {
-        this.quality= quality;
-    }
 
 
     public int isRarity() {
@@ -72,25 +53,12 @@ public class Inventory {
         this.priceOfItem = priceOfItem;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
 
     public String getItemType() {
         return itemType;
     }
 
-    public int getQuality() {
-        return quality;
-    }
 
-    public void setQuality(int quality) {
-        this.quality = quality;
-    }
 
     public void setItemType(String itemType) {
         this.itemType = itemType;
@@ -100,23 +68,9 @@ public class Inventory {
         return rarity;
     }
 
-    public int getDamage() {
-        return damage;
-    }
 
-    public int getAvoid() {
-        return avoid;
-    }
 
-    public void setAvoid(int avoid) {
-        this.avoid = avoid;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
-    public int rarity(){
+   /* public int rarity(){
         if(rarity== 1){
             return 10;
         }
@@ -133,5 +87,5 @@ public class Inventory {
             rarity = 5;
         return   rarity+400;
 
-    }
+    }*/
 }
