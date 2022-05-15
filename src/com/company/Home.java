@@ -9,7 +9,7 @@ public class Home extends SafePlace{
     @Override
     public boolean getLocation() {
         System.out.println("you are at home now....");
-        player.setHealth(getPlayer().getrHealthy());
+        player.setHealth(player.getrHealthy());
         System.out.println("your health is full now."); // or your health has increased;
         return true;
     }

@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Game {
     static Player player; // static ??
+
     static Location location; // static ???
 
 
@@ -29,7 +30,24 @@ public class Game {
         System.out.println("You can start now , have fun :)");
         System.out.println();
         player= new Wizard("Wizard","Barbara",100); // böyle yap!!!
-        Wizard.wizardPrintInfo();
+
+        System.out.println("Information of the wizards in the game");
+        System.out.println("------------------------------------------");
+        System.out.println(player);
+        System.out.println("n: " +player.getCharacterName());
+        System.out.println("i: " + player.changeIntelligence());
+        System.out.println("s: " + player.changeStrenght());
+        System.out.println("v: " + player.changeVitality());
+        System.out.println("h: " + player.healthPoint());
+        System.out.println("r: " + player.rarity());
+        System.out.println("rh " + player.getrHealthy());
+
+        for(int i = 0 ; i< 3 ; i++){
+            Characters characters = new Characters();
+            player = characters.get().get(i);
+            Characters.wizardPrintInfo(player);
+            System.out.println(player.getCharacterName());
+        }
 
     }
     public static void mapList(){
