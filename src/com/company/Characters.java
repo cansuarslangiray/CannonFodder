@@ -79,6 +79,8 @@ public class Characters {
             System.out.println("h: " + arrayList.get(i).healthPoint());
             System.out.println("r: " + arrayList.get(i).rarity());
             System.out.println("rh " + arrayList.get(i).getrHealthy());
+            System.out.println("a: " +arrayList.get(i).getAbility());
+            System.out.println("w: " + arrayList.get(i).getWeapons());
         }
     }
 

@@ -29,7 +29,8 @@ public class Ability {
         return abilityArrayList;
     }
 
-    public static void assigningAbility(Player player){
+    public static void assigningAbility(){
+        Player player;
         SecureRandom secureRandom = new SecureRandom();
         for(int i = 0 ; i<abilityArrayList.size();i++){
             player.setAbility(abilityArrayList.get(secureRandom.nextInt(abilityArrayList.size()-1)));
