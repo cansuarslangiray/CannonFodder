@@ -18,7 +18,7 @@ public class Player {
     private int rHealthy;
 
 
-    public Player(String type, String characterName, int money, Ability ability, Inventory inventory,Weapons weapons) {
+    public Player(String type, String characterName, int money) {
         this.type = type;
         this.characterName = characterName;
         this.health = healthPoint();
@@ -28,9 +28,9 @@ public class Player {
         this.vitality = changeVitality();
         this.intelligence = changeIntelligence();
         //this.inventory =  new Inventory();
-        this.ability = ability;
+        this.ability = getAbility();
         this.rHealthy = getrHealthy();
-        this.weapons = weapons;
+        this.weapons = getWeapons();
     }
 
     public int getDamage() {
@@ -153,14 +153,19 @@ public class Player {
         } else if (getType().equals("Lancer")) {
             return sc.nextInt(5, 8);
 
-        } else
+        }
+        else if(getType().equals("Healer")){
+            return sc.nextInt(3,6);
+
+        }
+            else
             return sc.nextInt(1, 4);
     }
 
     public int changeVitality() {
         SecureRandom sc = new SecureRandom();
         if (getType().equals("Wizard")) {
-            setVitality(sc.nextInt(1, 6));
+
             return sc.nextInt(1, 6);
         } else if (getType().equals("Knight")) {
             return sc.nextInt(3, 7);
@@ -173,8 +178,12 @@ public class Player {
         } else if (getType().equals("Lancer")) {
             return sc.nextInt(5, 8);
 
-        } else
-            return sc.nextInt(2, 6);
+        }  else if(getType().equals("Healer")){
+            return sc.nextInt(3,6);
+
+        }
+        else
+            return sc.nextInt(1, 5);
 
     }
 
@@ -197,7 +206,11 @@ public class Player {
         } else if (getType().equals("Lancer")) {
             return sc.nextInt(2, 6);
 
-        } else
+        }  else if(getType().equals("Healer")){
+            return sc.nextInt(7,11);
+
+        }
+        else
             return sc.nextInt(2, 4);
     }
 
@@ -241,4 +254,5 @@ public class Player {
         SecureRandom secureRandom = new SecureRandom();
     }
     }*/
+
 }

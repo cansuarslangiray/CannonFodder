@@ -78,21 +78,26 @@ public class Weapons  extends Inventory{
     Claymore claymore1 = new Claymore("Hope's End","Claymore",5,50000,80,1,getQuality(),3.3);
     Claymore claymore2 = new Claymore(" Emissary of the Whispers","Claymore",3,54000,70,1,getQuality(),3.4);
 
-    ArrayList<Weapons> getWandArrayList = new ArrayList<>();
-    ArrayList<Weapons> getSwordArrayList = new ArrayList<>();
-    ArrayList<Weapons> getClaymoreArrayList = new ArrayList<>();
-    ArrayList<Weapons> getPolearmsArrayList = new ArrayList<>();
-    ArrayList<Weapons> getScytheArrayList = new ArrayList<>();
+    static ArrayList<Weapons> getWandArrayList = new ArrayList<>();
+    static ArrayList<Weapons> getSwordArrayList = new ArrayList<>();
+    static ArrayList<Weapons> getClaymoreArrayList = new ArrayList<>();
+    static ArrayList<Weapons> getPolearmsArrayList = new ArrayList<>();
+    static ArrayList<Weapons> getScytheArrayList = new ArrayList<>();
+    static ArrayList<Weapons> getCatalystArrayList = new ArrayList<>();
 
     public ArrayList<Weapons> getWandArrayList() {
         getWandArrayList.add(wand);
         getWandArrayList.add(wand1);
         getWandArrayList.add(wand2);
+
+
+        return getWandArrayList;
+    }
+    public ArrayList<Weapons> getGetCatalystArrayList(){
         getWandArrayList.add(catalyst);
         getWandArrayList.add(catalyst1);
         getWandArrayList.add(catalyst2);
-
-        return getWandArrayList;
+        return getCatalystArrayList;
     }
 
     public ArrayList<Weapons> getClaymoreArrayList(){
@@ -124,13 +129,45 @@ public class Weapons  extends Inventory{
 
     }
 
-    public static void assigningWeapons(Player player,ArrayList<Weapons> arrayList){
+    public static void assigningWeapons(Player player){
+        ArrayList<Weapons> arrayList = new ArrayList<>();
         SecureRandom secureRandom = new SecureRandom();
-
+        if(player.getType().equals("Wizard")){
+            arrayList = getWandArrayList;
             for(int i = 0 ; i<arrayList.size();i++){
                 player.setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size()-1)));
             }
-
+        }
+        else if(player.getType().equals("Worrier")) {
+            arrayList =getClaymoreArrayList;
+            for (int i = 0; i < arrayList.size(); i++) {
+                player.setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
+            }
+        }
+        else if(player.getType().equals("Elf")){
+            arrayList = getScytheArrayList;
+            for (int i = 0; i < arrayList.size(); i++) {
+                player.setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
+            }
+        }
+        else if(player.getType().equals("Healer")){
+            arrayList = getCatalystArrayList;
+            for (int i = 0; i < arrayList.size(); i++) {
+                player.setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
+            }
+        }
+        else if(player.getType().equals("Knight")){
+            arrayList = getSwordArrayList;
+            for (int i = 0; i < arrayList.size(); i++) {
+                player.setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
+            }
+        }
+        else if(player.getType().equals("Lancer")){
+            arrayList = getPolearmsArrayList;
+            for (int i = 0; i < arrayList.size(); i++) {
+                player.setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
+            }
+        }
 
         }
 

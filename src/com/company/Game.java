@@ -28,23 +28,25 @@ public class Game {
         System.out.println("and the game is over :(");
         System.out.println("You can start now , have fun :)");
         System.out.println();
-        //player= new Wizard("Wizard","Barbara",100); // böyle yap!!!
+        //player= new Wizard("Wizard","Barbara",100); //
+        Characters.wizardPrintInfo();
 
-        System.out.println("Information of the wizards in the game");
+
+       /* System.out.println("Information of the wizards in the game");
         System.out.println("------------------------------------------");
         System.out.println(player);
-        System.out.println("n: " +player.getCharacterName());
+        System.out.println("n: " + player.getCharacterName());
         System.out.println("i: " + player.changeIntelligence());
         System.out.println("s: " + player.changeStrenght());
         System.out.println("v: " + player.changeVitality());
         System.out.println("h: " + player.healthPoint());
         System.out.println("r: " + player.rarity());
-        System.out.println("rh " + player.getrHealthy());
+        System.out.println("rh " + player.getrHealthy());*/
 
         for(int i = 0 ; i< 3 ; i++){
             Characters characters = new Characters();
             player = characters.wizardsGet().get(i);
-            Characters.wizardPrintInfo(player);
+            Characters.wizardPrintInfo();
             System.out.println(player.getCharacterName());
         }
 
@@ -71,7 +73,7 @@ public class Game {
                     for(int i = 0 ; i< 5; i++){
                         Characters characters = new Characters();
                         player = characters.wizardsGet().get(i);
-                        Characters.wizardPrintInfo(player);
+                        Characters.wizardPrintInfo();
                         System.out.println("Character's name: \t" + "Character's weapon: \t" + "Character's ability: \t" + "Character's rarity: \t" + "Character's money: \t" + "Character's health: \t" + "Character's damage: \t\n" );
                        // System.out.println(player.getCharacterName() \n + player.);
 

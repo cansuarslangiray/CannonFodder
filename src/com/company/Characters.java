@@ -3,6 +3,7 @@ package com.company;
 import java.util.ArrayList;
 
 public class Characters {
+
     Wizard wizardPlayer = new Wizard("Wizard","Nao Tomori",5);
     Wizard wizardPlayer1 = new Wizard("Wizard","Yu Otosaka",25);
     Wizard wizardPlayer2 = new Wizard("Wizard","Ayumi Otosaka",56);
@@ -35,51 +36,53 @@ public class Characters {
 
 
 
-    ArrayList<Wizard> wizardArrayList = new ArrayList<>();
-    ArrayList<Worrier> worrierArrayList = new ArrayList<>();
-    ArrayList<Lancer> lancerArrayList = new ArrayList<>();
-    ArrayList<Elf> elfArrayList = new ArrayList<>();
-    ArrayList<Knight> knightArrayList = new ArrayList<>();
+    static ArrayList<Player> wizardArrayList = new ArrayList<>();
+    static ArrayList<Player> worrierArrayList = new ArrayList<>();
+    static ArrayList<Player> lancerArrayList = new ArrayList<>();
+    static ArrayList<Player> elfArrayList = new ArrayList<>();
+    static ArrayList<Player> knightArrayList = new ArrayList<>();
 
 
-    public ArrayList<Wizard> getWizardArrayList() {
+    public ArrayList<Player> getWizardArrayList() {
         return wizardArrayList;
     }
 
-    public ArrayList<Worrier> getWorrierArrayList() {
+    public ArrayList<Player> getWorrierArrayList() {
         return worrierArrayList;
     }
 
-    public ArrayList<Elf> getElfArrayList() {
+    public ArrayList<Player> getElfArrayList() {
         return elfArrayList;
     }
 
-    public ArrayList<Knight> getKnightArrayList() {
+    public ArrayList<Player> getKnightArrayList() {
         return knightArrayList;
     }
 
-    public ArrayList<Lancer> getLancerArrayList() {
+    public ArrayList<Player> getLancerArrayList() {
         return lancerArrayList;
     }
 
-    public void setWizardArrayList(ArrayList<Wizard> wizardArrayList) {
+    public void setWizardArrayList(ArrayList<Player> wizardArrayList) {
         this.wizardArrayList = wizardArrayList;
     }
-    public static void wizardPrintInfo(Player player){
+    public static void wizardPrintInfo(){
+        ArrayList<Player> arrayList = wizardArrayList;
 
-        System.out.println("Information of the wizards in the game");
-        System.out.println("------------------------------------------");
-        System.out.println("n: " +player.getCharacterName());
-        System.out.println("i: " + player.changeIntelligence());
-        System.out.println("s: " + player.changeStrenght());
-        System.out.println("v: " + player.changeVitality());
-        System.out.println("h: " + player.healthPoint());
-        System.out.println("r: " + player.rarity());
-        System.out.println("rh " + player.getrHealthy());
-
+        for(int i = 0; i< arrayList.size();i++) {
+            System.out.println("Information of the wizards in the game");
+            System.out.println("------------------------------------------");
+            System.out.println("n: " + arrayList.get(i).getCharacterName());
+            System.out.println("i: " + arrayList.get(i).changeIntelligence());
+            System.out.println("s: " + arrayList.get(i).changeStrenght());
+            System.out.println("v: " + arrayList.get(i).changeVitality());
+            System.out.println("h: " + arrayList.get(i).healthPoint());
+            System.out.println("r: " + arrayList.get(i).rarity());
+            System.out.println("rh " + arrayList.get(i).getrHealthy());
+        }
     }
 
-    public ArrayList<Wizard> wizardsGet(){
+    public ArrayList<Player> wizardsGet(){
                wizardArrayList.add(wizardPlayer);
                wizardArrayList.add(wizardPlayer1);
                wizardArrayList.add(wizardPlayer2);
@@ -89,7 +92,7 @@ public class Characters {
     }
 
 
-    public ArrayList<Elf> elfGet(){
+    public ArrayList<Player> elfGet(){
         elfArrayList.add(elfPlayer);
         elfArrayList.add(elfPlayer1);
         elfArrayList.add(elfPlayer2);
@@ -98,7 +101,7 @@ public class Characters {
         return elfArrayList;
     }
 
-    public ArrayList<Worrier> worriersGet(){
+    public ArrayList<Player> worriersGet(){
         worrierArrayList.add(worrierPlayer);
         worrierArrayList.add(worrierPlayer1);
         worrierArrayList.add(worrierPlayer2);
@@ -107,7 +110,7 @@ public class Characters {
         return worrierArrayList;
     }
 
-    public ArrayList<Knight> knightsGet(){
+    public ArrayList<Player> knightsGet(){
         knightArrayList.add(knightPlayer);
         knightArrayList.add(knightPlayer1);
         knightArrayList.add(knightPlayer2);
@@ -116,7 +119,7 @@ public class Characters {
         return knightArrayList;
     }
 
-    public ArrayList<Lancer> lancerGet(){
+    public ArrayList<Player> lancerGet(){
         lancerArrayList.add(lancerPlayer);
         lancerArrayList.add(lancerPlayer1);
         lancerArrayList.add(lancerPlayer2);
