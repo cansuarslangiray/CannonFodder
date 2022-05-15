@@ -11,7 +11,7 @@ public class Wizard extends Player {
 
     }
     public static void wizardPrintInfo(){
-        ArrayList<Wizard> wizardArrayList = new ArrayList<>();
+
        Player wizard= new Wizard("Wizard","Barbara",100);
 
         System.out.println("Information of the wizards in the game");

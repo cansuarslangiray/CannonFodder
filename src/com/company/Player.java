@@ -26,7 +26,8 @@ public class Player {
         this.strength=changeStrenght();
         this.vitality = changeVitality();
         this.intelligence = changeIntelligence();
-       // this.ability = ability;
+        this.inventory =  new Inventory();
+         //this.ability = ability;
         this.rHealthy=getrHealthy();
     }
 

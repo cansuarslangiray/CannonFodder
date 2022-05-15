@@ -6,14 +6,11 @@ public class Sword extends Weapons{
 
 
 
-    public Sword(String name, int weight, int rarity, double priceOfItem, boolean shortSword,boolean longSword,int attack) {
+   /* public Sword(String name, int weight, int rarity, double priceOfItem, boolean shortSword,boolean longSword,int attack) {
         super(name, weight, "Weapons", rarity, priceOfItem, 0,attack);
         this.shortSword = shortSword;
         this.longSword = longSword;
-
-
-
-    }
+    }*/
 
     public boolean isShortSword() {
         return shortSword;
@@ -31,9 +28,9 @@ public class Sword extends Weapons{
         this.longSword = longSword;
     }
 
-    Sword summitShaper = new Sword("summit sharper", 2,5,70000,false,true,46);
+    /*Sword summitShaper = new Sword("summit sharper", 2,5,70000,false,true,46);
     Sword mistspiltterReforged = new Sword("mistspiltter reforged",2,5,65000,true,false,48);
-    Sword skywordBlade = new Sword("skyword blade",3,5,68000,false,true,46);
+    Sword skywordBlade = new Sword("skyword blade",3,5,68000,false,true,46);*/
 
 
 

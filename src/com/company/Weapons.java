@@ -4,11 +4,11 @@ public class Weapons  extends Inventory{
 
     private int attack;
 
-    public Weapons(String name, int weight, String itemType,int rarity, double priceOfItem, int level,int attack) {
+   /* public Weapons(String name, int weight, String itemType,int rarity, double priceOfItem, int level,int attack) {
         super(name, weight, itemType, rarity, priceOfItem, level);
 
         this.attack= attack;
-    }
+    }*/
 
 
     public int getAttack() {
