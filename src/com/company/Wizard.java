@@ -15,6 +15,6 @@ public class Wizard extends Player {
         SecureRandom secureRandom = new SecureRandom();
         ArrayList<Weapons> arrayList = new ArrayList<>();
         objects.wandArrayList(arrayList);
-        setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
+        setWeapons(arrayList.get(secureRandom.nextInt(0,arrayList.size() - 1)));
     }
 }

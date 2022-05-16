@@ -22,11 +22,11 @@ public class Characters {
     Knight knightPlayer3 = new Knight("Knight", "Byakuya Togami",69);
     Knight knightPlayer4 = new Knight("Knight","Makoto Naegi",85);
 
-    Worrier worrierPlayer = new Worrier("Worrier", "Nagito Komaeda",86);
-    Worrier worrierPlayer1 = new Worrier("Worrier", "Touka Kirişima",87);
-    Worrier worrierPlayer2 = new Worrier("Worrier", "Kaneki Ken",97);
-    Worrier worrierPlayer3 = new Worrier("Worrier", "Rize Kamishiro",97);
-    Worrier worrierPlayer4 = new Worrier("Worrier","Juuzou Suzuya",85);
+    Warrior worrierPlayer = new Warrior("Worrier", "Nagito Komaeda",86);
+    Warrior worrierPlayer1 = new Warrior("Worrier", "Touka Kirişima",87);
+    Warrior worrierPlayer2 = new Warrior("Worrier", "Kaneki Ken",97);
+    Warrior worrierPlayer3 = new Warrior("Worrier", "Rize Kamishiro",97);
+    Warrior worrierPlayer4 = new Warrior("Worrier","Juuzou Suzuya",85);
 
     Lancer lancerPlayer = new Lancer("Lancer", "Toga himiko",75);
     Lancer lancerPlayer1 = new Lancer("Lancer", "Shoto Todoroki",86);
@@ -36,11 +36,11 @@ public class Characters {
 
 
 
-    static ArrayList<Player> wizardArrayList = new ArrayList<>();
-    static ArrayList<Player> worrierArrayList = new ArrayList<>();
-    static ArrayList<Player> lancerArrayList = new ArrayList<>();
-    static ArrayList<Player> elfArrayList = new ArrayList<>();
-    static ArrayList<Player> knightArrayList = new ArrayList<>();
+     ArrayList<Player> wizardArrayList = new ArrayList<>();
+     ArrayList<Player> worrierArrayList = new ArrayList<>();
+     ArrayList<Player> lancerArrayList = new ArrayList<>();
+     ArrayList<Player> elfArrayList = new ArrayList<>();
+     ArrayList<Player> knightArrayList = new ArrayList<>();
 
 
     public ArrayList<Player> getWizardArrayList() {
@@ -67,23 +67,27 @@ public class Characters {
     public void setWizardArrayList(ArrayList<Player> wizardArrayList) {
         this.wizardArrayList = wizardArrayList;
     }
-    public static void wizardPrintInfo(){
-        ArrayList<Player> arrayList = wizardArrayList;
 
+
+    public static void characterPrintInfo(ArrayList<Player> arrayList){
+        System.out.println("Information of the worrier in the game");
         for(int i = 0; i< arrayList.size();i++) {
-            System.out.println("Information of the wizards in the game");
+            System.out.println();
             System.out.println("------------------------------------------");
-            System.out.println("n: " + arrayList.get(i).getCharacterName());
-            System.out.println("i: " + arrayList.get(i).changeIntelligence());
-            System.out.println("s: " + arrayList.get(i).changeStrenght());
-            System.out.println("v: " + arrayList.get(i).changeVitality());
-            System.out.println("h: " + arrayList.get(i).healthPoint());
-            System.out.println("r: " + arrayList.get(i).rarity());
+            System.out.println("name: " + arrayList.get(i).getCharacterName());
+            System.out.println("intelligence: " + arrayList.get(i).changeIntelligence());
+            System.out.println("strenght: " + arrayList.get(i).changeStrenght());
+            System.out.println("vitality: " + arrayList.get(i).changeVitality());
+            System.out.println("health point: " + arrayList.get(i).healthPoint());
+            System.out.println("rarity: " + arrayList.get(i).rarity());
             System.out.println("rh " + arrayList.get(i).getrHealthy());
             arrayList.get(i).assigningAbility();
-            System.out.println("a: " +arrayList.get(i).getAbility1().getAbilityName());
+            System.out.println("ability: " +arrayList.get(i).getAbility1().getAbilityName());
             arrayList.get(i).assigningWeapons();
-            System.out.println("w: " + arrayList.get(i).getWeapons().getName());
+            System.out.println("weapons: " + arrayList.get(i).getWeapons().getName());
+            System.out.println("damage: " + arrayList.get(i).getDamage());
+            System.out.println("money: " + arrayList.get(i).getMoney());
+            System.out.println();
         }
     }
 

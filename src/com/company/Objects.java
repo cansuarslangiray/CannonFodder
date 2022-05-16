@@ -32,39 +32,38 @@ public class Objects {
     WandArrayList.add(wand2);
 }
 
-public ArrayList<Weapons> catalystArrayList(ArrayList<Weapons> getCatalystArrayList){
+public void catalystArrayList(ArrayList<Weapons> getCatalystArrayList){
     getCatalystArrayList.add(catalyst);
     getCatalystArrayList.add(catalyst1);
     getCatalystArrayList.add(catalyst2);
-    return getCatalystArrayList;
 }
 
-public ArrayList<Weapons> claymoreArrayList(ArrayList<Weapons> getClaymoreArrayList){
+public void  claymoreArrayList(ArrayList<Weapons> getClaymoreArrayList){
     getClaymoreArrayList.add(claymore);
     getClaymoreArrayList.add(claymore1);
     getClaymoreArrayList.add(claymore2);
-    return getClaymoreArrayList;
+
 
 }
-public ArrayList<Weapons> swordArrayList(ArrayList<Weapons> getSwordArrayList){
+public void swordArrayList(ArrayList<Weapons> getSwordArrayList){
     getSwordArrayList.add(sword);
     getSwordArrayList.add(sword1);
     getSwordArrayList.add(sword2);
-    return getSwordArrayList;
+
 }
 
-public ArrayList<Weapons> polearmsArrayList(ArrayList<Weapons> getPolearmsArrayList){
+public void polearmsArrayList(ArrayList<Weapons> getPolearmsArrayList){
     getPolearmsArrayList.add(polearms);
     getPolearmsArrayList.add(polearms1);
     getPolearmsArrayList.add(polearms2);
-    return getPolearmsArrayList;
+
 }
 
-public ArrayList<Weapons>  scytheArrayList(ArrayList<Weapons> getScytheArrayList){
+public void  scytheArrayList(ArrayList<Weapons> getScytheArrayList){
     getScytheArrayList.add(scythe);
     getScytheArrayList.add(scythe1);
     getScytheArrayList.add(scythe2);
-    return getScytheArrayList;
+
 }
 
 Ability ability = new Ability("Hydro");

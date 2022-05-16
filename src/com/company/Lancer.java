@@ -13,7 +13,7 @@ public class Lancer  extends Player{
         Objects objects = new Objects();
         SecureRandom secureRandom = new SecureRandom();
         ArrayList<Weapons> arrayList = new ArrayList<>();
-        objects.wandArrayList(arrayList);
+        objects.polearmsArrayList(arrayList);
         setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
     }
 }

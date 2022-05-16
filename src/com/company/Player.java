@@ -249,10 +249,10 @@ public class Player {
     }
     public final void assigningAbility() {
         SecureRandom secureRandom = new SecureRandom();
-        Objects an = new Objects();
-        ArrayList<Ability> arr = new ArrayList<>();
-        arr = an.arrayList();
-        setAbility1(arr.get(secureRandom.nextInt((arr.size()) - 1)));
+        Objects objects = new Objects();
+        ArrayList<Ability> arrayList1 = new ArrayList<>();
+        arrayList1= objects.arrayList();
+        setAbility1(arrayList1.get(secureRandom.nextInt((arrayList1.size()) - 1)));
     }
 }
 

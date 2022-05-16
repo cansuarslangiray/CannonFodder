@@ -26,30 +26,20 @@ public class Game {
         System.out.println("and the game is over :(");
         System.out.println("You can start now , have fun :)");
         System.out.println();
-        //player= new Wizard("Wizard","Barbara",100); //
 
 
-       /* System.out.println("Information of the wizards in the game");
-        System.out.println("------------------------------------------");
-        System.out.println(player);
-        System.out.println("n: " + player.getCharacterName());
-        System.out.println("i: " + player.changeIntelligence());
-        System.out.println("s: " + player.changeStrenght());
-        System.out.println("v: " + player.changeVitality());
-        System.out.println("h: " + player.healthPoint());
-        System.out.println("r: " + player.rarity());
-        System.out.println("rh " + player.getrHealthy());*/
 
-        for(int i = 0 ; i< 1; i++){
+
+
+        /*for(int i = 0 ; i< 1; i++){
             Characters characters = new Characters();
+            characters.wizardPrintInfo();
             player = characters.wizardsGet().get(i);
-            Characters.wizardPrintInfo();
             System.out.println(player.getCharacterName());
-        }
+        }*/
 
     }
-
-    public static void charactersInfo(){
+    public void firstPagePrintInfo(){
         System.out.println("Characters Information");
         System.out.println("--------------------------");
         System.out.println("press 1 for information about Wizards");
@@ -60,23 +50,52 @@ public class Game {
         System.out.println("press 6 to go to first page");
         System.out.println("press 7 to exit this page");
         System.out.println("Your choice ?");
-        int choice = sc.nextInt();
+    }
 
+    public  void charactersInfo(){
+        firstPagePrintInfo();
+        Characters characters = new Characters();
         boolean b = true;
         while (b){
+            int choice = sc.nextInt();
             switch (choice){
                 case 1:
-                    System.out.println("Character's name: \t" + "Character's weapon: \t" + "Character's ability: \t" + "Character's rarity: \t" + "Character's money: \t" + "Character's health: \t" + "Character's damage: \t\n" );
-                    for(int i = 0 ; i< 5; i++){
-                        Characters characters = new Characters();
-                        player = characters.wizardsGet().get(i);
-                        Characters.wizardPrintInfo();
-                        System.out.println("Character's name: \t" + "Character's weapon: \t" + "Character's ability: \t" + "Character's rarity: \t" + "Character's money: \t" + "Character's health: \t" + "Character's damage: \t\n" );
-                       // System.out.println(player.getCharacterName() \n + player.);
+                    System.out.println("Information of the wizards in the game");
+                    Characters.characterPrintInfo(characters.wizardsGet());
+                    firstPagePrintInfo();
+                    break;
+                case 2:
+                    System.out.println("Information of the worrier in the game");
+                    Characters.characterPrintInfo(characters.worriersGet());
+                    firstPagePrintInfo();
+                    break;
+                case 3:
+                    System.out.println("Information of the elves in the game");
+                    Characters.characterPrintInfo(characters.elfGet());
+                    firstPagePrintInfo();
+                    break;
+                case 4:
+                    System.out.println("Information of the knights in the game");
+                    Characters.characterPrintInfo(characters.knightsGet());
+                    firstPagePrintInfo();
 
+                    break;
+                case 5:
+                    System.out.println("Information of the lancers in the game");
+                    Characters.characterPrintInfo(characters.lancerGet());
+                    firstPagePrintInfo();
+                    break;
+                case 6:
+                    firstPagePrintInfo();
+                    break;
+                case 7:
+                    b = false;
+                    break;
 
-                    }
-
+                default:
+                    System.out.println("You entered a number different from the numbers 1 to 7. Please enter one of the numbers from 1 to 7.");
+                    System.out.println("Your choice ?");
+                    break;
 
             }
 
