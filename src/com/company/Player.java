@@ -1,6 +1,5 @@
 package com.company;
 
-import javax.swing.*;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
@@ -15,7 +14,7 @@ public class Player {
     private int vitality; // canlılık
     private int intelligence;
     //private Inventory inventory;
-    private Weapons weapons;
+    Weapons weapons;
     private String weaponsName;
     private String ability;
     private int rHealthy;
@@ -32,10 +31,9 @@ public class Player {
         this.vitality = changeVitality();
         this.intelligence = changeIntelligence();
         //this.inventory =  new Inventory();
-        this.ability = assigningAbility().getAbilityName();
+        this.ability =  getAbility();
         this.rHealthy = getrHealthy();
         this.weapons = getWeapons();
-        this.weaponsName = assigningWeapons();
     }
 
     public int getDamage() {
@@ -242,19 +240,19 @@ public class Player {
         return (int) Math.round(hp);
     }
 
-    public final Ability assigningAbility() {
-        SecureRandom secureRandom = new SecureRandom();
-        setAbility1(Ability.abilityArrayList.get(secureRandom.nextInt(0, (Ability.arrayList().size()) - 1)));
-        return (Ability.abilityArrayList.get(secureRandom.nextInt(0, (Ability.arrayList().size()) - 1)));
-    }
+    
 
-    public String assigningWeapons() {
+    public void assigningWeapons() {
         SecureRandom secureRandom = new SecureRandom();
         ArrayList<Weapons> arrayList = new ArrayList<>();
-        for (int i = 0; i < arrayList.size(); i++) {
-            setWeapons(arrayList.get(secureRandom.nextInt(0, arrayList.size() - 1)));
-        }
-        return  (arrayList.get(secureRandom.nextInt(0, arrayList.size() - 1))).getName();
+        setWeapons(arrayList.get(secureRandom.nextInt(0, arrayList.size() - 1)));
+    }
+    public final void assigningAbility() {
+        SecureRandom secureRandom = new SecureRandom();
+        Objects an = new Objects();
+        ArrayList<Ability> arr = new ArrayList<>();
+        arr = an.arrayList();
+        setAbility1(arr.get(secureRandom.nextInt((arr.size()) - 1)));
     }
 }
 

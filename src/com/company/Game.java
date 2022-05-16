@@ -7,9 +7,7 @@ public class Game {
     static Location location; // static ???
     static Scanner sc = new Scanner(System.in);
 
-    public static void logIn(){
-
-        Game game = new Game();
+    public void logIn(){
         System.out.println("Welcome the game!!!");
         System.out.println("Before to start game, you have to know something....");
         System.out.println("Firstly, When you start the game, you will have characters with 3 different abilities , and have one wish. With this wish, you will get the character or items that will help you during the game, such as weapons..");
@@ -29,7 +27,6 @@ public class Game {
         System.out.println("You can start now , have fun :)");
         System.out.println();
         //player= new Wizard("Wizard","Barbara",100); //
-        Characters.wizardPrintInfo();
 
 
        /* System.out.println("Information of the wizards in the game");
@@ -95,7 +92,7 @@ public class Game {
         System.out.println("press 3 to leave this page");
         System.out.println("Where do you want to go ?");
     }
-    public static void map(){
+    public void map(){
         mapList();
             int choice = sc.nextInt();
          boolean a = true;

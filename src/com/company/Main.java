@@ -5,13 +5,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-            Game.logIn();
-            Game.map();
+            Game game = new Game();
+            game.logIn();
+            game.map();
             System.out.println("name: " + Game.player.getCharacterName());
-
-
     }
-
-
-
 }

@@ -62,6 +62,7 @@ public class Characters {
     public ArrayList<Player> getLancerArrayList() {
         return lancerArrayList;
     }
+    
 
     public void setWizardArrayList(ArrayList<Player> wizardArrayList) {
         this.wizardArrayList = wizardArrayList;
@@ -79,8 +80,10 @@ public class Characters {
             System.out.println("h: " + arrayList.get(i).healthPoint());
             System.out.println("r: " + arrayList.get(i).rarity());
             System.out.println("rh " + arrayList.get(i).getrHealthy());
-            System.out.println("a: " +arrayList.get(i).getAbility());
-            System.out.println("w: " + arrayList.get(i).getWeapons());
+            arrayList.get(i).assigningAbility();
+            System.out.println("a: " +arrayList.get(i).getAbility1().getAbilityName());
+            arrayList.get(i).assigningWeapons();
+            System.out.println("w: " + arrayList.get(i).getWeapons().getName());
         }
     }
 

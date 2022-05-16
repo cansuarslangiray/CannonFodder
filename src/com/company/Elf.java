@@ -15,7 +15,6 @@ public class Elf extends Player {
         arrayList = Weapons.getScytheArrayList;
         for (int i = 0; i < arrayList.size(); i++) {
             setWeapons(arrayList.get(secureRandom.nextInt(0, arrayList.size() - 1)));
-
         }
         return  (arrayList.get(secureRandom.nextInt(0, arrayList.size() - 1))).getName();
     }
