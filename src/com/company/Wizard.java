@@ -11,10 +11,10 @@ public class Wizard extends Player {
 
     @Override
     public void assigningWeapons() {
-        Objects an = new Objects();
+        Objects objects = new Objects();
         SecureRandom secureRandom = new SecureRandom();
         ArrayList<Weapons> arrayList = new ArrayList<>();
-        an.wandArrayList(arrayList);
+        objects.wandArrayList(arrayList);
         setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
     }
 }

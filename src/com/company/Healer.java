@@ -9,15 +9,12 @@ public class Healer extends Player{
     }
 
     @Override
-    public String assigningWeapons() {
+    public void assigningWeapons() {
+        Objects objects = new Objects();
         SecureRandom secureRandom = new SecureRandom();
-        ArrayList<Weapons> arrayList ;
-        arrayList = Weapons.getCatalystArrayList;
-        for (int i = 0; i < arrayList.size(); i++) {
-            setWeapons(arrayList.get(secureRandom.nextInt(0, arrayList.size() - 1)));
-
-        }
-        return  (arrayList.get(secureRandom.nextInt(0, arrayList.size() - 1))).getName();
+        ArrayList<Weapons> arrayList = new ArrayList<>();
+        objects.wandArrayList(arrayList);
+        setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
     }
 }
 

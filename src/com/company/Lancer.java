@@ -8,16 +8,12 @@ public class Lancer  extends Player{
     public Lancer(String type, String characterName, int money) {
         super(type, characterName, money);
     }
-
     @Override
-    public String assigningWeapons() {
+    public void assigningWeapons() {
+        Objects objects = new Objects();
         SecureRandom secureRandom = new SecureRandom();
-        ArrayList<Weapons> arrayList ;
-
-        arrayList = Weapons.getPolearmsArrayList;
-        for (int i = 0; i < arrayList.size(); i++) {
-            setWeapons(arrayList.get(secureRandom.nextInt(0, Weapons.getPolearmsArrayList.size()) - 1));
-        }
-        return  (arrayList.get(secureRandom.nextInt(0, Weapons.getPolearmsArrayList.size() - 1))).getName();
+        ArrayList<Weapons> arrayList = new ArrayList<>();
+        objects.wandArrayList(arrayList);
+        setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
     }
 }
