@@ -43,7 +43,7 @@ public class Game {
         System.out.println("r: " + player.rarity());
         System.out.println("rh " + player.getrHealthy());*/
 
-        for(int i = 0 ; i< 3 ; i++){
+        for(int i = 0 ; i< 1; i++){
             Characters characters = new Characters();
             player = characters.wizardsGet().get(i);
             Characters.wizardPrintInfo();

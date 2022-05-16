@@ -10,4 +10,15 @@ public class Wizard extends Player {
         super(type, characterName, money);
 
     }
+
+    @Override
+    public String assigningWeapons() {
+        SecureRandom secureRandom = new SecureRandom();
+        ArrayList<Weapons> arrayList ;
+        Weapons
+        for (int i = 0; i < Weapons.; i++) {
+            setWeapons(arrayList.get(secureRandom.nextInt(0, (Weapons.getWandArrayList.size() - 1))));
+        }
+        return  (arrayList.get(secureRandom.nextInt(0, (Weapons.getWandArrayList.size() - 1)))).getName();
+    }
 }
