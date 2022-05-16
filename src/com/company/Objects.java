@@ -26,6 +26,22 @@ public class Objects {
    Weapons claymore = new Claymore("Amnesia","Claymore",4,48000,65,1,1,3.5);
    Weapons claymore1 = new Claymore("Hope's End","Claymore",5,50000,80,1,1,3.3);
    Weapons claymore2 = new Claymore(" Emissary of the Whispers","Claymore",3,54000,70,1,1,3.4);
+
+
+
+   public void weaponsShopPrintInfo(ArrayList<Weapons> weapons){
+        for(int i = 0 ; i< weapons.size();i++){
+            System.out.println("weapons' name: " + weapons.get(i).getName() );
+            System.out.println("weapons' price: " + weapons.get(i).getPriceOfItem() );
+            System.out.println("weapons' damage: " + weapons.get(i).getDamage());
+            System.out.println("weapons' rarity: " + weapons.get(i).getRarity());
+            System.out.println("weapons' level: " + weapons.get(i).getLevel());
+            System.out.println("weapons' quality: " + weapons.get(i).getQuality());
+            System.out.println("weapons' weight: " + weapons.get(i).getWeight());
+        }
+    }
+
+
    public void wandArrayList(ArrayList<Weapons> WandArrayList) {
     WandArrayList.add(wand);
     WandArrayList.add(wand1);
@@ -49,6 +65,7 @@ public void swordArrayList(ArrayList<Weapons> getSwordArrayList){
     getSwordArrayList.add(sword);
     getSwordArrayList.add(sword1);
     getSwordArrayList.add(sword2);
+
 
 }
 

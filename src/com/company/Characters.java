@@ -64,9 +64,7 @@ public class Characters {
     }
     
 
-    public void setWizardArrayList(ArrayList<Player> wizardArrayList) {
-        this.wizardArrayList = wizardArrayList;
-    }
+
 
 
     public static void characterPrintInfo(ArrayList<Player> arrayList){

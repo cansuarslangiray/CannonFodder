@@ -70,8 +70,8 @@ public class Inventory {
 
 
 
-   /* public int rarity(){
-        if(rarity== 1){
+      /* public int rarity(){
+     if(rarity== 1){
             return 10;
         }
         else if(rarity== 2){

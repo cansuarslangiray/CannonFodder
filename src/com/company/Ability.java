@@ -1,7 +1,5 @@
 package com.company;
 
-import java.security.SecureRandom;
-import java.util.ArrayList;
 
 public class Ability {
      private  String abilityName ;
@@ -15,11 +13,4 @@ public class Ability {
     }
 
 
-   /* public static void assigningAbility(Player player){
-
-        SecureRandom secureRandom = new SecureRandom();
-        for(int i = 0 ; i<abilityArrayList.size();i++){
-            player.setAbility(abilityArrayList.get(secureRandom.nextInt(abilityArrayList.size()-1)));
-        }
-    }*/
 }

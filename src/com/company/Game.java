@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
@@ -89,6 +90,8 @@ public class Game {
                     firstPagePrintInfo();
                     break;
                 case 7:
+                    location = new Home(player);
+                    location.getLocation();
                     b = false;
                     break;
 
@@ -113,9 +116,9 @@ public class Game {
     }
     public void map(){
         mapList();
-            int choice = sc.nextInt();
-         boolean a = true;
+        boolean a = true;
          while (a) {
+             int choice = sc.nextInt();
              switch (choice) {
                  case 1:
                      System.out.println("press 1 to return home");
@@ -137,6 +140,22 @@ public class Game {
 
                              break;
                          case 3:
+                             Objects objects = new Objects();
+                             System.out.println();
+                             System.out.println("welcome to the weapon shop");
+                             System.out.println("--------------------------------");
+                             System.out.println("press 1 to see swords");
+                             System.out.println("press 2 to see claymores");
+                             System.out.println("press 3 to see polearms");
+                             System.out.println("press 4 to see wand");
+                             System.out.println("press 5 to see catalyst");
+                             System.out.println("press 6 to see scythe");
+                             System.out.println("your choice ? ");
+                             int choice2 = sc.nextInt();
+                             switch (choice2){
+                                 case 1:
+                                     
+                             }
                              location = new WeaponsShop(player);
                              location.getLocation();
 

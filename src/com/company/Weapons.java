@@ -53,53 +53,7 @@ public class Weapons  extends Inventory{
 
 
 
-     
-
-   
-
-    /*public static void assigningWeapons(Player player){
-        ArrayList<Weapons> arrayList = new ArrayList<>();
-        SecureRandom secureRandom = new SecureRandom();
-        if(player.getType().equals("Wizard")){
-            arrayList = getWandArrayList;
-            for(int i = 0 ; i<arrayList.size();i++){
-                player.setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size()-1)));
-            }
-        }
-        else if(player.getType().equals("Worrier")) {
-            arrayList =getClaymoreArrayList;
-            for (int i = 0; i < arrayList.size(); i++) {
-                player.setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
-            }
-        }
-        else if(player.getType().equals("Elf")){
-            arrayList = getScytheArrayList;
-            for (int i = 0; i < arrayList.size(); i++) {
-                player.setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
-            }
-        }
-        else if(player.getType().equals("Healer")){
-            arrayList = getCatalystArrayList;
-            for (int i = 0; i < arrayList.size(); i++) {
-                player.setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
-            }
-        }
-        else if(player.getType().equals("Knight")){
-            arrayList = getSwordArrayList;
-            for (int i = 0; i < arrayList.size(); i++) {
-                player.setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
-            }
-        }
-        else if(player.getType().equals("Lancer")){
-            arrayList = getPolearmsArrayList;
-            for (int i = 0; i < arrayList.size(); i++) {
-                player.setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
-            }
-        }
-
-        }*/
-
-    }
+}
 
 
 
