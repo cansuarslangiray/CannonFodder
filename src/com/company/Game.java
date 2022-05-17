@@ -163,6 +163,7 @@ public class Game {
                                          }
 
                                      }
+                                     System.out.println("other choice: ");
                                      break;
                                  case 2:
                                      System.out.println("printing claymores");
@@ -172,7 +173,7 @@ public class Game {
                                              objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
                                          }
 
-                                     }
+                                     }System.out.println("other choice: ");
                                      break;
                                  case 3:
                                      System.out.println("printing polearm");
@@ -182,7 +183,7 @@ public class Game {
                                              objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
                                          }
 
-                                     }
+                                     }System.out.println("other choice: ");
                                      break;
                                  case 4:
                                      System.out.println("printing wand");
@@ -192,7 +193,7 @@ public class Game {
                                              objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
                                          }
 
-                                     }
+                                     }System.out.println("other choice: ");
                                      break;
                                  case 5:
                                      System.out.println("printing catalyst");
@@ -202,7 +203,7 @@ public class Game {
                                              objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
                                          }
 
-                                     }
+                                     }System.out.println("other choice: ");
                                      break;
                                  case 6:
                                      System.out.println("printing scythe");
@@ -212,7 +213,7 @@ public class Game {
                                              objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
                                          }
 
-                                     }
+                                     }System.out.println("other choice: ");
                                      break;
 
 
