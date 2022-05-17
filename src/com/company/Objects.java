@@ -28,17 +28,38 @@ public class Objects {
    Weapons claymore2 = new Claymore(" Emissary of the Whispers","Claymore",3,54000,70,1,1,3.4);
 
 
+   public void allWeapons(ArrayList<Weapons> weapons){
+       weapons.add(wand);
+       weapons.add(wand1);
+       weapons.add(wand2);
+       weapons.add(catalyst);
+       weapons.add(catalyst1);
+       weapons.add(catalyst2);
+       weapons.add(claymore);
+       weapons.add(claymore1);
+       weapons.add(claymore2);
+       weapons.add(sword);
+       weapons.add(sword1);
+       weapons.add(sword2);
+       weapons.add(polearms);
+       weapons.add(polearms1);
+       weapons.add(polearms2);
+       weapons.add(scythe);
+       weapons.add(scythe1);
+       weapons.add(scythe2);
+   }
 
-   public void weaponsShopPrintInfo(ArrayList<Weapons> weapons){
-        for(int i = 0 ; i< weapons.size();i++){
-            System.out.println("weapons' name: " + weapons.get(i).getName() );
-            System.out.println("weapons' price: " + weapons.get(i).getPriceOfItem() );
-            System.out.println("weapons' damage: " + weapons.get(i).getDamage());
-            System.out.println("weapons' rarity: " + weapons.get(i).getRarity());
-            System.out.println("weapons' level: " + weapons.get(i).getLevel());
-            System.out.println("weapons' quality: " + weapons.get(i).getQuality());
-            System.out.println("weapons' weight: " + weapons.get(i).getWeight());
-        }
+   public void weaponsShopPrintInfo(Weapons weapons){
+            System.out.println("---------------------------------------------");
+            System.out.println("weapons' name: \t" + weapons.getName() );
+            System.out.println("weapons' price: \t" + weapons.getPriceOfItem() );
+            System.out.println("weapons' damage: \t" + weapons.getDamage());
+            System.out.println("weapons' rarity: \t" + weapons.getRarity());
+            System.out.println("weapons' level: \t" + weapons.getLevel());
+            System.out.println("weapons' quality: \t" + weapons.getQuality());
+            System.out.println("weapons' weight: \t" + weapons.getWeight());
+            System.out.println();
+
     }
 
 

@@ -7,11 +7,8 @@ public class Sword extends Weapons{
         super(name, weaponType, rarity, priceOfWeapon, damage, level, quality, weight);
     }
 
-
-
-
-
-
-
-
+    @Override
+    public String getItemType() {
+        return super.getItemType();
+    }
 }

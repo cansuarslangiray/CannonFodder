@@ -141,6 +141,7 @@ public class Game {
                              break;
                          case 3:
                              Objects objects = new Objects();
+                             ArrayList<Weapons> weaponsArrayList = new ArrayList<>();
                              System.out.println();
                              System.out.println("welcome to the weapon shop");
                              System.out.println("--------------------------------");
@@ -154,6 +155,66 @@ public class Game {
                              int choice2 = sc.nextInt();
                              switch (choice2){
                                  case 1:
+                                     System.out.println("printing swords");
+                                     objects.allWeapons(weaponsArrayList);
+                                     for (int i = 0; i < weaponsArrayList.size() ; i++) {
+                                         if(weaponsArrayList.get(i).getItemType().equals("Sword")){
+                                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
+                                         }
+
+                                     }
+                                     break;
+                                 case 2:
+                                     System.out.println("printing claymores");
+                                     objects.allWeapons(weaponsArrayList);
+                                     for (int i = 0; i < weaponsArrayList.size() ; i++) {
+                                         if(weaponsArrayList.get(i).getItemType().equals("Claymore")){
+                                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
+                                         }
+
+                                     }
+                                     break;
+                                 case 3:
+                                     System.out.println("printing polearm");
+                                     objects.allWeapons(weaponsArrayList);
+                                     for (int i = 0; i < weaponsArrayList.size() ; i++) {
+                                         if(weaponsArrayList.get(i).getItemType().equals("Polearms")){
+                                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
+                                         }
+
+                                     }
+                                     break;
+                                 case 4:
+                                     System.out.println("printing wand");
+                                     objects.allWeapons(weaponsArrayList);
+                                     for (int i = 0; i < weaponsArrayList.size() ; i++) {
+                                         if(weaponsArrayList.get(i).getItemType().equals("Wand")){
+                                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
+                                         }
+
+                                     }
+                                     break;
+                                 case 5:
+                                     System.out.println("printing catalyst");
+                                     objects.allWeapons(weaponsArrayList);
+                                     for (int i = 0; i < weaponsArrayList.size() ; i++) {
+                                         if(weaponsArrayList.get(i).getItemType().equals("Catalyst")){
+                                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
+                                         }
+
+                                     }
+                                     break;
+                                 case 6:
+                                     System.out.println("printing scythe");
+                                     objects.allWeapons(weaponsArrayList);
+                                     for (int i = 0; i < weaponsArrayList.size() ; i++) {
+                                         if(weaponsArrayList.get(i).getItemType().equals("Scythe")){
+                                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
+                                         }
+
+                                     }
+                                     break;
+
 
                              }
                              location = new WeaponsShop(player);
@@ -197,7 +258,7 @@ public class Game {
                      System.out.println("You entered a character other than 1 , 2 or 3 !!!");
                      System.out.println("Please enter the numbers 1 , 2 or 3");
                      System.out.println("Your choice ?");
-                     choice = sc.nextInt();
+
                      break;
              }
          }
