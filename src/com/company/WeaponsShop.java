@@ -9,10 +9,24 @@ public class WeaponsShop extends SafePlace{
     }
      Scanner sc = new Scanner(System.in);
 
+
+
     @Override
     public boolean getLocation() {
         Objects objects = new Objects();
         ArrayList<Weapons> weaponsArrayList = new ArrayList<>();
+        System.out.println();
+        System.out.println("welcome to the weapon shop");
+        System.out.println("--------------------------------");
+        System.out.println("press 1 to see swords");
+        System.out.println("press 2 to see claymores");
+        System.out.println("press 3 to see polearms");
+        System.out.println("press 4 to see wand");
+        System.out.println("press 5 to see catalyst");
+        System.out.println("press 6 to see scythe");
+        System.out.println("press 7 to go to first page");
+        System.out.println("your choice ? ");
+
         boolean c = true;
         while (c) {
             int choice2 = sc.nextInt();
@@ -83,7 +97,7 @@ public class WeaponsShop extends SafePlace{
                     }
                     break;
                 case 7:
-                   Game.mapList();
+                   Game.safePlace();
                     c = false;
                     break;
 

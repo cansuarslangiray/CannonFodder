@@ -40,6 +40,14 @@ public class Game {
         }*/
 
     }
+    public static void safePlace(){
+        System.out.println("press 1 to return home");
+        System.out.println("press 2 to go to the food shop");
+        System.out.println("press 3 to go to the weapons shop");
+        System.out.println("press 4 to go to the cloths shop");
+        System.out.println("press 5 to go to first page");
+        System.out.println("Where do you want to go ?");
+    }
     public void firstPagePrintInfo(){
         System.out.println("Characters Information");
         System.out.println("--------------------------");
@@ -121,12 +129,7 @@ public class Game {
              int choice = sc.nextInt();
              switch (choice) {
                  case 1:
-                     System.out.println("press 1 to return home");
-                     System.out.println("press 2 to go to the food shop");
-                     System.out.println("press 3 to go to the weapons shop");
-                     System.out.println("press 4 to go to the cloths shop");
-                     System.out.println("press 5 to go to first page");
-                     System.out.println("Where do you want to go ?");
+                   safePlace();
 
                      boolean b = true;
                      while (b) {
@@ -143,19 +146,6 @@ public class Game {
 
                                  break;
                              case 3:
-                                 Objects objects = new Objects();
-                                 ArrayList<Weapons> weaponsArrayList = new ArrayList<>();
-                                 System.out.println();
-                                 System.out.println("welcome to the weapon shop");
-                                 System.out.println("--------------------------------");
-                                 System.out.println("press 1 to see swords");
-                                 System.out.println("press 2 to see claymores");
-                                 System.out.println("press 3 to see polearms");
-                                 System.out.println("press 4 to see wand");
-                                 System.out.println("press 5 to see catalyst");
-                                 System.out.println("press 6 to see scythe");
-                                 System.out.println("press 7 to go to first page");
-                                 System.out.println("your choice ? ");
 
                                  location = new WeaponsShop(player);
                                  location.getLocation();
