@@ -155,10 +155,12 @@ public class Game {
                                  System.out.println("press 5 to see catalyst");
                                  System.out.println("press 6 to see scythe");
                                  System.out.println("press 7 to go to first page");
-                                 System.out.println("press 8 to buy a weapon");
                                  System.out.println("your choice ? ");
 
-                                 boolean c = true;
+                                 location = new WeaponsShop(player);
+                                 location.getLocation();
+
+                                /*boolean c = true;
                                  while (c) {
                                      int choice2 = sc.nextInt();
                                      switch (choice2) {
@@ -235,7 +237,7 @@ public class Game {
                                          case 8:
                                              c= false;
                                              b=false;
-                                             a=false;
+
 
                                              location = new WeaponsShop(player);
                                              location.getLocation();
@@ -245,7 +247,7 @@ public class Game {
                                              break;
                                      }
                                  }
-                                 break;
+                                 break;*/
                              case 4:
                                  location = new ClothsShop(player);
                                  location.getLocation();
