@@ -11,6 +11,7 @@ public class WeaponsShop extends SafePlace{
 
     @Override
     public boolean getLocation() {
+        System.out.println("****************");
         return super.getLocation();
     }
 

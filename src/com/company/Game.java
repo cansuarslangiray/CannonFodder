@@ -56,8 +56,8 @@ public class Game {
     public  void charactersInfo(){
         firstPagePrintInfo();
         Characters characters = new Characters();
-        boolean b = true;
-        while (b){
+        boolean d = true;
+        while (d){
             int choice = sc.nextInt();
             switch (choice){
                 case 1:
@@ -92,7 +92,7 @@ public class Game {
                 case 7:
                     location = new Home(player);
                     location.getLocation();
-                    b = false;
+                    d = false;
                     break;
 
                 default:
@@ -127,116 +127,141 @@ public class Game {
                      System.out.println("press 4 to go to the cloths shop");
                      System.out.println("press 5 to go to first page");
                      System.out.println("Where do you want to go ?");
-                     int number =sc.nextInt();
-                     switch (number){
-                         case 1:
-                           location = new Home(player);
-                           location.getLocation();
 
-                           break;
-                         case 2:
-                             location = new FoodShop(player);
-                             location.getLocation();
+                     boolean b = true;
+                     while (b) {
+                         int number =sc.nextInt();
+                         switch (number) {
+                             case 1:
+                                 location = new Home(player);
+                                 location.getLocation();
 
-                             break;
-                         case 3:
-                             Objects objects = new Objects();
-                             ArrayList<Weapons> weaponsArrayList = new ArrayList<>();
-                             System.out.println();
-                             System.out.println("welcome to the weapon shop");
-                             System.out.println("--------------------------------");
-                             System.out.println("press 1 to see swords");
-                             System.out.println("press 2 to see claymores");
-                             System.out.println("press 3 to see polearms");
-                             System.out.println("press 4 to see wand");
-                             System.out.println("press 5 to see catalyst");
-                             System.out.println("press 6 to see scythe");
-                             System.out.println("your choice ? ");
-                             int choice2 = sc.nextInt();
-                             switch (choice2){
-                                 case 1:
-                                     System.out.println("printing swords");
-                                     objects.allWeapons(weaponsArrayList);
-                                     for (int i = 0; i < weaponsArrayList.size() ; i++) {
-                                         if(weaponsArrayList.get(i).getItemType().equals("Sword")){
-                                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
-                                         }
+                                 break;
+                             case 2:
+                                 location = new FoodShop(player);
+                                 location.getLocation();
 
+                                 break;
+                             case 3:
+                                 Objects objects = new Objects();
+                                 ArrayList<Weapons> weaponsArrayList = new ArrayList<>();
+                                 System.out.println();
+                                 System.out.println("welcome to the weapon shop");
+                                 System.out.println("--------------------------------");
+                                 System.out.println("press 1 to see swords");
+                                 System.out.println("press 2 to see claymores");
+                                 System.out.println("press 3 to see polearms");
+                                 System.out.println("press 4 to see wand");
+                                 System.out.println("press 5 to see catalyst");
+                                 System.out.println("press 6 to see scythe");
+                                 System.out.println("press 7 to go to first page");
+                                 System.out.println("press 8 to buy a weapon");
+                                 System.out.println("your choice ? ");
+
+                                 boolean c = true;
+                                 while (c) {
+                                     int choice2 = sc.nextInt();
+                                     switch (choice2) {
+                                         case 1:
+                                             System.out.println("printing swords");
+                                             objects.allWeapons(weaponsArrayList);
+                                             for (int i = 0; i < weaponsArrayList.size(); i++) {
+                                                 if (weaponsArrayList.get(i).getItemType().equals("Sword")) {
+                                                     objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
+                                                 }
+
+                                             }
+                                             System.out.println("other choice: ");
+                                             break;
+                                         case 2:
+                                             System.out.println("printing claymores");
+                                             objects.allWeapons(weaponsArrayList);
+                                             for (int i = 0; i < weaponsArrayList.size(); i++) {
+                                                 if (weaponsArrayList.get(i).getItemType().equals("Claymore")) {
+                                                     objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
+                                                 }
+
+                                             }
+                                             System.out.println("other choice: ");
+                                             break;
+                                         case 3:
+                                             System.out.println("printing polearm");
+                                             objects.allWeapons(weaponsArrayList);
+                                             for (int i = 0; i < weaponsArrayList.size(); i++) {
+                                                 if (weaponsArrayList.get(i).getItemType().equals("Polearms")) {
+                                                     objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
+                                                 }
+
+                                             }
+                                             System.out.println("other choice: ");
+                                             break;
+                                         case 4:
+                                             System.out.println("printing wand");
+                                             objects.allWeapons(weaponsArrayList);
+                                             for (int i = 0; i < weaponsArrayList.size(); i++) {
+                                                 if (weaponsArrayList.get(i).getItemType().equals("Wand")) {
+                                                     objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
+                                                 }
+
+                                             }
+                                             System.out.println("other choice: ");
+                                             break;
+                                         case 5:
+                                             System.out.println("printing catalyst");
+                                             objects.allWeapons(weaponsArrayList);
+                                             for (int i = 0; i < weaponsArrayList.size(); i++) {
+                                                 if (weaponsArrayList.get(i).getItemType().equals("Catalyst")) {
+                                                     objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
+                                                 }
+
+                                             }
+                                             System.out.println("other choice: ");
+                                             break;
+                                         case 6:
+                                             System.out.println("printing scythe");
+                                             objects.allWeapons(weaponsArrayList);
+                                             for (int i = 0; i < weaponsArrayList.size(); i++) {
+                                                 if (weaponsArrayList.get(i).getItemType().equals("Scythe")) {
+                                                     objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
+                                                 }
+
+                                             }
+                                              break;
+                                         case 7:
+                                             mapList();
+                                             c = false;
+                                             b = false;
+                                             break;
+                                         case 8:
+                                             c= false;
+                                             b=false;
+                                             a=false;
+
+                                             location = new WeaponsShop(player);
+                                             location.getLocation();
+                                             break;
+                                         default:
+                                             System.out.println("You entered numbers other than 1, 2, 3, 4,5,6 and 7. Please enter one of these numbers");
+                                             break;
                                      }
-                                     System.out.println("other choice: ");
-                                     break;
-                                 case 2:
-                                     System.out.println("printing claymores");
-                                     objects.allWeapons(weaponsArrayList);
-                                     for (int i = 0; i < weaponsArrayList.size() ; i++) {
-                                         if(weaponsArrayList.get(i).getItemType().equals("Claymore")){
-                                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
-                                         }
+                                 }
+                                 break;
+                             case 4:
+                                 location = new ClothsShop(player);
+                                 location.getLocation();
+                                 break;
 
-                                     }System.out.println("other choice: ");
-                                     break;
-                                 case 3:
-                                     System.out.println("printing polearm");
-                                     objects.allWeapons(weaponsArrayList);
-                                     for (int i = 0; i < weaponsArrayList.size() ; i++) {
-                                         if(weaponsArrayList.get(i).getItemType().equals("Polearms")){
-                                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
-                                         }
+                             case 5:
+                                 System.out.println();
+                                 b = false;
+                                 break;
+                             default:
+                                 System.out.println("You entered numbers other than 1, 2, 3, 4. Please enter one of these numbers");
+                                 break;
+                         }
 
-                                     }System.out.println("other choice: ");
-                                     break;
-                                 case 4:
-                                     System.out.println("printing wand");
-                                     objects.allWeapons(weaponsArrayList);
-                                     for (int i = 0; i < weaponsArrayList.size() ; i++) {
-                                         if(weaponsArrayList.get(i).getItemType().equals("Wand")){
-                                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
-                                         }
-
-                                     }System.out.println("other choice: ");
-                                     break;
-                                 case 5:
-                                     System.out.println("printing catalyst");
-                                     objects.allWeapons(weaponsArrayList);
-                                     for (int i = 0; i < weaponsArrayList.size() ; i++) {
-                                         if(weaponsArrayList.get(i).getItemType().equals("Catalyst")){
-                                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
-                                         }
-
-                                     }System.out.println("other choice: ");
-                                     break;
-                                 case 6:
-                                     System.out.println("printing scythe");
-                                     objects.allWeapons(weaponsArrayList);
-                                     for (int i = 0; i < weaponsArrayList.size() ; i++) {
-                                         if(weaponsArrayList.get(i).getItemType().equals("Scythe")){
-                                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
-                                         }
-
-                                     }System.out.println("other choice: ");
-                                     break;
-
-
-                             }
-                             location = new WeaponsShop(player);
-                             location.getLocation();
-
-                             break;
-                         case 4:
-                             location = new ClothsShop(player);
-                             location.getLocation();
-
-                             break;
-                         case 5:
-                             mapList();
-                             choice = sc.nextInt();
-                             break;
-                         default:
-                             System.out.println("You entered numbers other than 1, 2, 3, 4. Please enter one of these numbers");
-                             break;
                      }
                      break;
-
                  case 2:
                      System.out.println("press 1 to Moonhallow. In this area, you may encounter siren or demon hunter. ");
                      System.out.println("press 2 to Wildfront. In this area, you may encounter goblin, rouge or monk ");
@@ -247,8 +272,8 @@ public class Game {
                     /* switch (number2){
                          case 1:
                              location = new Moonhallow(player,)
-                     }
-                     break;*/
+                     }*/
+                     break;
 
                  case 3:
                      System.out.println("currently leaving this page....");
@@ -259,7 +284,6 @@ public class Game {
                      System.out.println("You entered a character other than 1 , 2 or 3 !!!");
                      System.out.println("Please enter the numbers 1 , 2 or 3");
                      System.out.println("Your choice ?");
-
                      break;
              }
          }
