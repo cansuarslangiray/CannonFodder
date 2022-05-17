@@ -154,7 +154,7 @@ public class Game {
                              int choice2 = sc.nextInt();
                              switch (choice2){
                                  case 1:
-                                     
+
                              }
                              location = new WeaponsShop(player);
                              location.getLocation();
