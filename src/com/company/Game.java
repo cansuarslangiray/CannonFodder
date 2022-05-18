@@ -29,6 +29,12 @@ public class Game {
         System.out.println("You can start now , have fun :)");
         System.out.println();
 
+        Characters characters = new Characters();
+        players = characters.yourCharacters();
+        for (int i = 0; i < 3; i++) {
+            System.out.println("----------------------------------");
+            System.out.println(players.get(i).getType());
+        }
 
 
 
