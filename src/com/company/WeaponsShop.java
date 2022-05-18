@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WeaponsShop extends SafePlace{
-    public WeaponsShop(Player player) {
-        super(player, "Weapons Shop");
+    public WeaponsShop(ArrayList<Player> players) {
+        super(players);
     }
-     Scanner sc = new Scanner(System.in);
+
+    Scanner sc = new Scanner(System.in);
 
 
 
