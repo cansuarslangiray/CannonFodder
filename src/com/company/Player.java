@@ -3,6 +3,7 @@ package com.company;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
+
 public class Player {
     private String type;
     private String characterName;
@@ -34,6 +35,10 @@ public class Player {
         this.ability =  getAbility();
         this.rHealthy = getrHealthy();
         this.weapons = getWeapons();
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public int getDamage() {
