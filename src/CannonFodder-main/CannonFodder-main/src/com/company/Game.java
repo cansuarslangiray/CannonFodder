@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
+    ArrayList<Player>players;
     static Player player; // static ??
     static Location location; // static ???
     static Scanner sc = new Scanner(System.in);
@@ -28,16 +29,15 @@ public class Game {
         System.out.println("You can start now , have fun :)");
         System.out.println();
 
+        Characters characters = new Characters();
+        players = characters.yourCharacters();
+        for (int i = 0; i < 3; i++) {
+            System.out.println("----------------------------------");
+            System.out.println(players.get(i).getType());
+        }
 
 
 
-
-        /*for(int i = 0 ; i< 1; i++){
-            Characters characters = new Characters();
-            characters.wizardPrintInfo();
-            player = characters.wizardsGet().get(i);
-            System.out.println(player.getCharacterName());
-        }*/
 
     }
     public static void safePlace(){
@@ -98,7 +98,7 @@ public class Game {
                     firstPagePrintInfo();
                     break;
                 case 7:
-                    location = new Home(player);
+                    location = new Home(players);
                     location.getLocation();
                     d = false;
                     break;
@@ -136,18 +136,18 @@ public class Game {
                          int number =sc.nextInt();
                          switch (number) {
                              case 1:
-                                 location = new Home(player);
+                                 location = new Home(players);
                                  location.getLocation();
 
                                  break;
                              case 2:
-                                 location = new FoodShop(player);
+                                 location = new FoodShop(players);
                                  location.getLocation();
 
                                  break;
                              case 3:
 
-                                 location = new WeaponsShop(player);
+                                 location = new WeaponsShop(players);
                                  location.getLocation();
 
                                 /*boolean c = true;
@@ -239,7 +239,7 @@ public class Game {
                                  }
                                  break;*/
                              case 4:
-                                 location = new ClothsShop(player);
+                                 location = new ClothsShop(players);
                                  location.getLocation();
                                  break;
 
