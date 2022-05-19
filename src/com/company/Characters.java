@@ -44,25 +44,7 @@ public class Characters {
      ArrayList<Player> knightArrayList = new ArrayList<>();
 
 
-    public ArrayList<Player> getWizardArrayList() {
-        return wizardArrayList;
-    }
 
-    public ArrayList<Player> getWorrierArrayList() {
-        return worrierArrayList;
-    }
-
-    public ArrayList<Player> getElfArrayList() {
-        return elfArrayList;
-    }
-
-    public ArrayList<Player> getKnightArrayList() {
-        return knightArrayList;
-    }
-
-    public ArrayList<Player> getLancerArrayList() {
-        return lancerArrayList;
-    }
     
 
 
@@ -150,7 +132,9 @@ public class Characters {
             arr.remove(arr.get(c));
             ingame.add(player);
         }
+
         return ingame;
     }
+
 
 }

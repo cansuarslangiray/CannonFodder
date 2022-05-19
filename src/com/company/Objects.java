@@ -3,6 +3,7 @@ package com.company;
 import java.util.ArrayList;
 
 public class Objects {
+
     Weapons wand = new Wand("Exiled Heart","Wand",4,50000,50,1,1,0.5);
     Weapons wand1 = new Wand(" Touch of Woe","Wand",3,40000,40,1,1,0.9);
     Weapons wand2 = new Wand(" Bag of the Night","Wand",5,60000,60,1,1,0.4);
@@ -28,7 +29,7 @@ public class Objects {
    Weapons claymore2 = new Claymore(" Emissary of the Whispers","Claymore",3,54000,70,1,1,3.4);
 
 
-   public void allWeapons(ArrayList<Weapons> weapons){
+ public void allWeapons(ArrayList<Weapons> weapons){
        weapons.add(wand);
        weapons.add(wand1);
        weapons.add(wand2);
@@ -47,6 +48,7 @@ public class Objects {
        weapons.add(scythe);
        weapons.add(scythe1);
        weapons.add(scythe2);
+
    }
 
    public void weaponsShopPrintInfo(Weapons weapons){
@@ -110,6 +112,7 @@ Ability ability2 = new Ability("Pyro");
 Ability ability3 = new Ability("Anemo");
 Ability ability4 = new Ability("Electro");
 Ability ability5 = new Ability("Geo");
+
 
 ArrayList<Ability> abilityArrayList = new ArrayList<>();
 

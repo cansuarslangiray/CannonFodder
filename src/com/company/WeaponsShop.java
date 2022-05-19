@@ -16,17 +16,7 @@ public class WeaponsShop extends SafePlace{
     public boolean getLocation() {
         Objects objects = new Objects();
         ArrayList<Weapons> weaponsArrayList = new ArrayList<>();
-        System.out.println();
-        System.out.println("welcome to the weapon shop");
-        System.out.println("--------------------------------");
-        System.out.println("press 1 to see swords");
-        System.out.println("press 2 to see claymores");
-        System.out.println("press 3 to see polearms");
-        System.out.println("press 4 to see wand");
-        System.out.println("press 5 to see catalyst");
-        System.out.println("press 6 to see scythe");
-        System.out.println("press 7 to go to first page");
-        System.out.println("your choice ? ");
+        options();
 
         boolean c = true;
         while (c) {
@@ -39,9 +29,24 @@ public class WeaponsShop extends SafePlace{
                         if (weaponsArrayList.get(i).getItemType().equals("Sword")) {
                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
                         }
-
                     }
-                    System.out.println("other choice: ");
+                    System.out.println("do you want to buy ?");
+                    System.out.println("if your answer yes, press 1 ");
+                    System.out.println("else, press 2 to see other weapon types.");
+                    boolean d = true;
+                    while(d){
+                        int ch3 = sc.nextInt();
+                        switch (ch3){
+                            case 1:
+                                int ch4 = sc.nextInt();
+                                buyWeapon(ch4);
+                                break;
+                            case 2:
+                                options();
+                                d =false;
+                                break;
+                        }
+                    }
                     break;
                 case 2:
                     System.out.println("printing claymores");
@@ -50,9 +55,25 @@ public class WeaponsShop extends SafePlace{
                         if (weaponsArrayList.get(i).getItemType().equals("Claymore")) {
                             objects.weaponsShopPrintInfo(weaponsArrayList.get(i));
                         }
-
                     }
-                    System.out.println("other choice: ");
+
+                    System.out.println("do you want to buy ?");
+                    System.out.println("if your answer yes, press 1 ");
+                    System.out.println("else, press 2 to see other weapon types.");
+                    boolean f = true;
+                    while(f){
+                        int ch3 = sc.nextInt();
+                        switch (ch3){
+                            case 1:
+                                int ch4 = sc.nextInt();
+                                buyWeapon(ch4);
+                                break;
+                            case 2:
+                                options();
+                                f =false;
+                                break;
+                        }
+                    }
                     break;
                 case 3:
                     System.out.println("printing polearm");
@@ -63,7 +84,23 @@ public class WeaponsShop extends SafePlace{
                         }
 
                     }
-                    System.out.println("other choice: ");
+                    System.out.println("do you want to buy ?");
+                    System.out.println("if your answer yes, press 1 ");
+                    System.out.println("else, press 2 to see other weapon types.");
+                    boolean s = true;
+                    while(s){
+                        int ch3 = sc.nextInt();
+                        switch (ch3){
+                            case 1:
+                                int ch4 = sc.nextInt();
+                                buyWeapon(ch4);
+                                break;
+                            case 2:
+                                options();
+                                s =false;
+                                break;
+                        }
+                    }
                     break;
                 case 4:
                     System.out.println("printing wand");
@@ -74,7 +111,23 @@ public class WeaponsShop extends SafePlace{
                         }
 
                     }
-                    System.out.println("other choice: ");
+                    System.out.println("do you want to buy ?");
+                    System.out.println("if your answer yes, press 1 ");
+                    System.out.println("else, press 2 to see other weapon types.");
+                    boolean j= true;
+                    while(j){
+                        int ch3 = sc.nextInt();
+                        switch (ch3){
+                            case 1:
+                                int ch4 = sc.nextInt();
+                                buyWeapon(ch4);
+                                break;
+                            case 2:
+                                options();
+                                j=false;
+                                break;
+                        }
+                    }
                     break;
                 case 5:
                     System.out.println("printing catalyst");
@@ -85,7 +138,23 @@ public class WeaponsShop extends SafePlace{
                         }
 
                     }
-                    System.out.println("other choice: ");
+                    System.out.println("do you want to buy ?");
+                    System.out.println("if your answer yes, press 1 ");
+                    System.out.println("else, press 2 to see other weapon types.");
+                    boolean w = true;
+                    while(w){
+                        int ch3 = sc.nextInt();
+                        switch (ch3){
+                            case 1:
+                                int ch4 = sc.nextInt();
+                                buyWeapon(ch4);
+                                break;
+                            case 2:
+                                options();
+                                w =false;
+                                break;
+                        }
+                    }
                     break;
                 case 6:
                     System.out.println("printing scythe");
@@ -96,8 +165,25 @@ public class WeaponsShop extends SafePlace{
                         }
 
                     }
+                    System.out.println("do you want to buy ?");
+                    System.out.println("if your answer yes, press 1 ");
+                    System.out.println("else, press 2 to see other weapon types.");
+                    boolean h = true;
+                    while(h){
+                        int ch3 = sc.nextInt();
+                        switch (ch3){
+                            case 1:
+                                int ch4 = sc.nextInt();
+                                buyWeapon(ch4);
+                                break;
+                            case 2:
+                                options();
+                                h =false;
+                                break;
+                        }
+                    }
                     break;
-                case 7:
+                    case 7:
                    Game.safePlace();
                     c = false;
                     break;
@@ -108,6 +194,43 @@ public class WeaponsShop extends SafePlace{
             }
         }
         return true;
+    }
+
+    public void buyWeapon(int choice){
+        Objects obj = new Objects();
+        ArrayList<Weapons> wps = new ArrayList<>();
+        obj.swordArrayList(wps);
+         int totalMoney = 0;
+        for(int i = 0 ;i <players.size();i++){
+            totalMoney+=players.get(i).getMoney();
+        }
+        System.out.println("you have " + totalMoney +" money");
+        System.out.println("Which sword do you want ?");
+     if(totalMoney >=wps.get(choice-1).getPriceOfItem()) {
+         players.get(1).getInventory().get(0).add(wps.get(choice-1));
+     wps.remove(wps.get(choice));
+         totalMoney-=wps.get(choice-1).getPriceOfItem();
+         System.out.println(totalMoney);
+     }
+     else {
+         System.out.println("you do not have enough money");
+         System.out.println("other choice ? ");
+     }
+
+    }
+
+    public void options(){
+        System.out.println();
+        System.out.println("welcome to the weapon shop");
+        System.out.println("--------------------------------");
+        System.out.println("press 1 to see swords");
+        System.out.println("press 2 to see claymores");
+        System.out.println("press 3 to see polearms");
+        System.out.println("press 4 to see wand");
+        System.out.println("press 5 to see catalyst");
+        System.out.println("press 6 to see scythe");
+        System.out.println("press 7 to go to first page");
+        System.out.println("your choice ? ");
     }
 
 

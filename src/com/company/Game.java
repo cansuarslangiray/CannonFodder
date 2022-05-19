@@ -39,13 +39,6 @@ public class Game {
 
 
 
-        /*for(int i = 0 ; i< 1; i++){
-            Characters characters = new Characters();
-            characters.wizardPrintInfo();
-            player = characters.wizardsGet().get(i);
-            System.out.println(player.getCharacterName());
-        }*/
-
     }
     public static void safePlace(){
         System.out.println("press 1 to return home");
