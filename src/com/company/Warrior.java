@@ -14,6 +14,7 @@ public class Warrior extends Player {
         SecureRandom secureRandom = new SecureRandom();
         ArrayList<Weapons> arrayList = new ArrayList<>();
         objects.claymoreArrayList(arrayList);
+
         setWeapons(arrayList.get(secureRandom.nextInt(0,arrayList.size() - 1)));
     }
 }

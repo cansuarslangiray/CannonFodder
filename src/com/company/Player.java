@@ -13,11 +13,12 @@ public class Player {
     private int strength; // güç
     private int vitality; // canlılık
     private int intelligence;
+    private ArrayList<Item> inv;
     private ArrayList<ArrayList<Item>> inventory;
     private ArrayList<Item> wps;
     private ArrayList<Item> clh;
     private ArrayList<Item> food;
-    Weapons weapons;
+    private Weapons weapons;
     private String ability;
     private int rHealthy;
     private Ability ability1;
@@ -258,6 +259,7 @@ public class Player {
         SecureRandom secureRandom = new SecureRandom();
         ArrayList<Weapons> arrayList = new ArrayList<>();
         setWeapons(arrayList.get(secureRandom.nextInt(0, arrayList.size() - 1)));
+
     }
     public final void assigningAbility() {
         SecureRandom secureRandom = new SecureRandom();

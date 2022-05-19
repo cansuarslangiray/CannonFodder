@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 public class Game {
     ArrayList<Player>players;
-     Player player; // static ??
-     Location location; // static ???
+     Location location;
      Scanner sc = new Scanner(System.in);
      public double allMoney =0;
 

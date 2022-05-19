@@ -214,7 +214,7 @@ public class WeaponsShop extends SafePlace{
         ArrayList<Weapons> wps = new ArrayList<>();
         obj.swordArrayList(wps);
         if(game.allMoney>=wps.get(choice-1).getPriceOfItem()) {
-         players.get(1).getInventory().get(0).add(wps.get(choice-1));
+         players.get(1).getWps().add(wps.get(choice-1));
          wps.remove(wps.get(choice-1));
          double newM = game.allMoney- wps.get(choice-1).getPriceOfItem();
          game.setAllMoney(newM);
