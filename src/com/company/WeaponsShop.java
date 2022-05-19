@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WeaponsShop extends SafePlace{
+    public Game game ;
     public WeaponsShop(ArrayList<Player> players) {
         super(players);
     }
@@ -38,6 +39,8 @@ public class WeaponsShop extends SafePlace{
                         int ch3 = sc.nextInt();
                         switch (ch3){
                             case 1:
+                                System.out.println("you have " + game.allMoney +" money");
+                                System.out.println("Which sword do you want ?");
                                 int ch4 = sc.nextInt();
                                 buyWeapon(ch4);
                                 break;
@@ -65,6 +68,8 @@ public class WeaponsShop extends SafePlace{
                         int ch3 = sc.nextInt();
                         switch (ch3){
                             case 1:
+                                System.out.println("you have " + game.allMoney +" money");
+                                System.out.println("Which sword do you want ?");
                                 int ch4 = sc.nextInt();
                                 buyWeapon(ch4);
                                 break;
@@ -92,6 +97,8 @@ public class WeaponsShop extends SafePlace{
                         int ch3 = sc.nextInt();
                         switch (ch3){
                             case 1:
+                                System.out.println("you have " + game.allMoney +" money");
+                                System.out.println("Which sword do you want ?");
                                 int ch4 = sc.nextInt();
                                 buyWeapon(ch4);
                                 break;
@@ -119,6 +126,8 @@ public class WeaponsShop extends SafePlace{
                         int ch3 = sc.nextInt();
                         switch (ch3){
                             case 1:
+                                System.out.println("you have " + game.allMoney +" money");
+                                System.out.println("Which sword do you want ?");
                                 int ch4 = sc.nextInt();
                                 buyWeapon(ch4);
                                 break;
@@ -146,6 +155,8 @@ public class WeaponsShop extends SafePlace{
                         int ch3 = sc.nextInt();
                         switch (ch3){
                             case 1:
+                                System.out.println("you have " + game.allMoney +" money");
+                                System.out.println("Which sword do you want ?");
                                 int ch4 = sc.nextInt();
                                 buyWeapon(ch4);
                                 break;
@@ -173,6 +184,8 @@ public class WeaponsShop extends SafePlace{
                         int ch3 = sc.nextInt();
                         switch (ch3){
                             case 1:
+                                System.out.println("you have " + game.allMoney +" money");
+                                System.out.println("Which sword do you want ?");
                                 int ch4 = sc.nextInt();
                                 buyWeapon(ch4);
                                 break;
@@ -200,17 +213,12 @@ public class WeaponsShop extends SafePlace{
         Objects obj = new Objects();
         ArrayList<Weapons> wps = new ArrayList<>();
         obj.swordArrayList(wps);
-         int totalMoney = 0;
-        for(int i = 0 ;i <players.size();i++){
-            totalMoney+=players.get(i).getMoney();
-        }
-        System.out.println("you have " + totalMoney +" money");
-        System.out.println("Which sword do you want ?");
-     if(totalMoney >=wps.get(choice-1).getPriceOfItem()) {
+        if(game.allMoney>=wps.get(choice-1).getPriceOfItem()) {
          players.get(1).getInventory().get(0).add(wps.get(choice-1));
-     wps.remove(wps.get(choice));
-         totalMoney-=wps.get(choice-1).getPriceOfItem();
-         System.out.println(totalMoney);
+         wps.remove(wps.get(choice-1));
+         double newM = game.allMoney- wps.get(choice-1).getPriceOfItem();
+         game.setAllMoney(newM);
+         System.out.println(game.getAllMoney());
      }
      else {
          System.out.println("you do not have enough money");

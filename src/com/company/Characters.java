@@ -45,12 +45,7 @@ public class Characters {
 
 
 
-    
-
-
-
-
-    public static void characterPrintInfo(ArrayList<Player> arrayList){
+     public static void characterPrintInfo(ArrayList<Player> arrayList){
         System.out.println("Information of the worrier in the game");
         for(int i = 0; i< arrayList.size();i++) {
             System.out.println();
@@ -132,7 +127,6 @@ public class Characters {
             arr.remove(arr.get(c));
             ingame.add(player);
         }
-
         return ingame;
     }
 

@@ -142,6 +142,14 @@ public class Player {
         this.ability1 = ability1;
     }
 
+    public ArrayList<Item> getWps() {
+        return wps;
+    }
+
+    public void setWps(ArrayList<Item> wps) {
+        this.wps = wps;
+    }
+
     public ArrayList<ArrayList<Item>> getInventory() {
         inventory.add(wps);
         inventory.add(clh);
