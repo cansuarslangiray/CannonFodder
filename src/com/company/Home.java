@@ -14,7 +14,7 @@ public class Home extends SafePlace{
         for(int i = 0 ; i<players.size();i++) {
             players.get(i).setHealth(players.get(i).getrHealthy());
         }
-        System.out.println("your health is full now."); // or your health has increased;
+        System.out.println("your health has increased.");
         return true;
     }
 }

@@ -1,21 +1,24 @@
 package com.company;
 
 import java.security.SecureRandom;
-import java.util.ArrayList;
+
 
 public class Healer extends Player{
+
+    SecureRandom secureRandom = new SecureRandom();
     public Healer(String type, String characterName, int money) {
         super(type, characterName, money);
     }
 
     @Override
-    public void assigningWeapons() {
-        Objects objects = new Objects();
-        SecureRandom secureRandom = new SecureRandom();
-        ArrayList<Weapons> arrayList = new ArrayList<>();
-        objects.catalystArrayList(arrayList);
-        setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
+    public Weapons assigningWeapons() {
+        setWeapons(objects.getCatalystArrayList().get(secureRandom.nextInt(objects.getCatalystArrayList().size() - 1)));
+        return objects.getCatalystArrayList().get(secureRandom.nextInt(objects.getCatalystArrayList().size() - 1));
+    }
 
+    @Override
+    public void assigningAbility() {
+        super.assigningAbility();
     }
 }
 

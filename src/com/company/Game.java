@@ -9,6 +9,7 @@ public class Game {
      Scanner sc = new Scanner(System.in);
      public double allMoney =0;
      Characters characters = new Characters();
+    Objects obj  =new Objects();
 
     public double getAllMoney() {
         return allMoney;
@@ -37,23 +38,20 @@ public class Game {
         System.out.println("and the game is over :(");
         System.out.println("You can start now , have fun :)");
         System.out.println();
-        Objects obj  =new Objects();
-      //  Characters characters = new Characters();
+
         players = characters.yourCharacters();
 
         for (int i = 0; i < 3; i++) {
             System.out.println("----------------------------------");
             System.out.println(players.get(i).getType());
             allMoney+=players.get(i).getMoney();
-            obj.weaponsShopPrintInfo(players.get(i).getWeapons());
+
 
 
         }
-        characters.characterPrintInfo(players);
-
-
-
-
+        for (int i = 0 ;i < players.size() ; i++){
+            players.get(i).characterPrintInfo();
+        }
 
     }
     public static void safePlace(){
@@ -86,28 +84,38 @@ public class Game {
             switch (choice){
                 case 1:
                     System.out.println("Information of the wizards in the game");
-                    characters.characterPrintInfo(characters.wizardsGet());
+                    for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(4).get(i).characterPrintInfo();
+                    }
                     firstPagePrintInfo();
                     break;
                 case 2:
                     System.out.println("Information of the worrier in the game");
-                    characters.characterPrintInfo(characters.worriersGet());
+                    for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(0).get(i).characterPrintInfo();
+                    }
                     firstPagePrintInfo();
                     break;
                 case 3:
                     System.out.println("Information of the elves in the game");
-                    characters.characterPrintInfo(characters.elfGet());
+                    for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(1).get(i).characterPrintInfo();
+                    }
                     firstPagePrintInfo();
                     break;
                 case 4:
                     System.out.println("Information of the knights in the game");
-                    characters.characterPrintInfo(characters.knightsGet());
+                    for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(2).get(i).characterPrintInfo();
+                    }
                     firstPagePrintInfo();
 
                     break;
                 case 5:
                     System.out.println("Information of the lancers in the game");
-                    characters.characterPrintInfo(characters.lancerGet());
+                    for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(3).get(i).characterPrintInfo();
+                    }
                     firstPagePrintInfo();
                     break;
                 case 6:

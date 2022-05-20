@@ -4,19 +4,21 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 
 public class Wizard extends Player {
-
+    SecureRandom secureRandom = new SecureRandom();
 
     public Wizard(String type, String characterName, int money) {
         super(type, characterName, money);
     }
 
-    @Override
-    public void assigningWeapons() {
-        Objects objects = new Objects();
-        SecureRandom secureRandom = new SecureRandom();
-        ArrayList<Weapons> arrayList = new ArrayList<>();
-        objects.wandArrayList(arrayList);
-        setWeapons(arrayList.get(secureRandom.nextInt(0,arrayList.size() - 1)));
+   /* @Override
+    public Weapons assigningWeapons() {
+        setWeapons(objects.getWandArrayList().get(secureRandom.nextInt(0,objects.getWandArrayList().size() - 1)));
+        return objects.getWandArrayList().get(secureRandom.nextInt(0,objects.getWandArrayList().size() - 1));
 
+    }*/
+
+    @Override
+    public void assigningAbility() {
+        super.assigningAbility();
     }
 }

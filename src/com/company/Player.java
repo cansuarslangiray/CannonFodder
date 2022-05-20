@@ -4,6 +4,8 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 
 public class Player {
+    Objects objects = new Objects();
+    SecureRandom sc = new SecureRandom();
     private String type;
     private String characterName;
     private int damage;
@@ -26,6 +28,7 @@ public class Player {
 
 
     public Player(String type, String characterName, int money) {
+
         this.type = type;
         this.characterName = characterName;
         this.health = healthPoint();
@@ -36,7 +39,7 @@ public class Player {
         this.intelligence = changeIntelligence();
         this.ability =  getAbility();
         this.rHealthy = getrHealthy();
-        this.weapons = getWeapons();
+        this.weapons = assigningWeapons();
 
     }
 
@@ -152,41 +155,43 @@ public class Player {
         this.wps = wps;
     }
 
-    public  ArrayList<ArrayList<Item>> getInventory() {
+   /* public  ArrayList<ArrayList<Item>> getInventory() {
 
         inventory.add(clh);
         inventory.add(food);
         return inventory;
-    }
+    }*/
 
 
 
 
     public int changeStrenght() {
-        SecureRandom sc = new SecureRandom();
+
         if (getType().equals("Wizard")) {
             setStrength(sc.nextInt(1, 5));
             return sc.nextInt(1, 5);
         } else if (getType().equals("Knight")) {
-            return sc.nextInt(6, 10);
-
+            setStrength(sc.nextInt(6, 10));
+         return sc.nextInt(6, 10);
         } else if (getType().equals("Worrier")) {
             return sc.nextInt(1, 5);
         } else if (getType().equals("Elf")) {
             return sc.nextInt(3, 7);
 
         } else if (getType().equals("Lancer")) {
+            setStrength(sc.nextInt(5, 8));
             return sc.nextInt(5, 8);
 
         } else if (getType().equals("Healer")) {
+            setStrength(sc.nextInt(3, 6));
             return sc.nextInt(3, 6);
-
-        } else
-            return sc.nextInt(1, 4);
+        }
+        else
+           return sc.nextInt(6, 10);
     }
 
     public int changeVitality() {
-        SecureRandom sc = new SecureRandom();
+
         if (getType().equals("Wizard")) {
 
             return sc.nextInt(1, 6);
@@ -210,7 +215,7 @@ public class Player {
     }
 
     public int changeIntelligence() {
-        SecureRandom sc = new SecureRandom();
+
         if (getType().equals("Wizard")) {
             setIntelligence(sc.nextInt(6, 12));
             return sc.nextInt(6, 12);
@@ -257,20 +262,35 @@ public class Player {
 
     
 
-    public void assigningWeapons() {
-        SecureRandom secureRandom = new SecureRandom();
-        ArrayList<Weapons> arrayList = new ArrayList<>();
-        setWeapons(arrayList.get(secureRandom.nextInt(0, arrayList.size() - 1)));
+    public Weapons assigningWeapons() {
+        return weapons;
+    }
+    public  void assigningAbility() {
+
+        setAbility1(objects.getAbilityArrayList().get(sc.nextInt((objects.getAbilityArrayList().size())- 1)));
 
     }
-    public final void assigningAbility() {
-        SecureRandom secureRandom = new SecureRandom();
-        Objects objects = new Objects();
-        ArrayList<Ability> arrayList1 = new ArrayList<>();
-        arrayList1= objects.arrayList();
-        setAbility1(arrayList1.get(secureRandom.nextInt((arrayList1.size()) - 1)));
-    }
 
+
+    public  void characterPrintInfo(){
+        System.out.println("Information of the Characters in the game");
+
+        System.out.println();
+        System.out.println("------------------------------------------");
+        System.out.println("name: " + getCharacterName());
+        System.out.println("intelligence: " + changeIntelligence());
+        System.out.println("strenght: " + changeStrenght());
+        System.out.println("vitality: " + changeVitality());
+        System.out.println("health point: " + healthPoint());
+        System.out.println("rarity: " + rarity());
+        System.out.println("rh " + getrHealthy());
+        System.out.println("weapons: " + getWeapons().getName());
+        System.out.println("ability: " + getAbility1().getAbilityName());
+
+        System.out.println("damage: " + getDamage());
+        System.out.println("money: " + getMoney());
+        System.out.println();
+    }
 
 }
 

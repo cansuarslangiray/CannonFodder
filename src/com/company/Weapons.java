@@ -57,6 +57,19 @@ public class Weapons  extends Item {
     public void setRarity(int rarity) {
         this.rarity = rarity;
     }
+
+    public void weaponsPrintInfo(){
+        System.out.println("---------------------------------------------");
+        System.out.println("weapons' name: \t" + getName() );
+        System.out.println("weapons' price: \t" + getPriceOfItem() );
+        System.out.println("weapons' damage: \t" + getDamage());
+        System.out.println("weapons' rarity: \t" + getRarity());
+        System.out.println("weapons' level: \t" + getLevel());
+        System.out.println("weapons' quality: \t" + getQuality());
+        System.out.println("weapons' weight: \t" + getWeight());
+        System.out.println();
+
+    }
 }
 
 
