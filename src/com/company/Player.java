@@ -10,8 +10,8 @@ public class Player {
     private int health;
     private int money;
     private int rarity;
-    private int strength; // güç
-    private int vitality; // canlılık
+    private int strength;
+    private int vitality;
     private int intelligence;
     private ArrayList<Item> inv;
     private ArrayList<ArrayList<Item>> inventory;
@@ -22,6 +22,7 @@ public class Player {
     private String ability;
     private int rHealthy;
     private Ability ability1;
+    Item iwps ;
 
 
     public Player(String type, String characterName, int money) {
@@ -33,10 +34,10 @@ public class Player {
         this.strength = changeStrenght();
         this.vitality = changeVitality();
         this.intelligence = changeIntelligence();
-        this.inventory = getInventory();
         this.ability =  getAbility();
         this.rHealthy = getrHealthy();
         this.weapons = getWeapons();
+
     }
 
     public int getDamage() {
@@ -151,12 +152,13 @@ public class Player {
         this.wps = wps;
     }
 
-    public ArrayList<ArrayList<Item>> getInventory() {
-        inventory.add(wps);
+    public  ArrayList<ArrayList<Item>> getInventory() {
+
         inventory.add(clh);
         inventory.add(food);
         return inventory;
     }
+
 
 
 

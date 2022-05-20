@@ -15,5 +15,6 @@ public class Lancer  extends Player{
         ArrayList<Weapons> arrayList = new ArrayList<>();
         objects.polearmsArrayList(arrayList);
         setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
+
     }
 }

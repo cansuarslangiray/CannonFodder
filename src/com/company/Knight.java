@@ -16,5 +16,6 @@ public class Knight extends  Player{
         ArrayList<Weapons> arrayList = new ArrayList<>();
         objects.swordArrayList(arrayList);
         setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
+
     }
 }

@@ -15,6 +15,7 @@ public class Healer extends Player{
         ArrayList<Weapons> arrayList = new ArrayList<>();
         objects.catalystArrayList(arrayList);
         setWeapons(arrayList.get(secureRandom.nextInt(arrayList.size() - 1)));
+
     }
 }
 
