@@ -1,8 +1,10 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class ClothsShop extends SafePlace {
-    public ClothsShop(Player player) {
-        super(player, "Cloths Shop ");
+    public ClothsShop(ArrayList<Player> players) {
+        super(players);
     }
 
     @Override

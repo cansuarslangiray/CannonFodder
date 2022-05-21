@@ -1,11 +1,12 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public abstract class Battlefields extends Location {
  private Enemy enemy;
 
-    public Battlefields(Player player,String name,Enemy enemy) {
-        super(player);
-        this.name = name;
+    public Battlefields(ArrayList<Player> players, Enemy enemy) {
+        super(players);
         this.enemy = enemy;
     }
 

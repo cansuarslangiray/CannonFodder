@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    static Player player; // static ??
-    static Location location; // static ???
-    static Scanner sc = new Scanner(System.in);
+    ArrayList<Player>players;
+     Location location;
+     Scanner sc = new Scanner(System.in);
+
+     Characters characters = new Characters();
+     Objects obj  =new Objects();
+
+
 
     public void logIn(){
         System.out.println("Welcome the game!!!");
@@ -28,16 +33,18 @@ public class Game {
         System.out.println("You can start now , have fun :)");
         System.out.println();
 
+        players = characters.yourCharacters();
+        System.out.println(obj.getWandArrayList().size());
+        for (int i = 0; i < 3; i++) {
+            System.out.println("----------------------------------");
+            System.out.println(players.get(i).getType());
 
+        }
+        for (int i = 0 ;i < players.size() ; i++){
 
+            players.get(i).characterPrintInfo();
+        }
 
-
-        /*for(int i = 0 ; i< 1; i++){
-            Characters characters = new Characters();
-            characters.wizardPrintInfo();
-            player = characters.wizardsGet().get(i);
-            System.out.println(player.getCharacterName());
-        }*/
 
     }
     public static void safePlace(){
@@ -63,42 +70,52 @@ public class Game {
 
     public  void charactersInfo(){
         firstPagePrintInfo();
-        Characters characters = new Characters();
+     //   Characters characters = new Characters();
         boolean d = true;
         while (d){
             int choice = sc.nextInt();
             switch (choice){
                 case 1:
                     System.out.println("Information of the wizards in the game");
-                    Characters.characterPrintInfo(characters.wizardsGet());
+                    for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(4).get(i).characterPrintInfo();
+                    }
                     firstPagePrintInfo();
                     break;
                 case 2:
                     System.out.println("Information of the worrier in the game");
-                    Characters.characterPrintInfo(characters.worriersGet());
+                    for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(0).get(i).characterPrintInfo();
+                    }
                     firstPagePrintInfo();
                     break;
                 case 3:
                     System.out.println("Information of the elves in the game");
-                    Characters.characterPrintInfo(characters.elfGet());
+                    for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(1).get(i).characterPrintInfo();
+                    }
                     firstPagePrintInfo();
                     break;
                 case 4:
                     System.out.println("Information of the knights in the game");
-                    Characters.characterPrintInfo(characters.knightsGet());
+                    for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(2).get(i).characterPrintInfo();
+                    }
                     firstPagePrintInfo();
 
                     break;
                 case 5:
                     System.out.println("Information of the lancers in the game");
-                    Characters.characterPrintInfo(characters.lancerGet());
+                    for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(3).get(i).characterPrintInfo();
+                    }
                     firstPagePrintInfo();
                     break;
                 case 6:
                     firstPagePrintInfo();
                     break;
                 case 7:
-                    location = new Home(player);
+                    location = new Home(players);
                     location.getLocation();
                     d = false;
                     break;
@@ -136,18 +153,18 @@ public class Game {
                          int number =sc.nextInt();
                          switch (number) {
                              case 1:
-                                 location = new Home(player);
+                                 location = new Home(players);
                                  location.getLocation();
 
                                  break;
                              case 2:
-                                 location = new FoodShop(player);
+                                 location = new FoodShop(players);
                                  location.getLocation();
 
                                  break;
                              case 3:
 
-                                 location = new WeaponsShop(player);
+                                 location = new WeaponsShop(players);
                                  location.getLocation();
 
                                 /*boolean c = true;
@@ -239,7 +256,7 @@ public class Game {
                                  }
                                  break;*/
                              case 4:
-                                 location = new ClothsShop(player);
+                                 location = new ClothsShop(players);
                                  location.getLocation();
                                  break;
 

@@ -1,21 +1,25 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public abstract class Location {
-   protected Player player;
+
+   protected ArrayList<Player> players;
    protected String name;
 
-   public Location(Player player){
-      this.player=player;
+   public Location(ArrayList<Player> players) {
+      this.players = players;
    }
 
    public abstract boolean getLocation();
 
-   public Player getPlayer() {
-      return player;
+
+   public ArrayList<Player> getPlayers() {
+      return players;
    }
 
-   public void setPlayer(Player player) {
-      this.player = player;
+   public void setPlayers(ArrayList<Player> players) {
+      this.players = players;
    }
 
    public String getName() {
@@ -25,5 +29,6 @@ public abstract class Location {
    public void setName(String name) {
       this.name = name;
    }
-
 }
+
+
