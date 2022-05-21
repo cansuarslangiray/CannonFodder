@@ -53,9 +53,6 @@ public class Item {
 
 
 
-<<<<<<< HEAD:src/CannonFodder-main/CannonFodder-main/src/com/company/Item.java
 
 
-=======
->>>>>>> upstream/main:src/com/company/Item.java
 }
