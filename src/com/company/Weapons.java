@@ -1,21 +1,21 @@
 package com.company;
 
-public class Weapons  extends Item {
+import java.util.ArrayList;
+
+public class Weapons  extends Inventory{
 
 
     private int damage;
     private int level;
     private int quality;
     private double weight;
-    private int rarity;
 
     public Weapons(String name, String itemType, int rarity, int priceOfItem, int damage, int level,int quality,double weight) {
-        super(name, itemType, priceOfItem);
+        super(name, itemType, rarity, priceOfItem);
         this.damage = damage;
         this.level = level;
         this.quality = quality ;
         this.weight = weight;
-        this.rarity = rarity;
     }
 
     public double getWeight() {
@@ -50,13 +50,9 @@ public class Weapons  extends Item {
         this.level = level;
     }
 
-    public int getRarity() {
-        return rarity;
-    }
 
-    public void setRarity(int rarity) {
-        this.rarity = rarity;
-    }
+
+
 }
 
 

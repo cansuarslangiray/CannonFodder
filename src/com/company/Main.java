@@ -8,6 +8,7 @@ public class Main {
             Game game = new Game();
             game.logIn();
             game.map();
+            //System.out.println("name: " + Game.player.getCharacterName());
             game.charactersInfo();
     }
 }

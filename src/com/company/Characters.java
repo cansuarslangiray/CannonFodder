@@ -1,6 +1,5 @@
 package com.company;
 
-import java.security.SecureRandom;
 import java.util.ArrayList;
 
 public class Characters {
@@ -44,7 +43,25 @@ public class Characters {
      ArrayList<Player> knightArrayList = new ArrayList<>();
 
 
+    public ArrayList<Player> getWizardArrayList() {
+        return wizardArrayList;
+    }
 
+    public ArrayList<Player> getWorrierArrayList() {
+        return worrierArrayList;
+    }
+
+    public ArrayList<Player> getElfArrayList() {
+        return elfArrayList;
+    }
+
+    public ArrayList<Player> getKnightArrayList() {
+        return knightArrayList;
+    }
+
+    public ArrayList<Player> getLancerArrayList() {
+        return lancerArrayList;
+    }
     
 
 
@@ -116,24 +133,6 @@ public class Characters {
         lancerArrayList.add(lancerPlayer3);
         lancerArrayList.add(lancerPlayer4);
         return lancerArrayList;
-    }
-    public ArrayList<Player> yourCharacters(){
-        SecureRandom random = new SecureRandom();
-        ArrayList<Player> ingame = new ArrayList<>();
-        ArrayList<ArrayList<Player>> arr = new ArrayList<>();
-        arr.add(knightsGet());
-        arr.add(worriersGet());
-        arr.add(wizardsGet());
-        arr.add(elfGet());
-        arr.add(lancerGet());
-        for (int i = 0; i < 3; i++) {
-            int c = random.nextInt(arr.size()-1);
-            Player player = arr.get(c).get(random.nextInt(5));
-            arr.remove(arr.get(c));
-            ingame.add(player);
-        }
-
-        return ingame;
     }
 
 

@@ -3,6 +3,7 @@ package com.company;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
+
 public class Player {
     private String type;
     private String characterName;
@@ -13,11 +14,9 @@ public class Player {
     private int strength; // güç
     private int vitality; // canlılık
     private int intelligence;
-    private ArrayList<ArrayList<Item>> inventory;
-    private ArrayList<Item> wps;
-    private ArrayList<Item> clh;
-    private ArrayList<Item> food;
+    //private Inventory inventory;
     Weapons weapons;
+    private String weaponsName;
     private String ability;
     private int rHealthy;
     private Ability ability1;
@@ -32,7 +31,7 @@ public class Player {
         this.strength = changeStrenght();
         this.vitality = changeVitality();
         this.intelligence = changeIntelligence();
-        this.inventory = getInventory();
+        //this.inventory =  new Inventory();
         this.ability =  getAbility();
         this.rHealthy = getrHealthy();
         this.weapons = getWeapons();
@@ -71,7 +70,13 @@ public class Player {
         this.characterName = characterName;
     }
 
+   /* public Inventory getInventory() {
+        return inventory;
+    }
 
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }*/
 
     public int getRarity() {
         return rarity;
@@ -145,14 +150,6 @@ public class Player {
     public void setAbility1(Ability ability1) {
         this.ability1 = ability1;
     }
-
-    public ArrayList<ArrayList<Item>> getInventory() {
-        inventory.add(wps);
-        inventory.add(clh);
-        inventory.add(food);
-        return inventory;
-    }
-
 
 
     public int changeStrenght() {
@@ -262,8 +259,6 @@ public class Player {
         arrayList1= objects.arrayList();
         setAbility1(arrayList1.get(secureRandom.nextInt((arrayList1.size()) - 1)));
     }
-
-
 }
 
 
