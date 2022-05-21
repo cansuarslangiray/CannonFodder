@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Characters {
 
+
     private ArrayList<ArrayList<Player>> Characters = new ArrayList<>();
 
 
@@ -17,6 +18,7 @@ public class Characters {
     }
 
     public  Characters(){
+
 
          Wizard wizardPlayer = new Wizard("Wizard","Nao Tomori",5);
          Wizard wizardPlayer1 = new Wizard("Wizard","Yu Otosaka",25);
@@ -108,14 +110,21 @@ public class Characters {
         System.out.println((getCharacters().get(0).get(0)));
 
         for (int i = 0; i < 3; i++) {
+            double allMoney =0;
             int c = random.nextInt(getCharacters().size()-1);
             Player player = getCharacters().get(c).get(random.nextInt(5));
+             allMoney +=player.getMoney();
             player.selectC();
             ingame.add(player);
+            player.setAllMoney(allMoney);
         }
+
 
         return ingame;
     }
 
 
-}
+
+    }
+
+

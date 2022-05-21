@@ -4,6 +4,8 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 
 public class Player {
+    double allMoney ;
+
     Objects objects = new Objects();
     SecureRandom sc = new SecureRandom();
     private String type;
@@ -27,6 +29,14 @@ public class Player {
         this.type = type;
         this.characterName = characterName;
         this.money = money;
+    }
+
+    public double getAllMoney() {
+        return allMoney;
+    }
+
+    public void setAllMoney(double allMoney) {
+        this.allMoney = allMoney;
     }
 
     public String getType() {

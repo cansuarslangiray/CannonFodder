@@ -4,20 +4,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WeaponsShop extends SafePlace{
-    public Game game ;
     Objects objects = new Objects();
+    Characters ch = new Characters();
+
     public WeaponsShop(ArrayList<Player> players) {
         super(players);
     }
 
-    Scanner sc = new Scanner(System.in);
 
+
+    Scanner sc = new Scanner(System.in);
 
 
     @Override
     public boolean getLocation() {
         options();
-
         boolean c = true;
         while (c) {
             int choice2 = sc.nextInt();
@@ -35,10 +36,10 @@ public class WeaponsShop extends SafePlace{
                         int ch3 = sc.nextInt();
                         switch (ch3){
                             case 1:
-                                System.out.println("you have " + game.allMoney +" money");
+                                System.out.println("you have " + players.get(1).getAllMoney() +" money");
                                 System.out.println("Which sword do you want ?");
                                 int ch4 = sc.nextInt();
-                               // buyWeapon(ch4);
+                               buyWeapon(ch4,objects.getSwordArrayList());
                                 break;
                             case 2:
                                 options();
@@ -62,10 +63,10 @@ public class WeaponsShop extends SafePlace{
                         int ch3 = sc.nextInt();
                         switch (ch3){
                             case 1:
-                                System.out.println("you have " + game.allMoney +" money");
-                                System.out.println("Which sword do you want ?");
+                                System.out.println("you have " + players.get(1).getAllMoney() +" money");
+                                System.out.println("Which claymores do you want ?");
                                 int ch4 = sc.nextInt();
-                                //buyWeapon(ch4);
+                                buyWeapon(ch4,objects.getClaymoreArrayList());
                                 break;
                             case 2:
                                 options();
@@ -89,10 +90,10 @@ public class WeaponsShop extends SafePlace{
                         int ch3 = sc.nextInt();
                         switch (ch3){
                             case 1:
-                                System.out.println("you have " + game.allMoney +" money");
-                                System.out.println("Which sword do you want ?");
+                                System.out.println("you have " + players.get(1).getAllMoney()  +" money");
+                                System.out.println("Which polearm do you want ?");
                                 int ch4 = sc.nextInt();
-                                //buyWeapon(ch4);
+                                buyWeapon(ch4,objects.getPolearmsArrayList());
                                 break;
                             case 2:
                                 options();
@@ -116,10 +117,10 @@ public class WeaponsShop extends SafePlace{
                         int ch3 = sc.nextInt();
                         switch (ch3){
                             case 1:
-                                System.out.println("you have " + game.allMoney +" money");
-                                System.out.println("Which sword do you want ?");
+                                System.out.println("you have " + players.get(1).getAllMoney() +" money");
+                                System.out.println("Which wand do you want ?");
                                 int ch4 = sc.nextInt();
-                               // buyWeapon(ch4);
+                                buyWeapon(ch4,objects.getWandArrayList());
                                 break;
                             case 2:
                                 options();
@@ -143,10 +144,10 @@ public class WeaponsShop extends SafePlace{
                         int ch3 = sc.nextInt();
                         switch (ch3){
                             case 1:
-                                System.out.println("you have " + game.allMoney +" money");
-                                System.out.println("Which sword do you want ?");
+                                System.out.println("you have " + players.get(1).getAllMoney() +" money");
+                                System.out.println("Which catalyst do you want ?");
                                 int ch4 = sc.nextInt();
-                               // buyWeapon(ch4);
+                               buyWeapon(ch4,objects.getCatalystArrayList());
                                 break;
                             case 2:
                                 options();
@@ -170,10 +171,10 @@ public class WeaponsShop extends SafePlace{
                         int ch3 = sc.nextInt();
                         switch (ch3){
                             case 1:
-                                System.out.println("you have " + game.allMoney +" money");
-                                System.out.println("Which sword do you want ?");
+                                System.out.println("you have " + players.get(1).getAllMoney()  +" money");
+                                System.out.println("Which scythe do you want ?");
                                 int ch4 = sc.nextInt();
-                               // buyWeapon(ch4);
+                               buyWeapon(ch4,objects.getScytheArrayList());
                                 break;
                             case 2:
                                 options();
@@ -195,23 +196,23 @@ public class WeaponsShop extends SafePlace{
         return true;
     }
 
-   /* public void buyWeapon(int choice){
 
-        ArrayList<Weapons> wps = new ArrayList<>();
 
-        if(game.allMoney>=wps.get(choice-1).getPriceOfItem()) {
-         players.get(1).getWps().add(wps.get(choice-1));
-         wps.remove(wps.get(choice-1));
-         double newM = game.allMoney- wps.get(choice-1).getPriceOfItem();
-         game.setAllMoney(newM);
-         System.out.println(game.getAllMoney());
+   public void buyWeapon(int choice, ArrayList<Weapons> wps){
+
+        if(players.get(1).getAllMoney() >=wps.get(choice-1).getPriceOfItem()) {
+         //players.get(1).getWps().add(wps.get(choice-1));
+
+         double newM = players.get(1).getAllMoney() - wps.get(choice-1).getPriceOfItem();
+         players.get(1).setAllMoney(newM);
+         System.out.println(players.get(1).getAllMoney() );
      }
      else {
          System.out.println("you do not have enough money");
          System.out.println("other choice ? ");
      }
 
-    }*/
+    }
 
     public void options(){
         System.out.println();

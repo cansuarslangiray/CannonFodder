@@ -3,6 +3,7 @@ package com.company;
 import java.util.ArrayList;
 
 public abstract class Location {
+
    protected ArrayList<Player> players;
    protected String name;
 
@@ -11,6 +12,7 @@ public abstract class Location {
    }
 
    public abstract boolean getLocation();
+
 
    public ArrayList<Player> getPlayers() {
       return players;
@@ -27,5 +29,6 @@ public abstract class Location {
    public void setName(String name) {
       this.name = name;
    }
-
 }
+
+

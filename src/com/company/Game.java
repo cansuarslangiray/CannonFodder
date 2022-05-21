@@ -7,17 +7,11 @@ public class Game {
     ArrayList<Player>players;
      Location location;
      Scanner sc = new Scanner(System.in);
-     public double allMoney =0;
+
      Characters characters = new Characters();
-    Objects obj  =new Objects();
+     Objects obj  =new Objects();
 
-    public double getAllMoney() {
-        return allMoney;
-    }
 
-    public void setAllMoney(double allMoney) {
-        this.allMoney = allMoney;
-    }
 
     public void logIn(){
         System.out.println("Welcome the game!!!");
@@ -44,7 +38,7 @@ public class Game {
         for (int i = 0; i < 3; i++) {
             System.out.println("----------------------------------");
             System.out.println(players.get(i).getType());
-            allMoney+=players.get(i).getMoney();
+
         }
         for (int i = 0 ;i < players.size() ; i++){
 
