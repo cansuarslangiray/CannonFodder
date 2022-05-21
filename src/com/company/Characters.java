@@ -7,11 +7,6 @@ public class Characters {
 
     private ArrayList<ArrayList<Player>> Characters = new ArrayList<>();
 
-     ArrayList<Player> wizardArrayList = new ArrayList<>();
-     ArrayList<Player> worrierArrayList = new ArrayList<>();
-     ArrayList<Player> lancerArrayList = new ArrayList<>();
-     ArrayList<Player> elfArrayList = new ArrayList<>();
-     ArrayList<Player> knightArrayList = new ArrayList<>();
 
     public ArrayList<ArrayList<Player>> getCharacters() {
         return Characters;
@@ -52,6 +47,14 @@ public class Characters {
          Lancer lancerPlayer2 = new Lancer("Lancer", "Katsuki Bakugo",96);
          Lancer lancerPlayer3 = new Lancer("Lancer", "Shota Aizawa",960);
          Lancer lancerPlayer4 = new Lancer("Lancer", "Tomura Shigaraki",63);
+
+        // Healer healerPlayer = new Healer()
+
+        ArrayList<Player> wizardArrayList = new ArrayList<>();
+        ArrayList<Player> worrierArrayList = new ArrayList<>();
+        ArrayList<Player> lancerArrayList = new ArrayList<>();
+        ArrayList<Player> elfArrayList = new ArrayList<>();
+        ArrayList<Player> knightArrayList = new ArrayList<>();
 
          Characters.add(wizardArrayList);
          Characters.add(worrierArrayList);
@@ -107,6 +110,7 @@ public class Characters {
         for (int i = 0; i < 3; i++) {
             int c = random.nextInt(getCharacters().size()-1);
             Player player = getCharacters().get(c).get(random.nextInt(5));
+            player.selectC();
             ingame.add(player);
         }
 

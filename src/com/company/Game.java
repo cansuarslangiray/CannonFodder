@@ -40,18 +40,17 @@ public class Game {
         System.out.println();
 
         players = characters.yourCharacters();
-
+        System.out.println(obj.getWandArrayList().size());
         for (int i = 0; i < 3; i++) {
             System.out.println("----------------------------------");
             System.out.println(players.get(i).getType());
             allMoney+=players.get(i).getMoney();
-
-
-
         }
         for (int i = 0 ;i < players.size() ; i++){
+
             players.get(i).characterPrintInfo();
         }
+
 
     }
     public static void safePlace(){

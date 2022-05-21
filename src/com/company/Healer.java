@@ -10,15 +10,8 @@ public class Healer extends Player{
         super(type, characterName, money);
     }
 
-    @Override
-    public Weapons assigningWeapons() {
-        setWeapons(objects.getCatalystArrayList().get(secureRandom.nextInt(objects.getCatalystArrayList().size() - 1)));
-        return objects.getCatalystArrayList().get(secureRandom.nextInt(objects.getCatalystArrayList().size() - 1));
-    }
 
-    @Override
-    public void assigningAbility() {
-        super.assigningAbility();
-    }
+
+
 }
 

@@ -1,8 +1,18 @@
 package com.company;
 
+
 import java.util.ArrayList;
 
 public class Objects {
+
+    ArrayList<Ability> abilityArrayList = new ArrayList<>();
+    ArrayList<Weapons> WandArrayList = new ArrayList<>();
+    ArrayList<Weapons> CatalystArrayList = new ArrayList<>();
+    ArrayList<Weapons> ClaymoreArrayList = new ArrayList<>();
+    ArrayList<Weapons> SwordArrayList = new ArrayList<>();
+    ArrayList<Weapons> PolearmsArrayList = new ArrayList<>();
+    ArrayList<Weapons> ScytheArrayList = new ArrayList<>();
+
 
     public Objects(){
 
@@ -39,102 +49,80 @@ public class Objects {
         Ability ability5 = new Ability("Geo");
 
 
-    WandArrayList.add(wand);
-    WandArrayList.add(wand1);
-    WandArrayList.add(wand2);
+        WandArrayList.add(wand);
+        WandArrayList.add(wand1);
+        WandArrayList.add(wand2);
 
-    CatalystArrayList.add(catalyst);
-    CatalystArrayList.add(catalyst1);
-    CatalystArrayList.add(catalyst2);
+        CatalystArrayList.add(catalyst);
+        CatalystArrayList.add(catalyst1);
+        CatalystArrayList.add(catalyst2);
 
-    ClaymoreArrayList.add(claymore);
-    ClaymoreArrayList.add(claymore1);
-    ClaymoreArrayList.add(claymore2);
+        ClaymoreArrayList.add(claymore);
+        ClaymoreArrayList.add(claymore1);
+        ClaymoreArrayList.add(claymore2);
 
-    SwordArrayList.add(sword);
-    SwordArrayList.add(sword1);
-    SwordArrayList.add(sword2);
+        SwordArrayList.add(sword);
+        SwordArrayList.add(sword1);
+        SwordArrayList.add(sword2);
 
-    PolearmsArrayList.add(polearms);
-    PolearmsArrayList.add(polearms1);
-    PolearmsArrayList.add(polearms2);
+        PolearmsArrayList.add(polearms);
+        PolearmsArrayList.add(polearms1);
+        PolearmsArrayList.add(polearms2);
 
-    ScytheArrayList.add(scythe);
-    ScytheArrayList.add(scythe1);
-    ScytheArrayList.add(scythe2);
+        ScytheArrayList.add(scythe);
+        ScytheArrayList.add(scythe1);
+        ScytheArrayList.add(scythe2);
 
-    abilityArrayList.add(ability);
-    abilityArrayList.add(ability1);
-    abilityArrayList.add(ability2);
-    abilityArrayList.add(ability3);
-    abilityArrayList.add(ability4);
-    abilityArrayList.add(ability5);
-}
-    private ArrayList<Ability> abilityArrayList = new ArrayList<>();
-    private ArrayList<Weapons> WandArrayList = new ArrayList<>();
-    private ArrayList<Weapons> CatalystArrayList = new ArrayList<>();
-    private ArrayList<Weapons> ClaymoreArrayList = new ArrayList<>();
-    private ArrayList<Weapons> SwordArrayList = new ArrayList<>();
-    private ArrayList<Weapons> PolearmsArrayList = new ArrayList<>();
-    private ArrayList<Weapons> ScytheArrayList = new ArrayList<>();
+        abilityArrayList.add(ability);
+        abilityArrayList.add(ability1);
+        abilityArrayList.add(ability2);
+        abilityArrayList.add(ability3);
+        abilityArrayList.add(ability4);
+        abilityArrayList.add(ability5);
 
 
-    public ArrayList<Ability> getAbilityArrayList() {
+
+
+    }
+
+     public ArrayList<Ability> getAbilityArrayList() {
         return abilityArrayList;
     }
 
-    public void setAbilityArrayList(ArrayList<Ability> abilityArrayList) {
-        this.abilityArrayList = abilityArrayList;
-    }
 
     public ArrayList<Weapons> getWandArrayList() {
-        System.out.println(WandArrayList.size());
         return WandArrayList;
     }
 
-    public void setWandArrayList(ArrayList<Weapons> wandArrayList) {
-        WandArrayList = wandArrayList;
-    }
+
 
     public ArrayList<Weapons> getCatalystArrayList() {
         return CatalystArrayList;
     }
 
-    public void setCatalystArrayList(ArrayList<Weapons> catalystArrayList) {
-        CatalystArrayList = catalystArrayList;
-    }
+
 
     public ArrayList<Weapons> getClaymoreArrayList() {
         return ClaymoreArrayList;
     }
 
-    public void setClaymoreArrayList(ArrayList<Weapons> claymoreArrayList) {
-        ClaymoreArrayList = claymoreArrayList;
-    }
+
 
     public ArrayList<Weapons> getSwordArrayList() {
         return SwordArrayList;
     }
 
-    public void setSwordArrayList(ArrayList<Weapons> swordArrayList) {
-        SwordArrayList = swordArrayList;
-    }
+
 
     public ArrayList<Weapons> getPolearmsArrayList() {
         return PolearmsArrayList;
     }
 
-    public void setPolearmsArrayList(ArrayList<Weapons> polearmsArrayList) {
-        PolearmsArrayList = polearmsArrayList;
-    }
 
     public ArrayList<Weapons> getScytheArrayList() {
         return ScytheArrayList;
     }
 
-    public void setScytheArrayList(ArrayList<Weapons> scytheArrayList) {
-        ScytheArrayList = scytheArrayList;
-    }
 
    
 
