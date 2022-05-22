@@ -17,15 +17,15 @@ public class Objects {
     public Objects(){
 
 
-        Weapons wand = new Wand("Exiled Heart","Wand",4,50000,50,1,1,0.5);
+        Weapons wand = new Wand("Exiled Heart","Wand",4,5,50,1,1,0.5);
         Weapons wand1 = new Wand(" Touch of Woe","Wand",3,40000,40,1,1,0.9);
         Weapons wand2 = new Wand(" Bag of the Night","Wand",5,60000,60,1,1,0.4);
 
-        Weapons catalyst = new Catalyst(" Pact of the Night","Catalyst",5,68200,60,1,1,0.7);
+        Weapons catalyst = new Catalyst(" Pact of the Night","Catalyst",5,6,60,1,1,0.7);
         Weapons catalyst1 = new Catalyst("Nightfall","Catalyst",4,45000,45,1,1,0.9);
         Weapons catalyst2 = new Catalyst("Starlight","Catalyst",3,33000,30,1,1,1);
 
-        Weapons sword = new Sword("summit sharper", "Sword",4,70000,70,1,1,1.5);
+        Weapons sword = new Sword("summit sharper", "Sword",4,7,70,1,1,1.5);
         Weapons sword1 = new Sword("mistspiltter reforged","Sword",5,68000,55,1,1,1.6);
         Weapons sword2 = new Sword("skyword blade","Sword",3,65000,40,1,1,1.9);
 

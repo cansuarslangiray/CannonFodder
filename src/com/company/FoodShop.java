@@ -10,6 +10,8 @@ public class FoodShop extends SafePlace {
 
     @Override
     public boolean getLocation() {
+
+
         return true;
     }
     Scanner input=new Scanner(System.in);
