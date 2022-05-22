@@ -13,7 +13,6 @@ public class Objects {
     ArrayList<Weapons> PolearmsArrayList = new ArrayList<>();
     ArrayList<Weapons> ScytheArrayList = new ArrayList<>();
 
-
     public Objects(){
 
 
