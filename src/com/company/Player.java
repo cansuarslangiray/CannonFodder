@@ -1,7 +1,7 @@
 package com.company;
 
 import java.security.SecureRandom;
-import java.util.ArrayList;
+
 
 public class Player {
     double allMoney ;
@@ -12,23 +12,24 @@ public class Player {
     private String characterName;
     private int damage , health, money, rarity, strength, vitality, intelligence, rHealthy;
     private Weapons weapons;
-
-    private Item item;
-
-    private ArrayList<Item> inv;
-    private ArrayList<ArrayList<Item>> inventory;
-    private ArrayList<Item> wps;
-    private ArrayList<Item> clh;
-    private ArrayList<Item> food;
     private Ability ability1;
+    private Item item;
 
 
 
     public Player(String type, String characterName, int money) {
-
         this.type = type;
         this.characterName = characterName;
         this.money = money;
+        this.item = new Item();
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     public double getAllMoney() {
@@ -128,15 +129,6 @@ public class Player {
     }
 
 
-
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
     public Ability getAbility1() {
         return ability1;
     }
@@ -144,12 +136,10 @@ public class Player {
     public void setAbility1(Ability ability1) {
         this.ability1 = ability1;
     }
-    /* public  ArrayList<ArrayList<Item>> getInventory() {
 
-        inventory.add(clh);
-        inventory.add(food);
-        return inventory;
-    }*/
+
+
+
 
 
 
@@ -243,25 +233,30 @@ public class Player {
     public void assigningWeapons() {
         if(getType().equals("Wizard")){
             setWeapons(objects.getWandArrayList().get(sc.nextInt( objects.getWandArrayList().size()-1)));
+            setItem(objects.getWandArrayList().get(sc.nextInt( objects.getWandArrayList().size()-1)));
 
         }
         else if(getType().equals("Worrier")){
             setWeapons(objects.getClaymoreArrayList().get(sc.nextInt(objects.getClaymoreArrayList().size() - 1)));
+            setItem(objects.getClaymoreArrayList().get(sc.nextInt(objects.getClaymoreArrayList().size() - 1)));
 
         }
         else if(getType().equals("Elf")){
             setWeapons(objects.getScytheArrayList().get(sc.nextInt(objects.getScytheArrayList().size() - 1)));
-
+            setItem(objects.getScytheArrayList().get(sc.nextInt(objects.getScytheArrayList().size() - 1)));
         }
         else if(getType().equals("Healer")){
             setWeapons(objects.getCatalystArrayList().get(sc.nextInt(objects.getCatalystArrayList().size() - 1)));
-
+            setItem(objects.getCatalystArrayList().get(sc.nextInt(objects.getCatalystArrayList().size() - 1)));
         }
         else if(getType().equals("lancer")){
             setWeapons(objects.getPolearmsArrayList().get(sc.nextInt(objects.getPolearmsArrayList().size() - 1)));
+            setItem(objects.getPolearmsArrayList().get(sc.nextInt(objects.getPolearmsArrayList().size() - 1)));
+
         }
         else if(getType().equals("Knight")){
             setWeapons(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
+            setItem(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
         }
 
     }
@@ -281,7 +276,7 @@ public class Player {
         healthPoint();
         assigningAbility();
         assigningWeapons();
-
+        System.out.println(" type: "+getItem().getItemType());
     }
 
     public  void characterPrintInfo(){
@@ -302,6 +297,8 @@ public class Player {
         System.out.println("money: " + getMoney());
         System.out.println();
     }
+
+
 
 }
 

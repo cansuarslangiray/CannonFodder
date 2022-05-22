@@ -113,7 +113,7 @@ public class Characters {
             double allMoney =0;
             int c = random.nextInt(getCharacters().size()-1);
             Player player = getCharacters().get(c).get(random.nextInt(5));
-             allMoney +=player.getMoney();
+            allMoney +=player.getMoney();
             player.selectC();
             ingame.add(player);
             player.setAllMoney(allMoney);

@@ -8,7 +8,11 @@ public class Item {
     private String itemType;
     private double priceOfItem;
 
-
+     public Item(){
+         this.name = null;
+         this.itemType = null;
+         this.priceOfItem = 0;
+     }
 
     public Item(String name, String itemType, int priceOfItem) {
         this.name = name;

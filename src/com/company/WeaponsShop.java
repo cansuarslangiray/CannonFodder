@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class WeaponsShop extends SafePlace{
     Objects objects = new Objects();
-    Characters ch = new Characters();
+
 
     public WeaponsShop(ArrayList<Player> players) {
         super(players);
@@ -201,8 +201,7 @@ public class WeaponsShop extends SafePlace{
    public void buyWeapon(int choice, ArrayList<Weapons> wps){
 
         if(players.get(1).getAllMoney() >=wps.get(choice-1).getPriceOfItem()) {
-         //players.get(1).getWps().add(wps.get(choice-1));
-
+         players.get(1).setItem(wps.get(choice-1));
          double newM = players.get(1).getAllMoney() - wps.get(choice-1).getPriceOfItem();
          players.get(1).setAllMoney(newM);
          System.out.println(players.get(1).getAllMoney() );

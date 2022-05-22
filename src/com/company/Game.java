@@ -41,8 +41,8 @@ public class Game {
 
         }
         for (int i = 0 ;i < players.size() ; i++){
-
             players.get(i).characterPrintInfo();
+            players.get(i).getWeapons().weaponsPrintInfo();
         }
 
 
