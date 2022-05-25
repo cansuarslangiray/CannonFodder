@@ -4,8 +4,8 @@ import java.security.SecureRandom;
 
 
 public class Player {
-    double allMoney ;
-
+    Game game;
+    private double allMoney ;
     Objects objects = new Objects();
     SecureRandom sc = new SecureRandom();
     private String type;
@@ -13,7 +13,8 @@ public class Player {
     private int damage , health, money, rarity, strength, vitality, intelligence, rHealthy;
     private Weapons weapons;
     private Ability ability1;
-    private Item item;
+    private Inventory item;
+    private int level;
 
 
 
@@ -21,14 +22,15 @@ public class Player {
         this.type = type;
         this.characterName = characterName;
         this.money = money;
-        this.item = new Item();
+        this.item = new Inventory();
+        this.level = 1;
     }
 
-    public Item getItem() {
+    public Inventory getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(Inventory item) {
         this.item = item;
     }
 
@@ -138,11 +140,13 @@ public class Player {
     }
 
 
+    public int getLevel() {
+        return level;
+    }
 
-
-
-
-
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
     public void changeStrenght() {
 
@@ -267,7 +271,7 @@ public class Player {
         setAbility1(objects.getAbilityArrayList().get(sc.nextInt((objects.getAbilityArrayList().size())- 1)));
 
     }
-    public void damageChange() {
+    public void calculateDamage() {
         if (getType().equals("Wizard")) {
             setDamage(getWeapons().getDamage() * getIntelligence());
         } else if (getType().equals("Worrier")) {
@@ -287,6 +291,12 @@ public class Player {
         }
     }
 
+    public void changeLevel(){
+        if(game.getAdventureRank()>1){
+            setLevel(2);
+            setDamage(getDamage()*2);
+        }
+    }
 
 
     public void selectC(){
@@ -297,11 +307,12 @@ public class Player {
         healthPoint();
         assigningAbility();
         assigningWeapons();
-        damageChange();
+        calculateDamage();
         System.out.println(" type: "+getItem().getItemType());
     }
 
     public  void characterPrintInfo(){
+        selectC();
         System.out.println("Information of the Characters in the game");
         System.out.println();
         System.out.println("------------------------------------------");
@@ -312,7 +323,6 @@ public class Player {
         System.out.println("health point: " + getHealth());
         System.out.println("rarity: " + getRarity());
         System.out.println("rh " + getrHealthy());
-
         System.out.println("ability: " + getAbility1().getAbilityName());
         System.out.println("weapons: " + getWeapons().getName());
         System.out.println("damage: " + getDamage());
@@ -325,30 +335,6 @@ public class Player {
 }
 
 
-
-
-
-
-    /*public int calculateDamage() {
-        if (getType().equals("Wizard")) {
-            return getDamage() * changeIntelligence();
-        } else if (getType().equals("Knight")) {
-            return getDamage() * getStrength();
-        } else if (getType().equals("Worrier")) {
-            return getDamage() * getStrength();
-        } else if (getType().equals("Elf")) {
-            return getDamage() * changeIntelligence();
-        } else if (getType().equals("Lancer")) {
-
-        }
-
-
-
-
-    /*public void wishCharacter(){
-        SecureRandom secureRandom = new SecureRandom();
-    }
-    }*/
 
 
 

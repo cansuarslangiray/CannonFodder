@@ -7,10 +7,17 @@ public class Game {
     ArrayList<Player>players;
      Location location;
      Scanner sc = new Scanner(System.in);
-
+     private int adventureRank = 1;
      Characters characters = new Characters();
      Objects obj  =new Objects();
 
+    public int getAdventureRank() {
+        return adventureRank;
+    }
+
+    public void setAdventureRank(int adventureRank) {
+        this.adventureRank = adventureRank;
+    }
 
 
     public void logIn(){
@@ -63,8 +70,9 @@ public class Game {
         System.out.println("press 3 for information about Elves");
         System.out.println("press 4 for information about Knight");
         System.out.println("press 5 for information about Lancer");
-        System.out.println("press 6 to go to first page");
-        System.out.println("press 7 to exit this page");
+        System.out.println("press 6 for information about Healer");
+        System.out.println("press 7 to go to first page");
+        System.out.println("press 8 to exit this page");
         System.out.println("Your choice ?");
     }
 
@@ -77,21 +85,22 @@ public class Game {
                 case 1:
                     System.out.println("Information of the wizards in the game");
                     for(int i = 0 ; i<5;i++) {
-                        characters.getCharacters().get(4).get(i).characterPrintInfo();
+                        characters.getCharacters().get(0).get(i).characterPrintInfo();
                     }
                     firstPagePrintInfo();
                     break;
                 case 2:
                     System.out.println("Information of the worrier in the game");
                     for(int i = 0 ; i<5;i++) {
-                        characters.getCharacters().get(0).get(i).characterPrintInfo();
+                        characters.getCharacters().get(1).get(i).characterPrintInfo();
+
                     }
                     firstPagePrintInfo();
                     break;
                 case 3:
                     System.out.println("Information of the elves in the game");
                     for(int i = 0 ; i<5;i++) {
-                        characters.getCharacters().get(1).get(i).characterPrintInfo();
+                        characters.getCharacters().get(3).get(i).characterPrintInfo();
                     }
                     firstPagePrintInfo();
                     break;
@@ -106,14 +115,21 @@ public class Game {
                 case 5:
                     System.out.println("Information of the lancers in the game");
                     for(int i = 0 ; i<5;i++) {
-                        characters.getCharacters().get(3).get(i).characterPrintInfo();
+                        characters.getCharacters().get(4).get(i).characterPrintInfo();
                     }
                     firstPagePrintInfo();
                     break;
                 case 6:
+                    System.out.println("Information of the healer in the game");
+                    for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(5).get(i).characterPrintInfo();
+                    }
                     firstPagePrintInfo();
                     break;
                 case 7:
+                    firstPagePrintInfo();
+                    break;
+                case 8:
                     location = new Home(players);
                     location.getLocation();
                     d = false;

@@ -10,6 +10,7 @@ public class ArmorsShop extends SafePlace{
     Objects objects = new Objects();
     Scanner input = new Scanner(System.in);
 
+
     public void options(){
         System.out.println("Armor Shop");
         System.out.println();

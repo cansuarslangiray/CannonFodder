@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 
 public class Characters {
-
+    SecureRandom secureRandom = new SecureRandom();
 
     private ArrayList<ArrayList<Player>> Characters = new ArrayList<>();
 
@@ -134,6 +134,11 @@ public class Characters {
 
         return ingame;
     }
+
+    public void wishCharacter(){
+
+    }
+
 
 
 

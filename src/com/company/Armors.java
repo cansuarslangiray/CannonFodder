@@ -1,6 +1,6 @@
 package com.company;
 
-public class Armors extends Item{
+public class Armors extends Inventory {
     private int block;
     private int level;
     private int quality;
