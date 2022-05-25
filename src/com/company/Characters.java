@@ -2,6 +2,7 @@ package com.company;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Characters {
     SecureRandom secureRandom = new SecureRandom();
@@ -63,12 +64,7 @@ public class Characters {
         ArrayList<Player> knightArrayList = new ArrayList<>();
         ArrayList<Player> healerArrayList = new ArrayList<>();
 
-         Characters.add(wizardArrayList);
-         Characters.add(worrierArrayList);
-         Characters.add(knightArrayList);
-         Characters.add(elfArrayList);
-         Characters.add(lancerArrayList);
-         Characters.add(healerArrayList);
+
 
          healerArrayList.add(healerPlayer);
         healerArrayList.add(healerPlayer1);
@@ -108,6 +104,12 @@ public class Characters {
         lancerArrayList.add(lancerPlayer3);
         lancerArrayList.add(lancerPlayer4);
 
+        Characters.add(wizardArrayList);
+        Characters.add(worrierArrayList);
+        Characters.add(knightArrayList);
+        Characters.add(elfArrayList);
+        Characters.add(lancerArrayList);
+        Characters.add(healerArrayList);
     }
 
 
@@ -124,10 +126,22 @@ public class Characters {
         for (int i = 0; i < 3; i++) {
             double allMoney =0;
             int c = random.nextInt(getCharacters().size()-1);
+            ingame.add(getCharacters().get(c).get(random.nextInt(4)));
             Player player = getCharacters().get(c).get(random.nextInt(4));
+            if(ingame.size()==0){
+              if(!Objects.equals(player.getType(), ingame.get(0).getType())){
+                ingame.add(player);
+
+            }
+            }
+            if(ingame.size() ==1){
+                if(!Objects.equals(player.getType(), ingame.get(0).getType()) && !Objects.equals(player.getType(), ingame.get(1).getType())){
+                    ingame.add(player);
+                }
+            }
+            System.out.println("cs: " + getCharacters().size());
             allMoney +=player.getMoney();
             player.selectC();
-            ingame.add(player);
             player.setAllMoney(allMoney);
         }
 
