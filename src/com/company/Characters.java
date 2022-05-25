@@ -125,7 +125,7 @@ public class Characters {
         boolean a =true;
         while (a){
             double allMoney =0;
-            int c = random.nextInt(getCharacters().size()-1);
+            int c = random.nextInt(getCharacters().size());
             if(ingame.size()==0){
             ingame.add(getCharacters().get(c).get(random.nextInt(4)));
             }

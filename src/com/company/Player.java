@@ -253,7 +253,7 @@ public class Player {
             setWeapons(objects.getCatalystArrayList().get(sc.nextInt(objects.getCatalystArrayList().size() - 1)));
             setItem(objects.getCatalystArrayList().get(sc.nextInt(objects.getCatalystArrayList().size() - 1)));
         }
-        else if(getType().equals("lancer")){
+        else if(getType().equals("Lancer")){
             setWeapons(objects.getPolearmsArrayList().get(sc.nextInt(objects.getPolearmsArrayList().size() - 1)));
             setItem(objects.getPolearmsArrayList().get(sc.nextInt(objects.getPolearmsArrayList().size() - 1)));
 
@@ -283,8 +283,8 @@ public class Player {
         else if(getType().equals("Healer")){
             setDamage(getWeapons().getDamage()*getIntelligence());
         }
-        else if(getType().equals("lancer")) {
-            setDamage(getWeapons().getDamage()*getVitality());
+        else if(getType().equals("Lancer")) {
+            setDamage(getWeapons().getDamage()* getVitality());
         }
         else if(getType().equals("Knight")){
             setDamage(getWeapons().getDamage() * getStrength());
