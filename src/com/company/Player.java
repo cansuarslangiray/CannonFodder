@@ -283,8 +283,8 @@ public class Player {
         else if(getType().equals("Healer")){
             setDamage(getWeapons().getDamage()*getIntelligence());
         }
-        else if(getType().equals("lancer")) {
-            setDamage(getWeapons().getDamage()*getVitality());
+        else if(getType().equals("Lancer")) {
+            setDamage(getWeapons().getDamage()* getVitality());
         }
         else if(getType().equals("Knight")){
             setDamage(getWeapons().getDamage() * getStrength());

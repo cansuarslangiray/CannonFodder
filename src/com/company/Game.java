@@ -52,6 +52,7 @@ public class Game {
             players.get(i).getWeapons().weaponsPrintInfo();
         }
 
+
     }
     public static void safePlace(){
         System.out.println("press 1 to return home");
