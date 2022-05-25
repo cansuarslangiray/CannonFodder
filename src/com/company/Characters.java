@@ -122,21 +122,24 @@ public class Characters {
 
         System.out.println("hello");
         System.out.println((getCharacters().get(0).get(0)));
-
-        for (int i = 0; i < 3; i++) {
+        boolean a =true;
+        while (a){
             double allMoney =0;
             int c = random.nextInt(getCharacters().size()-1);
-            ingame.add(getCharacters().get(c).get(random.nextInt(4)));
-            Player player = getCharacters().get(c).get(random.nextInt(4));
             if(ingame.size()==0){
+            ingame.add(getCharacters().get(c).get(random.nextInt(4)));
+            }
+            Player player = getCharacters().get(c).get(random.nextInt(4));
+            if(ingame.size()==1){
               if(!Objects.equals(player.getType(), ingame.get(0).getType())){
                 ingame.add(player);
 
             }
             }
-            if(ingame.size() ==1){
+            if(ingame.size()==2){
                 if(!Objects.equals(player.getType(), ingame.get(0).getType()) && !Objects.equals(player.getType(), ingame.get(1).getType())){
                     ingame.add(player);
+                    a=false;
                 }
             }
             System.out.println("cs: " + getCharacters().size());
