@@ -267,6 +267,27 @@ public class Player {
         setAbility1(objects.getAbilityArrayList().get(sc.nextInt((objects.getAbilityArrayList().size())- 1)));
 
     }
+    public void damageChange() {
+        if (getType().equals("Wizard")) {
+            setDamage(getWeapons().getDamage() * getIntelligence());
+        } else if (getType().equals("Worrier")) {
+            setDamage(getWeapons().getDamage() * getStrength());
+        }
+        else if(getType().equals("Elf")){
+           setDamage(getWeapons().getDamage()*getIntelligence());
+        }
+        else if(getType().equals("Healer")){
+            setDamage(getWeapons().getDamage()*getIntelligence());
+        }
+        else if(getType().equals("lancer")) {
+            setDamage(getWeapons().getDamage()*getVitality());
+        }
+        else if(getType().equals("Knight")){
+            setDamage(getWeapons().getDamage() * getStrength());
+        }
+    }
+
+
 
     public void selectC(){
         rarity();
@@ -276,6 +297,7 @@ public class Player {
         healthPoint();
         assigningAbility();
         assigningWeapons();
+        damageChange();
         System.out.println(" type: "+getItem().getItemType());
     }
 
