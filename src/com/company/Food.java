@@ -1,8 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-
-public class Food extends Item{
+public class Food extends Inventory {
     double addHP;
     public Food(String name, String itemType, int priceOfItem, double pointsHP) {
         super(name, itemType, priceOfItem);

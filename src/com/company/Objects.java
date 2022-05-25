@@ -12,9 +12,22 @@ public class Objects {
     ArrayList<Weapons> SwordArrayList = new ArrayList<>();
     ArrayList<Weapons> PolearmsArrayList = new ArrayList<>();
     ArrayList<Weapons> ScytheArrayList = new ArrayList<>();
+    private ArrayList<Armors> HelmetArrayList = new ArrayList<>();
+    private ArrayList<Armors> ChestplateArrayList = new ArrayList<>();
+    private ArrayList<Armors> BootsArrayList = new ArrayList<>();
 
     public Objects(){
+        Armors helmet1 = new Armors("Dragon Helmet","Helmet",5,15,20,1,1,2);
+        Armors helmet2 = new Armors("Night Mask","Helmet",4,20000,12,1,1,1.5);
+        Armors helmet3 = new Armors("Water Helmet","Helmet",3,10000,6,1,1,1);
 
+        Armors Chesplate1 = new Armors("Dragon Heart","Chestplate",5,80000,40,1,1,5);
+        Armors Chesplate2 = new Armors("Night Skin","Chestplate",4,30000,24,1,1,4);
+        Armors Chesplate3 = new Armors("Waterfall","Chestplate",3,20000,12,1,1,3);
+
+        Armors Boots1 = new Armors("Dragon Claw","Boots",5,20000,10,1,1,1);
+        Armors Boots2 = new Armors("Night Fall","Boots",4,10000,6,1,1,0.5);
+        Armors Boots3 = new Armors("Splash","Boots",3,5000,3,1,1,0.25);
 
         Weapons wand = new Wand("Exiled Heart","Wand",4,50000,50,1,1,0.5);
         Weapons wand1 = new Wand(" Touch of Woe","Wand",3,40000,40,1,1,0.9);
@@ -24,7 +37,7 @@ public class Objects {
         Weapons catalyst1 = new Catalyst("Nightfall","Catalyst",4,45000,45,1,1,0.9);
         Weapons catalyst2 = new Catalyst("Starlight","Catalyst",3,33000,30,1,1,1);
 
-        Weapons sword = new Sword("summit sharper", "Sword",4,70000,70,1,1,1.5);
+        Weapons sword = new Sword("summit sharper", "Sword",4,10,70,1,1,1.5);
         Weapons sword1 = new Sword("mistspiltter reforged","Sword",5,68000,55,1,1,1.6);
         Weapons sword2 = new Sword("skyword blade","Sword",3,65000,40,1,1,1.9);
 
@@ -47,6 +60,15 @@ public class Objects {
         Ability ability4 = new Ability("Electro");
         Ability ability5 = new Ability("Geo");
 
+        getHelmetArrayList().add(helmet1);
+        getHelmetArrayList().add(helmet2);
+        getHelmetArrayList().add(helmet3);
+        getChestplateArrayList().add(Chesplate1);
+        getChestplateArrayList().add(Chesplate2);
+        getChestplateArrayList().add(Chesplate3);
+        getBootsArrayList().add(Boots1);
+        getBootsArrayList().add(Boots3);
+        getBootsArrayList().add(Boots2);
 
         WandArrayList.add(wand);
         WandArrayList.add(wand1);
@@ -84,7 +106,7 @@ public class Objects {
 
     }
 
-     public ArrayList<Ability> getAbilityArrayList() {
+    public ArrayList<Ability> getAbilityArrayList() {
         return abilityArrayList;
     }
 
@@ -123,6 +145,15 @@ public class Objects {
     }
 
 
-   
+    public ArrayList<Armors> getHelmetArrayList() {
+        return HelmetArrayList;
+    }
 
+    public ArrayList<Armors> getChestplateArrayList() {
+        return ChestplateArrayList;
+    }
+
+    public ArrayList<Armors> getBootsArrayList() {
+        return BootsArrayList;
+    }
 }

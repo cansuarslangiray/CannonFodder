@@ -1,34 +1,37 @@
 package com.company;
 
 import java.security.SecureRandom;
-import java.util.ArrayList;
+
 
 public class Player {
-    double allMoney ;
-
+    Game game;
+    private double allMoney ;
     Objects objects = new Objects();
     SecureRandom sc = new SecureRandom();
     private String type;
     private String characterName;
     private int damage , health, money, rarity, strength, vitality, intelligence, rHealthy;
     private Weapons weapons;
-
-    private Item item;
-
-    private ArrayList<Item> inv;
-    private ArrayList<ArrayList<Item>> inventory;
-    private ArrayList<Item> wps;
-    private ArrayList<Item> clh;
-    private ArrayList<Item> food;
     private Ability ability1;
+    private Inventory item;
+    private int level;
 
 
 
     public Player(String type, String characterName, int money) {
-
         this.type = type;
         this.characterName = characterName;
         this.money = money;
+        this.item = new Inventory();
+        this.level = 1;
+    }
+
+    public Inventory getItem() {
+        return item;
+    }
+
+    public void setItem(Inventory item) {
+        this.item = item;
     }
 
     public double getAllMoney() {
@@ -128,15 +131,6 @@ public class Player {
     }
 
 
-
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
     public Ability getAbility1() {
         return ability1;
     }
@@ -144,15 +138,15 @@ public class Player {
     public void setAbility1(Ability ability1) {
         this.ability1 = ability1;
     }
-    /* public  ArrayList<ArrayList<Item>> getInventory() {
-
-        inventory.add(clh);
-        inventory.add(food);
-        return inventory;
-    }*/
 
 
+    public int getLevel() {
+        return level;
+    }
 
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
     public void changeStrenght() {
 
@@ -243,25 +237,30 @@ public class Player {
     public void assigningWeapons() {
         if(getType().equals("Wizard")){
             setWeapons(objects.getWandArrayList().get(sc.nextInt( objects.getWandArrayList().size()-1)));
+            setItem(objects.getWandArrayList().get(sc.nextInt( objects.getWandArrayList().size()-1)));
 
         }
         else if(getType().equals("Worrier")){
             setWeapons(objects.getClaymoreArrayList().get(sc.nextInt(objects.getClaymoreArrayList().size() - 1)));
+            setItem(objects.getClaymoreArrayList().get(sc.nextInt(objects.getClaymoreArrayList().size() - 1)));
 
         }
         else if(getType().equals("Elf")){
             setWeapons(objects.getScytheArrayList().get(sc.nextInt(objects.getScytheArrayList().size() - 1)));
-
+            setItem(objects.getScytheArrayList().get(sc.nextInt(objects.getScytheArrayList().size() - 1)));
         }
         else if(getType().equals("Healer")){
             setWeapons(objects.getCatalystArrayList().get(sc.nextInt(objects.getCatalystArrayList().size() - 1)));
-
+            setItem(objects.getCatalystArrayList().get(sc.nextInt(objects.getCatalystArrayList().size() - 1)));
         }
-        else if(getType().equals("lancer")){
+        else if(getType().equals("Lancer")){
             setWeapons(objects.getPolearmsArrayList().get(sc.nextInt(objects.getPolearmsArrayList().size() - 1)));
+            setItem(objects.getPolearmsArrayList().get(sc.nextInt(objects.getPolearmsArrayList().size() - 1)));
+
         }
         else if(getType().equals("Knight")){
             setWeapons(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
+            setItem(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
         }
 
     }
@@ -272,6 +271,33 @@ public class Player {
         setAbility1(objects.getAbilityArrayList().get(sc.nextInt((objects.getAbilityArrayList().size())- 1)));
 
     }
+    public void calculateDamage() {
+        if (getType().equals("Wizard")) {
+            setDamage(getWeapons().getDamage() * getIntelligence());
+        } else if (getType().equals("Worrier")) {
+            setDamage(getWeapons().getDamage() * getStrength());
+        }
+        else if(getType().equals("Elf")){
+           setDamage(getWeapons().getDamage()*getIntelligence());
+        }
+        else if(getType().equals("Healer")){
+            setDamage(getWeapons().getDamage()*getIntelligence());
+        }
+        else if(getType().equals("lancer")) {
+            setDamage(getWeapons().getDamage()*getVitality());
+        }
+        else if(getType().equals("Knight")){
+            setDamage(getWeapons().getDamage() * getStrength());
+        }
+    }
+
+    public void changeLevel(){
+        if(game.getAdventureRank()>1){
+            setLevel(2);
+            setDamage(getDamage()*2);
+        }
+    }
+
 
     public void selectC(){
         rarity();
@@ -281,10 +307,12 @@ public class Player {
         healthPoint();
         assigningAbility();
         assigningWeapons();
-
+        calculateDamage();
+        System.out.println(" type: "+getItem().getItemType());
     }
 
     public  void characterPrintInfo(){
+        selectC();
         System.out.println("Information of the Characters in the game");
         System.out.println();
         System.out.println("------------------------------------------");
@@ -295,7 +323,6 @@ public class Player {
         System.out.println("health point: " + getHealth());
         System.out.println("rarity: " + getRarity());
         System.out.println("rh " + getrHealthy());
-
         System.out.println("ability: " + getAbility1().getAbilityName());
         System.out.println("weapons: " + getWeapons().getName());
         System.out.println("damage: " + getDamage());
@@ -303,33 +330,11 @@ public class Player {
         System.out.println();
     }
 
+
+
 }
 
 
-
-
-
-
-    /*public int calculateDamage() {
-        if (getType().equals("Wizard")) {
-            return getDamage() * changeIntelligence();
-        } else if (getType().equals("Knight")) {
-            return getDamage() * getStrength();
-        } else if (getType().equals("Worrier")) {
-            return getDamage() * getStrength();
-        } else if (getType().equals("Elf")) {
-            return getDamage() * changeIntelligence();
-        } else if (getType().equals("Lancer")) {
-
-        }
-
-
-
-
-    /*public void wishCharacter(){
-        SecureRandom secureRandom = new SecureRandom();
-    }
-    }*/
 
 
 

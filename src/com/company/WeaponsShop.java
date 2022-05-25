@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class WeaponsShop extends SafePlace{
     Objects objects = new Objects();
-    Characters ch = new Characters();
+
 
     public WeaponsShop(ArrayList<Player> players) {
         super(players);
@@ -45,6 +45,10 @@ public class WeaponsShop extends SafePlace{
                                 options();
                                 d =false;
                                 break;
+
+                            default:
+                                System.out.println("You entered numbers other than 1, 2. Please enter one of these numbers");
+                                break;
                         }
                     }
                     break;
@@ -71,6 +75,9 @@ public class WeaponsShop extends SafePlace{
                             case 2:
                                 options();
                                 f =false;
+                                break;
+                            default:
+                                System.out.println("You entered numbers other than 1, 2. Please enter one of these numbers");
                                 break;
                         }
                     }
@@ -99,6 +106,9 @@ public class WeaponsShop extends SafePlace{
                                 options();
                                 s =false;
                                 break;
+                            default:
+                                System.out.println("You entered numbers other than 1, 2. Please enter one of these numbers");
+                                break;
                         }
                     }
                     break;
@@ -125,6 +135,9 @@ public class WeaponsShop extends SafePlace{
                             case 2:
                                 options();
                                 j=false;
+                                break;
+                            default:
+                                System.out.println("You entered numbers other than 1, 2. Please enter one of these numbers");
                                 break;
                         }
                     }
@@ -153,6 +166,9 @@ public class WeaponsShop extends SafePlace{
                                 options();
                                 w =false;
                                 break;
+                            default:
+                                System.out.println("You entered numbers other than 1, 2. Please enter one of these numbers");
+                                break;
                         }
                     }
                     break;
@@ -180,12 +196,20 @@ public class WeaponsShop extends SafePlace{
                                 options();
                                 h =false;
                                 break;
+                            default:
+                                System.out.println("You entered numbers other than 1, 2. Please enter one of these numbers");
+                                break;
                         }
                     }
                     break;
                     case 7:
-                   Game.safePlace();
+                   options();
+                    break;
+                case 8:
+                    System.out.println("exiting this page.....");
+                    Game.safePlace();
                     c = false;
+
                     break;
 
                 default:
@@ -201,8 +225,7 @@ public class WeaponsShop extends SafePlace{
    public void buyWeapon(int choice, ArrayList<Weapons> wps){
 
         if(players.get(1).getAllMoney() >=wps.get(choice-1).getPriceOfItem()) {
-         //players.get(1).getWps().add(wps.get(choice-1));
-
+         players.get(1).setItem(wps.get(choice-1));
          double newM = players.get(1).getAllMoney() - wps.get(choice-1).getPriceOfItem();
          players.get(1).setAllMoney(newM);
          System.out.println(players.get(1).getAllMoney() );
@@ -225,6 +248,7 @@ public class WeaponsShop extends SafePlace{
         System.out.println("press 5 to see catalyst");
         System.out.println("press 6 to see scythe");
         System.out.println("press 7 to go to first page");
+        System.out.println("press 8 to exit this page");
         System.out.println("your choice ? ");
     }
 

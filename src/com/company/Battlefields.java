@@ -11,6 +11,7 @@ public abstract class Battlefields extends Location {
     }
 
     public boolean getLocation(){
+        enemy.setMaxNumber(enemy.enemyCounter());
         return  true;
     }
 

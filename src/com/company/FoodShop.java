@@ -111,8 +111,7 @@ return true;
                 }
                 break;
             case 5:
-                System.out.println("Terminating the program");
-                System.exit(0);
+                System.out.println("You are leaving from the food shop");
                 break;
             default:
                 System.out.println("Wrong choice?");
@@ -172,8 +171,7 @@ return true;
                 players.get(rank4).setHealth(healthyPoint4);
                 System.out.println("Your new healthy point is"+healthyPoint4);
             case 5:
-                System.out.println("Terminating the program");
-                System.exit(0);
+                System.out.println("You are leaving from the food shop");
                 break;
             default:
                 System.out.println("Wrong choice?");

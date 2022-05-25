@@ -2,9 +2,10 @@ package com.company;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Characters {
-
+    SecureRandom secureRandom = new SecureRandom();
 
     private ArrayList<ArrayList<Player>> Characters = new ArrayList<>();
 
@@ -50,19 +51,26 @@ public class Characters {
          Lancer lancerPlayer3 = new Lancer("Lancer", "Shota Aizawa",960);
          Lancer lancerPlayer4 = new Lancer("Lancer", "Tomura Shigaraki",63);
 
-        // Healer healerPlayer = new Healer()
+         Healer healerPlayer = new Healer("Healer","Shinoa Hiragi",85);
+         Healer healerPlayer1 = new Healer("Healer", "Yuichiro Hyakuya",89);
+         Healer healerPlayer2 = new Healer("Healer" ,"Guren Ichinose", 90);
+         Healer healerPlayer3  =new Healer("Healer", "Yuri Pilsetsky",100);
+         Healer healerPlayer4 = new Healer("Healer" ,"Victor Nikiforov", 520);
 
         ArrayList<Player> wizardArrayList = new ArrayList<>();
         ArrayList<Player> worrierArrayList = new ArrayList<>();
         ArrayList<Player> lancerArrayList = new ArrayList<>();
         ArrayList<Player> elfArrayList = new ArrayList<>();
         ArrayList<Player> knightArrayList = new ArrayList<>();
+        ArrayList<Player> healerArrayList = new ArrayList<>();
 
-         Characters.add(wizardArrayList);
-         Characters.add(worrierArrayList);
-         Characters.add(knightArrayList);
-         Characters.add(elfArrayList);
-         Characters.add(lancerArrayList);
+
+
+         healerArrayList.add(healerPlayer);
+        healerArrayList.add(healerPlayer1);
+        healerArrayList.add(healerPlayer2);
+        healerArrayList.add(healerPlayer3);
+        healerArrayList.add(healerPlayer4);
 
 
          wizardArrayList.add(wizardPlayer);
@@ -96,6 +104,12 @@ public class Characters {
         lancerArrayList.add(lancerPlayer3);
         lancerArrayList.add(lancerPlayer4);
 
+        Characters.add(wizardArrayList);
+        Characters.add(worrierArrayList);
+        Characters.add(knightArrayList);
+        Characters.add(elfArrayList);
+        Characters.add(lancerArrayList);
+        Characters.add(healerArrayList);
     }
 
 
@@ -108,20 +122,40 @@ public class Characters {
 
         System.out.println("hello");
         System.out.println((getCharacters().get(0).get(0)));
-
-        for (int i = 0; i < 3; i++) {
+        boolean a =true;
+        while (a){
             double allMoney =0;
             int c = random.nextInt(getCharacters().size()-1);
-            Player player = getCharacters().get(c).get(random.nextInt(5));
-             allMoney +=player.getMoney();
+            if(ingame.size()==0){
+            ingame.add(getCharacters().get(c).get(random.nextInt(4)));
+            }
+            Player player = getCharacters().get(c).get(random.nextInt(4));
+            if(ingame.size()==1){
+              if(!Objects.equals(player.getType(), ingame.get(0).getType())){
+                ingame.add(player);
+
+            }
+            }
+            if(ingame.size()==2){
+                if(!Objects.equals(player.getType(), ingame.get(0).getType()) && !Objects.equals(player.getType(), ingame.get(1).getType())){
+                    ingame.add(player);
+                    a=false;
+                }
+            }
+            System.out.println("cs: " + getCharacters().size());
+            allMoney +=player.getMoney();
             player.selectC();
-            ingame.add(player);
             player.setAllMoney(allMoney);
         }
 
 
         return ingame;
     }
+
+    public void wishCharacter(){
+
+    }
+
 
 
 

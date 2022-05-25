@@ -2,18 +2,25 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class Item {
+public class Inventory {
     ArrayList<Player> players;
     private String name;
     private String itemType;
     private double priceOfItem;
+    private int primogen;
 
+     public Inventory(){
+         this.name = null;
+         this.itemType = null;
+         this.priceOfItem = 0;
+         this.primogen = 20;
+     }
 
-
-    public Item(String name, String itemType, int priceOfItem) {
+    public Inventory(String name, String itemType, int priceOfItem) {
         this.name = name;
         this.itemType = itemType;
         this.priceOfItem =priceOfItem;
+        this.primogen = 20;
     }
 
     public String getName() {
@@ -50,7 +57,11 @@ public class Item {
         this.itemType = itemType;
     }
 
+    public int getPrimogen() {
+        return primogen;
+    }
 
-
-
+    public void setPrimogen(int primogen) {
+        this.primogen = primogen;
+    }
 }
