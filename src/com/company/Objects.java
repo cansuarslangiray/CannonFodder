@@ -15,6 +15,10 @@ public class Objects {
     private ArrayList<Armors> HelmetArrayList = new ArrayList<>();
     private ArrayList<Armors> ChestplateArrayList = new ArrayList<>();
     private ArrayList<Armors> BootsArrayList = new ArrayList<>();
+    ArrayList<Food> saladArraylist= new ArrayList<>();
+    ArrayList<Food> pizzaArrayList= new ArrayList<>();
+    ArrayList<Food> eggArrayList= new ArrayList<>();
+
 
     public Objects(){
         Armors helmet1 = new Armors("Dragon Helmet","Helmet",5,15,20,1,1,2);
@@ -59,6 +63,27 @@ public class Objects {
         Ability ability3 = new Ability("Anemo");
         Ability ability4 = new Ability("Electro");
         Ability ability5 = new Ability("Geo");
+
+
+        Food food1= new Food("Satisfying Vegetable Salad","Food",70,300);
+        Food food2= new Food("Satisfying Fruit Salad","Food",60,280);
+
+        Food food3= new Food("Chicago Pizza","Food",80,400);
+        Food food4 = new Food("California Pizza","Food",85,420);
+        Food food5= new Food("Margarita Pizza", "Food",90,440);
+
+        Food food6 = new Food("Cheesy Egg","Food",40,200);
+        Food food7= new Food("Scrambled Egg", "Food",50,270);
+
+
+        getSaladArraylist().add(food1);
+        getSaladArraylist().add(food2);
+        getPizzaArrayList().add(food3);
+        getPizzaArrayList().add(food4);
+        getPizzaArrayList().add(food5);
+        getEggArrayList().add(food6);
+        getEggArrayList().add(food7);
+
 
         getHelmetArrayList().add(helmet1);
         getHelmetArrayList().add(helmet2);
@@ -156,4 +181,18 @@ public class Objects {
     public ArrayList<Armors> getBootsArrayList() {
         return BootsArrayList;
     }
+
+    public ArrayList<Food> getEggArrayList() {
+        return eggArrayList;
+    }
+
+    public ArrayList<Food> getPizzaArrayList() {
+        return pizzaArrayList;
+    }
+
+    public ArrayList<Food> getSaladArraylist() {
+        return saladArraylist;
+    }
+
+
 }
