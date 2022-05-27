@@ -57,11 +57,7 @@ public class Enemy {
     public void changeAventureRank(){
 
     }
-    public int enemyCounter(){
-        int number=2;
-        for(int i = 0 ; i<game.getAdventureRank();i++){
-            number*=2;
-        }
-        return number;
+    public void enemyCounter(){
+
     }
 }

@@ -1,6 +1,6 @@
 package com.company;
 
-import java.security.SecureRandom;
+
 
 
 public class Healer extends Player{
