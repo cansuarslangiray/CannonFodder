@@ -6,6 +6,10 @@ public class Moonhallow extends Battlefields{
 
     public Moonhallow(ArrayList<Player> players, ArrayList<Enemy> enemy) {
         super(players, enemy);
-        System.out.println(" siren or demon hunter");
+    }
+
+    @Override
+    protected int enemyCounter() {
+        return 0;
     }
 }
