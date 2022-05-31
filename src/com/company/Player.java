@@ -150,10 +150,13 @@ public class Player {
     public void setAbility1(Ability ability1) {
         this.ability1 = ability1;
     }
+    public int getBlock() {
+        return block;
+    }
 
-
-
-
+    public void setBlock(int block) {
+        this.block = block;
+    }
 
 
 
@@ -284,6 +287,7 @@ public class Player {
             setItem(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
         }
         else if(getType().equals("Tank")){
+            setWeapons(objects.getShieldArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
             setItem(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
 
         }
@@ -329,13 +333,7 @@ public class Player {
     }
 
 
-    public int getBlock() {
-        return block;
-    }
 
-    public void setBlock(int block) {
-        this.block = block;
-    }
 }
 
 

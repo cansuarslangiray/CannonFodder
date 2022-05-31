@@ -41,7 +41,6 @@ public class Game {
         System.out.println();
 
         players = characters.yourCharacters();
-        System.out.println(obj.getWandArrayList().size());
         for (int i = 0; i < 3; i++) {
             System.out.println("----------------------------------");
             System.out.println(players.get(i).getType());
@@ -51,6 +50,11 @@ public class Game {
             players.get(i).characterPrintInfo();
             players.get(i).getWeapons().weaponsPrintInfo();
         }
+        System.out.println(players.size());
+        players.add(characters.wishCharacter());
+        System.out.println(players.size());
+        characters.wishCharacterPrintInfo(players.get(players.size()-1));
+
 
 
     }

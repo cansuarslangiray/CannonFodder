@@ -12,6 +12,7 @@ public class Objects {
     ArrayList<Weapons> SwordArrayList = new ArrayList<>();
     ArrayList<Weapons> PolearmsArrayList = new ArrayList<>();
     ArrayList<Weapons> ScytheArrayList = new ArrayList<>();
+    ArrayList<Weapons> ShieldArrayList = new ArrayList<>();
     private ArrayList<Armors> HelmetArrayList = new ArrayList<>();
     private ArrayList<Armors> ChestplateArrayList = new ArrayList<>();
     private ArrayList<Armors> BootsArrayList = new ArrayList<>();
@@ -21,41 +22,45 @@ public class Objects {
 
 
     public Objects(){
-        Armors helmet1 = new Armors("Dragon Helmet","Helmet",5,15,20,1,1,2);
-        Armors helmet2 = new Armors("Night Mask","Helmet",4,20000,12,1,1,1.5);
-        Armors helmet3 = new Armors("Water Helmet","Helmet",3,10000,6,1,1,1);
+        Armors helmet1 = new Armors("Dragon Helmet","Helmet",5,15,20,1,100,2);
+        Armors helmet2 = new Armors("Night Mask","Helmet",4,20000,12,1,100,1.5);
+        Armors helmet3 = new Armors("Water Helmet","Helmet",3,10000,6,1,100,1);
 
-        Armors Chesplate1 = new Armors("Dragon Heart","Chestplate",5,80000,40,1,1,5);
-        Armors Chesplate2 = new Armors("Night Skin","Chestplate",4,30000,24,1,1,4);
-        Armors Chesplate3 = new Armors("Waterfall","Chestplate",3,20000,12,1,1,3);
+        Armors Chesplate1 = new Armors("Dragon Heart","Chestplate",5,80000,40,1,100,5);
+        Armors Chesplate2 = new Armors("Night Skin","Chestplate",4,30000,24,1,100,4);
+        Armors Chesplate3 = new Armors("Waterfall","Chestplate",3,20000,12,1,100,3);
 
-        Armors Boots1 = new Armors("Dragon Claw","Boots",5,20000,10,1,1,1);
-        Armors Boots2 = new Armors("Night Fall","Boots",4,10000,6,1,1,0.5);
-        Armors Boots3 = new Armors("Splash","Boots",3,5000,3,1,1,0.25);
+        Armors Boots1 = new Armors("Dragon Claw","Boots",5,20000,10,1,100,1);
+        Armors Boots2 = new Armors("Night Fall","Boots",4,10000,6,1,100,0.5);
+        Armors Boots3 = new Armors("Splash","Boots",3,5000,3,1,100,0.25);
 
-        Weapons wand = new Wand("Exiled Heart","Wand",4,50000,50,1,1,0.5);
-        Weapons wand1 = new Wand(" Touch of Woe","Wand",3,40000,40,1,1,0.9);
-        Weapons wand2 = new Wand(" Bag of the Night","Wand",5,60000,60,1,1,0.4);
+        Weapons wand = new Wand("Exiled Heart","Wand",4,50000,50,1,100,0.5);
+        Weapons wand1 = new Wand(" Touch of Woe","Wand",3,40000,40,1,100,0.9);
+        Weapons wand2 = new Wand(" Bag of the Night","Wand",5,60000,60,1,100,0.4);
 
-        Weapons catalyst = new Catalyst(" Pact of the Night","Catalyst",5,68200,60,1,1,0.7);
-        Weapons catalyst1 = new Catalyst("Nightfall","Catalyst",4,45000,45,1,1,0.9);
-        Weapons catalyst2 = new Catalyst("Starlight","Catalyst",3,33000,30,1,1,1);
+        Weapons catalyst = new Catalyst(" Pact of the Night","Catalyst",5,68200,60,1,100,0.7);
+        Weapons catalyst1 = new Catalyst("Nightfall","Catalyst",4,45000,45,1,100,0.9);
+        Weapons catalyst2 = new Catalyst("Starlight","Catalyst",3,33000,30,1,100,1);
 
-        Weapons sword = new Sword("summit sharper", "Sword",4,10,70,1,1,1.5);
-        Weapons sword1 = new Sword("mistspiltter reforged","Sword",5,68000,55,1,1,1.6);
-        Weapons sword2 = new Sword("skyword blade","Sword",3,65000,40,1,1,1.9);
+        Weapons sword = new Sword("summit sharper", "Sword",4,10,70,1,100,1.5);
+        Weapons sword1 = new Sword("mistspiltter reforged","Sword",5,68000,55,100,1,1.6);
+        Weapons sword2 = new Sword("skyword blade","Sword",3,65000,40,1,100,1.9);
 
-        Weapons polearms = new Polearms(" Incarnation of Immortality","Polearms",3,55000,35,1,1,1.2);
-        Weapons polearms1 = new Polearms(" Breaker of Horrid Dreams","Polearms",4,60000,40,1,1,1.1);
-        Weapons polearms2 = new Polearms("Misery's End","Polearms",5,65000,50,1,1,0.75);
+        Weapons polearms = new Polearms(" Incarnation of Immortality","Polearms",3,55000,35,1,100,1.2);
+        Weapons polearms1 = new Polearms(" Breaker of Horrid Dreams","Polearms",4,60000,40,1,100,1.1);
+        Weapons polearms2 = new Polearms("Misery's End","Polearms",5,65000,50,1,100,0.75);
 
-        Weapons scythe = new Scythe("Anguish","Scythe",4,80500,55,1,1,2.2);
-        Weapons scythe1 = new Scythe("Stormfury Blade","Scythe",5,80000,60,1,1,2.1);
-        Weapons scythe2 = new Scythe("Death's Claw","Scythe",3,75000,45,1,1,2.4);
+        Weapons scythe = new Scythe("Anguish","Scythe",4,80500,55,1,100,2.2);
+        Weapons scythe1 = new Scythe("Stormfury Blade","Scythe",5,80000,60,1,100,2.1);
+        Weapons scythe2 = new Scythe("Death's Claw","Scythe",3,75000,45,1,100,2.4);
 
-        Weapons claymore = new Claymore("Amnesia","Claymore",4,48000,65,1,1,3.5);
-        Weapons claymore1 = new Claymore("Hope's End","Claymore",5,50000,80,1,1,3.3);
-        Weapons claymore2 = new Claymore(" Emissary of the Whispers","Claymore",3,54000,70,1,1,3.4);
+        Weapons claymore = new Claymore("Amnesia","Claymore",4,48000,65,1,100,3.5);
+        Weapons claymore1 = new Claymore("Hope's End","Claymore",5,50000,80,1,100,3.3);
+        Weapons claymore2 = new Claymore(" Emissary of the Whispers","Claymore",3,54000,70,1,100,3.4);
+
+        Weapons shield = new Shield("Thorn","Shield",5,5200,60,1,100,5);
+        Weapons shield1 = new Shield("Round Shield","Shield",4,4200,50,1,100,5);
+        Weapons shield2 = new Shield("Dragon Crest Shield","Shield",3,2200,40,1,100,7);
 
         Ability ability = new Ability("Hydro");
         Ability ability1 = new Ability("Cryo");
@@ -119,6 +124,10 @@ public class Objects {
         ScytheArrayList.add(scythe1);
         ScytheArrayList.add(scythe2);
 
+        ShieldArrayList.add(shield);
+        ShieldArrayList.add(shield1);
+        ShieldArrayList.add(shield2);
+
         abilityArrayList.add(ability);
         abilityArrayList.add(ability1);
         abilityArrayList.add(ability2);
@@ -158,7 +167,9 @@ public class Objects {
         return SwordArrayList;
     }
 
-
+    public ArrayList<Weapons> getShieldArrayList() {
+        return ShieldArrayList;
+    }
 
     public ArrayList<Weapons> getPolearmsArrayList() {
         return PolearmsArrayList;
