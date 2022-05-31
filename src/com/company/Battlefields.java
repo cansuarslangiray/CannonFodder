@@ -1,3 +1,5 @@
+
+
 package com.company;
 
 import java.util.ArrayList;
@@ -57,6 +59,7 @@ public abstract class Battlefields extends Location {
         System.out.println("Damege: "+ e.getDamage());
         System.out.println("Award: " + e.getAward());
     }
+
 
 
 

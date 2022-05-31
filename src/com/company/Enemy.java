@@ -97,6 +97,7 @@ public class Enemy {
 
     }
 
+
      public int enemyCounter(){
         int number=2;
         for(int i = 0 ; i<game.getAdventureRank();i++){
@@ -105,7 +106,8 @@ public class Enemy {
 
         setMaxNumber(number);
         return number;
-    }
+
+    
 
     public int changeStrength() {
         if (getType().equals("DeathKnight")) {
