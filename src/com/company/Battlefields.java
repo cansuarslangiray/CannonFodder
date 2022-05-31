@@ -15,9 +15,9 @@ public abstract class Battlefields extends Location {
     }
 
     public boolean getLocation(){
-        int enemyCounter = e.enemyCounter();
+        //int enemyCounter = e.enemyCounter();
         System.out.println("You are in: " + this.getName());
-        System.out.println("There are" + enemyCounter+ "DemonHunter in here.");
+       // System.out.println("There are" + enemyCounter+ "DemonHunter in here.");
         System.out.println("To fight press f or press r to run");
         String choice = input.next();
         if(choice.equals("f")){

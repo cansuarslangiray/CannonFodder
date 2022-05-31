@@ -176,7 +176,11 @@ public class Player {
 
 
         } else if (getType().equals("Healer"))
-            setStrength(sc.nextInt(3, 6));
+            setStrength(sc.nextInt(6, 10));
+
+        else if(getType().equals("Tank")){
+            setStrength(sc.nextInt(3,7));
+        }
     }
 
     public void changeVitality() {
@@ -197,6 +201,9 @@ public class Player {
 
         } else if (getType().equals("Healer")) {
             setVitality(sc.nextInt(3, 6));
+        }
+        else if(getType().equals("Tank")){
+            setVitality(sc.nextInt(6,10));
         }
     }
 
@@ -220,7 +227,11 @@ public class Player {
             setIntelligence(sc.nextInt(2, 6));
 
         } else if (getType().equals("Healer"))
-            setIntelligence(sc.nextInt(7, 11));
+            setIntelligence(sc.nextInt(6, 10));
+
+        else if(getType().equals("Tank")){
+            setIntelligence(sc.nextInt(3,7));
+        }
 
 
     }
@@ -263,7 +274,7 @@ public class Player {
             setWeapons(objects.getCatalystArrayList().get(sc.nextInt(objects.getCatalystArrayList().size() - 1)));
             setItem(objects.getCatalystArrayList().get(sc.nextInt(objects.getCatalystArrayList().size() - 1)));
         }
-        else if(getType().equals("lancer")){
+        else if(getType().equals("Lancer")){
             setWeapons(objects.getPolearmsArrayList().get(sc.nextInt(objects.getPolearmsArrayList().size() - 1)));
             setItem(objects.getPolearmsArrayList().get(sc.nextInt(objects.getPolearmsArrayList().size() - 1)));
 
@@ -271,6 +282,10 @@ public class Player {
         else if(getType().equals("Knight")){
             setWeapons(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
             setItem(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
+        }
+        else if(getType().equals("Tank")){
+            setItem(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
+
         }
 
     }
@@ -307,7 +322,7 @@ public class Player {
 
         System.out.println("ability: " + getAbility1().getAbilityName());
         System.out.println("weapons: " + getWeapons().getName());
-        System.out.println("Armours: " + getArmors().getName());
+      //  System.out.println("Armours: " + getArmors().getName());
         System.out.println("damage: " + getDamage());
         System.out.println("money: " + getMoney());
         System.out.println();

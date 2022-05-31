@@ -134,6 +134,8 @@ public class Characters {
               if(!Objects.equals(player.getType(), ingame.get(0).getType())){
                 ingame.add(player);
 
+
+
             }
             }
             if(ingame.size()==2){
@@ -143,9 +145,11 @@ public class Characters {
                 }
             }
             System.out.println("cs: " + getCharacters().size());
-            allMoney +=player.getMoney();
-            player.selectC();
-            player.setAllMoney(allMoney);
+            for(int i = 0; i<ingame.size();i++) {
+                ingame.get(i).selectC();
+                allMoney += player.getMoney();
+                player.setAllMoney(allMoney);
+            }
         }
 
 
