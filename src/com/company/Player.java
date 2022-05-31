@@ -1,3 +1,4 @@
+
 package com.company;
 
 import java.security.SecureRandom;
@@ -355,4 +356,3 @@ public class Player {
     /*public void wishCharacter(){
         SecureRandom secureRandom = new SecureRandom();
     }
-    }*/

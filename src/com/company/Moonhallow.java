@@ -1,3 +1,5 @@
+
+
 package com.company;
 
 import java.util.ArrayList;
@@ -12,4 +14,5 @@ public class Moonhallow extends Battlefields{
     protected int enemyCounter() {
         return 0;
     }
+
 }
