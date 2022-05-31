@@ -15,9 +15,9 @@ public abstract class Battlefields extends Location {
     }
 
     public boolean getLocation(){
-        //int enemyCounter = e.enemyCounter();
+        int enemyCounter = e.enemyCounter();
         System.out.println("You are in: " + this.getName());
-       // System.out.println("There are" + enemyCounter+ "DemonHunter in here.");
+        System.out.println("There are" + enemyCounter+ "enemy in here.");
         System.out.println("To fight press f or press r to run");
         String choice = input.next();
         if(choice.equals("f")){
@@ -40,7 +40,7 @@ public abstract class Battlefields extends Location {
         return true;
     }
     public void playerStats(){
-        System.out.println("Player's Stats");
+        System.out.println("Player Stats");
         System.out.println("Health: " + player.getHealth());
         System.out.println("Damage: " + player.getDamage());
         System.out.println("Para; " + player.getAllMoney());
@@ -52,7 +52,7 @@ public abstract class Battlefields extends Location {
         }
     }
     public void enemyStats(){
-        System.out.println("Demon Hunters Stats: ");
+        System.out.println("Enemy Stats: ");
         System.out.println("Health: "+ e.getHealth());
         System.out.println("Damege: "+ e.getDamage());
         System.out.println("Award: " + e.getAward());

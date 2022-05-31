@@ -41,7 +41,6 @@ public class Game {
         System.out.println();
 
         players = characters.yourCharacters();
-        System.out.println(obj.getWandArrayList().size());
         for (int i = 0; i < 3; i++) {
             System.out.println("----------------------------------");
             System.out.println(players.get(i).getType());
@@ -51,6 +50,11 @@ public class Game {
             players.get(i).characterPrintInfo();
             players.get(i).getWeapons().weaponsPrintInfo();
         }
+        System.out.println(players.size());
+        players.add(characters.wishCharacter());
+        System.out.println(players.size());
+        characters.wishCharacterPrintInfo(players.get(players.size()-1));
+
 
 
     }
@@ -85,13 +89,17 @@ public class Game {
                 case 1:
                     System.out.println("Information of the wizards in the game");
                     for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(0).get(i).selectC();
                         characters.getCharacters().get(0).get(i).characterPrintInfo();
+
+
                     }
                     firstPagePrintInfo();
                     break;
                 case 2:
                     System.out.println("Information of the worrier in the game");
                     for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(1).get(i).selectC();
                         characters.getCharacters().get(1).get(i).characterPrintInfo();
 
                     }
@@ -100,6 +108,7 @@ public class Game {
                 case 3:
                     System.out.println("Information of the elves in the game");
                     for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(3).get(i).selectC();
                         characters.getCharacters().get(3).get(i).characterPrintInfo();
                     }
                     firstPagePrintInfo();
@@ -107,7 +116,9 @@ public class Game {
                 case 4:
                     System.out.println("Information of the knights in the game");
                     for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(2).get(i).selectC();
                         characters.getCharacters().get(2).get(i).characterPrintInfo();
+
                     }
                     firstPagePrintInfo();
 
@@ -115,14 +126,18 @@ public class Game {
                 case 5:
                     System.out.println("Information of the lancers in the game");
                     for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(4).get(i).selectC();
                         characters.getCharacters().get(4).get(i).characterPrintInfo();
+
                     }
                     firstPagePrintInfo();
                     break;
                 case 6:
                     System.out.println("Information of the healer in the game");
                     for(int i = 0 ; i<5;i++) {
+                        characters.getCharacters().get(5).get(i).selectC();
                         characters.getCharacters().get(5).get(i).characterPrintInfo();
+
                     }
                     firstPagePrintInfo();
                     break;

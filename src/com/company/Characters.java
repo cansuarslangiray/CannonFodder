@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Characters {
-    SecureRandom secureRandom = new SecureRandom();
+    SecureRandom random = new SecureRandom();
+    ArrayList<Player> ingame = new ArrayList<>();
 
     private ArrayList<ArrayList<Player>> Characters = new ArrayList<>();
 
@@ -57,16 +58,27 @@ public class Characters {
          Healer healerPlayer3  =new Healer("Healer", "Yuri Pilsetsky",100);
          Healer healerPlayer4 = new Healer("Healer" ,"Victor Nikiforov", 520);
 
+         Tank tank = new Tank("Tank","Bolvar",90);
+         Tank tank1 = new Tank("Tank","Gustal",100);
+         Tank tank2 = new Tank("Tank","Betra",75);
+         Tank tank3 = new Tank("Tank","Trion",56);
+         Tank tank4 = new Tank("Tank","Jack Frost",100);
+
         ArrayList<Player> wizardArrayList = new ArrayList<>();
         ArrayList<Player> worrierArrayList = new ArrayList<>();
         ArrayList<Player> lancerArrayList = new ArrayList<>();
         ArrayList<Player> elfArrayList = new ArrayList<>();
         ArrayList<Player> knightArrayList = new ArrayList<>();
         ArrayList<Player> healerArrayList = new ArrayList<>();
+        ArrayList<Player> tankArrayList = new ArrayList<>();
 
+        tankArrayList.add(tank);
+        tankArrayList.add(tank1);
+        tankArrayList.add(tank2);
+        tankArrayList.add(tank3);
+        tankArrayList.add(tank4);
 
-
-         healerArrayList.add(healerPlayer);
+        healerArrayList.add(healerPlayer);
         healerArrayList.add(healerPlayer1);
         healerArrayList.add(healerPlayer2);
         healerArrayList.add(healerPlayer3);
@@ -110,29 +122,30 @@ public class Characters {
         Characters.add(elfArrayList);
         Characters.add(lancerArrayList);
         Characters.add(healerArrayList);
+        Characters.add(tankArrayList);
     }
 
 
 
 
     public ArrayList<Player> yourCharacters(){
-        SecureRandom random = new SecureRandom();
-        ArrayList<Player> ingame = new ArrayList<>();
        // arr.get(0).get(0).getWeapons().
 
-        System.out.println("hello");
-        System.out.println((getCharacters().get(0).get(0)));
+      //  System.out.println("hello");
+        //System.out.println((getCharacters().get(0).get(0)));
         boolean a =true;
         while (a){
             double allMoney =0;
             int c = random.nextInt(getCharacters().size());
             if(ingame.size()==0){
-            ingame.add(getCharacters().get(c).get(random.nextInt(4)));
+            ingame.add(getCharacters().get(c).get(random.nextInt(0,4)));
             }
-            Player player = getCharacters().get(c).get(random.nextInt(4));
+            Player player = getCharacters().get(c).get(random.nextInt(0,4));
             if(ingame.size()==1){
               if(!Objects.equals(player.getType(), ingame.get(0).getType())){
                 ingame.add(player);
+
+
 
             }
             }
@@ -143,21 +156,51 @@ public class Characters {
                 }
             }
             System.out.println("cs: " + getCharacters().size());
-            allMoney +=player.getMoney();
-            player.selectC();
-            player.setAllMoney(allMoney);
+            for(int i = 0; i<ingame.size();i++) {
+                ingame.get(i).selectC();
+                allMoney += player.getMoney();
+                player.setAllMoney(allMoney);
+            }
         }
 
 
         return ingame;
     }
 
-    public void wishCharacter(){
+    public Player wishCharacter(){
+        int c = random.nextInt(getCharacters().size());
+        ingame.add(getCharacters().get(c).get(random.nextInt(0,4)));
+        ingame.get(ingame.size()-1).selectC();
 
+        return ingame.get(ingame.size()-1);
     }
 
+    public void wishCharacterPrintInfo(Player player) {
+        System.out.println("your wish comes true...");
+        if (player.getRarity() == 5) {
+            System.out.println("falling yellow star");
+            System.out.println("You are very lucky");
+            System.out.println("information of your newly released character");
+            ingame.get(3).selectC();
+            ingame.get(3).characterPrintInfo();
+
+        } else if (player.getRarity() == 4) {
+            System.out.println("falling purple star");
+            System.out.println("information of your newly released character");
+            ingame.get(3).selectC();
+            ingame.get(3).characterPrintInfo();
+
+        } else if (player.getRarity() == 3) {
+            System.out.println("falling blue star");
+            System.out.println("better luck next time");
+            System.out.println("information of your newly released character");
+            ingame.get(3).selectC();
+            ingame.get(3).characterPrintInfo();
+
+        }
 
 
+    }
 
     }
 
