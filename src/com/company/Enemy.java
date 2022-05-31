@@ -2,7 +2,7 @@ package com.company;
 
 import java.security.SecureRandom;
 
-public abstract class Enemy {
+public class Enemy {
     Game game;
     SecureRandom sc = new SecureRandom();
     private String type;
@@ -97,7 +97,15 @@ public abstract class Enemy {
 
     }
 
-    public abstract int enemyCounter();
+     public int enemyCounter(){
+        int number=2;
+        for(int i = 0 ; i<game.getAdventureRank();i++){
+            number*=2;
+        }
+
+        setMaxNumber(number);
+        return number;
+    }
 
     public int changeStrength() {
         if (getType().equals("DeathKnight")) {
