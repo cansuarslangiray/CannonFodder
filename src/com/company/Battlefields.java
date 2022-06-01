@@ -9,6 +9,7 @@ public abstract class Battlefields extends Location {
     private ArrayList<Enemy> enemy;
     Scanner input = new Scanner(System.in);
     private Enemy e;
+    int eCounter;
     Player player;
 
     public Battlefields(ArrayList<Player> players, ArrayList<Enemy> enemy) {
@@ -17,9 +18,11 @@ public abstract class Battlefields extends Location {
     }
 
     public boolean getLocation(){
-        //int enemyCounter = e.enemyCounter();
+        for(int i = 0; i<enemy.size();i++){
+            eCounter = enemy.get(i).enemyCounter();
+        }
         System.out.println("You are in: " + this.getName());
-       // System.out.println("There are" + enemyCounter+ "DemonHunter in here.");
+        //System.out.println("There are" + enemyCounter+ "DemonHunter in here.");
         System.out.println("To fight press f or press r to run");
         String choice = input.next();
         if(choice.equals("f")){

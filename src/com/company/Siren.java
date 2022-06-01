@@ -1,8 +1,8 @@
 package com.company;
 
 public class Siren extends Enemy{
-    public Siren(int damage, int award, int health, int maxNumber) {
-        super("Siren", damage, 90, health, maxNumber);
+    public Siren(int award,int maxNumber) {
+        super("Siren", 90,maxNumber);
     }
 
     @Override

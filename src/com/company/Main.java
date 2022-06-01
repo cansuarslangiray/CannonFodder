@@ -9,7 +9,7 @@ public class Main {
 
 
             game.logIn();
-           // game.map();
+            game.map();
             game.charactersInfo();
     }
 }

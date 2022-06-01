@@ -15,9 +15,9 @@ public class Characters {
         return Characters;
     }
 
-    public void setCharacters(ArrayList<ArrayList<Player>> characters) {
+    /*public void setCharacters(ArrayList<ArrayList<Player>> characters) {
         Characters = characters;
-    }
+    }*/
 
     public  Characters(){
 
@@ -169,10 +169,20 @@ public class Characters {
 
     public Player wishCharacter(){
         int c = random.nextInt(getCharacters().size());
-        ingame.add(getCharacters().get(c).get(random.nextInt(0,4)));
-        ingame.get(ingame.size()-1).selectC();
 
-        return ingame.get(ingame.size()-1);
+        boolean a = true;
+        while(a) {
+            Player player = getCharacters().get(c).get(random.nextInt(0,4));
+            for (int i = 0; i < ingame.size(); i++) {
+                if (!Objects.equals(ingame.get(i), player)) {
+                    ingame.add(player);
+                    a = false;
+                    break;
+                }
+            }
+            ingame.get(ingame.size() - 1).selectC();
+
+        }return ingame.get(ingame.size() - 1);
     }
 
     public void wishCharacterPrintInfo(Player player) {

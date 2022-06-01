@@ -19,6 +19,11 @@ public class WeaponsShop extends SafePlace{
     @Override
     public boolean getLocation() {
         options();
+        weaponsShop();
+        return true;
+    }
+
+    public void weaponsShop(){
         boolean c = true;
         while (c) {
             int choice2 = sc.nextInt();
@@ -39,7 +44,7 @@ public class WeaponsShop extends SafePlace{
                                 System.out.println("you have " + players.get(1).getAllMoney() +" money");
                                 System.out.println("Which sword do you want ?");
                                 int ch4 = sc.nextInt();
-                               buyWeapon(ch4,objects.getSwordArrayList());
+                                buyWeapon(ch4,objects.getSwordArrayList());
                                 break;
                             case 2:
                                 options();
@@ -160,7 +165,7 @@ public class WeaponsShop extends SafePlace{
                                 System.out.println("you have " + players.get(1).getAllMoney() +" money");
                                 System.out.println("Which catalyst do you want ?");
                                 int ch4 = sc.nextInt();
-                               buyWeapon(ch4,objects.getCatalystArrayList());
+                                buyWeapon(ch4,objects.getCatalystArrayList());
                                 break;
                             case 2:
                                 options();
@@ -190,7 +195,7 @@ public class WeaponsShop extends SafePlace{
                                 System.out.println("you have " + players.get(1).getAllMoney()  +" money");
                                 System.out.println("Which scythe do you want ?");
                                 int ch4 = sc.nextInt();
-                               buyWeapon(ch4,objects.getScytheArrayList());
+                                buyWeapon(ch4,objects.getScytheArrayList());
                                 break;
                             case 2:
                                 options();
@@ -202,8 +207,8 @@ public class WeaponsShop extends SafePlace{
                         }
                     }
                     break;
-                    case 7:
-                   options();
+                case 7:
+                    options();
                     break;
                 case 8:
                     System.out.println("exiting this page.....");
@@ -217,9 +222,8 @@ public class WeaponsShop extends SafePlace{
                     break;
             }
         }
-        return true;
-    }
 
+    }
 
 
    public void buyWeapon(int choice, ArrayList<Weapons> wps){

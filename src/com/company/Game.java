@@ -9,7 +9,7 @@ public class Game {
      Scanner sc = new Scanner(System.in);
      private int adventureRank = 1;
      Characters characters = new Characters();
-     Objects obj  =new Objects();
+     //Objects obj  =new Objects();
 
     public int getAdventureRank() {
         return adventureRank;

@@ -1,8 +1,8 @@
 package com.company;
 
 public class DeathKnight extends Enemy{
-    public DeathKnight(int damage, int award, int health, int maxNumber) {
-        super("Death Knight", damage, 50, health, maxNumber);
+    public DeathKnight( int award, int maxNumber) {
+        super("Death Knight", 50, maxNumber);
     }
 
     @Override
