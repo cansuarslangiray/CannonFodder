@@ -7,17 +7,10 @@ public class Game {
     ArrayList<Player>players;
      Location location;
      Scanner sc = new Scanner(System.in);
-     private int adventureRank = 1;
      Characters characters = new Characters();
      //Objects obj  =new Objects();
 
-    public int getAdventureRank() {
-        return adventureRank;
-    }
 
-    public void setAdventureRank(int adventureRank) {
-        this.adventureRank = adventureRank;
-    }
 
 
     public void logIn(){

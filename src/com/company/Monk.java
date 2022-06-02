@@ -1,18 +1,15 @@
 package com.company;
 
 public class Monk extends Enemy{
-    public Monk( int award, int maxNumber) {
-        super("Monk",95, maxNumber);
+    public Monk() {
+        super("Monk");
+
     }
 
     @Override
-
-    public int enemyCounter() {
-        int number=2;
-        for(int i = 0 ; i<game.getAdventureRank();i++){
-            number*=2;
-        }
-        setMaxNumber(number);
-        return number;
+    public void attack() {
+        System.out.println(getName() + " is attacking " + getTarget().getCharacterName() + "...");
+        getTarget().setHealth(getTarget().getHealth() - getDamage());
+        System.out.println(getName() + " damaged " + getTarget().getCharacterName() + " for " + getDamage() + " damage.");
     }
 }

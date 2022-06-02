@@ -1,21 +1,14 @@
 package com.company;
 
 public class DeathKnight extends Enemy{
-    public DeathKnight( int award, int maxNumber) {
-        super("Death Knight", 50, maxNumber);
+    public DeathKnight() {
+        super("Death Knight");
     }
 
     @Override
-
-    public int enemyCounter() {
-
-        int number=2;
-        for(int i = 0 ; i<game.getAdventureRank();i++){
-            number*=2;
-        }
-       setMaxNumber(number);
-
-        return number;
-
+    public void attack() {
+        System.out.println(getName() + " is attacking " + getTarget().getCharacterName() + "...");
+        getTarget().setHealth(getTarget().getHealth() - getDamage());
+        System.out.println(getName() + " damaged " + getTarget().getCharacterName() + " for " + getDamage() + " damage.");
     }
 }

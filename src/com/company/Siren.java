@@ -1,11 +1,11 @@
 package com.company;
 
 public class Siren extends Enemy{
-    public Siren(int award,int maxNumber) {
-        super("Siren", 90,maxNumber);
+    public Siren() {
+        super("Siren");
     }
 
-    @Override
+   /* @Override
 
     public int enemyCounter() {
 
@@ -18,5 +18,5 @@ public class Siren extends Enemy{
 
         return number;
 
-    }
+    }*/
 }

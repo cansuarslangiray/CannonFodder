@@ -3,11 +3,11 @@ package com.company;
 import java.security.SecureRandom;
 
 public class Enemy {
-    Game game;
     SecureRandom sc = new SecureRandom();
+    Player target;
     private String type;
     private String name;
-    private int damage, award, health, maxNumber;
+    private int damage, award, health;
     private int strength;
     private int vitality;
     private int intelligence;
@@ -44,12 +44,20 @@ public class Enemy {
         this.type = type;
     }
 
-    public Enemy(String name, int award, int maxNumber) {
+    public Player getTarget() {
+        return target;
+    }
+
+    public void setTarget(Player target) {
+        this.target = target;
+    }
+
+    public Enemy(String name) {
         this.name = name;
         this.damage = calculateDamage();
-        this.award = award;
+       // this.award = award;
         this.health = healthPoint();
-        this.maxNumber = maxNumber;
+       // this.maxNumber = maxNumber;
     }
 
     public String getName() {
@@ -84,7 +92,7 @@ public class Enemy {
         this.health = health;
     }
 
-    public int getMaxNumber() {
+   /* public int getMaxNumber() {
         return maxNumber;
     }
 
@@ -101,7 +109,7 @@ public class Enemy {
 
         setMaxNumber(number);
         return number;
-    }
+    }*/
 
         public int changeStrength () {
             if (getType().equals("DeathKnight")) {
@@ -229,6 +237,10 @@ public class Enemy {
                 return getDamage() * getVitality();
             } else
                 return 0;
+        }
+
+        public void attack(){
+
         }
 
     }
