@@ -7,10 +7,11 @@ public class Enemy {
     Player target;
     private String type;
     private String name;
-    private int damage, award, health;
+    private int damage = 5 , award, health;
     private int strength;
     private int vitality;
     private int intelligence;
+    private boolean isStunned = false;
 
     public int getIntelligence() {
         return intelligence;
@@ -52,12 +53,24 @@ public class Enemy {
         this.target = target;
     }
 
+    public boolean getIsStunned(){
+        return isStunned;
+    }
+
+    public void setStunned(boolean isStunned) {
+        this.isStunned = isStunned;
+    }
+
+    public Enemy(){
+
+    }
     public Enemy(String name) {
         this.name = name;
-        this.damage = calculateDamage();
+        this.damage = getDamage();
+        this.type = getType();
        // this.award = award;
-        this.health = healthPoint();
-       // this.maxNumber = maxNumber;
+        this.health = getHealth();
+
     }
 
     public String getName() {
@@ -111,136 +124,58 @@ public class Enemy {
         return number;
     }*/
 
-        public int changeStrength () {
-            if (getType().equals("DeathKnight")) {
-                int random = sc.nextInt(1, 5);
-                setStrength(random);
-                return random;
-            }
-            if (getType().equals("DemonHunter")) {
-                int random1 = sc.nextInt(1, 5);
-                setStrength(random1);
-                return random1;
-            }
-            if (getType().equals("Goblin")) {
-                int random2 = sc.nextInt(1, 5);
-                setStrength(random2);
-                return random2;
-            }
-            if (getType().equals("Monk")) {
-                int random3 = sc.nextInt(1, 5);
-                setStrength(random3);
-                return random3;
-            }
-            if (getType().equals("Rouge")) {
-                int random4 = sc.nextInt(1, 5);
-                setStrength(random4);
-                return random4;
-            } else if (getType().equals("Siren")) {
-                int random5 = sc.nextInt(1, 5);
-                setStrength(random5);
-                return random5;
-            } else
-                return 0;
+        public void changeStrength () {
+            int random = sc.nextInt(1, 5);
+            setStrength(random);
         }
-        public int changeVitality () {
+        public void changeVitality () {
 
-            if (getType().equals("DeathKnight")) {
-                int random = sc.nextInt(1, 5);
-                setVitality(random);
-                return random;
-            }
-            if (getType().equals("DemonHunter")) {
-                int random1 = sc.nextInt(1, 5);
-                setVitality(random1);
-                return random1;
-            }
-            if (getType().equals("Goblin")) {
-                int random2 = sc.nextInt(1, 5);
-                setVitality(random2);
-                return random2;
-            }
-            if (getType().equals("Monk")) {
-                int random3 = sc.nextInt(1, 5);
-                setVitality(random3);
-                return random3;
-            }
-            if (getType().equals("Rouge")) {
-                int random4 = sc.nextInt(1, 5);
-                setVitality(random4);
-                return random4;
-            }
-            if (getType().equals("Siren")) {
+
                 int random5 = sc.nextInt(1, 5);
                 setVitality(random5);
-                return random5;
-            } else
-                return 0;
+
+
         }
 
-        public int changeIntelligence () {
-            if (getType().equals("DeathKnight")) {
-                int random = sc.nextInt(1, 5);
-                setIntelligence(random);
-                return random;
-            }
-            if (getType().equals("DemonHunter")) {
-                int random1 = sc.nextInt(1, 5);
-                setIntelligence(random1);
-                return random1;
-            }
-            if (getType().equals("Goblin")) {
-                int random2 = sc.nextInt(1, 5);
-                setIntelligence(random2);
-                return random2;
-            }
-            if (getType().equals("Monk")) {
-                int random3 = sc.nextInt(1, 5);
-                setIntelligence(random3);
-                return random3;
-            }
-            if (getType().equals("Rouge")) {
-                int random4 = sc.nextInt(1, 5);
-                setIntelligence(random4);
-                return random4;
-            }
-            if (getType().equals("Siren")) {
+        public void changeIntelligence () {
+
                 int random5 = sc.nextInt(1, 5);
                 setIntelligence(random5);
-                return random5;
-            } else
-                return 0;
+
 
         }
-        public int healthPoint() {
+        public void healthPoint() {
           double hp = (7 * getVitality()) + 2 * getStrength() + 1.2 * getIntelligence();
           setHealth((int) Math.round(hp));
-          return getHealth();
+
        }
-        public int calculateDamage () {
-            if (getType().equals("DeathKnight")) {
-                return getDamage() * changeIntelligence();
-            }
-            if (getType().equals("DemonHunter")) {
-                return getDamage() * changeStrength();
-            }
-            if (getType().equals("Goblin")) {
-                return getDamage() * changeStrength();
-            }
-            if (getType().equals("Monk")) {
-                return getDamage() * changeIntelligence();
-            }
-            if (getType().equals("Rouge")) {
-                return getDamage() * changeVitality();
-            }
-            if (getType().equals("Siren")) {
-                return getDamage() * getVitality();
-            } else
-                return 0;
-        }
-
-        public void attack(){
+        public void calculateDamage () {
+                setDamage(getDamage() * getIntelligence());
 
         }
+
+        public void sEnemy(){
+            changeIntelligence();
+            changeVitality();
+            changeStrength();
+            calculateDamage();
+            healthPoint();
+
+        }
+
+          public void attack() {
+                int y = getTarget().getHealth();
+                if(getTarget().getArmors()!=null){
+                    int x = (int) Math.round(getTarget().getHealth() - (getDamage() - getTarget().getArmors().getBlock() * 0.1));
+                    int z = y - x;
+                    getTarget().setHealth(z);
+                    System.out.println(getName() + " attacked " + getTarget().getCharacterName()+ " for " + z + " damage.");
+                }
+                else {
+                    System.out.println(getName() + " attacked " + getTarget().getCharacterName() + " for " + getDamage() + " damage.");
+                    getTarget().setHealth(y-getDamage());
+                }
+            }
+
 
     }

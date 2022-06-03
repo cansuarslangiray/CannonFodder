@@ -5,10 +5,11 @@ import java.util.ArrayList;
 public abstract class Location {
 
    protected ArrayList<Player> players;
-   protected String name;
+   protected String areaName;
 
    public Location(ArrayList<Player> players) {
       this.players = players;
+
    }
 
    public abstract boolean getLocation();
@@ -22,12 +23,12 @@ public abstract class Location {
       this.players = players;
    }
 
-   public String getName() {
-      return name;
+   public String getAreaName() {
+      return areaName;
    }
 
-   public void setName(String name) {
-      this.name = name;
+   public void setAreaName(String areaName) {
+      this.areaName = areaName;
    }
 }
 

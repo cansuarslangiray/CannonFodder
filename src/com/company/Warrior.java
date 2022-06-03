@@ -10,7 +10,9 @@ public class Warrior extends Player {
         super(type, characterName, money);
     }
 
-
-
+    @Override
+    public void attack() {
+        super.attack();
+    }
 }
 

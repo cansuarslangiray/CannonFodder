@@ -1,15 +1,18 @@
 package com.company;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    ArrayList<Player>players;
+    SecureRandom sr = new SecureRandom();
+    public int adventureRank = 1;
+     ArrayList<Player>players;
+     ArrayList<Enemy>enemies;
+     Moonhallow moonhallow;
      Location location;
      Scanner sc = new Scanner(System.in);
      Characters characters = new Characters();
-     //Objects obj  =new Objects();
-
 
 
 
@@ -213,10 +216,11 @@ public class Game {
                      System.out.println("press 4 to go to first page");
                      System.out.println("Where do you want to go ?");
                      int number2 = sc.nextInt();
-                    /* switch (number2){
+                    switch (number2){
                          case 1:
-                             location = new Moonhallow(player,)
-                     }*/
+                             location = new Moonhallow(players);
+                             location.getLocation();
+                     }
                      break;
 
                  case 3:
@@ -233,5 +237,6 @@ public class Game {
          }
 
     }
+
 
 }
