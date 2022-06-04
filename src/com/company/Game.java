@@ -211,8 +211,6 @@ public class Game {
                      break;
                  case 2:
                      System.out.println("press 1 to Moonhallow. In this area, you may encounter siren or demon hunter. ");
-                     System.out.println("press 2 to Wildfront. In this area, you may encounter goblin, rouge or monk ");
-                     System.out.println("press 3 to Oceangulf. In this, you may encounter death knight, demon hunter or siren ");
                      System.out.println("press 4 to go to first page");
                      System.out.println("Where do you want to go ?");
                      int number2 = sc.nextInt();

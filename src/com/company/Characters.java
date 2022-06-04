@@ -15,9 +15,6 @@ public class Characters {
         return Characters;
     }
 
-    /*public void setCharacters(ArrayList<ArrayList<Player>> characters) {
-        Characters = characters;
-    }*/
 
     public  Characters(){
 
@@ -129,10 +126,6 @@ public class Characters {
 
 
     public ArrayList<Player> yourCharacters(){
-       // arr.get(0).get(0).getWeapons().
-
-      //  System.out.println("hello");
-        //System.out.println((getCharacters().get(0).get(0)));
         boolean a =true;
         while (a){
             double allMoney =0;

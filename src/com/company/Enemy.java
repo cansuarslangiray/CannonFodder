@@ -61,9 +61,6 @@ public class Enemy {
         this.isStunned = isStunned;
     }
 
-    public Enemy(){
-
-    }
     public Enemy(String name) {
         this.name = name;
         this.damage = getDamage();
@@ -104,25 +101,6 @@ public class Enemy {
     public void setHealth(int health) {
         this.health = health;
     }
-
-   /* public int getMaxNumber() {
-        return maxNumber;
-    }
-
-    public void setMaxNumber(int maxNumber) {
-        this.maxNumber = maxNumber;
-    }
-
-
-    public int enemyCounter() {
-        int number = 2;
-        for (int i = 0; i < game.getAdventureRank(); i++) {
-            number *= 2;
-        }
-
-        setMaxNumber(number);
-        return number;
-    }*/
 
         public void changeStrength () {
             int random = sc.nextInt(1, 5);

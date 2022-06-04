@@ -7,14 +7,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class Battlefields extends Location {
+    int enemyTemp;
     int advRank = 1;
     Scanner sc = new Scanner(System.in);
     SecureRandom sr = new SecureRandom();
     int nDamage;
     Location location;
     private ArrayList<Enemy> currentEnemies ;
-    private Enemy e;
-    double eCounter = Math.pow(2,2);
     private ArrayList<Player> fPlayers = new ArrayList<>();
 
 
@@ -29,11 +28,10 @@ public abstract class Battlefields extends Location {
         fPlayer();
         System.out.println("To fight press f or press r to run");
         String choice = sc.next();
-        if(choice.equals("f")){
-            //initializeEnemies();
+        if(choice.equalsIgnoreCase("f")){
             battle();
         }
-        if(choice.equals("r")){
+        if(choice.equalsIgnoreCase("r")){
             location = new Home(players);
             location.getLocation();
         }
@@ -43,62 +41,10 @@ public abstract class Battlefields extends Location {
 
    public ArrayList<Enemy> initializeEnemies() {
      currentEnemies = new ArrayList<>();
-        for (int i = 0; i < Math.pow(2,2); i++) {
-            if(location.getAreaName().equals("Moonhallow")){
-               int sEnemy = sr.nextInt(0,1);
-               if(sEnemy == 1){
-                   Enemy siren = new Siren();
-                   siren.sEnemy();
-                   currentEnemies.add(siren);
-
-               }
-               else {
-                   Enemy demonHunter = new DemonHunter("s");
-                   demonHunter.sEnemy();
-                   currentEnemies.add(demonHunter);
-
-               }
-               return currentEnemies;
-            }
-            else if(this.getAreaName().equals("Wildfront")){
-                int sEnemy = sr.nextInt(0,2);
-                if(sEnemy == 0){
-                    Goblin goblin = new Goblin();
-                    goblin.sEnemy();
-                    currentEnemies.add(goblin);
-
-                }
-                else if(sEnemy == 1){
-                    Rouge rouge = new Rouge();
-                    rouge.sEnemy();
-                    currentEnemies.add(rouge);
-                }
-                else{
-                    Monk monk = new Monk();
-                    monk.sEnemy();
-                    currentEnemies.add(monk);
-                }
-                return currentEnemies;
-            }
-           else if(this.getAreaName().equals("Oceangulf")){
-                int sEnemy = sr.nextInt(0,2);
-                if(sEnemy == 0){
-                    DeathKnight deathKnight = new DeathKnight();
-                    deathKnight.sEnemy();
-                    currentEnemies.add(deathKnight);
-                }
-                else if(sEnemy == 1){
-                    Siren siren = new Siren();
-                    siren.sEnemy();
-                    currentEnemies.add(siren);
-                }
-                else {
-                    DemonHunter demonHunter = new DemonHunter("s");
-                    demonHunter.sEnemy();
-                    currentEnemies.add(demonHunter);
-                }
-                return currentEnemies;
-            }
+        for (int i = 0; i < Math.pow(2,advRank); i++) {
+            Enemy siren = new Siren();
+            siren.sEnemy();
+            currentEnemies.add(siren);
         }
         return currentEnemies;
     }
@@ -123,11 +69,10 @@ public abstract class Battlefields extends Location {
      public void battle() {
          initializeEnemies();
          int temp;
-         int enemyTemp = 0;
          boolean fighting = true;
          int numberOfEnemies = currentEnemies.size();
          int numberOfPlayers = players.size();
-         System.out.println("------------LEVEL " + 2 + " --------------");
+         System.out.println("------------LEVEL " + advRank + " --------------");
          System.out.println("Number of enemies are " + numberOfEnemies + "          |");
          System.out.println("information of your characters before the fight begins ");
          for (int i = 0; i < 3; i++) {
@@ -144,10 +89,11 @@ public abstract class Battlefields extends Location {
                  temp = sr.nextInt(0, numberOfEnemies - 1);
              }
              while (targeted) {
+                 System.out.println("---------------------------------------");
                  System.out.println("choose the character you will fight: ");
-                 System.out.println("press 1 " + fPlayers.get(0).getCharacterName());
-                 System.out.println("press 2 " + fPlayers.get(1).getCharacterName());
-                 System.out.println("press 3 " + fPlayers.get(2).getCharacterName());
+                 for(int i = 0; i<fPlayers.size();i++) {
+                     System.out.println("press "+ (i+1 ) + " " + fPlayers.get(i).getCharacterName());
+                 }
                  int choice = sc.nextInt();
                  System.out.println(
                          "It is " + fPlayers.get(choice - 1).getType() + " " + fPlayers.get(choice - 1).getCharacterName()
@@ -155,13 +101,13 @@ public abstract class Battlefields extends Location {
                  fPlayers.get(choice - 1).setTarget(currentEnemies.get(temp));
                  boolean menu = true;
                  while (menu) {
-                     System.out.println("******************************************************");
+                     System.out.println("------------------------------------------------------");
                      System.out.println("Here are your player options");
                      System.out.println("Enter 1 to basic attack enemy");
                      System.out.println("Enter 2 to use special ability");
                      System.out.println("Enter 3 to display inventory");
                      System.out.println("Enter 4 to display character information and stats");
-                     System.out.println("******************************************************");
+                     System.out.println("------------------------------------------------------");
                      int answer = sc.nextInt();
                      switch (answer) {
                          case 1:
@@ -186,9 +132,7 @@ public abstract class Battlefields extends Location {
                      }
                  }
                  if (fPlayers.get(choice - 1).getTarget().getHealth() <= 0) {
-                     nDamage = -1 * (fPlayers.get(choice - 1).getTarget().getHealth());
                      fPlayers.get(choice - 1).getTarget().setHealth(0);
-
                  }
                  System.out.println(
                          "Current health of the enemy is " + fPlayers.get(choice - 1).getTarget().getHealth());
@@ -196,39 +140,53 @@ public abstract class Battlefields extends Location {
 
                  if (currentEnemies.get(temp).getHealth() <= 0) {
                      System.out.println(currentEnemies.get(temp).getName() + " is dead");
+                     nDamage=currentEnemies.get(temp).getHealth();
+                     boolean n = true;
+                     while (n) {
+                         nDamage*=-1;
+                         for (int i = 0; i < currentEnemies.size(); i++) {
+                             if(nDamage%2==0){
+                                 currentEnemies.get(i).setHealth(currentEnemies.get(i).getHealth()-(nDamage/2));
+                                 nDamage/=2;
+                             }
+                             else if(nDamage%3==0){
+                                 currentEnemies.get(i).setHealth(currentEnemies.get(i).getHealth()-(nDamage/3));
+                                 nDamage/=3;
+
+                             }
+                             else {
+                                 currentEnemies.get(i).setHealth(currentEnemies.get(i).getHealth() - 1);
+                                 nDamage-=1;
+                             }
+                             if(nDamage == 0){
+                                 n = false;
+                             }
+                         }
+                     }
                      currentEnemies.remove(temp);
                  }
 
-                 while (nDamage<0) {
-                     for (int i = 0; i < currentEnemies.size(); i++) {
-                         int n2Damage = sr.nextInt(0, (nDamage));
-                         currentEnemies.get(i).setHealth(currentEnemies.get(i).getHealth() - n2Damage);
-                         nDamage -= n2Damage;
-
-                     }
-                 }
                  numberOfEnemies = currentEnemies.size();
                  targeted = false;
 
-
-                    /*for (int j = 0; j < fPlayers.size(); j++) {
-                        if (fPlayers.get(j).getType().equals("Tank")) {
-                            enemyTemp = j;
-                        }
-                    }
-                    if(currentEnemies.get(temp).getIsStunned()){
-                        continue;
-                    }*/
                  if (numberOfEnemies == 1 || numberOfEnemies==0) {
                      temp = 0;
                  } else {
                      temp =sr.nextInt(0,currentEnemies.size()-1);
                  }
-                // temp =sr.nextInt(0,currentEnemies.size()-1);
+
                  System.out.println(currentEnemies.size());
+                // fPlayers.get(choice - 1).setTarget(currentEnemies.get(temp));
                  if(currentEnemies.size()>0) {
                      System.out.println("It is " + currentEnemies.get(temp).getName() + "'s turn ");
-                     currentEnemies.get(temp).setTarget(fPlayers.get(choice - 1));
+                     for (int j = 0; j < fPlayers.size(); j++) {
+                         if (fPlayers.get(j).getType().equals("Tank")) {
+                             enemyTemp = j;
+                             currentEnemies.get(temp).setTarget(fPlayers.get(enemyTemp));
+                         }
+                         else
+                             currentEnemies.get(temp).setTarget(fPlayers.get(choice-1));
+                     }
                      currentEnemies.get(temp).attack();
 
                      if (currentEnemies.get(temp).getTarget().getHealth() < 0) {
@@ -240,16 +198,14 @@ public abstract class Battlefields extends Location {
                          currentEnemies.get(temp).setStunned(false);
                      }
                      if (currentEnemies.get(temp).getTarget().getHealth() <= 0) {
-                         break;
-                     }
+                             System.out.println(fPlayers.get(choice-1).getCharacterName() + " is dead");
+                             fPlayers.remove(choice-1);
+                             numberOfPlayers = fPlayers.size();
+                             targeted = false;
 
-                     if (fPlayers.get(enemyTemp).getHealth() <= 0) {
-                         System.out.println(fPlayers.get(enemyTemp).getCharacterName() + " is dead");
-                         fPlayers.remove(enemyTemp);
-                         numberOfPlayers = fPlayers.size();
-                         targeted = false;
                      }
                  }
+
              }
           if (numberOfEnemies == 0) {
              fighting = false;
@@ -295,7 +251,7 @@ public abstract class Battlefields extends Location {
         }
     }
     public void enemyStats() {
-        for (int i = 0; i < eCounter; i++) {
+        for (int i = 0; i <currentEnemies.size(); i++) {
             System.out.println(currentEnemies.get(i).getName()+" Stats: ");
             System.out.println("Health: " + currentEnemies.get(i).getHealth() +"  Damege: \t" + currentEnemies.get(i).getDamage()+ "  Award: \t" + currentEnemies.get(i).getAward() );
         }

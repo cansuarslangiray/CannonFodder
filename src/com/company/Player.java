@@ -27,6 +27,7 @@ public class Player {
 
 
 
+
     public Player(String type, String characterName, int money) {
         this.type = type;
         this.characterName = characterName;
@@ -194,7 +195,6 @@ public class Player {
     public void changeVitality() {
 
         if (getType().equals("Wizard")) {
-
             setVitality(sc.nextInt(1, 6));
         } else if (getType().equals("Knight")) {
             setVitality(sc.nextInt(3, 7));
@@ -281,7 +281,7 @@ public class Player {
     }
 
     public void healthPoint() {
-        double hp = (7 * getVitality()) + 2 * getStrength() + 1.2 * getIntelligence();
+        double hp = (7 * getVitality()) + 2 * getStrength() + 1 * getIntelligence();
         setHealth((int) Math.round(hp));
         setrHealthy((int) Math.round(hp));
     }
@@ -346,6 +346,8 @@ public class Player {
         playerDamage();
         System.out.println(" type: "+getItem().getItemType());
     }
+
+
 
     public void characterPrintInfo(){
         System.out.println("Information of the Characters in the game");
