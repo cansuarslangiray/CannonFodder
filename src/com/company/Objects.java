@@ -62,12 +62,12 @@ public class Objects {
         Weapons shield1 = new Shield("Round Shield","Shield",4,4200,6,1,100,5);
         Weapons shield2 = new Shield("Dragon Crest Shield","Shield",3,2200,4,1,100,7);
 
-        Ability ability = new Ability("Hydro");
-        Ability ability1 = new Ability("Cryo");
-        Ability ability2 = new Ability("Pyro");
-        Ability ability3 = new Ability("Anemo");
-        Ability ability4 = new Ability("Electro");
-        Ability ability5 = new Ability("Geo");
+        Ability ability = new Ability("Hydro",10);
+        Ability ability1 = new Ability("Cryo",17);
+        Ability ability2 = new Ability("Pyro",15);
+        Ability ability3 = new Ability("Anemo",7);
+        Ability ability4 = new Ability("Electro",20);
+
 
 
         Food food1= new Food("Satisfying Vegetable Salad","Food",70,300);
@@ -133,7 +133,7 @@ public class Objects {
         abilityArrayList.add(ability2);
         abilityArrayList.add(ability3);
         abilityArrayList.add(ability4);
-        abilityArrayList.add(ability5);
+
 
 
 

@@ -21,9 +21,13 @@ public class Player {
     private int rHealthy;
     private int block;
     private Weapons weapons;
-    private Ability ability1;
+    private Ability abilityType;
+    private Ability ability;
     private Armors armors;
     private Inventory item;
+    private Player ally;
+
+
 
 
 
@@ -34,7 +38,13 @@ public class Player {
         this.money = money;
         this.item = new Inventory();
     }
+    public Player getAlly() {
+        return ally;
+    }
 
+    public void setAlly(Player ally) {
+        this.ally = ally;
+    }
     public Inventory getItem() {
         return item;
     }
@@ -149,13 +159,22 @@ public class Player {
         this.armors= armors;
     }
 
-    public Ability getAbility1() {
-        return ability1;
+    public Ability getAbilityType() {
+        return abilityType;
     }
 
-    public void setAbility1(Ability ability1) {
-        this.ability1 = ability1;
+    public void setAbilityType(Ability abilityType) {
+        this.abilityType = abilityType;
     }
+
+    public Ability getAbility() {
+        return ability;
+    }
+
+    public void setAbility(Ability ability) {
+        this.ability = ability;
+    }
+
     public int getBlock() {
         return block;
     }
@@ -287,38 +306,6 @@ public class Player {
     }
 
     public void assigningWeapons() {
-        if(getType().equals("Wizard")){
-            setWeapons(objects.getWandArrayList().get(sc.nextInt( objects.getWandArrayList().size()-1)));
-            setItem(objects.getWandArrayList().get(sc.nextInt( objects.getWandArrayList().size()-1)));
-
-        }
-        else if(getType().equals("Worrier")){
-            setWeapons(objects.getClaymoreArrayList().get(sc.nextInt(objects.getClaymoreArrayList().size() - 1)));
-            setItem(objects.getClaymoreArrayList().get(sc.nextInt(objects.getClaymoreArrayList().size() - 1)));
-
-        }
-        else if(getType().equals("Elf")){
-            setWeapons(objects.getScytheArrayList().get(sc.nextInt(objects.getScytheArrayList().size() - 1)));
-            setItem(objects.getScytheArrayList().get(sc.nextInt(objects.getScytheArrayList().size() - 1)));
-        }
-        else if(getType().equals("Healer")){
-            setWeapons(objects.getCatalystArrayList().get(sc.nextInt(objects.getCatalystArrayList().size() - 1)));
-            setItem(objects.getCatalystArrayList().get(sc.nextInt(objects.getCatalystArrayList().size() - 1)));
-        }
-        else if(getType().equals("Lancer")){
-            setWeapons(objects.getPolearmsArrayList().get(sc.nextInt(objects.getPolearmsArrayList().size() - 1)));
-            setItem(objects.getPolearmsArrayList().get(sc.nextInt(objects.getPolearmsArrayList().size() - 1)));
-
-        }
-        else if(getType().equals("Knight")){
-            setWeapons(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
-            setItem(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
-        }
-        else if(getType().equals("Tank")){
-            setWeapons(objects.getShieldArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
-            setItem(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
-
-        }
 
     }
 
@@ -327,12 +314,20 @@ public class Player {
         System.out.println(getCharacterName() + " is attacking " + getTarget().getName() + "...");
         getTarget().setHealth(getTarget().getHealth() - getDamage());
         System.out.println(getCharacterName() + " damaged " + getTarget().getName() + " for " + getDamage() + " damage.");
+        getWeapons().setQuality(getWeapons().getQuality()-1);
+        if(getWeapons().getQuality()<=10){
+            System.out.println(getWeapons().getType() + " named " + getWeapons().getName() +" is about to break");
+            System.out.println("either get your weapon repaired or buy a new one");
+            System.out.println("If you do not do any of these, you will not be able to use this weapon again");
+        }
     }
 
     public  void assigningAbility() {
 
-        setAbility1(objects.getAbilityArrayList().get(sc.nextInt((objects.getAbilityArrayList().size())- 1)));
+        setAbilityType(objects.getAbilityArrayList().get(sc.nextInt((objects.getAbilityArrayList().size())- 1)));
 
+    }
+    public void cast() {
     }
 
     public void selectC(){
@@ -344,28 +339,17 @@ public class Player {
         assigningAbility();
         assigningWeapons();
         playerDamage();
-        System.out.println(" type: "+getItem().getItemType());
     }
 
 
 
     public void characterPrintInfo(){
-        System.out.println("Information of the Characters in the game");
-        System.out.println();
+        System.out.println("Information of the Characters ");
         System.out.println("------------------------------------------");
         System.out.println("name: " + getCharacterName());
-        System.out.println("intelligence: " + getIntelligence());
-        System.out.println("strenght: " + getStrength());
-        System.out.println("vitality: " + getVitality());
-        System.out.println("health point: " + getHealth());
-        System.out.println("rarity: " + getRarity());
-        System.out.println("rh " + getrHealthy());
-
-        System.out.println("ability: " + getAbility1().getAbilityName());
-        System.out.println("weapons: " + getWeapons().getName());
-      //  System.out.println("Armours: " + getArmors().getName());
-        System.out.println("damage: " + getDamage());
-        System.out.println("money: " + getMoney());
+        System.out.println("intelligence: \t"+getIntelligence()+"\t strenght: \t"+getStrength()+"\t vitality: \t"+getVitality() );
+        System.out.println("health point: \t"+getHealth()+"\t rarity: \t "+getRarity()+"\t money: \t"+getMoney());
+        System.out.println("ability: \t"+getAbilityType().getAbilityName()+"\t damage: \t"+getDamage()+"\t weapons: \t"+getWeapons().getName());
         System.out.println();
     }
 

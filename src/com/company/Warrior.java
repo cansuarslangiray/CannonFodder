@@ -11,8 +11,20 @@ public class Warrior extends Player {
     }
 
     @Override
+    public void assigningWeapons() {
+        setWeapons(objects.getClaymoreArrayList().get(sc.nextInt(objects.getClaymoreArrayList().size() - 1)));
+        setItem(objects.getClaymoreArrayList().get(sc.nextInt(objects.getClaymoreArrayList().size() - 1)));
+    }
+
+    @Override
     public void attack() {
         super.attack();
+    }
+
+    @Override
+    public void cast() {
+        System.out.println("Casting " + getCharacterName() + " on " + getTarget().getName());
+        getTarget().setHealth(getTarget().getHealth()-30);
     }
 }
 

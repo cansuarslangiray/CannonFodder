@@ -6,7 +6,19 @@ public class Tank extends Player{
     }
 
     @Override
+    public void assigningWeapons() {
+        setWeapons(objects.getShieldArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
+        setItem(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
+    }
+
+    @Override
     public void attack() {
         super.attack();
+    }
+
+    @Override
+    public void cast() {
+        System.out.println("Casting " + getCharacterName() + " on " + getTarget().getName());
+        getTarget().setStunned(true);
     }
 }

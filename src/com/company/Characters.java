@@ -148,7 +148,6 @@ public class Characters {
                     a=false;
                 }
             }
-            System.out.println("cs: " + getCharacters().size());
             for(int i = 0; i<ingame.size();i++) {
                 ingame.get(i).selectC();
                 allMoney += player.getMoney();
@@ -160,22 +159,21 @@ public class Characters {
         return ingame;
     }
 
-    public Player wishCharacter(){
-        int c = random.nextInt(getCharacters().size());
-
+    public void wishCharacter(){
+        int c = random.nextInt(0,7);
+        Player player = getCharacters().get(c).get(random.nextInt(0,4));
         boolean a = true;
         while(a) {
-            Player player = getCharacters().get(c).get(random.nextInt(0,4));
             for (int i = 0; i < ingame.size(); i++) {
-                if (!Objects.equals(ingame.get(i), player)) {
+                if (player.getCharacterName()!=ingame.get(i).getCharacterName()) {
+                    player.selectC();
                     ingame.add(player);
                     a = false;
                     break;
                 }
             }
-            ingame.get(ingame.size() - 1).selectC();
 
-        }return ingame.get(ingame.size() - 1);
+        }
     }
 
     public void wishCharacterPrintInfo(Player player) {
@@ -183,20 +181,17 @@ public class Characters {
         if (player.getRarity() == 5) {
             System.out.println("falling yellow star");
             System.out.println("You are very lucky");
-            System.out.println("information of your newly released character");
             ingame.get(3).selectC();
             ingame.get(3).characterPrintInfo();
 
         } else if (player.getRarity() == 4) {
             System.out.println("falling purple star");
-            System.out.println("information of your newly released character");
             ingame.get(3).selectC();
             ingame.get(3).characterPrintInfo();
 
         } else if (player.getRarity() == 3) {
             System.out.println("falling blue star");
             System.out.println("better luck next time");
-            System.out.println("information of your newly released character");
             ingame.get(3).selectC();
             ingame.get(3).characterPrintInfo();
 

@@ -12,6 +12,12 @@ public class Elf extends Player {
     }
 
     @Override
+    public void assigningWeapons() {
+        setWeapons(objects.getScytheArrayList().get(sc.nextInt(objects.getScytheArrayList().size() - 1)));
+        setItem(objects.getScytheArrayList().get(sc.nextInt(objects.getScytheArrayList().size() - 1)));
+    }
+
+    @Override
     public void attack() {
         super.attack();
     }

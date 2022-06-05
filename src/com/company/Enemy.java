@@ -5,6 +5,8 @@ import java.security.SecureRandom;
 public class Enemy {
     SecureRandom sc = new SecureRandom();
     Player target;
+    private boolean isElectrified = false;
+    private int physicalResistance =100;
     private String type;
     private String name;
     private int damage = 5 , award, health;
@@ -12,6 +14,22 @@ public class Enemy {
     private int vitality;
     private int intelligence;
     private boolean isStunned = false;
+
+    public boolean isElectrified() {
+        return isElectrified;
+    }
+
+    public void setElectrified(boolean electrified) {
+        isElectrified = electrified;
+    }
+
+    public int getPhysicalResistance() {
+        return physicalResistance;
+    }
+
+    public void setPhysicalResistance(int physicalResistance) {
+        this.physicalResistance = physicalResistance;
+    }
 
     public int getIntelligence() {
         return intelligence;
@@ -65,7 +83,6 @@ public class Enemy {
         this.name = name;
         this.damage = getDamage();
         this.type = getType();
-       // this.award = award;
         this.health = getHealth();
 
     }
@@ -143,6 +160,9 @@ public class Enemy {
 
           public void attack() {
                 int y = getTarget().getHealth();
+                if(getIsStunned()){
+                    System.out.println(getName() + " is stunned ");
+                }
                 if(getTarget().getArmors()!=null){
                     int x = (int) Math.round(getTarget().getHealth() - (getDamage() - getTarget().getArmors().getBlock() * 0.1));
                     int z = y - x;
