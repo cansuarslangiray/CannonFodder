@@ -139,78 +139,108 @@ public class Enemy {
         this.health = health;
     }
 
+
         public void changeStrength () {
-            int random = sc.nextInt(1, 5);
-            setStrength(random);
-        }
-        public void changeVitality () {
+
+    public int getMaxNumber() {
+        return maxNumber;
+    }
+
+    public void setMaxNumber(int maxNumber) {
+        this.maxNumber = maxNumber;
+    }
 
 
-                int random5 = sc.nextInt(1, 5);
-                setVitality(random5);
-
-
-        }
-
-        public void changeIntelligence () {
-
-                int random5 = sc.nextInt(1, 5);
-                setIntelligence(random5);
-
-
-        }
-        public void healthPoint() {
-          double hp = (7 * getVitality()) + 2 * getStrength() + 1.2 * getIntelligence();
-          setHealth((int) Math.round(hp));
-
-       }
-        public void calculateDamage () {
-                setDamage(getDamage() * getIntelligence());
-
-        }
-
-        public void sEnemy(){
-            changeIntelligence();
-            changeVitality();
-            changeStrength();
-            calculateDamage();
-            healthPoint();
-
-        }
-
-          public void attack() {
-                int y = getTarget().getHealth();
-                if(getElectrified()){
-                    System.out.println("electrocuted by " + getTarget().getCharacterName());
-                    setHealth(getHealth()-getTarget().getAbilityType().getAbilityDamage());
-                    System.out.println("Current health of the " + getName() + " is " + getHealth());
-                    electricT++;
-                }
-                if(electricT == 3){
-                    isElectrified = false;
-                    electricT=0;
-                }
-                if(getDamageAbsorber()){
-                    System.out.println(getName()+"' damage is absorbed by " + getTarget().getCharacterName());
-                    isDamageAbsorber=false;
-                }
-                if(getIsStunned()){
-                    System.out.println(getName() + " is stunned ");
-                    isStunned = false;
-                }
-                if(getTarget().getArmors()!=null){
-                    int x = (int) Math.round(getTarget().getHealth() - (getDamage() - getTarget().getArmors().getBlock() * 0.1));
-                    int z = y - x;
-                    getTarget().setHealth(z);
-                    System.out.println(getName() + " attacked " + getTarget().getCharacterName()+ " for " + z + " damage.");
-                }
-                if(getNormalAttack()){
-                    System.out.println(getName() + " attacked " + getTarget().getCharacterName() + " for " + getDamage() + " damage.");
-                    getTarget().setHealth(y-getDamage());
-                    setNormalAttack(false);
-                }
-
-            }
-
+    public void changeAventureRank() {
 
     }
+
+
+     public int enemyCounter() {
+                int number = 2;
+                for (int i = 0; i < game.getAdventureRank(); i++) {
+                    number *= 2;
+                }
+
+                setMaxNumber(number);
+                return number;
+
+
+                public int changeStrength () {
+                    if (getType().equals("DeathKnight")) {
+
+                        int random = sc.nextInt(1, 5);
+                        setStrength(random);
+                    }
+                    public void changeVitality () {
+
+
+                        int random5 = sc.nextInt(1, 5);
+                        setVitality(random5);
+
+
+                    }
+
+                    public void changeIntelligence () {
+
+                        int random5 = sc.nextInt(1, 5);
+                        setIntelligence(random5);
+
+
+                    }
+                    public void healthPoint () {
+                        double hp = (7 * getVitality()) + 2 * getStrength() + 1.2 * getIntelligence();
+                        setHealth((int) Math.round(hp));
+
+                    }
+                    public void calculateDamage () {
+                        setDamage(getDamage() * getIntelligence());
+
+                    }
+
+                    public void sEnemy () {
+                        changeIntelligence();
+                        changeVitality();
+                        changeStrength();
+                        calculateDamage();
+                        healthPoint();
+
+                    }
+
+                    public void attack () {
+                        int y = getTarget().getHealth();
+                        if (getElectrified()) {
+                            System.out.println("electrocuted by " + getTarget().getCharacterName());
+                            setHealth(getHealth() - getTarget().getAbilityType().getAbilityDamage());
+                            System.out.println("Current health of the " + getName() + " is " + getHealth());
+                            electricT++;
+                        }
+                        if (electricT == 3) {
+                            isElectrified = false;
+                            electricT = 0;
+                        }
+                        if (getDamageAbsorber()) {
+                            System.out.println(getName() + "' damage is absorbed by " + getTarget().getCharacterName());
+                            isDamageAbsorber = false;
+                        }
+                        if (getIsStunned()) {
+                            System.out.println(getName() + " is stunned ");
+                            isStunned = false;
+                        }
+                        if (getTarget().getArmors() != null) {
+                            int x = (int) Math.round(getTarget().getHealth() - (getDamage() - getTarget().getArmors().getBlock() * 0.1));
+                            int z = y - x;
+                            getTarget().setHealth(z);
+                            System.out.println(getName() + " attacked " + getTarget().getCharacterName() + " for " + z + " damage.");
+                        }
+                        if (getNormalAttack()) {
+                            System.out.println(getName() + " attacked " + getTarget().getCharacterName() + " for " + getDamage() + " damage.");
+                            getTarget().setHealth(y - getDamage());
+                            setNormalAttack(false);
+                        }
+
+                    }
+
+
+                }
+            }}}

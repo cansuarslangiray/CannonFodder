@@ -49,8 +49,9 @@ public class Game {
         System.out.println("press 1 to return home");
         System.out.println("press 2 to go to the food shop");
         System.out.println("press 3 to go to the weapons shop");
-        System.out.println("press 4 to go to the armors shop");
-        System.out.println("press 5 to go to first page");
+        System.out.println("press 4 to go to the cloths shop");
+        System.out.println("press 5 to view characters again");
+        System.out.println("press 6 to exit safe areas");
         System.out.println("Where do you want to go ?");
     }
     public void firstPagePrintInfo(){
@@ -62,8 +63,7 @@ public class Game {
         System.out.println("press 4 for information about Knight");
         System.out.println("press 5 for information about Lancer");
         System.out.println("press 6 for information about Healer");
-        System.out.println("press 7 to go to first page");
-        System.out.println("press 8 to exit this page");
+        System.out.println("press 7 to exit this page");
         System.out.println("Your choice ?");
     }
 
@@ -182,7 +182,7 @@ public class Game {
 
                                  location = new WeaponsShop(players);
                                  location.getLocation();
-
+                                 break;
                              case 4:
                                  location = new ArmorsShop(players);
                                  location.getLocation();
@@ -190,10 +190,16 @@ public class Game {
 
                              case 5:
                                  System.out.println();
+                                 charactersInfo();
+                                 mapList();
+                                 break;
+                             case 6:
+                                 System.out.println("Exiting safe areas");
                                  b = false;
+                                 mapList();
                                  break;
                              default:
-                                 System.out.println("You entered numbers other than 1, 2, 3, 4. Please enter one of these numbers");
+                                 System.out.println("You entered numbers other than 1, 2, 3, 4,5,6. Please enter one of these numbers");
                                  break;
                          }
 
