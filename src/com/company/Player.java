@@ -22,7 +22,6 @@ public class Player {
     private int rHealthy;
     private int block;
     private Weapons weapons;
-    private Ability abilityType;
     private Ability ability;
     private Armors armors;
     private Inventory item;
@@ -170,13 +169,6 @@ public class Player {
         this.armors= armors;
     }
 
-    public Ability getAbilityType() {
-        return abilityType;
-    }
-
-    public void setAbilityType(Ability abilityType) {
-        this.abilityType = abilityType;
-    }
 
     public Ability getAbility() {
         return ability;
@@ -316,6 +308,11 @@ public class Player {
         getTarget().setHealth(getTarget().getHealth() - getDamage());
         System.out.println(getCharacterName() + " damaged " + getTarget().getName() + " for " + getDamage() + " damage.");
         getWeapons().setQuality(getWeapons().getQuality()-1);
+        if(getTarget().getHealth()<=0){
+            System.out.println("Current health of the enemy is " + 0);
+        }
+        else{
+        System.out.println("Current health of the enemy is " + getTarget().getHealth());}
         getTarget().setNormalAttack(true);
         if(getWeapons().getQuality()<=10){
             System.out.println(getWeapons().getType() + " named " + getWeapons().getName() +" is about to break");
@@ -324,11 +321,7 @@ public class Player {
         }
     }
 
-    public  void assigningAbility() {
 
-        setAbilityType(objects.getAbilityArrayList().get(sc.nextInt((objects.getAbilityArrayList().size())- 1)));
-
-    }
     public void cast() {
     }
 
@@ -338,11 +331,9 @@ public class Player {
         changeVitality();
         changeStrenght();
         healthPoint();
-        assigningAbility();
         assigningWeapons();
         playerDamage();
     }
-
 
 
     public void characterPrintInfo(){
@@ -351,7 +342,7 @@ public class Player {
         System.out.println("name: " + getCharacterName()+ "\t Type: " + getType());
         System.out.println("intelligence: \t"+getIntelligence()+"\t strenght: \t"+getStrength()+"\t vitality: \t"+getVitality() );
         System.out.println("health point: \t"+getHealth()+"\t rarity: \t "+getRarity()+"\t money: \t"+getMoney());
-        System.out.println("ability: \t"+getAbilityType().getAbilityName()+"\t damage: \t"+getDamage()+"\t weapons: \t"+getWeapons().getName());
+        System.out.println("damage: \t"+getDamage()+"\t weapons: \t"+getWeapons().getName());
         System.out.println();
     }
 

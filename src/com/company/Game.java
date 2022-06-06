@@ -1,11 +1,10 @@
 package com.company;
 
-import java.security.SecureRandom;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    SecureRandom sr = new SecureRandom();
      ArrayList<Player>players;
      Location location;
      Scanner sc = new Scanner(System.in);
