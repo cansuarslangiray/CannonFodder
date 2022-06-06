@@ -1,5 +1,4 @@
 
-
 package com.company;
 
         import java.security.SecureRandom;
@@ -325,7 +324,3 @@ public abstract class Battlefields extends Location implements Locateable{
     }
 
 }
-
-
-}
-

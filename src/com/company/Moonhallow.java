@@ -1,4 +1,3 @@
-
 package com.company;
 
 import java.util.ArrayList;
@@ -14,16 +13,4 @@ public class Moonhallow extends Battlefields implements Locateable{
     public boolean getLocation() {
         return super.getLocation();
     }
-
-
-    @Override
-    public void battle() {
-        super.battle();
-    }
-
-    @Override
-    public void fPlayer() {
-        super.fPlayer();
-    }
-
 }
