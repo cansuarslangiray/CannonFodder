@@ -1,5 +1,4 @@
 
-
 package com.company;
 
         import java.security.SecureRandom;
@@ -140,19 +139,26 @@ public abstract class Battlefields extends Location implements Locateable{
                                     Player ally = fPlayers.get(choice - 1);
                                     boolean c = true;
                                     while (c) {
+                                        if(fPlayers.size()>1){
                                         for (int i = 0; i < fPlayers.size(); i++) {
-                                            if ((ally.getrHealthy() - ally.getHealth()) < (fPlayers.get(i).getrHealthy() - fPlayers.get(i).getHealth())) {
+                                            if ((ally.getrHealthy() - ally.getHealth()) <=(fPlayers.get(i).getrHealthy() - fPlayers.get(i).getHealth())) {
                                                 ally = fPlayers.get(i);
                                                 fPlayers.get(choice - 1).setAlly(ally);
                                                 c = false;
                                                 break;
                                             }
+                                        }}
+                                        else{
+                                            fPlayers.get(choice - 1).setAlly(fPlayers.get(choice-1));
+                                            c = false;
+                                            break;
                                         }
                                     }
                                 }
                                     if (fPlayers.get(choice - 1).getType().equals("Elf")) {
                                         boolean d = true;
                                         while (d) {
+                                            if(currentEnemies.size() >1){
                                             for(int i = 0; i<currentEnemies.size();i++){
                                                Enemy allyEnemy = currentEnemies.get(i);
                                                if(!Objects.equals(allyEnemy.getName(), currentEnemies.get(temp).getName())){
@@ -160,6 +166,12 @@ public abstract class Battlefields extends Location implements Locateable{
                                                    d = false;
                                                    break;
                                                }
+                                            }
+                                        }else{
+                                                System.out.println("All enemies are dead");
+                                                currentEnemies.get(temp).setAllyEnemy(currentEnemies.get(temp));
+                                                d = false;
+                                                break;
                                             }
                                         }
                                     }
@@ -290,6 +302,7 @@ public abstract class Battlefields extends Location implements Locateable{
                 fighting = false;
                 System.out.println("All players are dead...");
                 System.out.println("GAME OVER");
+                System.exit(0);
             }
         }
 
