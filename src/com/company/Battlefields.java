@@ -325,3 +325,7 @@ public abstract class Battlefields extends Location implements Locateable{
     }
 
 }
+
+
+}
+
