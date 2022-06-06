@@ -43,12 +43,6 @@ public class Characters {
          Warrior worrierPlayer3 = new Warrior("Worrier", "Rize Kamishiro",97);
          Warrior worrierPlayer4 = new Warrior("Worrier","Juuzou Suzuya",85);
 
-         Lancer lancerPlayer = new Lancer("Lancer", "Toga himiko",75);
-         Lancer lancerPlayer1 = new Lancer("Lancer", "Shoto Todoroki",86);
-         Lancer lancerPlayer2 = new Lancer("Lancer", "Katsuki Bakugo",96);
-         Lancer lancerPlayer3 = new Lancer("Lancer", "Shota Aizawa",960);
-         Lancer lancerPlayer4 = new Lancer("Lancer", "Tomura Shigaraki",63);
-
          Healer healerPlayer = new Healer("Healer","Shinoa Hiragi",85);
          Healer healerPlayer1 = new Healer("Healer", "Yuichiro Hyakuya",89);
          Healer healerPlayer2 = new Healer("Healer" ,"Guren Ichinose", 90);
@@ -63,7 +57,6 @@ public class Characters {
 
         ArrayList<Player> wizardArrayList = new ArrayList<>();
         ArrayList<Player> worrierArrayList = new ArrayList<>();
-        ArrayList<Player> lancerArrayList = new ArrayList<>();
         ArrayList<Player> elfArrayList = new ArrayList<>();
         ArrayList<Player> knightArrayList = new ArrayList<>();
         ArrayList<Player> healerArrayList = new ArrayList<>();
@@ -107,17 +100,10 @@ public class Characters {
         knightArrayList.add(knightPlayer3);
         knightArrayList.add(knightPlayer4);
 
-        lancerArrayList.add(lancerPlayer);
-        lancerArrayList.add(lancerPlayer1);
-        lancerArrayList.add(lancerPlayer2);
-        lancerArrayList.add(lancerPlayer3);
-        lancerArrayList.add(lancerPlayer4);
-
         Characters.add(wizardArrayList);
         Characters.add(worrierArrayList);
         Characters.add(knightArrayList);
         Characters.add(elfArrayList);
-        Characters.add(lancerArrayList);
         Characters.add(healerArrayList);
         Characters.add(tankArrayList);
     }

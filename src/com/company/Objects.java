@@ -63,10 +63,8 @@ public class Objects {
         Weapons shield2 = new Shield("Dragon Crest Shield","Shield",3,2200,4,1,100,7);
 
         Ability ability = new Ability("Hydro",10);
-        Ability ability1 = new Ability("Cryo",17);
-        Ability ability2 = new Ability("Pyro",15);
-        Ability ability3 = new Ability("Anemo",7);
-        Ability ability4 = new Ability("Electro",20);
+        Ability ability1 = new Ability("Cryo",7);
+        Ability ability4 = new Ability("Electro",10);
 
 
 
@@ -130,8 +128,6 @@ public class Objects {
 
         abilityArrayList.add(ability);
         abilityArrayList.add(ability1);
-        abilityArrayList.add(ability2);
-        abilityArrayList.add(ability3);
         abilityArrayList.add(ability4);
 
 

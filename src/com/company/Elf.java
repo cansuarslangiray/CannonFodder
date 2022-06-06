@@ -21,4 +21,10 @@ public class Elf extends Player {
     public void attack() {
         super.attack();
     }
+
+    @Override
+    public void cast() {
+        System.out.println("Casting " + getCharacterName() + " on " + getTarget().getName());
+
+    }
 }

@@ -14,8 +14,28 @@ public class Enemy {
     private int vitality;
     private int intelligence;
     private boolean isStunned = false;
+    private boolean isDamageAbsorber = false;
+    private int electricT;
+    private boolean isNormalAttack = false;
 
-    public boolean isElectrified() {
+
+    public boolean getNormalAttack() {
+        return isNormalAttack;
+    }
+
+    public void setNormalAttack(boolean normalAttack) {
+        isNormalAttack = normalAttack;
+    }
+
+    public boolean getDamageAbsorber() {
+        return isDamageAbsorber;
+    }
+
+    public void setDamageAbsorber(boolean damageAbsorber) {
+        isDamageAbsorber = damageAbsorber;
+    }
+
+    public boolean getElectrified() {
         return isElectrified;
     }
 
@@ -160,8 +180,23 @@ public class Enemy {
 
           public void attack() {
                 int y = getTarget().getHealth();
+                if(getElectrified()){
+                    System.out.println("electrocuted by " + getTarget().getCharacterName());
+                    setHealth(getHealth()-getTarget().getAbilityType().getAbilityDamage());
+                    System.out.println("Current health of the " + getName() + " is " + getHealth());
+                    electricT++;
+                }
+                if(electricT == 3){
+                    isElectrified = false;
+                    electricT=0;
+                }
+                if(getDamageAbsorber()){
+                    System.out.println(getName()+"' damage is absorbed by " + getTarget().getCharacterName());
+                    isDamageAbsorber=false;
+                }
                 if(getIsStunned()){
                     System.out.println(getName() + " is stunned ");
+                    isStunned = false;
                 }
                 if(getTarget().getArmors()!=null){
                     int x = (int) Math.round(getTarget().getHealth() - (getDamage() - getTarget().getArmors().getBlock() * 0.1));
@@ -169,10 +204,12 @@ public class Enemy {
                     getTarget().setHealth(z);
                     System.out.println(getName() + " attacked " + getTarget().getCharacterName()+ " for " + z + " damage.");
                 }
-                else {
+                if(getNormalAttack()){
                     System.out.println(getName() + " attacked " + getTarget().getCharacterName() + " for " + getDamage() + " damage.");
                     getTarget().setHealth(y-getDamage());
+                    setNormalAttack(false);
                 }
+
             }
 
 

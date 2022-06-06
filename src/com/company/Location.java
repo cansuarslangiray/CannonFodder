@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 
-public abstract class Location {
+public abstract class Location implements Locateable{
 
    protected ArrayList<Player> players;
    protected String areaName;
@@ -12,7 +12,7 @@ public abstract class Location {
 
    }
 
-   public abstract boolean getLocation();
+   //public abstract boolean getLocation();
 
 
    public ArrayList<Player> getPlayers() {

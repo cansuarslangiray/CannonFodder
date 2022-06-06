@@ -3,7 +3,7 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ArmorsShop extends SafePlace{
+public class ArmorsShop extends SafePlace implements Locateable{
     public ArmorsShop(ArrayList<Player> players) {
         super(players);
     }

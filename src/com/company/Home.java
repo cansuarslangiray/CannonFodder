@@ -3,7 +3,7 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Home extends SafePlace{
+public class Home extends SafePlace implements Locateable{
     Location location;
     Scanner sc = new Scanner(System.in);
     public Home(ArrayList<Player> players) {

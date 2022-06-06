@@ -4,7 +4,7 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class Moonhallow extends Battlefields{
+public class Moonhallow extends Battlefields implements Locateable{
 
 
     public Moonhallow(ArrayList<Player> players) {

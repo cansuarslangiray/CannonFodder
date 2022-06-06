@@ -25,6 +25,7 @@ public class Warrior extends Player {
     public void cast() {
         System.out.println("Casting " + getCharacterName() + " on " + getTarget().getName());
         getTarget().setHealth(getTarget().getHealth()-30);
+        System.out.println("Current health of the " + getTarget().getName() + " is " + getTarget().getHealth());
     }
 }
 

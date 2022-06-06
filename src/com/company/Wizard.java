@@ -18,7 +18,11 @@ public class Wizard extends Player {
 
     @Override
     public void cast() {
-
+        System.out.println("Casting " + getCharacterName() + " on " + getTarget().getName());
+        setDamageAbsorber(getTarget().getDamage());
+        getTarget().setHealth(getTarget().getHealth()-getDamageAbsorber());
+        System.out.println(getCharacterName() + " damaged " + getTarget().getName() + " for " + getDamageAbsorber() + " damage.");
+        getTarget().setDamageAbsorber(true);
     }
 
     @Override

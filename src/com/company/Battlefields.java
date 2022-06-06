@@ -6,13 +6,12 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public abstract class Battlefields extends Location {
-    Ability ability;
+public abstract class Battlefields extends Location implements Locateable{
     private ArrayList<Integer> abilityCharacters;
     private boolean round = true;
     private boolean round2 = true;
     int enemyTemp;
-    int advRank = 1;
+    int advRank = 0;
     Scanner sc = new Scanner(System.in);
     SecureRandom sr = new SecureRandom();
     private int nDamage;
@@ -34,37 +33,45 @@ public abstract class Battlefields extends Location {
     }
 
     public boolean getLocation(){
-        System.out.println("You are in: " + this.getAreaName());
-        fPlayer();
-        System.out.println("To fight press f or press r to run");
-        String choice = sc.next();
-        if(choice.equalsIgnoreCase("f")){
-            battle();
-        }
-        if(choice.equalsIgnoreCase("r")){
-            location = new Home(players);
-            location.getLocation();
-        }
         return true;
     }
 
 
    public ArrayList<Enemy> initializeEnemies() {
-     currentEnemies = new ArrayList<>();
-        for (int i = 0; i < Math.pow(2,advRank); i++) {
-            Enemy enemy = new Enemy(("enemy(" + (i+1) +")"));
-            enemy.sEnemy();
-            currentEnemies.add(enemy);
-        }
+       currentEnemies = new ArrayList<>();
+       if (advRank == 0) {
+           for (int i = 0; i < Math.pow(2, 2); i++) {
+               Enemy enemy = new Enemy(("enemy(" + (i + 1) + ")"));
+               enemy.sEnemy();
+               currentEnemies.add(enemy);
+           }
+       } else{
+           for (int i = 0; i < Math.pow(2, advRank); i++) {
+               Enemy enemy = new Enemy(("enemy(" + (i + 1) + ")"));
+               enemy.sEnemy();
+               currentEnemies.add(enemy);
+           }
+   }
         return currentEnemies;
     }
     public void fPlayer(){
         System.out.println();
         System.out.println("You have to choose 3 of your characters to fight before you start the match ");
         System.out.println("information of your characters ");
+        int counterCh=0;
         for(int i = 0;i<players.size();i++){
-            System.out.println((i+1) + ".character");
-            playerStats(players.get(i));
+            if(players.get(i).getHealth()>0) {
+                System.out.println((i + 1) + ".character");
+                playerStats(players.get(i));
+                counterCh++;
+            }
+        }
+        if(counterCh<3){
+            System.out.println("you don't have enough characters to fight");
+            System.out.println("so you come back home again");
+            location = new Home(players);
+            location.getLocation();
+
         }
         System.out.println();
         System.out.println("Which rank do you want to fight with your characters?");
@@ -80,14 +87,18 @@ public abstract class Battlefields extends Location {
 
     }
      public void battle() {
-        abilityCharacters = new ArrayList<>();
+         abilityCharacters = new ArrayList<>();
          initializeEnemies();
          int temp;
          boolean fighting = true;
          int numberOfEnemies = currentEnemies.size();
          int numberOfPlayers = players.size();
          System.out.println();
-         System.out.println("------------LEVEL " + advRank + " --------------");
+         if (advRank == 0) {
+             System.out.println("------------LEVEL " + 1 + " --------------");
+         } else{
+             System.out.println("------------LEVEL " + advRank + " --------------");
+     }
          System.out.println("Number of enemies are " + numberOfEnemies );
          System.out.println("information of your characters before the fight begins ");
          for (int i = 0; i < 3; i++) {
@@ -154,7 +165,23 @@ public abstract class Battlefields extends Location {
                                      round2 =true;
                              }
                              if(round2){
-                                 ability();
+                                 System.out.println("Do you want to use the normal special ability or the other (Hydro, Electro, Cyro)?");
+                                 System.out.println("press 1 for normal skill");
+                                 System.out.println("press 2 for other skill");
+                                 int specialAbilityChoice = sc.nextInt();
+                                 switch (specialAbilityChoice){
+                                     case 1:
+                                         fPlayers.get(choice-1).cast();
+                                         break;
+                                     case 2:
+                                         ability();
+                                         break;
+                                     default:
+                                         System.out.println("You entered a number other than 1 or 2");
+                                         System.out.println("Enter 1 or 2");
+                                         break;
+                                 }
+
                              }
                              else{
                                  System.out.println("wait for one round to use it again because you used a previous turn talent");
@@ -286,36 +313,42 @@ public abstract class Battlefields extends Location {
 
   public void ability(){
         if(abilityCharacters.size()>1){
-            if(fPlayers.get(abilityCharacters.get(abilityCharacters.size()-1)).getAbilityType().equals("Hydro")&& fPlayers.get(abilityCharacters.get(abilityCharacters.size()-2)).getAbilityType().equals("Electro") ||fPlayers.get(abilityCharacters.get(abilityCharacters.size()-2)).getAbilityType().equals("Hydro")&& fPlayers.get(abilityCharacters.get(abilityCharacters.size()-1)).getAbilityType().equals("Electro") ) {
-                    System.out.println(fPlayers.get(abilityCharacters.size()).getCharacterName() + " is attacking with electro " + fPlayers.get(abilityCharacters.size()).getTarget().getName() + "...");
-                    fPlayers.get(abilityCharacters.size()).getTarget().setHealth(fPlayers.get(abilityCharacters.size()).getTarget().getHealth() - fPlayers.get(abilityCharacters.size()).getAbilityType().getAbilityDamage());
-                    System.out.println(fPlayers.get(abilityCharacters.size()).getCharacterName() + " damaged " + fPlayers.get(abilityCharacters.size()).getTarget().getName() + " for " + fPlayers.get(abilityCharacters.size()).getAbilityType().getAbilityDamage()+ " damage.");
-            }
-            if(fPlayers.get(abilityCharacters.get(abilityCharacters.size()-1)).getAbilityType().equals("Hydro")&& fPlayers.get(abilityCharacters.get(abilityCharacters.size()-2)).getAbilityType().equals("Cryo")|| fPlayers.get(abilityCharacters.get(abilityCharacters.size()-2)).getAbilityType().equals("Hydro")&& fPlayers.get(abilityCharacters.get(abilityCharacters.size()-1)).getAbilityType().equals("Cryo")) {
-                System.out.println(fPlayers.get(abilityCharacters.size()-1).getTarget().getName() +" is frozen");
-                fPlayers.get(abilityCharacters.size()).getTarget().setStunned(true);
-            }
-            if(fPlayers.get(abilityCharacters.get(abilityCharacters.size()-1)).getAbilityType().equals("Hydro")&& fPlayers.get(abilityCharacters.get(abilityCharacters.size()-2)).getAbilityType().equals("Pyro")||fPlayers.get(abilityCharacters.get(abilityCharacters.size()-2)).getAbilityType().equals("Hydro")&& fPlayers.get(abilityCharacters.get(abilityCharacters.size()-1)).getAbilityType().equals("Pyro")) {
-                fPlayers.get(abilityCharacters.size()).setDamage(fPlayers.get(abilityCharacters.size()).getDamage()-15);
-                System.out.println(fPlayers.get(abilityCharacters.size()).getCharacterName() + " is attacking  with hydro and pryo" + fPlayers.get(abilityCharacters.get(abilityCharacters.size()-2)).getTarget().getName() + "...");
-                fPlayers.get(abilityCharacters.size()).getTarget().setHealth(fPlayers.get(abilityCharacters.size()).getTarget().getHealth() - fPlayers.get(abilityCharacters.size()).getDamage());
-                System.out.println(fPlayers.get(abilityCharacters.size()).getCharacterName() + " damaged " + fPlayers.get(abilityCharacters.size()).getTarget().getName() + " for " + fPlayers.get(abilityCharacters.size()).getDamage() + " damage.");
-            }
-            if(fPlayers.get(abilityCharacters.get(abilityCharacters.size()-1)).getAbilityType().equals("Pyro")&& fPlayers.get(abilityCharacters.get(abilityCharacters.size()-2)).equals("Anemo")||fPlayers.get(abilityCharacters.get(abilityCharacters.size()-2)).getAbilityType().equals("Hydro")&& fPlayers.get(abilityCharacters.get(abilityCharacters.size()-1)).getAbilityType().equals("Anemo")) {
-                fPlayers.get(abilityCharacters.get(abilityCharacters.size()-1)).setDamage(fPlayers.get(abilityCharacters.size()).getDamage());
-                System.out.println(fPlayers.get(abilityCharacters.size()).getCharacterName() + " is attacking " + fPlayers.get(abilityCharacters.size()).getTarget().getName() + "...");
-                fPlayers.get(abilityCharacters.size()).getTarget().setHealth(fPlayers.get(abilityCharacters.size()).getTarget().getHealth() - fPlayers.get(abilityCharacters.size()).getDamage());
-                System.out.println(fPlayers.get(abilityCharacters.size()).getCharacterName() + " damaged " + fPlayers.get(abilityCharacters.size()).getTarget().getName() + " for " + fPlayers.get(abilityCharacters.size()).getDamage() + " damage.");
-            }
-            if(fPlayers.get(abilityCharacters.get(abilityCharacters.size()-1)).getAbilityType().equals("Electro")&& fPlayers.get(abilityCharacters.get(abilityCharacters.size()-2)).getAbilityType().equals("Cryo")||fPlayers.get(abilityCharacters.get(abilityCharacters.size()-2)).getAbilityType().equals("Electro")&& fPlayers.get(abilityCharacters.get(abilityCharacters.size()-1)).getAbilityType().equals("Cryo")) {
-                fPlayers.get(abilityCharacters.size()).getTarget().setPhysicalResistance(fPlayers.get(abilityCharacters.size()).getTarget().getPhysicalResistance()%40);
-                if(fPlayers.get(abilityCharacters.size()).getTarget().getPhysicalResistance()<=0){
-                    fPlayers.get(abilityCharacters.size()).getTarget().setPhysicalResistance(0);
-                    System.out.println(fPlayers.get(abilityCharacters.size()).getTarget().getName() + " is dead");
-                    currentEnemies.remove(fPlayers.get(abilityCharacters.size()).getTarget());
-
+            for(int i = abilityCharacters.size(); i>=0;i--){
+            if(fPlayers.get(abilityCharacters.get(i-1)).getAbilityType().equals("Hydro")&& fPlayers.get(abilityCharacters.get(i-2)).getAbilityType().equals("Electro") ||fPlayers.get(abilityCharacters.get(i-2)).getAbilityType().equals("Hydro")&& fPlayers.get(abilityCharacters.get(i-1)).getAbilityType().equals("Electro") ) {
+                System.out.println(fPlayers.get(i-1).getCharacterName() + " is attacking with electro " + fPlayers.get(abilityCharacters.size()).getTarget().getName() + "...");
+                fPlayers.get(i-1).getTarget().setHealth(fPlayers.get(i-1).getTarget().getHealth() - fPlayers.get(i-1).getAbilityType().getAbilityDamage());
+                System.out.println(fPlayers.get(i-1).getCharacterName() + " damaged " + fPlayers.get(i-1).getTarget().getName() + " for " + fPlayers.get(i-1).getAbilityType().getAbilityDamage() + " damage.");
+                System.out.println("will electrocute enemies for three rounds");
+                for (int j = 0; j < currentEnemies.size(); j++) {
+                    currentEnemies.get(j).setElectrified(true);
                 }
             }
+            }
+            for(int i = abilityCharacters.size(); i>=0;i--){
+            if(fPlayers.get(abilityCharacters.get(i-1)).getAbilityType().equals("Hydro")&& fPlayers.get(abilityCharacters.get(i-2)).getAbilityType().equals("Cryo")|| fPlayers.get(abilityCharacters.get(i-2)).getAbilityType().equals("Hydro")&& fPlayers.get(abilityCharacters.get(i-1)).getAbilityType().equals("Cryo")) {
+                System.out.println("all enemies are frozen");
+                for (int j = 0; j < currentEnemies.size(); j++) {
+                    currentEnemies.get(j).setStunned(true);
+                }
+            }
+            }
+            for(int i = abilityCharacters.size(); i>=0;i--) {
+                if (fPlayers.get(abilityCharacters.get(i- 1)).getAbilityType().equals("Electro") && fPlayers.get(abilityCharacters.get(i- 2)).getAbilityType().equals("Cryo") || fPlayers.get(abilityCharacters.get(i- 2)).getAbilityType().equals("Electro") && fPlayers.get(abilityCharacters.get(i- 1)).getAbilityType().equals("Cryo")) {
+                    for (int j= 0; j< currentEnemies.size(); j++) {
+                        currentEnemies.get(j).setPhysicalResistance(currentEnemies.get(i).getPhysicalResistance() % 20);
+                    }
+                }
+            }
+                for(int i = abilityCharacters.size(); i>=0;i--) {
+                    System.out.println("physical resistance of all enemies decreased by 20%");
+                    if (fPlayers.get(abilityCharacters.size()).getTarget().getPhysicalResistance() <= 0) {
+                        fPlayers.get(abilityCharacters.size()).getTarget().setPhysicalResistance(0);
+                        System.out.println(fPlayers.get(abilityCharacters.size()).getTarget().getName() + " is dead");
+                        currentEnemies.remove(fPlayers.get(abilityCharacters.size()).getTarget());
+
+                    }
+                }
+
 
 
         }

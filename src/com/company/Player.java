@@ -26,6 +26,7 @@ public class Player {
     private Armors armors;
     private Inventory item;
     private Player ally;
+    private int damageAbsorber;
 
 
 
@@ -38,6 +39,15 @@ public class Player {
         this.money = money;
         this.item = new Inventory();
     }
+
+    public int getDamageAbsorber() {
+        return damageAbsorber;
+    }
+
+    public void setDamageAbsorber(int damageAbsorber) {
+        this.damageAbsorber = damageAbsorber;
+    }
+
     public Player getAlly() {
         return ally;
     }
@@ -199,10 +209,6 @@ public class Player {
         } else if (getType().equals("Elf")) {
             setStrength(sc.nextInt(3,6));
 
-        } else if (getType().equals("Lancer")) {
-            setStrength(sc.nextInt(5, 8));
-
-
         } else if (getType().equals("Healer"))
             setStrength(sc.nextInt(6, 10));
 
@@ -223,10 +229,7 @@ public class Player {
         } else if (getType().equals("Elf")) {
             setVitality(sc.nextInt(1, 6));
 
-        } else if (getType().equals("Lancer")) {
-            setVitality(sc.nextInt(5, 8));
-
-        } else if (getType().equals("Healer")) {
+        }  else if (getType().equals("Healer")) {
             setVitality(sc.nextInt(3, 6));
         }
         else if(getType().equals("Tank")){
@@ -249,9 +252,6 @@ public class Player {
         } else if (getType().equals("Elf")) {
             setIntelligence(sc.nextInt(9, 13));
 
-
-        } else if (getType().equals("Lancer")) {
-            setIntelligence(sc.nextInt(2, 6));
 
         } else if (getType().equals("Healer"))
             setIntelligence(sc.nextInt(6, 10));
@@ -315,6 +315,7 @@ public class Player {
         getTarget().setHealth(getTarget().getHealth() - getDamage());
         System.out.println(getCharacterName() + " damaged " + getTarget().getName() + " for " + getDamage() + " damage.");
         getWeapons().setQuality(getWeapons().getQuality()-1);
+        getTarget().setNormalAttack(true);
         if(getWeapons().getQuality()<=10){
             System.out.println(getWeapons().getType() + " named " + getWeapons().getName() +" is about to break");
             System.out.println("either get your weapon repaired or buy a new one");
@@ -346,7 +347,7 @@ public class Player {
     public void characterPrintInfo(){
         System.out.println("Information of the Characters ");
         System.out.println("------------------------------------------");
-        System.out.println("name: " + getCharacterName());
+        System.out.println("name: " + getCharacterName()+ "\t Type: " + getType());
         System.out.println("intelligence: \t"+getIntelligence()+"\t strenght: \t"+getStrength()+"\t vitality: \t"+getVitality() );
         System.out.println("health point: \t"+getHealth()+"\t rarity: \t "+getRarity()+"\t money: \t"+getMoney());
         System.out.println("ability: \t"+getAbilityType().getAbilityName()+"\t damage: \t"+getDamage()+"\t weapons: \t"+getWeapons().getName());
