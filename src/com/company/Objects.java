@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class Objects {
 
-    ArrayList<Ability> abilityArrayList = new ArrayList<>();
     ArrayList<Weapons> WandArrayList = new ArrayList<>();
     ArrayList<Weapons> CatalystArrayList = new ArrayList<>();
     ArrayList<Weapons> ClaymoreArrayList = new ArrayList<>();
@@ -42,9 +41,9 @@ public class Objects {
         Weapons catalyst1 = new Catalyst("Nightfall","Catalyst",4,45000,8,1,100,0.9);
         Weapons catalyst2 = new Catalyst("Starlight","Catalyst",3,33000,4,1,100,1);
 
-        Weapons sword = new Sword("summit sharper", "Sword",4,10,70,1,100,1.5);
-        Weapons sword1 = new Sword("mistspiltter reforged","Sword",5,68000,55,100,1,1.6);
-        Weapons sword2 = new Sword("skyword blade","Sword",3,65000,40,1,100,1.9);
+        Weapons sword = new Sword("summit sharper", "Sword",4,10,7,1,100,1.5);
+        Weapons sword1 = new Sword("mistspiltter reforged","Sword",5,68000,9,100,1,1.6);
+        Weapons sword2 = new Sword("skyword blade","Sword",3,65000,4,1,100,1.9);
 
         Weapons polearms = new Polearms(" Incarnation of Immortality","Polearms",3,55000,5,1,100,1.2);
         Weapons polearms1 = new Polearms(" Breaker of Horrid Dreams","Polearms",4,60000,7,1,100,1.1);
@@ -61,10 +60,6 @@ public class Objects {
         Weapons shield = new Shield("Thorn","Shield",5,5200,8,1,100,5);
         Weapons shield1 = new Shield("Round Shield","Shield",4,4200,6,1,100,5);
         Weapons shield2 = new Shield("Dragon Crest Shield","Shield",3,2200,4,1,100,7);
-
-        Ability ability = new Ability("Hydro",10);
-        Ability ability1 = new Ability("Cryo",7);
-        Ability ability4 = new Ability("Electro",10);
 
 
 
@@ -126,18 +121,7 @@ public class Objects {
         ShieldArrayList.add(shield1);
         ShieldArrayList.add(shield2);
 
-        abilityArrayList.add(ability);
-        abilityArrayList.add(ability1);
-        abilityArrayList.add(ability4);
 
-
-
-
-
-    }
-
-    public ArrayList<Ability> getAbilityArrayList() {
-        return abilityArrayList;
     }
 
 

@@ -24,8 +24,10 @@ public class Warrior extends Player {
     @Override
     public void cast() {
         System.out.println("Casting " + getCharacterName() + " on " + getTarget().getName());
-        getTarget().setHealth(getTarget().getHealth()-30);
-        System.out.println("Current health of the " + getTarget().getName() + " is " + getTarget().getHealth());
+            getTarget().setPhysicalResistance(getTarget().getPhysicalResistance()-(getTarget().getPhysicalResistance()/5));
+            System.out.println("physical resistance of all enemy decreased by 20%");
+            System.out.println("Current physical resistance of the " + getTarget().getName() + " is " + getTarget().getPhysicalResistance());
+            getTarget().setNormalAttack(true);
     }
 }
 

@@ -146,12 +146,12 @@ public class Characters {
     }
 
     public void wishCharacter(){
-        int c = random.nextInt(0,7);
+        int c = random.nextInt(0,6);
         Player player = getCharacters().get(c).get(random.nextInt(0,4));
         boolean a = true;
         while(a) {
             for (int i = 0; i < ingame.size(); i++) {
-                if (player.getCharacterName()!=ingame.get(i).getCharacterName()) {
+                if (!Objects.equals(player.getCharacterName(), ingame.get(i).getCharacterName())) {
                     player.selectC();
                     ingame.add(player);
                     a = false;

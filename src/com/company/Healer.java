@@ -25,7 +25,11 @@ public class Healer extends Player{
         System.out.println("Casting " + getCharacterName() + " on " + getTarget().getName());
         if(getAlly().getHealth()-15>=0) {
             getAlly().setHealth(getAlly().getHealth() + 15);
-            System.out.println(getAlly().getCharacterName()+" health has been increased.");
+            System.out.println("Current health of the " + getAlly().getCharacterName() + " is "
+                    + getAlly().getHealth());
+        }
+        else if(getAlly().getHealth()==getAlly().getrHealthy()){
+            System.out.println("Healthy of all characters is full");
         }
         else {
             getAlly().setHealth(getAlly().getrHealthy());
