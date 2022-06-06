@@ -1,4 +1,5 @@
 
+
 package com.company;
 
 import java.security.SecureRandom;
@@ -357,25 +358,4 @@ public class Player {
 
 
 }
-
-
-
-
-
-
-
-    /*public int calculateDamage() {
-        if (getType().equals("Wizard")) {
-            return getDamage() * changeIntelligence();
-        } else if (getType().equals("Knight")) {
-            return getDamage() * getStrength();
-        } else if (getType().equals("Worrier")) {
-            return getDamage() * getStrength();
-        } else if (getType().equals("Elf")) {
-            return getDamage() * changeIntelligence();
-        } else if (getType().equals("Lancer")) {
-        }
-    /*public void wishCharacter(){
-        SecureRandom secureRandom = new SecureRandom();
-    }
 

@@ -1,5 +1,4 @@
 
-
 package com.company;
 
 import java.util.ArrayList;
@@ -29,5 +28,4 @@ public class Moonhallow extends Battlefields implements Locateable{
     public void fPlayer() {
         super.fPlayer();
     }
-
 }
