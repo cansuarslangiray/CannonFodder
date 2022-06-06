@@ -1,23 +1,16 @@
 package com.company;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    ArrayList<Player>players;
+    SecureRandom sr = new SecureRandom();
+     ArrayList<Player>players;
      Location location;
      Scanner sc = new Scanner(System.in);
-     private int adventureRank = 1;
      Characters characters = new Characters();
-     Objects obj  =new Objects();
 
-    public int getAdventureRank() {
-        return adventureRank;
-    }
-
-    public void setAdventureRank(int adventureRank) {
-        this.adventureRank = adventureRank;
-    }
 
 
     public void logIn(){
@@ -30,32 +23,26 @@ public class Game {
         System.out.println("As the level of the adventure rang changes, the difficulty level of the enemies you encounter will increase.");
         System.out.println("Secondly, If you are not healthy enough, you can buy food with the coins you earned during the fight, or you can make your own with the materials you earned during the fight. You can also go home and increase your health");
         System.out.println("You can also buy items that will increase your character's powers.");
-        System.out.println("if you press the m key on the keyboard, you will see the game map");
         System.out.println("You can collect objects on the ground when you press the f key.");
-        System.out.println("Finally, You may encounter different numbers and different enemies in every battlefield you go to.");
         System.out.println("Before fighting, you can get information about the enemies there, such as their damage value and health, and you can decide accordingly. Fight or run");
         System.out.println("DO NOT FORGET, if you lose your one character against the enemy you will lose 10 Primogen, if you you lose your two characters against the enemy you will lose 10 Primogen");
         System.out.println("VERY IMPORTANCE!!!, if you lose three character against the enemy you will die");
         System.out.println("and the game is over :(");
-        System.out.println("You can start now , have fun :)");
-        System.out.println();
-
-        players = characters.yourCharacters();
-        for (int i = 0; i < 3; i++) {
-            System.out.println("----------------------------------");
-            System.out.println(players.get(i).getType());
-
+        System.out.println("if you want to start now, press s");
+        String start = sc.next();
+        if(start.equalsIgnoreCase("s")) {
+            players = characters.yourCharacters();
+            for (int i = 0; i < players.size(); i++) {
+                players.get(i).characterPrintInfo();
+            }
+            System.out.println("You have one wish");
+            System.out.println("press w to make, good luck :)");
+            String wish = sc.next();
+            if(wish.equalsIgnoreCase("w")) {
+                characters.wishCharacter();
+                characters.wishCharacterPrintInfo(players.get(players.size() - 1));
+            }
         }
-        for (int i = 0 ;i < players.size() ; i++){
-            players.get(i).characterPrintInfo();
-            players.get(i).getWeapons().weaponsPrintInfo();
-        }
-        System.out.println(players.size());
-        players.add(characters.wishCharacter());
-        System.out.println(players.size());
-        characters.wishCharacterPrintInfo(players.get(players.size()-1));
-
-
 
     }
     public static void safePlace(){
@@ -63,7 +50,8 @@ public class Game {
         System.out.println("press 2 to go to the food shop");
         System.out.println("press 3 to go to the weapons shop");
         System.out.println("press 4 to go to the cloths shop");
-        System.out.println("press 5 to go to first page");
+        System.out.println("press 5 to view characters again");
+        System.out.println("press 6 to exit safe areas");
         System.out.println("Where do you want to go ?");
     }
     public void firstPagePrintInfo(){
@@ -75,8 +63,7 @@ public class Game {
         System.out.println("press 4 for information about Knight");
         System.out.println("press 5 for information about Lancer");
         System.out.println("press 6 for information about Healer");
-        System.out.println("press 7 to go to first page");
-        System.out.println("press 8 to exit this page");
+        System.out.println("press 7 to exit this page");
         System.out.println("Your choice ?");
     }
 
@@ -162,8 +149,7 @@ public class Game {
     }
     public static void mapList(){
         System.out.println();
-        System.out.println("------------------------------------");
-        System.out.println("currently displaying the map.....");
+        System.out.println("currently displaying areas.....");
         System.out.println("press 1 to view safe areas");
         System.out.println("press 2 to view battlefields");
         System.out.println("press 3 to leave this page");
@@ -196,18 +182,24 @@ public class Game {
 
                                  location = new WeaponsShop(players);
                                  location.getLocation();
-
+                                 break;
                              case 4:
-                                 location = new ClothsShop(players);
+                                 location = new ArmorsShop(players);
                                  location.getLocation();
                                  break;
 
                              case 5:
                                  System.out.println();
+                                 charactersInfo();
+                                 mapList();
+                                 break;
+                             case 6:
+                                 System.out.println("Exiting safe areas");
                                  b = false;
+                                 mapList();
                                  break;
                              default:
-                                 System.out.println("You entered numbers other than 1, 2, 3, 4. Please enter one of these numbers");
+                                 System.out.println("You entered numbers other than 1, 2, 3, 4,5,6. Please enter one of these numbers");
                                  break;
                          }
 
@@ -215,15 +207,14 @@ public class Game {
                      break;
                  case 2:
                      System.out.println("press 1 to Moonhallow. In this area, you may encounter siren or demon hunter. ");
-                     System.out.println("press 2 to Wildfront. In this area, you may encounter goblin, rouge or monk ");
-                     System.out.println("press 3 to Oceangulf. In this, you may encounter death knight, demon hunter or siren ");
-                     System.out.println("press 4 to go to first page");
+                     System.out.println("press 2 to go to first page");
                      System.out.println("Where do you want to go ?");
                      int number2 = sc.nextInt();
-                    /* switch (number2){
+                    switch (number2){
                          case 1:
-                             location = new Moonhallow(player,)
-                     }*/
+                             location = new Moonhallow(players);
+                             location.getLocation();
+                     }
                      break;
 
                  case 3:
@@ -240,5 +231,6 @@ public class Game {
          }
 
     }
+
 
 }

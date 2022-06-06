@@ -15,7 +15,7 @@ public class FoodShop extends SafePlace {
         System.out.println("1-Salad");
         System.out.println("2-Pizza");
         System.out.println("3-Egg");
-        System.out.println("4-Fish");
+        System.out.println("4-To view safe areas again");
         System.out.println("Select an option");
     }
     @Override
@@ -33,30 +33,28 @@ public class FoodShop extends SafePlace {
 
                     System.out.println("1-Buy");
                     System.out.println("2-Cook");
-                    System.out.println("2-return to the previous menu");
+                    System.out.println("3-return to the previous menu");
                     boolean d = true;
                     while(d){
                         int ch3 = input.nextInt();
                         switch (ch3){
                             case 1:
-                                System.out.println("Which rank are you on the list?");
-                                int rank=input.nextInt()-1;
-                                System.out.println("You have " + players.get(rank).getAllMoney() +" money");
+
+                                System.out.println("You have " + players.get(1).getAllMoney() +" money");
                                 System.out.println("Which salad do you want ?");
                                 int ch4 = input.nextInt();
                                 buyFood(ch4,objects.getSaladArraylist());
-                                double newHP= players.get(rank).getrHealthy() + objects.getSaladArraylist().get(ch4-1).getAddHP()-100;
-                                players.get(rank).setrHealthy((int)newHP);
+                                double newHP= players.get(1).getrHealthy() + objects.getSaladArraylist().get(ch4-1).getAddHP()-100;
+                                players.get(1).setrHealthy((int)newHP);
                                 options();
                                 d= false;
                                 break;
                             case 2:
-                                System.out.println("Which rank are you on the list?");
-                                int rank1=input.nextInt()-1;
+
                                 System.out.println("Which salad would you like to make?");
                                 int choice= input.nextInt();
-                                double newHP1= players.get(rank1).getrHealthy() + objects.getSaladArraylist().get(choice-1).getAddHP();
-                                players.get(rank1).setrHealthy((int)newHP1);
+                                double newHP1= players.get(1).getrHealthy() + objects.getSaladArraylist().get(choice-1).getAddHP();
+                                players.get(1).setrHealthy((int)newHP1);
                             case 3:
                                 options();
                                 d =false;
@@ -79,24 +77,20 @@ public class FoodShop extends SafePlace {
                         int ch3 = input.nextInt();
                         switch (ch3){
                             case 1:
-                                System.out.println("Which rank are you on the list?");
-                                int rank=input.nextInt()-1;
-                                System.out.println("You have " + players.get(rank).getAllMoney() +" money");
+                                System.out.println("You have " + players.get(1).getAllMoney() +" money");
                                 System.out.println("Which pizza do you want ?");
                                 int ch4 = input.nextInt();
                                 buyFood(ch4,objects.getPizzaArrayList());
-                                double newHP= players.get(rank).getrHealthy() + objects.getPizzaArrayList().get(ch4-1).getAddHP()-100;
-                                players.get(rank).setrHealthy((int)newHP);
+                                double newHP= players.get(1).getrHealthy() + objects.getPizzaArrayList().get(ch4-1).getAddHP()-100;
+                                players.get(1).setrHealthy((int)newHP);
                                 f =false;
                                 options();
                                 break;
                             case 2:
-                                System.out.println("Which rank are you on the list?");
-                                int rank1=input.nextInt()-1;
                                 System.out.println("Which pizza would you like to make?");
                                 int choice= input.nextInt();
-                                double newHP1= players.get(rank1).getrHealthy() + objects.getPizzaArrayList().get(choice-1).getAddHP();
-                                players.get(rank1).setrHealthy((int)newHP1);
+                                double newHP1= players.get(1).getrHealthy() + objects.getPizzaArrayList().get(choice-1).getAddHP();
+                                players.get(1).setrHealthy((int)newHP1);
 
                             case 3:
                                 options();
@@ -120,24 +114,22 @@ public class FoodShop extends SafePlace {
                         int ch3 = input.nextInt();
                         switch (ch3){
                             case 1:
-                                System.out.println("Which rank are you on the list?");
-                                int rank=input.nextInt()-1;
+
                                 System.out.println("You have " + players.get(1).getAllMoney()  +" money");
                                 System.out.println("Which egg do you want ?");
                                 int ch4 = input.nextInt();
                                 buyFood(ch4,objects.getEggArrayList());
-                                double newHP= players.get(rank).getrHealthy() + objects.getEggArrayList().get(ch4-1).getAddHP()-100;
-                                players.get(rank).setrHealthy((int)newHP);
+                                double newHP= players.get(1).getrHealthy() + objects.getEggArrayList().get(ch4-1).getAddHP()-100;
+                                players.get(1).setrHealthy((int)newHP);
                                 options();
                                 s=false;
                                 break;
                             case 2:
-                                System.out.println("Which rank are you on the list?");
-                                int rank1=input.nextInt()-1;
+
                                 System.out.println("Which egg would you like to make?");
                                 int choice= input.nextInt();
-                                double newHP1= players.get(rank1).getrHealthy() + objects.getEggArrayList().get(choice-1).getAddHP();
-                                players.get(rank1).setrHealthy((int)newHP1);
+                                double newHP1= players.get(1).getrHealthy() + objects.getEggArrayList().get(choice-1).getAddHP();
+                                players.get(1).setrHealthy((int)newHP1);
                             case 3:
                                 options();
                                 s =false;
@@ -147,6 +139,7 @@ public class FoodShop extends SafePlace {
                     break;
 
                 case 4:
+                    System.out.println("Exiting this page");
                     Game.safePlace();
                     c = false;
                     break;

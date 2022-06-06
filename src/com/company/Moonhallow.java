@@ -1,15 +1,32 @@
+
+
 package com.company;
 
 import java.util.ArrayList;
 
-public class Moonhallow extends Battlefields{
+public class Moonhallow extends Battlefields implements Locateable{
 
-    public Moonhallow(ArrayList<Player> players, ArrayList<Enemy> enemy) {
-        super(players, enemy);
+
+    public Moonhallow(ArrayList<Player> players) {
+        super(players);
+        this.areaName = "Moonhallow";
     }
 
     @Override
-    protected int enemyCounter() {
-        return 0;
+    public boolean getLocation() {
+        initializeEnemies();
+        fPlayer();
+        battle();
+        return true;
+    }
+
+    @Override
+    public void battle() {
+        super.battle();
+    }
+
+    @Override
+    public void fPlayer() {
+        super.fPlayer();
     }
 }

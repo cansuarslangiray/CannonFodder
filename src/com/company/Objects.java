@@ -34,40 +34,38 @@ public class Objects {
         Armors Boots2 = new Armors("Night Fall","Boots",4,10000,6,1,100,0.5);
         Armors Boots3 = new Armors("Splash","Boots",3,5000,3,1,100,0.25);
 
-        Weapons wand = new Wand("Exiled Heart","Wand",4,50000,50,1,100,0.5);
-        Weapons wand1 = new Wand(" Touch of Woe","Wand",3,40000,40,1,100,0.9);
-        Weapons wand2 = new Wand(" Bag of the Night","Wand",5,60000,60,1,100,0.4);
+        Weapons wand = new Wand("Exiled Heart","Wand",4,50000,6,1,100,0.5);
+        Weapons wand1 = new Wand(" Touch of Woe","Wand",3,40000,8,1,100,0.9);
+        Weapons wand2 = new Wand(" Bag of the Night","Wand",5,60000,11,1,100,0.4);
 
-        Weapons catalyst = new Catalyst(" Pact of the Night","Catalyst",5,68200,60,1,100,0.7);
-        Weapons catalyst1 = new Catalyst("Nightfall","Catalyst",4,45000,45,1,100,0.9);
-        Weapons catalyst2 = new Catalyst("Starlight","Catalyst",3,33000,30,1,100,1);
+        Weapons catalyst = new Catalyst(" Pact of the Night","Catalyst",5,68200,9,1,100,0.7);
+        Weapons catalyst1 = new Catalyst("Nightfall","Catalyst",4,45000,8,1,100,0.9);
+        Weapons catalyst2 = new Catalyst("Starlight","Catalyst",3,33000,4,1,100,1);
 
         Weapons sword = new Sword("summit sharper", "Sword",4,10,70,1,100,1.5);
         Weapons sword1 = new Sword("mistspiltter reforged","Sword",5,68000,55,100,1,1.6);
         Weapons sword2 = new Sword("skyword blade","Sword",3,65000,40,1,100,1.9);
 
-        Weapons polearms = new Polearms(" Incarnation of Immortality","Polearms",3,55000,35,1,100,1.2);
-        Weapons polearms1 = new Polearms(" Breaker of Horrid Dreams","Polearms",4,60000,40,1,100,1.1);
-        Weapons polearms2 = new Polearms("Misery's End","Polearms",5,65000,50,1,100,0.75);
+        Weapons polearms = new Polearms(" Incarnation of Immortality","Polearms",3,55000,5,1,100,1.2);
+        Weapons polearms1 = new Polearms(" Breaker of Horrid Dreams","Polearms",4,60000,7,1,100,1.1);
+        Weapons polearms2 = new Polearms("Misery's End","Polearms",5,65000,8,1,100,0.75);
 
-        Weapons scythe = new Scythe("Anguish","Scythe",4,80500,55,1,100,2.2);
-        Weapons scythe1 = new Scythe("Stormfury Blade","Scythe",5,80000,60,1,100,2.1);
-        Weapons scythe2 = new Scythe("Death's Claw","Scythe",3,75000,45,1,100,2.4);
+        Weapons scythe = new Scythe("Anguish","Scythe",4,80500,6,1,100,2.2);
+        Weapons scythe1 = new Scythe("Stormfury Blade","Scythe",5,80000,9,1,100,2.1);
+        Weapons scythe2 = new Scythe("Death's Claw","Scythe",3,75000,3,1,100,2.4);
 
-        Weapons claymore = new Claymore("Amnesia","Claymore",4,48000,65,1,100,3.5);
-        Weapons claymore1 = new Claymore("Hope's End","Claymore",5,50000,80,1,100,3.3);
-        Weapons claymore2 = new Claymore(" Emissary of the Whispers","Claymore",3,54000,70,1,100,3.4);
+        Weapons claymore = new Claymore("Amnesia","Claymore",4,48000,9,1,100,3.5);
+        Weapons claymore1 = new Claymore("Hope's End","Claymore",5,50000,10,1,100,3.3);
+        Weapons claymore2 = new Claymore(" Emissary of the Whispers","Claymore",3,54000,7,1,100,3.4);
 
-        Weapons shield = new Shield("Thorn","Shield",5,5200,60,1,100,5);
-        Weapons shield1 = new Shield("Round Shield","Shield",4,4200,50,1,100,5);
-        Weapons shield2 = new Shield("Dragon Crest Shield","Shield",3,2200,40,1,100,7);
+        Weapons shield = new Shield("Thorn","Shield",5,5200,8,1,100,5);
+        Weapons shield1 = new Shield("Round Shield","Shield",4,4200,6,1,100,5);
+        Weapons shield2 = new Shield("Dragon Crest Shield","Shield",3,2200,4,1,100,7);
 
-        Ability ability = new Ability("Hydro");
-        Ability ability1 = new Ability("Cryo");
-        Ability ability2 = new Ability("Pyro");
-        Ability ability3 = new Ability("Anemo");
-        Ability ability4 = new Ability("Electro");
-        Ability ability5 = new Ability("Geo");
+        Ability ability = new Ability("Hydro",10);
+        Ability ability1 = new Ability("Cryo",7);
+        Ability ability4 = new Ability("Electro",10);
+
 
 
         Food food1= new Food("Satisfying Vegetable Salad","Food",70,300);
@@ -130,10 +128,8 @@ public class Objects {
 
         abilityArrayList.add(ability);
         abilityArrayList.add(ability1);
-        abilityArrayList.add(ability2);
-        abilityArrayList.add(ability3);
         abilityArrayList.add(ability4);
-        abilityArrayList.add(ability5);
+
 
 
 

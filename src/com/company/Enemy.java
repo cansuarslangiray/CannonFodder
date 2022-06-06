@@ -3,14 +3,53 @@ package com.company;
 import java.security.SecureRandom;
 
 public class Enemy {
-    Game game;
     SecureRandom sc = new SecureRandom();
+    Player target;
+    private boolean isElectrified = false;
+    private int physicalResistance =100;
     private String type;
     private String name;
-    private int damage, award, health, maxNumber;
+    private int damage = 5 , award, health;
     private int strength;
     private int vitality;
     private int intelligence;
+    private boolean isStunned = false;
+    private boolean isDamageAbsorber = false;
+    private int electricT;
+    private boolean isNormalAttack = false;
+
+
+    public boolean getNormalAttack() {
+        return isNormalAttack;
+    }
+
+    public void setNormalAttack(boolean normalAttack) {
+        isNormalAttack = normalAttack;
+    }
+
+    public boolean getDamageAbsorber() {
+        return isDamageAbsorber;
+    }
+
+    public void setDamageAbsorber(boolean damageAbsorber) {
+        isDamageAbsorber = damageAbsorber;
+    }
+
+    public boolean getElectrified() {
+        return isElectrified;
+    }
+
+    public void setElectrified(boolean electrified) {
+        isElectrified = electrified;
+    }
+
+    public int getPhysicalResistance() {
+        return physicalResistance;
+    }
+
+    public void setPhysicalResistance(int physicalResistance) {
+        this.physicalResistance = physicalResistance;
+    }
 
     public int getIntelligence() {
         return intelligence;
@@ -44,12 +83,28 @@ public class Enemy {
         this.type = type;
     }
 
-    public Enemy(String name, int damage, int award, int health, int maxNumber) {
+    public Player getTarget() {
+        return target;
+    }
+
+    public void setTarget(Player target) {
+        this.target = target;
+    }
+
+    public boolean getIsStunned(){
+        return isStunned;
+    }
+
+    public void setStunned(boolean isStunned) {
+        this.isStunned = isStunned;
+    }
+
+    public Enemy(String name) {
         this.name = name;
-        this.damage = damage;
-        this.award = award;
-        this.health = health;
-        this.maxNumber = maxNumber;
+        this.damage = getDamage();
+        this.type = getType();
+        this.health = getHealth();
+
     }
 
     public String getName() {
@@ -84,144 +139,78 @@ public class Enemy {
         this.health = health;
     }
 
-    public int getMaxNumber() {
-        return maxNumber;
-    }
-
-    public void setMaxNumber(int maxNumber) {
-        this.maxNumber = maxNumber;
-    }
-
-
-    public void changeAventureRank() {
-
-    }
-
-     public int enemyCounter(){
-        int number=2;
-        for(int i = 0 ; i<game.getAdventureRank();i++){
-            number*=2;
-        }
-
-        setMaxNumber(number);
-        return number;
-    }
-
-    public int changeStrength() {
-        if (getType().equals("DeathKnight")) {
+        public void changeStrength () {
             int random = sc.nextInt(1, 5);
             setStrength(random);
-            return random;
         }
-        if (getType().equals("DemonHunter")) {
-            int random1 = sc.nextInt(1, 5);
-            setStrength(random1);
-            return random1;
-        }
-        if (getType().equals("Goblin")) {
-            int random2 = sc.nextInt(1, 5);
-            setStrength(random2);
-            return random2;
-        }
-        if (getType().equals("Monk")) {
-            int random3 = sc.nextInt(1, 5);
-            setStrength(random3);
-            return random3;
-        }
-        if (getType().equals("Rouge")) {
-            int random4 = sc.nextInt(1, 5);
-            setStrength(random4);
-            return random4;
-        } else if (getType().equals("Siren")) {
-            int random5= sc.nextInt(1, 5);
-            setStrength(random5);
-            return random5;
-        }
-        else
-            return 0;
-    }
-    public int changeVitality() {
+        public void changeVitality () {
 
-        if (getType().equals("DeathKnight")) {
-            int random=sc.nextInt(1,5);
-            setVitality(random);
-            return random;
-        } if (getType().equals("DemonHunter")) {
-            int random1=sc.nextInt(1,5);
-            setVitality(random1);
-            return random1;
-        }  if (getType().equals("Goblin")) {
-            int random2=sc.nextInt(1,5);
-            setVitality(random2);
-            return random2;
-        }  if (getType().equals("Monk")) {
-            int random3=sc.nextInt(1, 5);
-            setVitality(random3);
-            return random3;
-        } if (getType().equals("Rouge")) {
-            int random4=sc.nextInt(1, 5);
-            setVitality(random4);
-            return random4;
-        }  if (getType().equals("Siren")) {
-            int random5=sc.nextInt(1, 5);
-            setVitality(random5);
-            return random5;
-        }
-        else
-            return 0;
-    }
 
-    public int changeIntelligence() {
-        if (getType().equals("DeathKnight")) {
-            int random = sc.nextInt(1, 5);
-            setIntelligence(random);
-            return random;
+                int random5 = sc.nextInt(1, 5);
+                setVitality(random5);
+
+
         }
-        if (getType().equals("DemonHunter")) {
-            int random1 = sc.nextInt(1, 5);
-            setIntelligence(random1);
-            return random1;
+
+        public void changeIntelligence () {
+
+                int random5 = sc.nextInt(1, 5);
+                setIntelligence(random5);
+
+
         }
-        if (getType().equals("Goblin")) {
-            int random2 = sc.nextInt(1,5);
-            setIntelligence(random2);
-            return random2;
+        public void healthPoint() {
+          double hp = (7 * getVitality()) + 2 * getStrength() + 1.2 * getIntelligence();
+          setHealth((int) Math.round(hp));
+
+       }
+        public void calculateDamage () {
+                setDamage(getDamage() * getIntelligence());
+
         }
-        if (getType().equals("Monk")) {
-            int random3 = sc.nextInt(1,5);
-            setIntelligence(random3);
-            return random3;
+
+        public void sEnemy(){
+            changeIntelligence();
+            changeVitality();
+            changeStrength();
+            calculateDamage();
+            healthPoint();
+
         }
-        if (getType().equals("Rouge")) {
-            int random4 = sc.nextInt(1, 5);
-            setIntelligence(random4);
-            return random4;
-        }
-        if (getType().equals("Siren")) {
-            int random5 = sc.nextInt(1, 5);
-            setIntelligence(random5);
-            return random5;
-        }
-        else
-            return 0;
+
+          public void attack() {
+                int y = getTarget().getHealth();
+                if(getElectrified()){
+                    System.out.println("electrocuted by " + getTarget().getCharacterName());
+                    setHealth(getHealth()-getTarget().getAbilityType().getAbilityDamage());
+                    System.out.println("Current health of the " + getName() + " is " + getHealth());
+                    electricT++;
+                }
+                if(electricT == 3){
+                    isElectrified = false;
+                    electricT=0;
+                }
+                if(getDamageAbsorber()){
+                    System.out.println(getName()+"' damage is absorbed by " + getTarget().getCharacterName());
+                    isDamageAbsorber=false;
+                }
+                if(getIsStunned()){
+                    System.out.println(getName() + " is stunned ");
+                    isStunned = false;
+                }
+                if(getTarget().getArmors()!=null){
+                    int x = (int) Math.round(getTarget().getHealth() - (getDamage() - getTarget().getArmors().getBlock() * 0.1));
+                    int z = y - x;
+                    getTarget().setHealth(z);
+                    System.out.println(getName() + " attacked " + getTarget().getCharacterName()+ " for " + z + " damage.");
+                }
+                if(getNormalAttack()){
+                    System.out.println(getName() + " attacked " + getTarget().getCharacterName() + " for " + getDamage() + " damage.");
+                    getTarget().setHealth(y-getDamage());
+                    setNormalAttack(false);
+                }
+
+            }
+
 
     }
-    public int calculateDamage() {
-        if (getType().equals("DeathKnight")) {
-            return getDamage() * changeIntelligence();
-        } if (getType().equals("DemonHunter")) {
-            return getDamage() * changeStrength();
-        }  if (getType().equals("Goblin")) {
-            return getDamage() * changeStrength();
-        } if (getType().equals("Monk")) {
-            return getDamage() * changeIntelligence();
-        }  if (getType().equals("Rouge")) {
-            return getDamage() * changeVitality();
-        }
-        if(getType().equals("Siren")){
-            return getDamage()*getVitality();
-        }else
-            return 0;
-    }
-
-}
