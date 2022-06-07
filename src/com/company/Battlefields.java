@@ -3,7 +3,6 @@ package com.company;
 
         import java.security.SecureRandom;
         import java.util.ArrayList;
-        import java.util.InputMismatchException;
         import java.util.Objects;
         import java.util.Scanner;
 
@@ -28,7 +27,18 @@ public abstract class Battlefields extends Location implements Locateable{
 
     }
     public boolean getLocation(){
-        battle();
+        if(fPlayers.size()==3){
+            battle();
+        }
+        else{
+            for(int i=0;i<fPlayers.size();i++){
+                fPlayers.remove(fPlayers.get(i));
+            }
+            System.out.println("sorry there was a technical problem");
+            System.out.println("you enter the battlefield again");
+            battle();
+        }
+
         return true;
     }
 
@@ -44,6 +54,24 @@ public abstract class Battlefields extends Location implements Locateable{
         return currentEnemies;
     }
     public void fPlayer() {
+        System.out.println();
+        System.out.println("You have to choose 3 of your characters to fight before you start the match ");
+        System.out.println("information of your characters ");
+        int counterCh=0;
+        for(int i = 0;i<players.size();i++){
+            if(players.get(i).getHealth()>0) {
+                System.out.println((i + 1) + ".character");
+                playerStats(players.get(i));
+                counterCh++;
+            }
+        }
+        if(counterCh<3){
+            System.out.println("you don't have enough characters to fight");
+            System.out.println("so you come back home again");
+            location = new Home(players);
+            location.getLocation();
+
+        }
         System.out.println();
         boolean allCharactersDifferent = true;
         while (allCharactersDifferent) {
@@ -91,8 +119,8 @@ public abstract class Battlefields extends Location implements Locateable{
     }
 
     public void battle() {
-        fPlayer();
         initializeEnemies();
+        fPlayer();
         int temp;
         boolean fighting = true;
         int numberOfEnemies = currentEnemies.size();
