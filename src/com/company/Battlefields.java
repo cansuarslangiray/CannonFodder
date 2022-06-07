@@ -3,6 +3,7 @@ package com.company;
 
         import java.security.SecureRandom;
         import java.util.ArrayList;
+        import java.util.InputMismatchException;
         import java.util.Objects;
         import java.util.Scanner;
 
@@ -45,36 +46,48 @@ public abstract class Battlefields extends Location implements Locateable{
 
         return currentEnemies;
     }
-    public void fPlayer(){
+    public void fPlayer() {
         System.out.println();
         System.out.println("You have to choose 3 of your characters to fight before you start the match ");
         System.out.println("information of your characters ");
-        int counterCh=0;
-        for(int i = 0;i<players.size();i++){
-            if(players.get(i).getHealth()>0) {
+        int counterCh = 0;
+        for (int i = 0; i < players.size(); i++) {
+            if (players.get(i).getHealth() > 0) {
                 System.out.println((i + 1) + ".character");
                 playerStats(players.get(i));
                 counterCh++;
             }
         }
-        if(counterCh<3){
+        if (counterCh < 3) {
             System.out.println("you don't have enough characters to fight");
             System.out.println("so you come back home again");
             location = new Home(players);
             location.getLocation();
 
         }
+
         System.out.println();
-        System.out.println("Which rank do you want to fight with your characters?");
-        System.out.print("first choice:");
-        int choice = sc.nextInt();
-        System.out.print("second choice: ");
-        int choice1 = sc.nextInt();
-        System.out.print("third choice: ");
-        int choice2 = sc.nextInt();
-        fPlayers.add(players.get(choice - 1));
-        fPlayers.add(players.get(choice1 - 1));
-        fPlayers.add(players.get(choice2 - 1));
+        boolean again = true;
+        while (again) {
+            try {
+                System.out.println("Which rank do you want to fight with your characters?");
+                System.out.print("first choice:");
+                int choice = sc.nextInt();
+                System.out.print("second choice: ");
+                int choice1 = sc.nextInt();
+                System.out.print("third choice: ");
+                int choice2 = sc.nextInt();
+                fPlayers.add(players.get(choice - 1));
+                fPlayers.add(players.get(choice1 - 1));
+                fPlayers.add(players.get(choice2 - 1));
+                again=false;
+            } catch (Exception e) {
+                System.out.println("The exception type is: "+ e);
+                System.out.println("Please enter only integer numbers!" );
+                sc.next();
+            }
+
+        }
 
     }
     public void battle() {
