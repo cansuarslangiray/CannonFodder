@@ -27,9 +27,6 @@ public abstract class Battlefields extends Location implements Locateable{
 
     }
     public boolean getLocation(){
-        //setAdvRank(getAdvRank()+1);
-        initializeEnemies();
-        fPlayer();
         battle();
         return true;
     }
@@ -65,20 +62,54 @@ public abstract class Battlefields extends Location implements Locateable{
 
         }
         System.out.println();
+        boolean allCharactersDifferent = true;
+        while (allCharactersDifferent) {
         System.out.println("Which rank do you want to fight with your characters?");
         System.out.print("first choice:");
         int choice = sc.nextInt();
+        fPlayers.add(players.get(choice-1));
         System.out.print("second choice: ");
         int choice1 = sc.nextInt();
+            if (players.get(choice - 1) == players.get(choice1 - 1)) {
+                boolean a = true;
+                while (a) {
+                    System.out.println("you cannot select a character you have chosen");
+                    System.out.println("choose another character");
+                    int choice4 = sc.nextInt();
+                    if(players.get(choice-1) != players.get(choice4-1)) {
+                        fPlayers.add(players.get(choice4 - 1));
+                        a = false;
+                    }
+                }
+            }
+            else{
+                fPlayers.add(players.get(choice1-1));
+            }
         System.out.print("third choice: ");
         int choice2 = sc.nextInt();
-        fPlayers.add(players.get(choice - 1));
-        fPlayers.add(players.get(choice1 - 1));
-        fPlayers.add(players.get(choice2 - 1));
+            if (fPlayers.get(0) == players.get(choice2 - 1) || fPlayers.get(1)==players.get(choice2-1))  {
+                boolean k = true;
+                while (k) {
+                    System.out.println("you cannot select a character you have chosen");
+                    System.out.println("choose another character");
+                    int choice4 = sc.nextInt();
+                    if (fPlayers.get(0) != players.get(choice4 - 1) || fPlayers.get(1)!=players.get(choice4-1))  {
+                        fPlayers.add(players.get(choice4 - 1));
+                        k = false;
+                    }
+                }
+            }
+            else{
+                fPlayers.add(players.get(choice2-1));
+                allCharactersDifferent =false;
+            }
 
-    }
+            }
+        }
+
     public void battle() {
         initializeEnemies();
+        fPlayer();
         int temp;
         boolean fighting = true;
         int numberOfEnemies = currentEnemies.size();
