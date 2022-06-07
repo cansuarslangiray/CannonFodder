@@ -295,7 +295,7 @@ public class Player {
     public void healthPoint() {
         double hp = (7 * getVitality()) + 2 * getStrength() + 1 * getIntelligence();
         setHealth((int) Math.round(hp));
-        setrHealthy(getHealth());
+        setrHealthy((int) Math.round(hp));
     }
 
     public void assigningWeapons() {

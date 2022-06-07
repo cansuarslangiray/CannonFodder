@@ -6,7 +6,7 @@ public abstract class Location implements Locateable{
 
    protected ArrayList<Player> players;
    protected String areaName;
-   protected static int advRank = 0;
+   protected static int advRank = 1;
 
    public Location(ArrayList<Player> players) {
       //setAdvRank(getAdvRank()+1);
