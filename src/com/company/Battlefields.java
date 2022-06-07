@@ -28,9 +28,6 @@ public abstract class Battlefields extends Location implements Locateable{
 
     }
     public boolean getLocation(){
-        //setAdvRank(getAdvRank()+1);
-        initializeEnemies();
-        fPlayer();
         battle();
         return true;
     }
@@ -48,49 +45,53 @@ public abstract class Battlefields extends Location implements Locateable{
     }
     public void fPlayer() {
         System.out.println();
-        System.out.println("You have to choose 3 of your characters to fight before you start the match ");
-        System.out.println("information of your characters ");
-        int counterCh = 0;
-        for (int i = 0; i < players.size(); i++) {
-            if (players.get(i).getHealth() > 0) {
-                System.out.println((i + 1) + ".character");
-                playerStats(players.get(i));
-                counterCh++;
+        boolean allCharactersDifferent = true;
+        while (allCharactersDifferent) {
+            System.out.println("Which rank do you want to fight with your characters?");
+            System.out.print("first choice:");
+            int choice = sc.nextInt();
+            fPlayers.add(players.get(choice-1));
+            System.out.print("second choice: ");
+            int choice1 = sc.nextInt();
+            if (players.get(choice - 1) == players.get(choice1 - 1)) {
+                boolean a = true;
+                while (a) {
+                    System.out.println("you cannot select a character you have chosen");
+                    System.out.println("choose another character");
+                    int choice4 = sc.nextInt();
+                    if(players.get(choice-1) != players.get(choice4-1)) {
+                        fPlayers.add(players.get(choice4 - 1));
+                        a = false;
+                    }
+                }
             }
-        }
-        if (counterCh < 3) {
-            System.out.println("you don't have enough characters to fight");
-            System.out.println("so you come back home again");
-            location = new Home(players);
-            location.getLocation();
-
-        }
-
-        System.out.println();
-        boolean again = true;
-        while (again) {
-            try {
-                System.out.println("Which rank do you want to fight with your characters?");
-                System.out.print("first choice:");
-                int choice = sc.nextInt();
-                System.out.print("second choice: ");
-                int choice1 = sc.nextInt();
-                System.out.print("third choice: ");
-                int choice2 = sc.nextInt();
-                fPlayers.add(players.get(choice - 1));
-                fPlayers.add(players.get(choice1 - 1));
-                fPlayers.add(players.get(choice2 - 1));
-                again=false;
-            } catch (Exception e) {
-                System.out.println("The exception type is: "+ e);
-                System.out.println("Please enter only integer numbers!" );
-                sc.next();
+            else{
+                fPlayers.add(players.get(choice1-1));
+            }
+            System.out.print("third choice: ");
+            int choice2 = sc.nextInt();
+            if (fPlayers.get(0) == players.get(choice2 - 1) || fPlayers.get(1)==players.get(choice2-1))  {
+                boolean k = true;
+                while (k) {
+                    System.out.println("you cannot select a character you have chosen");
+                    System.out.println("choose another character");
+                    int choice4 = sc.nextInt();
+                    if (fPlayers.get(0) != players.get(choice4 - 1) || fPlayers.get(1)!=players.get(choice4-1))  {
+                        fPlayers.add(players.get(choice4 - 1));
+                        k = false;
+                    }
+                }
+            }
+            else{
+                fPlayers.add(players.get(choice2-1));
+                allCharactersDifferent =false;
             }
 
         }
-
     }
+
     public void battle() {
+        fPlayer();
         initializeEnemies();
         int temp;
         boolean fighting = true;

@@ -6,10 +6,9 @@ public abstract class Location implements Locateable{
 
    protected ArrayList<Player> players;
    protected String areaName;
-   protected static int advRank = 1;
+   protected static int advRank = 0;
 
    public Location(ArrayList<Player> players) {
-      //setAdvRank(getAdvRank()+1);
       this.players = players;
 
    }
