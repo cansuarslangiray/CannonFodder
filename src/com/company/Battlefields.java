@@ -45,78 +45,93 @@ public abstract class Battlefields extends Location implements Locateable{
 
     public ArrayList<Enemy> initializeEnemies() {
         currentEnemies = new ArrayList<>();
-            for (int i = 0; i < Math.pow(2, getAdvRank()); i++) {
-                Enemy enemy = new Enemy(("enemy(" + (i + 1) + ")"));
-                enemy.sEnemy();
-                currentEnemies.add(enemy);
-            }
+        for (int i = 0; i < Math.pow(2, getAdvRank()); i++) {
+            Enemy enemy = new Enemy(("enemy(" + (i + 1) + ")"));
+            enemy.sEnemy();
+            currentEnemies.add(enemy);
+        }
 
         return currentEnemies;
     }
     public void fPlayer() {
-        System.out.println();
-        System.out.println("You have to choose 3 of your characters to fight before you start the match ");
-        System.out.println("information of your characters ");
-        int counterCh=0;
-        for(int i = 0;i<players.size();i++){
-            if(players.get(i).getHealth()>0) {
+            System.out.println();
+            System.out.println("You have to choose 3 of your characters to fight before you start the match ");
+            System.out.println("information of your characters ");
+        int counterCh = 0;
+        for (int i = 0; i < players.size(); i++) {
+            if (players.get(i).getHealth() > 0) {
                 System.out.println((i + 1) + ".character");
                 playerStats(players.get(i));
                 counterCh++;
             }
         }
-        if(counterCh<3){
+        if (counterCh < 3) {
             System.out.println("you don't have enough characters to fight");
             System.out.println("so you come back home again");
             location = new Home(players);
             location.getLocation();
 
         }
-        System.out.println();
-        boolean allCharactersDifferent = true;
-        while (allCharactersDifferent) {
-            System.out.println("Which rank do you want to fight with your characters?");
-            System.out.print("first choice:");
-            int choice = sc.nextInt();
-            fPlayers.add(players.get(choice-1));
-            System.out.print("second choice: ");
-            int choice1 = sc.nextInt();
-            if (players.get(choice - 1) == players.get(choice1 - 1)) {
-                boolean a = true;
-                while (a) {
-                    System.out.println("you cannot select a character you have chosen");
-                    System.out.println("choose another character");
-                    int choice4 = sc.nextInt();
-                    if(players.get(choice-1) != players.get(choice4-1)) {
-                        fPlayers.add(players.get(choice4 - 1));
-                        a = false;
+        boolean again = true;
+        while (again) {
+            try {
+                System.out.println();
+                boolean allCharactersDifferent = true;
+                while (allCharactersDifferent) {
+                    System.out.println("Which rank do you want to fight with your characters?");
+                    System.out.print("first choice:");
+                    int choice = sc.nextInt();
+                    fPlayers.add(players.get(choice-1));
+                    System.out.print("second choice: ");
+                    int choice1 = sc.nextInt();
+                    if (players.get(choice - 1) == players.get(choice1 - 1) ) {
+                        boolean a = true;
+                        while (a) {
+                            System.out.println("you cannot select a character you have chosen");
+                            System.out.println("choose another character");
+                            int choice4 = sc.nextInt();
+                            if(players.get(choice-1) != players.get(choice4-1)) {
+                                fPlayers.add(players.get(choice4 - 1));
+                                a = false;
+                            }
+                        }
                     }
-                }
-            }
-            else{
-                fPlayers.add(players.get(choice1-1));
-            }
-            System.out.print("third choice: ");
-            int choice2 = sc.nextInt();
-            if (fPlayers.get(0) == players.get(choice2 - 1) || fPlayers.get(1)==players.get(choice2-1))  {
-                boolean k = true;
-                while (k) {
-                    System.out.println("you cannot select a character you have chosen");
-                    System.out.println("choose another character");
-                    int choice4 = sc.nextInt();
-                    if (fPlayers.get(0) != players.get(choice4 - 1) || fPlayers.get(1)!=players.get(choice4-1))  {
-                        fPlayers.add(players.get(choice4 - 1));
-                        k = false;
+                    else{
+                        fPlayers.add(players.get(choice1-1));
                     }
+                    System.out.print("third choice: ");
+                    int choice2 = sc.nextInt();
+                    if (players.get(choice-1) == players.get(choice2 - 1) || fPlayers.get(1)==players.get(choice2-1))  {
+                        boolean k = true;
+                        while (k) {
+                            System.out.println("you cannot select a character you have chosen");
+                            System.out.println("choose another character");
+                            int choice4 = sc.nextInt();
+                            if (players.get(choice-1) != players.get(choice4 - 1) && fPlayers.get(1)!=players.get(choice4-1))  {
+                                fPlayers.add(players.get(choice4 - 1));
+                                k = false;
+                                allCharactersDifferent =false;
+                            }
+                        }
+                    }
+                    else{
+                        fPlayers.add(players.get(choice2-1));
+                        allCharactersDifferent =false;
+                    }
+
                 }
+                again=false;
             }
-            else{
-                fPlayers.add(players.get(choice2-1));
-                allCharactersDifferent =false;
+            catch (Exception e) {
+                System.out.println("The exception type is: "+ e);
+                System.out.println("Please enter only integer numbers!" );
+                sc.next();
             }
 
         }
+
     }
+
 
     public void battle() {
         initializeEnemies();
@@ -182,14 +197,14 @@ public abstract class Battlefields extends Location implements Locateable{
                                     boolean c = true;
                                     while (c) {
                                         if(fPlayers.size()>1){
-                                        for (int i = 0; i < fPlayers.size(); i++) {
-                                            if ((ally.getrHealthy() - ally.getHealth()) <=(fPlayers.get(i).getrHealthy() - fPlayers.get(i).getHealth())) {
-                                                ally = fPlayers.get(i);
-                                                fPlayers.get(choice - 1).setAlly(ally);
-                                                c = false;
-                                                break;
-                                            }
-                                        }}
+                                            for (int i = 0; i < fPlayers.size(); i++) {
+                                                if ((ally.getrHealthy() - ally.getHealth()) <=(fPlayers.get(i).getrHealthy() - fPlayers.get(i).getHealth())) {
+                                                    ally = fPlayers.get(i);
+                                                    fPlayers.get(choice - 1).setAlly(ally);
+                                                    c = false;
+                                                    break;
+                                                }
+                                            }}
                                         else{
                                             fPlayers.get(choice - 1).setAlly(fPlayers.get(choice-1));
                                             c = false;
@@ -197,26 +212,26 @@ public abstract class Battlefields extends Location implements Locateable{
                                         }
                                     }
                                 }
-                                    if (fPlayers.get(choice - 1).getType().equals("Elf")) {
-                                        boolean d = true;
-                                        while (d) {
-                                            if(currentEnemies.size() >1){
+                                if (fPlayers.get(choice - 1).getType().equals("Elf")) {
+                                    boolean d = true;
+                                    while (d) {
+                                        if(currentEnemies.size() >1){
                                             for(int i = 0; i<currentEnemies.size();i++){
-                                               Enemy allyEnemy = currentEnemies.get(i);
-                                               if(!Objects.equals(allyEnemy.getName(), currentEnemies.get(temp).getName())){
-                                                   currentEnemies.get(temp).setAllyEnemy(allyEnemy);
-                                                   d = false;
-                                                   break;
-                                               }
+                                                Enemy allyEnemy = currentEnemies.get(i);
+                                                if(!Objects.equals(allyEnemy.getName(), currentEnemies.get(temp).getName())){
+                                                    currentEnemies.get(temp).setAllyEnemy(allyEnemy);
+                                                    d = false;
+                                                    break;
+                                                }
                                             }
                                         }else{
-                                                System.out.println("All enemies are dead");
-                                                currentEnemies.get(temp).setAllyEnemy(currentEnemies.get(temp));
-                                                d = false;
-                                                break;
-                                            }
+                                            System.out.println("All enemies are dead");
+                                            currentEnemies.get(temp).setAllyEnemy(currentEnemies.get(temp));
+                                            d = false;
+                                            break;
                                         }
                                     }
+                                }
 
                                 fPlayers.get(choice-1).cast();
                                 menu = false;
