@@ -11,7 +11,6 @@ public class Knight extends  Player{
     @Override
     public void assigningWeapons() {
         setWeapons(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
-        setItem(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
     }
 
     @Override
@@ -26,5 +25,9 @@ public class Knight extends  Player{
         getTarget().setElectrified(true);
         getTarget().setNormalAttack(true);
 
+    }
+    @Override
+    public void Inv() {
+        getInv().get(0).add(getWeapons());
     }
 }

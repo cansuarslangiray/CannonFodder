@@ -12,7 +12,7 @@ public class Healer extends Player{
     @Override
     public void assigningWeapons() {
         setWeapons(objects.getCatalystArrayList().get(sc.nextInt(objects.getCatalystArrayList().size() - 1)));
-        setItem(objects.getCatalystArrayList().get(sc.nextInt(objects.getCatalystArrayList().size() - 1)));
+
     }
 
     @Override
@@ -35,6 +35,10 @@ public class Healer extends Player{
             getAlly().setHealth(getAlly().getrHealthy());
             System.out.println(getAlly().getCharacterName()+ "is full of health");
         }
+    }
+    @Override
+    public void Inv() {
+        getInv().get(0).add(getWeapons());
     }
 }
 

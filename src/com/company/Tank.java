@@ -8,7 +8,7 @@ public class Tank extends Player{
     @Override
     public void assigningWeapons() {
         setWeapons(objects.getShieldArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
-        setItem(objects.getSwordArrayList().get(sc.nextInt(objects.getSwordArrayList().size()-1)));
+
     }
 
     @Override
@@ -21,5 +21,10 @@ public class Tank extends Player{
         System.out.println("Casting " + getCharacterName() + " on " + getTarget().getName());
         System.out.println(getTarget().getName() + " is stunned " + getCharacterName());
         getTarget().setStunned(true);
+    }
+
+    @Override
+    public void Inv() {
+        getInv().get(0).add(getWeapons());
     }
 }

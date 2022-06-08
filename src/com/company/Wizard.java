@@ -13,7 +13,6 @@ public class Wizard extends Player {
     @Override
     public void assigningWeapons() {
         setWeapons(objects.getWandArrayList().get(sc.nextInt( objects.getWandArrayList().size()-1)));
-        setItem(objects.getWandArrayList().get(sc.nextInt( objects.getWandArrayList().size()-1)));
     }
 
     @Override
@@ -23,6 +22,11 @@ public class Wizard extends Player {
         getTarget().setHealth(getTarget().getHealth()-getDamageAbsorber());
         System.out.println(getCharacterName() + " damaged " + getTarget().getName() + " for " + getDamageAbsorber() + " damage.");
         getTarget().setDamageAbsorber(true);
+    }
+
+    @Override
+    public void Inv() {
+        getInv().get(0).add(getWeapons());
     }
 
     @Override

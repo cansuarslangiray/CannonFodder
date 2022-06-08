@@ -1,16 +1,20 @@
 package com.company;
 
-import com.sun.source.tree.NewArrayTree;
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WeaponsShop extends SafePlace {
+    int changeWeapon;
     Objects objects = new Objects();
+    Weapons wps;
 
 
     public WeaponsShop(ArrayList<Player> players) {
         super(players);
+
+
     }
 
 
@@ -40,7 +44,9 @@ public class WeaponsShop extends SafePlace {
                                 System.out.println("you have " + players.get(1).getAllMoney() + " money");
                                 System.out.println("Which sword do you want ?");
                                 int ch4 = sc.nextInt();
-                                buyWeapon(ch4, objects.getSwordArrayList());
+                               if(!buyWeapon(ch4, objects.getSwordArrayList())){
+                                   players.get(0).getInv().get(0).add(objects.getSwordArrayList().get(ch4-1));
+                               }
                                 break;
                             case 2:
                                 options();
@@ -180,7 +186,9 @@ public class WeaponsShop extends SafePlace {
                                 System.out.println("you have " + players.get(1).getAllMoney() + " money");
                                 System.out.println("Which scythe do you want ?");
                                 int ch4 = sc.nextInt();
-                                buyWeapon(ch4, objects.getScytheArrayList());
+                                if(!buyWeapon(ch4, objects.getScytheArrayList())){
+                                    players.get(0).setItem(objects.getScytheArrayList().get(ch4-1));
+                                }
                                 break;
                             case 2:
                                 options();
@@ -192,6 +200,15 @@ public class WeaponsShop extends SafePlace {
                     break;
                 case 7:
                     changeWeapon();
+                    for(int i = 0 ; i<players.get(0).getInv().size();i++) {
+                        for(int k = 0; k<players.size();k++) {
+                            if (players.get(k).getInv().get(0).get(i).getInvType().equals("Weapon")) {
+                                System.out.println((k + 1) + ".weapons printInfo.....");
+                                players.get(k).getInv().get(0).get(i).weaponsPrintInfo();
+                            }
+                        }
+                    }
+                    System.out.println("Which one do you want to use?");
                     break;
                 case 8:
                     System.out.println("exiting this page.....");
@@ -209,13 +226,14 @@ public class WeaponsShop extends SafePlace {
     }
 
 
-    public void buyWeapon(int choice,ArrayList<Weapons>wps) {
+    public boolean buyWeapon(int choice,ArrayList<Weapons>wps) {
         if (players.get(1).getType().equals("Wizard")) {
             if (wps.get(choice - 1).getWeight() > 1.2) {
                 System.out.println("Sorry, the weight of this weapon is not suitable for you.");
                 System.out.println("do you want to buy another "+ wps.get(choice-1).getType()+"?");
                 System.out.println("if your answer yes, press 1 ");
                 System.out.println("else, press 2 to see other weapon types.");
+
             } else {
                 if (players.get(1).getAllMoney() >= wps.get(choice - 1).getPriceOfItem()) {
                     players.get(1).setItem(wps.get(choice - 1));
@@ -361,30 +379,20 @@ public class WeaponsShop extends SafePlace {
                 }
 
             }
-        }}
-    public void changeWeapon() {
-        ArrayList<Weapons> wps = new ArrayList<>();
-        System.out.println("The weapons you have:");
-        for (int i = 0; i < players.size(); i++) {
-            players.get(i).getWeapons().weaponsPrintInfo();
-            wps.add(players.get(i).getWeapons());
         }
-        System.out.println("Which one do you want to remove?");
-        int choice = sc.nextInt();
-        wps.remove(choice - 1);
-        System.out.println("Your weapon has been successfully deleted");
-        System.out.println("welcome to the weapon shop");
-        System.out.println("--------------------------------");
-        System.out.println("press 1 to see swords");
-        System.out.println("press 2 to see claymores");
-        System.out.println("press 3 to see polearms");
-        System.out.println("press 4 to see wand");
-        System.out.println("press 5 to see catalyst");
-        System.out.println("press 6 to see scythe");
-        System.out.println("press 7 to change your weapon");
-        System.out.println("press 8 to exit this page");
-        System.out.println("your choice ? ");
-        sc.nextLine();
+        else{
+            return false;
+        }
+        return true;
+
+    }
+    public void changeWeapon() {
+        System.out.println("your characters: ");
+        for(int i = 0; i<players.size();i++){
+            System.out.println((i+1) + ".character \t" + players.get(i).getCharacterName() + " \t character's weapons: \t" + players.get(i).getWeapons().getName());
+        }
+        System.out.println("which character's weapons do you want to change:");
+        changeWeapon = sc.nextInt();
 
     }
 

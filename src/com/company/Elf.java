@@ -14,7 +14,6 @@ public class Elf extends Player {
     @Override
     public void assigningWeapons() {
         setWeapons(objects.getScytheArrayList().get(sc.nextInt(objects.getScytheArrayList().size() - 1)));
-        setItem(objects.getScytheArrayList().get(sc.nextInt(objects.getScytheArrayList().size() - 1)));
     }
 
     @Override
@@ -26,5 +25,9 @@ public class Elf extends Player {
     public void cast() {
         System.out.println("Casting " + getCharacterName() + " on " + getTarget().getName());
         getTarget().setCharmed(true);
+    }
+    @Override
+    public void Inv() {
+        getInv().get(0).add(getWeapons());
     }
 }

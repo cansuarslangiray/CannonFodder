@@ -3,12 +3,18 @@
 package com.company;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 
 
 public class Player {
-    double allMoney ;
-    Objects objects = new Objects();
+    double allMoney;
     Enemy target;
+    private Weapons weapons;
+    private Armors armors;
+    private Inventory item;
+    ArrayList<ArrayList<Inventory>>ınv = new ArrayList<>();
+    ArrayList<Inventory> wps = new ArrayList<>();
+    Objects objects = new Objects();
     SecureRandom sc = new SecureRandom();
     private String type;
     private String characterName;
@@ -21,10 +27,7 @@ public class Player {
     private int intelligence;
     private int rHealthy;
     private int block;
-    private Weapons weapons;
-    private Ability ability;
-    private Armors armors;
-    private Inventory item;
+
     private Player ally;
     private int damageAbsorber;
 
@@ -38,6 +41,7 @@ public class Player {
         this.characterName = characterName;
         this.money = money;
         this.item = new Inventory();
+        ınv.add(wps);
     }
 
     public int getDamageAbsorber() {
@@ -62,6 +66,8 @@ public class Player {
     public void setItem(Inventory item) {
         this.item = item;
     }
+
+
 
     public double getAllMoney() {
         return allMoney;
@@ -169,15 +175,6 @@ public class Player {
         this.armors= armors;
     }
 
-
-    public Ability getAbility() {
-        return ability;
-    }
-
-    public void setAbility(Ability ability) {
-        this.ability = ability;
-    }
-
     public int getBlock() {
         return block;
     }
@@ -186,8 +183,13 @@ public class Player {
         this.block = block;
     }
 
+    public ArrayList<ArrayList<Inventory>> getInv() {
+        return ınv;
+    }
 
-
+    public void setInv(ArrayList<ArrayList<Inventory>> ınv) {
+        this.ınv = ınv;
+    }
 
     public void changeStrenght() {
 
@@ -333,6 +335,9 @@ public class Player {
         healthPoint();
         assigningWeapons();
         playerDamage();
+        Inv();
+    }
+    public void Inv(){
     }
 
 

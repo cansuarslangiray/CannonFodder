@@ -13,7 +13,6 @@ public class Warrior extends Player {
     @Override
     public void assigningWeapons() {
         setWeapons(objects.getClaymoreArrayList().get(sc.nextInt(objects.getClaymoreArrayList().size() - 1)));
-        setItem(objects.getClaymoreArrayList().get(sc.nextInt(objects.getClaymoreArrayList().size() - 1)));
     }
 
     @Override
@@ -28,6 +27,10 @@ public class Warrior extends Player {
             System.out.println("physical resistance of all enemy decreased by 20%");
             System.out.println("Current physical resistance of the " + getTarget().getName() + " is " + getTarget().getPhysicalResistance());
             getTarget().setNormalAttack(true);
+    }
+    @Override
+    public void Inv() {
+        getInv().get(0).add(getWeapons());
     }
 }
 

@@ -1,13 +1,13 @@
 package com.company;
 
-import java.util.ArrayList;
+
 
 public class Inventory {
-    ArrayList<Player> players;
     private String name;
     private String itemType;
     private double priceOfItem;
     private int primogen;
+    private String invType;
 
      public Inventory(){
          this.name = null;
@@ -21,6 +21,14 @@ public class Inventory {
         this.itemType = itemType;
         this.priceOfItem =priceOfItem;
         this.primogen = 20;
+    }
+
+    public String getInvType() {
+        return invType;
+    }
+
+    public void setInvType(String invType) {
+        this.invType = invType;
     }
 
     public String getName() {
@@ -63,5 +71,13 @@ public class Inventory {
 
     public void setPrimogen(int primogen) {
         this.primogen = primogen;
+    }
+
+
+    public void weaponsPrintInfo(){
+        System.out.println("---------------------------------------------");
+        System.out.println("weapons' name: \t" + getName() );
+        System.out.println("weapons' price: \t" + getPriceOfItem() );
+
     }
 }

@@ -43,6 +43,12 @@ public class Game {
             }
         }
 
+        for(int i =0;i<players.get(0).ınv.get(0).size();i++) {
+            for (int j = 0; j < players.size(); j++) {
+                players.get(j).ınv.get(0).get(1).weaponsPrintInfo();
+            }
+        }
+
     }
     public static void safePlace(){
         System.out.println("press 1 to return home");
