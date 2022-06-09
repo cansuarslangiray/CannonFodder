@@ -1,0 +1,5 @@
+ Number of enemies killed by players 
+name: Yu Otosakascore: 2
+name: Byakuya Togamiscore: 0
+name: Guren Ichinosescore: 0
+name: Nao Tomoriscore: 0

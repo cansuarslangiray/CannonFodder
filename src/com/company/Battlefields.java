@@ -1,6 +1,7 @@
 
 package com.company;
 
+        import java.io.*;
         import java.security.SecureRandom;
         import java.util.ArrayList;
         import java.util.Objects;
@@ -27,18 +28,8 @@ public abstract class Battlefields extends Location implements Locateable{
 
 
     }
-    public boolean getLocation(){
-        if(fPlayers.size()==3){
+    public boolean getLocation (){
             battle();
-        }
-        else{
-            for(int i=0;i<fPlayers.size();i++){
-                fPlayers.remove(fPlayers.get(i));
-            }
-            System.out.println("sorry there was a technical problem");
-            System.out.println("you enter the battlefield again");
-            battle();
-        }
 
         return true;
     }
@@ -134,7 +125,7 @@ public abstract class Battlefields extends Location implements Locateable{
     }
 
 
-    public void battle() {
+    public void battle()  {
         initializeEnemies();
         fPlayer();
         int temp;
@@ -226,6 +217,7 @@ public abstract class Battlefields extends Location implements Locateable{
                                         }else{
                                             System.out.println("one enemy is here!!! ");
                                             currentEnemies.get(temp).setAllyEnemy(currentEnemies.get(temp));
+                                            d =false;
 
                                         }
                                     }
@@ -262,6 +254,7 @@ public abstract class Battlefields extends Location implements Locateable{
                         a = true;
                     }
                     System.out.println(currentEnemies.get(temp).getName() + " is dead");
+                    fPlayers.get(choice-1).setScore(fPlayers.get(choice-1).getScore()+1);
                     System.out.println("enemy drop " + currentEnemies.get(temp).getAward().getName());
                     System.out.println("press f to add this item to the inventory");
                     String invChoice = sc.next();
@@ -339,6 +332,7 @@ public abstract class Battlefields extends Location implements Locateable{
                 fighting = false;
                 System.out.println("All enemies are dead..");
                 System.out.println("LEVEL CLEARED");
+                advRank++;
 
                 for(int i = 0; i < players.get(0).getInv().size();i++){
                     System.out.println("inv print");
@@ -349,6 +343,7 @@ public abstract class Battlefields extends Location implements Locateable{
                 System.out.println("press 1 to go home");
                 System.out.println("press 2 to start a new fight");
                 System.out.println("press 3 to wish ");
+                System.out.println("press 4 to see the score");
                 int choice1 = sc.nextInt();
                 switch (choice1){
                     case 1:
@@ -385,8 +380,12 @@ public abstract class Battlefields extends Location implements Locateable{
                             location = new Home(players);
                             location.getLocation();
                         }
+                    case 4:
+                        score();
+                        break;
+
                     default:
-                        System.out.println("You entered a number other than 1, 2 or 3");
+                        System.out.println("You entered a number other than 1, 2, 3 or 4");
                         System.out.println("please enter one of these numbers");
                 }
 
@@ -412,6 +411,37 @@ public abstract class Battlefields extends Location implements Locateable{
         for (int i = 0; i <currentEnemies.size(); i++) {
             System.out.println(currentEnemies.get(i).getName()+" Stats: ");
             System.out.println("Health: \t" + currentEnemies.get(i).getHealth() +"\t Damege: \t" + currentEnemies.get(i).getDamage()+ "\t Award: \t" + currentEnemies.get(i).getAward().getName());
+        }
+    }
+    public void score() {
+        String pScore;
+        try {
+            File file = new File("score.txt");
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            String playersScores = " Number of enemies killed by players "+"\n";
+            FileWriter fWriter = new FileWriter(file, false);
+            BufferedWriter bWriter = new BufferedWriter(fWriter);
+            bWriter.write(playersScores);
+            for (int i = 0; i < players.size(); i++) {
+                pScore = ("name: " + players.get(i).getCharacterName() + "score: " + players.get(i).getScore() +"\n");
+                bWriter.write(pScore);
+            }
+
+
+            FileReader fReader = new FileReader(file);
+            String line;
+
+            BufferedReader bReader = new BufferedReader(fReader);
+            while ((line = bReader.readLine()) != null) {
+                System.out.println(line);
+            }
+            bWriter.close();
+            bReader.close();
+        }
+        catch (IOException e){
+
         }
     }
 

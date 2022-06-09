@@ -28,6 +28,7 @@ public class Player {
     private int block;
     private Player ally;
     private int damageAbsorber;
+    private int score;
 
 
 
@@ -183,6 +184,14 @@ public class Player {
 
     public void setInv(ArrayList<Item> ınv) {
         this.ınv = ınv;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public void changeStrenght() {
