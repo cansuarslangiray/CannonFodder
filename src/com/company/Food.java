@@ -1,6 +1,6 @@
 package com.company;
 
-public class Food extends Inventory {
+public class Food extends Item {
     double addHP;
     public Food(String name, String itemType, int priceOfItem, double pointsHP) {
         super(name, itemType, priceOfItem);

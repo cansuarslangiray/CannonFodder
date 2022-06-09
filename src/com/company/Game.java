@@ -23,8 +23,7 @@ public class Game {
         System.out.println("Secondly, If you are not healthy enough, you can buy food with the coins you earned during the fight, or you can make your own with the materials you earned during the fight. You can also go home and increase your health");
         System.out.println("You can also buy items that will increase your character's powers.");
         System.out.println("You can collect objects on the ground when you press the f key.");
-        System.out.println("Before fighting, you can get information about the enemies there, such as their damage value and health, and you can decide accordingly. Fight or run");
-        System.out.println("DO NOT FORGET, if you lose your one character against the enemy you will lose 10 Primogen, if you you lose your two characters against the enemy you will lose 10 Primogen");
+        System.out.println("Before fighting, you can get information about the enemies there, such as their damage value and health, and you can decide accordingly");
         System.out.println("VERY IMPORTANCE!!!, if you lose three character against the enemy you will die");
         System.out.println("and the game is over :(");
         System.out.println("if you want to start now, press s");
@@ -43,11 +42,6 @@ public class Game {
             }
         }
 
-        for(int i =0;i<players.get(0).ınv.get(0).size();i++) {
-            for (int j = 0; j < players.size(); j++) {
-                players.get(j).ınv.get(0).get(1).weaponsPrintInfo();
-            }
-        }
 
     }
     public static void safePlace(){
@@ -211,7 +205,7 @@ public class Game {
                      }
                      break;
                  case 2:
-                     System.out.println("press 1 to Moonhallow. In this area, you may encounter siren or demon hunter. ");
+                     System.out.println("press 1 to Moonhallow. ");
                      System.out.println("press 2 to go to first page");
                      System.out.println("Where do you want to go ?");
                      int number2 = sc.nextInt();

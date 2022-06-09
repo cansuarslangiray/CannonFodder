@@ -8,19 +8,12 @@ import java.util.Scanner;
 public class WeaponsShop extends SafePlace {
     int changeWeapon;
     Objects objects = new Objects();
-    Weapons wps;
+    Scanner sc = new Scanner(System.in);
 
 
     public WeaponsShop(ArrayList<Player> players) {
         super(players);
-
-
     }
-
-
-    Scanner sc = new Scanner(System.in);
-
-
     @Override
     public boolean getLocation() {
         options();
@@ -45,7 +38,7 @@ public class WeaponsShop extends SafePlace {
                                 System.out.println("Which sword do you want ?");
                                 int ch4 = sc.nextInt();
                                if(!buyWeapon(ch4, objects.getSwordArrayList())){
-                                   players.get(0).getInv().get(0).add(objects.getSwordArrayList().get(ch4-1));
+                                  // players.get(0).getInv().add(objects.getSwordArrayList().get(ch4-1));
                                }
                                 break;
                             case 2:
@@ -202,9 +195,9 @@ public class WeaponsShop extends SafePlace {
                     changeWeapon();
                     for(int i = 0 ; i<players.get(0).getInv().size();i++) {
                         for(int k = 0; k<players.size();k++) {
-                            if (players.get(k).getInv().get(0).get(i).getInvType().equals("Weapon")) {
+                            if (players.get(k).getInv().get(i).getInvType().equals("Weapon")) {
                                 System.out.println((k + 1) + ".weapons printInfo.....");
-                                players.get(k).getInv().get(0).get(i).weaponsPrintInfo();
+                                players.get(k).getInv().get(i).weaponsPrintInfo();
                             }
                         }
                     }

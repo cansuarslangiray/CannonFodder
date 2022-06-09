@@ -36,9 +36,6 @@ public class Healer extends Player{
             System.out.println(getAlly().getCharacterName()+ "is full of health");
         }
     }
-    @Override
-    public void Inv() {
-        getInv().get(0).add(getWeapons());
-    }
+
 }
 

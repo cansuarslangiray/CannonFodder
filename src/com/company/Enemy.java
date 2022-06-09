@@ -10,7 +10,7 @@ public class Enemy {
     private int physicalResistance =100;
     private String type;
     private String name;
-    private int damage = 5 , award, health;
+    private int damage = 5 , health;
     private int strength;
     private int vitality;
     private int intelligence;
@@ -19,6 +19,16 @@ public class Enemy {
     private int electricT;
     private boolean isNormalAttack = false;
     private boolean isCharmed = false;
+    private Rewards award;
+    private Objects objects = new Objects();
+
+    public Rewards getAward() {
+        return award;
+    }
+
+    public void setAward(Rewards award) {
+        this.award = award;
+    }
 
     public Enemy getAllyEnemy() {
         return allyEnemy;
@@ -140,14 +150,6 @@ public class Enemy {
         this.damage = damage;
     }
 
-    public int getAward() {
-        return award;
-    }
-
-    public void setAward(int award) {
-        this.award = award;
-    }
-
     public int getHealth() {
         return health;
     }
@@ -192,7 +194,13 @@ public class Enemy {
         changeStrength();
         calculateDamage();
         healthPoint();
+        rewards();
+    }
 
+    public void rewards(){
+        for(int i = 0 ; i<objects.getRewards().size();i++){
+            setAward(objects.getRewards().get(sc.nextInt(0,objects.getRewards().size()-1)));
+        }
     }
 
     public void attack() {
@@ -202,18 +210,17 @@ public class Enemy {
             setHealth(getHealth()-10);
             electricT++;
         }
-        if(electricT == 3){
-            isElectrified = false;
-            electricT=0;
-        }
         if(getDamageAbsorber()){
             System.out.println(getName()+"' damage is absorbed by " + getTarget().getCharacterName());
             System.out.println("damage taken from" + getName()+" was used by "+getTarget().getCharacterName() );
-            isDamageAbsorber=false;
+            setNormalAttack(false);
+            setDamageAbsorber(false);
+
         }
         if(getIsStunned()){
             System.out.println(getName()+" is stunned by " +getTarget().getCharacterName());
-            isStunned = false;
+            setNormalAttack(false);
+            setStunned(false);
         }
         if(getTarget().getArmors()!=null){
             int x = (int) Math.round(getTarget().getHealth() - (getDamage() - getTarget().getArmors().getBlock() * 0.1));
@@ -227,11 +234,16 @@ public class Enemy {
             System.out.println(getName() + " attacked " + getAllyEnemy().getName() + " for " + getDamage() + " damage.");
             System.out.println("Current health of the " + getAllyEnemy().getName() + " is "
                     + getAllyEnemy().getHealth());
+            setNormalAttack(false);
             setCharmed(false);
         }
         if(getNormalAttack()){
             System.out.println(getName() + " attacked " + getTarget().getCharacterName() + " for " + getDamage() + " damage.");
             getTarget().setHealth(y-getDamage());
+            if(electricT == 3){
+                setElectrified(false);
+                electricT=0;
+            }
             setNormalAttack(false);
         }
 

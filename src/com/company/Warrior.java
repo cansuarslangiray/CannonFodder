@@ -28,9 +28,6 @@ public class Warrior extends Player {
             System.out.println("Current physical resistance of the " + getTarget().getName() + " is " + getTarget().getPhysicalResistance());
             getTarget().setNormalAttack(true);
     }
-    @Override
-    public void Inv() {
-        getInv().get(0).add(getWeapons());
-    }
+
 }
 

@@ -26,8 +26,4 @@ public class Knight extends  Player{
         getTarget().setNormalAttack(true);
 
     }
-    @Override
-    public void Inv() {
-        getInv().get(0).add(getWeapons());
-    }
 }

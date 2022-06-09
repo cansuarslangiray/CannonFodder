@@ -2,21 +2,21 @@ package com.company;
 
 
 
-public class Inventory {
+public class Item {
     private String name;
     private String itemType;
     private double priceOfItem;
     private int primogen;
     private String invType;
 
-     public Inventory(){
+     public Item(){
          this.name = null;
          this.itemType = null;
          this.priceOfItem = 0;
          this.primogen = 20;
      }
 
-    public Inventory(String name, String itemType, int priceOfItem) {
+    public Item(String name, String itemType, int priceOfItem) {
         this.name = name;
         this.itemType = itemType;
         this.priceOfItem =priceOfItem;

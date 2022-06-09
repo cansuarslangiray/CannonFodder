@@ -25,11 +25,6 @@ public class Wizard extends Player {
     }
 
     @Override
-    public void Inv() {
-        getInv().get(0).add(getWeapons());
-    }
-
-    @Override
     public void attack() {
         super.attack();
     }

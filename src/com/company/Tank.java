@@ -21,10 +21,8 @@ public class Tank extends Player{
         System.out.println("Casting " + getCharacterName() + " on " + getTarget().getName());
         System.out.println(getTarget().getName() + " is stunned " + getCharacterName());
         getTarget().setStunned(true);
+
     }
 
-    @Override
-    public void Inv() {
-        getInv().get(0).add(getWeapons());
-    }
+   
 }

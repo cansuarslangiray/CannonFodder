@@ -25,9 +25,10 @@ public class Elf extends Player {
     public void cast() {
         System.out.println("Casting " + getCharacterName() + " on " + getTarget().getName());
         getTarget().setCharmed(true);
+        getTarget().setNormalAttack(false);
     }
-    @Override
+   /* @Override
     public void Inv() {
         getInv().get(0).add(getWeapons());
-    }
+    }*/
 }

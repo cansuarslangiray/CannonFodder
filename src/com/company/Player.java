@@ -11,9 +11,8 @@ public class Player {
     Enemy target;
     private Weapons weapons;
     private Armors armors;
-    private Inventory item;
-    ArrayList<ArrayList<Inventory>>ınv = new ArrayList<>();
-    ArrayList<Inventory> wps = new ArrayList<>();
+    private Item item;
+    ArrayList<Item>ınv = new ArrayList<>();
     Objects objects = new Objects();
     SecureRandom sc = new SecureRandom();
     private String type;
@@ -27,12 +26,8 @@ public class Player {
     private int intelligence;
     private int rHealthy;
     private int block;
-
     private Player ally;
     private int damageAbsorber;
-
-
-
 
 
 
@@ -40,8 +35,8 @@ public class Player {
         this.type = type;
         this.characterName = characterName;
         this.money = money;
-        this.item = new Inventory();
-        ınv.add(wps);
+        this.item = new Item();
+
     }
 
     public int getDamageAbsorber() {
@@ -59,19 +54,18 @@ public class Player {
     public void setAlly(Player ally) {
         this.ally = ally;
     }
-    public Inventory getItem() {
+    public Item getItem() {
         return item;
     }
 
-    public void setItem(Inventory item) {
+    public void setItem(Item item) {
         this.item = item;
     }
-
-
 
     public double getAllMoney() {
         return allMoney;
     }
+
 
     public void setAllMoney(double allMoney) {
         this.allMoney = allMoney;
@@ -183,11 +177,11 @@ public class Player {
         this.block = block;
     }
 
-    public ArrayList<ArrayList<Inventory>> getInv() {
+    public ArrayList<Item> getInv() {
         return ınv;
     }
 
-    public void setInv(ArrayList<ArrayList<Inventory>> ınv) {
+    public void setInv(ArrayList<Item> ınv) {
         this.ınv = ınv;
     }
 
@@ -335,12 +329,8 @@ public class Player {
         healthPoint();
         assigningWeapons();
         playerDamage();
-        Inv();
-    }
-    public void Inv(){
-    }
 
-
+    }
     public void characterPrintInfo(){
         System.out.println("Information of the Characters ");
         System.out.println("------------------------------------------");

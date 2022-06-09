@@ -10,6 +10,7 @@ public abstract class Battlefields extends Location implements Locateable{
     private boolean round = true;
     private boolean a = false;
     int enemyTemp;
+    Characters chr = new Characters();
     Scanner sc = new Scanner(System.in);
     SecureRandom sr = new SecureRandom();
     private int nDamage;
@@ -207,7 +208,6 @@ public abstract class Battlefields extends Location implements Locateable{
                                             }}
                                         else{
                                             fPlayers.get(choice - 1).setAlly(fPlayers.get(choice-1));
-                                            c = false;
                                             break;
                                         }
                                     }
@@ -215,20 +215,18 @@ public abstract class Battlefields extends Location implements Locateable{
                                 if (fPlayers.get(choice - 1).getType().equals("Elf")) {
                                     boolean d = true;
                                     while (d) {
-                                        if(currentEnemies.size() >1){
+                                        if(currentEnemies.size()>1){
                                             for(int i = 0; i<currentEnemies.size();i++){
                                                 Enemy allyEnemy = currentEnemies.get(i);
                                                 if(!Objects.equals(allyEnemy.getName(), currentEnemies.get(temp).getName())){
                                                     currentEnemies.get(temp).setAllyEnemy(allyEnemy);
                                                     d = false;
-                                                    break;
                                                 }
                                             }
                                         }else{
-                                            System.out.println("All enemies are dead");
+                                            System.out.println("one enemy is here!!! ");
                                             currentEnemies.get(temp).setAllyEnemy(currentEnemies.get(temp));
-                                            d = false;
-                                            break;
+
                                         }
                                     }
                                 }
@@ -264,6 +262,12 @@ public abstract class Battlefields extends Location implements Locateable{
                         a = true;
                     }
                     System.out.println(currentEnemies.get(temp).getName() + " is dead");
+                    System.out.println("enemy drop " + currentEnemies.get(temp).getAward().getName());
+                    System.out.println("press f to add this item to the inventory");
+                    String invChoice = sc.next();
+                    if(invChoice.equalsIgnoreCase("f")){
+                        players.get(0).getInv().add(currentEnemies.get(temp).getAward());
+                    }
                     nDamage=currentEnemies.get(temp).getHealth();
                     boolean n = true;
                     while (n) {
@@ -303,7 +307,6 @@ public abstract class Battlefields extends Location implements Locateable{
                         currentEnemies.get(temp).setNormalAttack(true);
                     }
                 }
-                System.out.println(currentEnemies.size());
                 if(currentEnemies.size()>0) {
                     System.out.println("It is " + currentEnemies.get(temp).getName() + "'s turn ");
                     for (int j = 0; j < fPlayers.size(); j++) {
@@ -336,9 +339,16 @@ public abstract class Battlefields extends Location implements Locateable{
                 fighting = false;
                 System.out.println("All enemies are dead..");
                 System.out.println("LEVEL CLEARED");
+
+                for(int i = 0; i < players.get(0).getInv().size();i++){
+                    System.out.println("inv print");
+                    players.get(0).getInv().get(i).weaponsPrintInfo();
+                }
+
                 System.out.println("Do you want to fight or go home?");
                 System.out.println("press 1 to go home");
                 System.out.println("press 2 to start a new fight");
+                System.out.println("press 3 to wish ");
                 int choice1 = sc.nextInt();
                 switch (choice1){
                     case 1:
@@ -349,9 +359,34 @@ public abstract class Battlefields extends Location implements Locateable{
                         location = new Moonhallow(players);
                         location.getLocation();
                         break;
-
+                    case 3:
+                        int totalPrimogen = 0;
+                        for(int i = 0; i<players.get(0).getInv().size();i++) {
+                            if (players.get(0).getInv().get(i).getName().equals("Primogen")) {
+                                totalPrimogen++;
+                            }
+                        }
+                        if (totalPrimogen > 10) {
+                                    System.out.println("You have one wish");
+                                    System.out.println("press w to make, good luck :)");
+                                    String wish = sc.next();
+                                    if (wish.equalsIgnoreCase("w")) {
+                                        chr.wishCharacter();
+                                        chr.wishCharacterPrintInfo(players.get(players.size() - 1));
+                                    }
+                                    System.out.println("back home now...");
+                                    location = new Home(players);
+                                    location.getLocation();
+                                    //players.get(0).getInv().get(0).setPrimogen(players.get(0).getInv().get(0).getPrimogen()-10);
+                                    }
+                        else{
+                            System.out.println("you do not have enough Primogen");
+                            System.out.println("back home now...");
+                            location = new Home(players);
+                            location.getLocation();
+                        }
                     default:
-                        System.out.println("You entered a number other than 1 or 2");
+                        System.out.println("You entered a number other than 1, 2 or 3");
                         System.out.println("please enter one of these numbers");
                 }
 
@@ -376,7 +411,7 @@ public abstract class Battlefields extends Location implements Locateable{
     public void enemyStats() {
         for (int i = 0; i <currentEnemies.size(); i++) {
             System.out.println(currentEnemies.get(i).getName()+" Stats: ");
-            System.out.println("Health: \t" + currentEnemies.get(i).getHealth() +"\t Damege: \t" + currentEnemies.get(i).getDamage()+ "\t Award: \t" + currentEnemies.get(i).getAward() );
+            System.out.println("Health: \t" + currentEnemies.get(i).getHealth() +"\t Damege: \t" + currentEnemies.get(i).getDamage()+ "\t Award: \t" + currentEnemies.get(i).getAward().getName());
         }
     }
 
