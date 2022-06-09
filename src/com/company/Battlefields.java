@@ -332,7 +332,6 @@ public abstract class Battlefields extends Location implements Locateable{
                 fighting = false;
                 System.out.println("All enemies are dead..");
                 System.out.println("LEVEL CLEARED");
-                advRank++;
 
                 for(int i = 0; i < players.get(0).getInv().size();i++){
                     System.out.println("inv print");
@@ -372,7 +371,6 @@ public abstract class Battlefields extends Location implements Locateable{
                                     System.out.println("back home now...");
                                     location = new Home(players);
                                     location.getLocation();
-                                    //players.get(0).getInv().get(0).setPrimogen(players.get(0).getInv().get(0).getPrimogen()-10);
                                     }
                         else{
                             System.out.println("you do not have enough Primogen");
@@ -380,6 +378,7 @@ public abstract class Battlefields extends Location implements Locateable{
                             location = new Home(players);
                             location.getLocation();
                         }
+                        break;
                     case 4:
                         score();
                         break;
@@ -414,34 +413,29 @@ public abstract class Battlefields extends Location implements Locateable{
         }
     }
     public void score() {
-        String pScore;
+
         try {
             File file = new File("score.txt");
             if (!file.exists()) {
                 file.createNewFile();
             }
-            String playersScores = " Number of enemies killed by players "+"\n";
+            String playersScores = "Number of enemies killed by players "+"\n";
             FileWriter fWriter = new FileWriter(file, false);
             BufferedWriter bWriter = new BufferedWriter(fWriter);
             bWriter.write(playersScores);
             for (int i = 0; i < players.size(); i++) {
-                pScore = ("name: " + players.get(i).getCharacterName() + "score: " + players.get(i).getScore() +"\n");
-                bWriter.write(pScore);
+              bWriter.write("name: " + players.get(i).getCharacterName() + "score: " + players.get(i).getScore() +"\n");
             }
-
-
+            bWriter.close();
             FileReader fReader = new FileReader(file);
             String line;
-
             BufferedReader bReader = new BufferedReader(fReader);
             while ((line = bReader.readLine()) != null) {
                 System.out.println(line);
             }
-            bWriter.close();
             bReader.close();
         }
         catch (IOException e){
-
         }
     }
 

@@ -27,8 +27,5 @@ public class Elf extends Player {
         getTarget().setCharmed(true);
         getTarget().setNormalAttack(false);
     }
-   /* @Override
-    public void Inv() {
-        getInv().get(0).add(getWeapons());
-    }*/
+
 }
