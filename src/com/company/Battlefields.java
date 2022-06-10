@@ -3,10 +3,8 @@ package com.company;
 
         import java.io.*;
         import java.security.SecureRandom;
-        import java.util.ArrayList;
-        import java.util.InputMismatchException;
+        import java.util.*;
         import java.util.Objects;
-        import java.util.Scanner;
 
 public abstract class Battlefields extends Location implements Locateable{
     private boolean round = true;
@@ -206,20 +204,20 @@ public abstract class Battlefields extends Location implements Locateable{
                 while (menu) {
                     System.out.println("------------------------------------------------------");
                     System.out.println("Here are your player options");
-                    System.out.println("Enter 1 to basic attack enemy");
-                    System.out.println("Enter 2 to use special ability");
-                    System.out.println("Enter 3 to display inventory");
-                    System.out.println("Enter 4 to display character information and stats");
+                    System.out.println("Enter attack to basic attack enemy");
+                    System.out.println("Enter ability special to use special ability");
+                    System.out.println("Enter inventory to display inventory");
+                    System.out.println("Enter display to display character information and stats");
                     System.out.println("------------------------------------------------------");
-                    int answer = sc.nextInt();
+                    String answer = sc.nextLine();
                     switch (answer) {
-                        case 1:
+                        case "attack":
                             fPlayers.get(choice - 1).attack();
                             menu = false;
                             round =true;
                             break;
 
-                        case 2:
+                        case "ability":
                             if(round) {
                                 if(fPlayers.get(choice-1).getType().equals("Healer")) {
                                     Player ally = fPlayers.get(choice - 1);
@@ -268,7 +266,7 @@ public abstract class Battlefields extends Location implements Locateable{
                             }
                             round = false;
                             break;
-                        case 3:
+                        case "inventory":
                             System.out.println("Enter 1 to see additional information about the items");
                             System.out.println("Enter 2 to go back to menu");
                             int caseThreeAnswer = sc.nextInt();
@@ -317,7 +315,7 @@ public abstract class Battlefields extends Location implements Locateable{
                                 }
                             }
                             break;
-                        case 4:
+                        case "display":
                             fPlayers.get(choice - 1).characterPrintInfo();
                             break;
                     }
@@ -490,7 +488,7 @@ public abstract class Battlefields extends Location implements Locateable{
 
 
     public void playerStats(Player player){
-        System.out.println("Name: \t"+player.getCharacterName()+"\t Type: \t"+player.getType()+ "\t Health: \t" + player.getHealth() + "\t Damage: \t" + player.getDamage()+"\t Money: \t" + player.getAllMoney()+"\t Weapon: \t" + player.getWeapons().getName());
+        System.out.println("Name:\t"+player.getCharacterName()+"\t Type: \t"+player.getType()+ "\t Health: \t" + player.getHealth() + "\t Damage: \t" + player.getDamage()+"\t Money: \t" + player.getAllMoney()+"\t Weapon: \t" + player.getWeapons().getName());
         if(player.getBlock()>0){
             System.out.println("Armor: " + player.getArmors().getName());
         }

@@ -334,10 +334,10 @@ public class Player {
     public void characterPrintInfo(){
         System.out.println("Information of the Characters ");
         System.out.println("------------------------------------------");
-        System.out.println("name: " + getCharacterName()+ "\t Type: " + getType());
+        System.out.println("name: \t" + getCharacterName()+ "\t Type: \t" + getType());
         System.out.println("intelligence: \t"+getIntelligence()+"\t strenght: \t"+getStrength()+"\t vitality: \t"+getVitality() );
         System.out.println("health point: \t"+getHealth()+"\t rarity: \t "+getRarity()+"\t money: \t"+getMoney());
-        System.out.println("damage: \t"+getDamage()+"\t weapons: \t"+getWeapons().getName());
+        System.out.println("damage: \t\t"+getDamage()+"\t weapons: \t"+getWeapons().getName());
         System.out.println();
     }
 
