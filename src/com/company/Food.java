@@ -14,13 +14,10 @@ public class Food extends Item {
     public void setAddHP(double addHP) {
         this.addHP = addHP;
     }
-    public void foodsDisplay(){
-        System.out.println("---------------------------------------------");
-        System.out.println("Name: \t" + getName() );
-        System.out.println("Price: \t" + getPriceOfItem() );
+
+    @Override
+    public void foodsDisplay() {
+        super.foodsDisplay();
         System.out.println("Plus HP yield: \t" + getAddHP());
-        System.out.println();
-
     }
-
 }

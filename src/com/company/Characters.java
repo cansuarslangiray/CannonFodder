@@ -136,7 +136,6 @@ public class Characters {
             }
             for(int i = 0; i<ingame.size();i++) {
                 ingame.get(i).selectC();
-                ingame.get(0).ınv.add(ingame.get(i).getWeapons());
                 allMoney += player.getMoney();
                 player.setAllMoney(allMoney);
             }
@@ -155,7 +154,6 @@ public class Characters {
                 if (!Objects.equals(player.getCharacterName(), ingame.get(i).getCharacterName())) {
                     player.selectC();
                     ingame.add(player);
-                    ingame.get(0).ınv.add(ingame.get(i).getWeapons());
                     a = false;
                     break;
                 }

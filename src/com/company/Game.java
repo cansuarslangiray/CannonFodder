@@ -15,7 +15,7 @@ public class Game {
     public void logIn(){
         System.out.println("Welcome the game!!!");
         System.out.println("Before to start game, you have to know something....");
-        System.out.println("Firstly, When you start the game, you will have characters with 3 different abilities , and have one wish. With this wish, you will get the character or items that will help you during the game, such as weapons..");
+        System.out.println("Firstly, When you start the game, you will have characters with 3 different abilities , and have one wish. With this wish, you will get the character");
         System.out.println("Good luck!!!");
         System.out.println("You can further develop the character you get by wishing, or you can create new characters by wishing again with the Primogen you earn each time you fight.");
         System.out.println("the adventure rang and your character will start from the lowest level and each time you fight and get stronger the level of the adventure rang will change.");

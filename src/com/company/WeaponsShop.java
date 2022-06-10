@@ -9,6 +9,7 @@ public class WeaponsShop extends SafePlace {
     int changeWeapon;
     Objects objects = new Objects();
     Scanner sc = new Scanner(System.in);
+    Location location;
 
 
     public WeaponsShop(ArrayList<Player> players) {
@@ -16,6 +17,12 @@ public class WeaponsShop extends SafePlace {
     }
     @Override
     public boolean getLocation() {
+        System.out.println("firstly, which characters buy a weapons");
+        System.out.println("yours characters: ");
+        for(int i = 0; i<players.size();i++){
+            System.out.println((i+1) + "." + players.get(i).getCharacterName());
+        }
+        int charactersChoice = sc.nextInt();
         options();
         boolean c = true;
         while (c) {
@@ -37,9 +44,10 @@ public class WeaponsShop extends SafePlace {
                                 System.out.println("you have " + players.get(1).getAllMoney() + " money");
                                 System.out.println("Which sword do you want ?");
                                 int ch4 = sc.nextInt();
-                               if(!buyWeapon(ch4, objects.getSwordArrayList())){
-                                  // players.get(0).getInv().add(objects.getSwordArrayList().get(ch4-1));
+                               if(!buyWeapon(players.get(charactersChoice-1),ch4, objects.getSwordArrayList())){
+                                  players.get(0).getInv().add(objects.getSwordArrayList().get(ch4-1));
                                }
+                               c= false;
                                 break;
                             case 2:
                                 options();
@@ -67,7 +75,7 @@ public class WeaponsShop extends SafePlace {
                                 System.out.println("you have " + players.get(1).getAllMoney() + " money");
                                 System.out.println("Which claymores do you want ?");
                                 int ch4 = sc.nextInt();
-                                buyWeapon(ch4, objects.getClaymoreArrayList());
+                                buyWeapon(players.get(charactersChoice-1),ch4, objects.getClaymoreArrayList());
                                 break;
                             case 2:
                                 options();
@@ -95,7 +103,7 @@ public class WeaponsShop extends SafePlace {
                                 System.out.println("you have " + players.get(1).getAllMoney() + " money");
                                 System.out.println("Which polearm do you want ?");
                                 int ch4 = sc.nextInt();
-                                buyWeapon(ch4, objects.getPolearmsArrayList());
+                                buyWeapon(players.get(charactersChoice-1),ch4, objects.getPolearmsArrayList());
                                 break;
                             case 2:
                                 options();
@@ -123,7 +131,7 @@ public class WeaponsShop extends SafePlace {
                                 System.out.println("you have " + players.get(1).getAllMoney() + " money");
                                 System.out.println("Which wand do you want ?");
                                 int ch4 = sc.nextInt();
-                                buyWeapon(ch4, objects.getWandArrayList());
+                                buyWeapon(players.get(charactersChoice-1),ch4, objects.getWandArrayList());
                                 break;
                             case 2:
                                 options();
@@ -151,7 +159,7 @@ public class WeaponsShop extends SafePlace {
                                 System.out.println("you have " + players.get(1).getAllMoney() + " money");
                                 System.out.println("Which catalyst do you want ?");
                                 int ch4 = sc.nextInt();
-                                buyWeapon(ch4, objects.getCatalystArrayList());
+                                buyWeapon(players.get(charactersChoice-1),ch4, objects.getCatalystArrayList());
                                 break;
                             case 2:
                                 options();
@@ -179,8 +187,8 @@ public class WeaponsShop extends SafePlace {
                                 System.out.println("you have " + players.get(1).getAllMoney() + " money");
                                 System.out.println("Which scythe do you want ?");
                                 int ch4 = sc.nextInt();
-                                if(!buyWeapon(ch4, objects.getScytheArrayList())){
-                                    players.get(0).setItem(objects.getScytheArrayList().get(ch4-1));
+                                if(!buyWeapon(players.get(charactersChoice-1),ch4, objects.getScytheArrayList())){
+                                   // players.get(0).setItem(objects.getScytheArrayList().get(ch4-1));
                                 }
                                 break;
                             case 2:
@@ -204,8 +212,8 @@ public class WeaponsShop extends SafePlace {
                     System.out.println("Which one do you want to use?");
                     break;
                 case 8:
-                    System.out.println("exiting this page.....");
-                    Game.safePlace();
+                    location = new Home(players);
+                    location.getLocation();
                     c = false;
                     break;
 
@@ -219,8 +227,8 @@ public class WeaponsShop extends SafePlace {
     }
 
 
-    public boolean buyWeapon(int choice,ArrayList<Weapons>wps) {
-        if (players.get(1).getType().equals("Wizard")) {
+    public boolean buyWeapon(Player players ,int choice,ArrayList<Weapons>wps) {
+        if (players.getType().equals("Wizard")) {
             if (wps.get(choice - 1).getWeight() > 1.2) {
                 System.out.println("Sorry, the weight of this weapon is not suitable for you.");
                 System.out.println("do you want to buy another "+ wps.get(choice-1).getType()+"?");
@@ -228,11 +236,10 @@ public class WeaponsShop extends SafePlace {
                 System.out.println("else, press 2 to see other weapon types.");
 
             } else {
-                if (players.get(1).getAllMoney() >= wps.get(choice - 1).getPriceOfItem()) {
-                    players.get(1).setItem(wps.get(choice - 1));
-                    double newM = players.get(1).getAllMoney() - wps.get(choice - 1).getPriceOfItem();
-                    players.get(1).setAllMoney(newM);
-                    System.out.println(players.get(1).getAllMoney()+ "is your remaining money");
+                if (players.getAllMoney() >= wps.get(choice - 1).getPriceOfItem()) {
+                    double newM = players.getAllMoney() - wps.get(choice - 1).getPriceOfItem();
+                    players.setAllMoney(newM);
+                    System.out.println(players.getAllMoney()+ "is your remaining money");
                     System.out.println("do you want to buy another "+ wps.get(choice-1).getType()+"?");
                     System.out.println("if your answer yes, press 1 ");
                     System.out.println("else, press 2 to see other weapon types.");
@@ -246,18 +253,18 @@ public class WeaponsShop extends SafePlace {
 
             }
         }
-        if (players.get(1).getType().equals("Knight")) {
+        if (players.getType().equals("Knight")) {
             if (wps.get(choice - 1).getWeight() > 1.5) {
                 System.out.println("Sorry, the weight of this weapon is not suitable for you.");
                 System.out.println("do you want to buy another "+ wps.get(choice-1).getType()+"?");
                 System.out.println("if your answer yes, press 1 ");
                 System.out.println("else, press 2 to see other weapon types.");
             } else {
-                if (players.get(1).getAllMoney() >= wps.get(choice - 1).getPriceOfItem()) {
-                    players.get(1).setItem(wps.get(choice - 1));
-                    double newM = players.get(1).getAllMoney() - wps.get(choice - 1).getPriceOfItem();
-                    players.get(1).setAllMoney(newM);
-                    System.out.println(players.get(1).getAllMoney()+ "is your remaining money");
+                if (players.getAllMoney() >= wps.get(choice - 1).getPriceOfItem()) {
+                    //players.get(1).setItem(wps.get(choice - 1));
+                    double newM = players.getAllMoney() - wps.get(choice - 1).getPriceOfItem();
+                    players.setAllMoney(newM);
+                    System.out.println(players.getAllMoney()+ "is your remaining money");
                     System.out.println("do you want to buy another "+ wps.get(choice-1).getType()+"?");
                     System.out.println("if your answer yes, press 1 ");
                     System.out.println("else, press 2 to see other weapon types.");
@@ -271,7 +278,7 @@ public class WeaponsShop extends SafePlace {
 
             }
         }
-        if (players.get(1).getType().equals("Worrier")) {
+        if (players.getType().equals("Worrier")) {
 
             if (wps.get(choice - 1).getWeight() > 2.0) {
                 System.out.println("Sorry, the weight of this weapon is not suitable for you.");
@@ -280,11 +287,10 @@ public class WeaponsShop extends SafePlace {
                 System.out.println("else, press 2 to see other weapon types.");
 
             } else {
-                if (players.get(1).getAllMoney() >= wps.get(choice - 1).getPriceOfItem()) {
-                    players.get(1).setItem(wps.get(choice - 1));
-                    double newM = players.get(1).getAllMoney() - wps.get(choice - 1).getPriceOfItem();
-                    players.get(1).setAllMoney(newM);
-                    System.out.println(players.get(1).getAllMoney()+ "is your remaining money");
+                if (players.getAllMoney() >= wps.get(choice - 1).getPriceOfItem()) {
+                    double newM = players.getAllMoney() - wps.get(choice - 1).getPriceOfItem();
+                    players.setAllMoney(newM);
+                    System.out.println(players.getAllMoney()+ "is your remaining money");
                     System.out.println("do you want to buy another "+ wps.get(choice-1).getType()+"?");
                     System.out.println("if your answer yes, press 1 ");
                     System.out.println("else, press 2 to see other weapon types.");
@@ -298,18 +304,17 @@ public class WeaponsShop extends SafePlace {
 
             }
         }
-        if (players.get(1).getType().equals("Elf")) {
+        if (players.getType().equals("Elf")) {
             if (wps.get(choice - 1).getWeight() > 2.5) {
                 System.out.println("Sorry, the weight of this weapon is not suitable for you.");
                 System.out.println("do you want to buy another "+ wps.get(choice-1).getType()+"?");
                 System.out.println("if your answer yes, press 1 ");
                 System.out.println("else, press 2 to see other weapon types.");
             } else {
-                if (players.get(1).getAllMoney() >= wps.get(choice - 1).getPriceOfItem()) {
-                    players.get(1).setItem(wps.get(choice - 1));
-                    double newM = players.get(1).getAllMoney() - wps.get(choice - 1).getPriceOfItem();
-                    players.get(1).setAllMoney(newM);
-                    System.out.println(players.get(1).getAllMoney()+ "is your remaining money");
+                if (players.getAllMoney() >= wps.get(choice - 1).getPriceOfItem()) {
+                    double newM = players.getAllMoney() - wps.get(choice - 1).getPriceOfItem();
+                    players.setAllMoney(newM);
+                    System.out.println(players.getAllMoney()+ "is your remaining money");
                     System.out.println("do you want to buy another "+ wps.get(choice-1).getType()+"?");
                     System.out.println("if your answer yes, press 1 ");
                     System.out.println("else, press 2 to see other weapon types.");
@@ -323,18 +328,17 @@ public class WeaponsShop extends SafePlace {
 
             }
         }
-        if (players.get(1).getType().equals("Lancer")) {
+        if (players.getType().equals("Lancer")) {
             if (wps.get(choice - 1).getWeight() > 3.1) {
                 System.out.println("Sorry, the weight of this weapon is not suitable for you.");
                 System.out.println("do you want to buy another "+ wps.get(choice-1).getType()+"?");
                 System.out.println("if your answer yes, press 1 ");
                 System.out.println("else, press 2 to see other weapon types.");
             } else {
-                if (players.get(1).getAllMoney() >= wps.get(choice - 1).getPriceOfItem()) {
-                    players.get(1).setItem(wps.get(choice - 1));
-                    double newM = players.get(1).getAllMoney() - wps.get(choice - 1).getPriceOfItem();
-                    players.get(1).setAllMoney(newM);
-                    System.out.println(players.get(1).getAllMoney()+ "is your remaining money");
+                if (players.getAllMoney() >= wps.get(choice - 1).getPriceOfItem()) {
+                    double newM = players.getAllMoney() - wps.get(choice - 1).getPriceOfItem();
+                    players.setAllMoney(newM);
+                    System.out.println(players.getAllMoney()+ "is your remaining money");
                     System.out.println("do you want to buy another "+ wps.get(choice-1).getType()+"?");
                     System.out.println("if your answer yes, press 1 ");
                     System.out.println("else, press 2 to see other weapon types.");
@@ -348,18 +352,17 @@ public class WeaponsShop extends SafePlace {
 
             }
         }
-        if (players.get(1).getType().equals("Healer")) {
+        if (players.getType().equals("Healer")) {
             if (wps.get(choice - 1).getWeight() > 7.2) {
                 System.out.println("Sorry, the weight of this weapon is not suitable for you.");
                 System.out.println("do you want to buy another "+ wps.get(choice-1).getType()+"?");
                 System.out.println("if your answer yes, press 1 ");
                 System.out.println("else, press 2 to see other weapon types.");
             } else {
-                if (players.get(1).getAllMoney() >= wps.get(choice - 1).getPriceOfItem()) {
-                    players.get(1).setItem(wps.get(choice - 1));
-                    double newM = players.get(1).getAllMoney() - wps.get(choice - 1).getPriceOfItem();
-                    players.get(1).setAllMoney(newM);
-                    System.out.println(players.get(1).getAllMoney()+ "is your remaining money");
+                if (players.getAllMoney() >= wps.get(choice - 1).getPriceOfItem()) {
+                    double newM = players.getAllMoney() - wps.get(choice - 1).getPriceOfItem();
+                    players.setAllMoney(newM);
+                    System.out.println(players.getAllMoney()+ "is your remaining money");
                     System.out.println("do you want to buy another "+ wps.get(choice-1).getType()+"?");
                     System.out.println("if your answer yes, press 1 ");
                     System.out.println("else, press 2 to see other weapon types.");
@@ -372,12 +375,11 @@ public class WeaponsShop extends SafePlace {
                 }
 
             }
+            return false;
         }
         else{
             return false;
         }
-        return true;
-
     }
     public void changeWeapon() {
         System.out.println("your characters: ");
@@ -405,7 +407,7 @@ public class WeaponsShop extends SafePlace {
         System.out.println("press 5 to see catalyst");
         System.out.println("press 6 to see scythe");
         System.out.println("press 7 to change your weapon");
-        System.out.println("press 8 to exit this page");
+        System.out.println("press 8 to return home");
         System.out.println("your choice ? ");
     }
 

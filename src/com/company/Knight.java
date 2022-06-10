@@ -23,7 +23,6 @@ public class Knight extends  Player{
         System.out.println("Casting " +getCharacterName() + " on " + getTarget().getName());
         System.out.println("will electrocute enemies for three rounds");
         getTarget().setElectrified(true);
-        getTarget().setNormalAttack(true);
 
     }
 }

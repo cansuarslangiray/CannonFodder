@@ -158,7 +158,7 @@ public class FoodShop extends SafePlace implements Locateable{
     public void buyFood(int choice, ArrayList<Food>foods){
 
         if(players.get(1).getAllMoney() >= foods.get(choice-1).getPriceOfItem()) {
-            players.get(1).setItem(foods.get(choice-1));
+           // players.get(1).setItem(foods.get(choice-1));
             double newM = players.get(1).getAllMoney() - foods.get(choice-1).getPriceOfItem();
             players.get(1).setAllMoney(newM);
             System.out.println("You have succesfully purchased.");

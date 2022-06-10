@@ -4,12 +4,14 @@ package com.company;
         import java.io.*;
         import java.security.SecureRandom;
         import java.util.ArrayList;
+        import java.util.InputMismatchException;
         import java.util.Objects;
         import java.util.Scanner;
 
 public abstract class Battlefields extends Location implements Locateable{
     private boolean round = true;
     private boolean a = false;
+    private boolean electric = false;
     int enemyTemp;
     Characters chr = new Characters();
     Scanner sc = new Scanner(System.in);
@@ -19,7 +21,13 @@ public abstract class Battlefields extends Location implements Locateable{
     private ArrayList<Enemy> currentEnemies ;
     private ArrayList<Player> fPlayers = new ArrayList<>();
 
+    public boolean isElectric() {
+        return electric;
+    }
 
+    public void setElectric(boolean electric) {
+        this.electric = electric;
+    }
 
     public Battlefields(ArrayList<Player> players) {
         super(players);
@@ -70,54 +78,83 @@ public abstract class Battlefields extends Location implements Locateable{
                 System.out.println();
                 boolean allCharactersDifferent = true;
                 while (allCharactersDifferent) {
-                    System.out.println("Which rank do you want to fight with your characters?");
-                    System.out.print("first choice:");
-                    int choice = sc.nextInt();
-                    fPlayers.add(players.get(choice-1));
+                    boolean firstCharacter = true;
+                    while (firstCharacter) {
+                        System.out.println("Which character do you want to fight (enter character's name)?");
+                        System.out.print("first choice:");
+                        String chChoice = sc.nextLine();
+                        for (int i = 0; i < players.size(); i++) {
+                            if (players.get(i).getCharacterName().equalsIgnoreCase(chChoice)) {
+                                fPlayers.add(players.get(i));
+                                System.out.println("character selected successfully");
+                                firstCharacter = false;
+                            }
+
+                        }
+                    }
+                    boolean secondChoice = true;
+                    while (secondChoice) {
                     System.out.print("second choice: ");
-                    int choice1 = sc.nextInt();
-                    if (players.get(choice - 1) == players.get(choice1 - 1) ) {
-                        boolean a = true;
-                        while (a) {
-                            System.out.println("you cannot select a character you have chosen");
+                    String chChoice2 = sc.nextLine();
+                    if (fPlayers.get(0).getCharacterName().equalsIgnoreCase(chChoice2)) {
+                          System.out.println("you cannot select a character you have chosen");
                             System.out.println("choose another character");
-                            int choice4 = sc.nextInt();
-                            if(players.get(choice-1) != players.get(choice4-1)) {
-                                fPlayers.add(players.get(choice4 - 1));
-                                a = false;
+                        String choice4 = sc.nextLine();
+                            for(int i = 0; i<players.size();i++){
+                                if(players.get(i).getCharacterName().equalsIgnoreCase(choice4) && !players.get(0).getCharacterName().equalsIgnoreCase(choice4) ){
+                                    fPlayers.add(players.get(i));
+                                    System.out.println("character selected successfully");
+                                    secondChoice=false;
+                                }
+                            }
+                        }
+                    else {
+                        for (int i = 0; i < players.size(); i++) {
+                            if (players.get(i).getCharacterName().equalsIgnoreCase(chChoice2)) {
+                                fPlayers.add(players.get(i));
+                                System.out.println("character selected successfully");
+                                secondChoice = false;
                             }
                         }
                     }
-                    else{
-                        fPlayers.add(players.get(choice1-1));
                     }
-                    System.out.print("third choice: ");
-                    int choice2 = sc.nextInt();
-                    if (players.get(choice-1) == players.get(choice2 - 1) || fPlayers.get(1)==players.get(choice2-1))  {
-                        boolean k = true;
-                        while (k) {
+                    boolean k = true;
+                    while (k) {
+                        System.out.print("third choice: ");
+                        String choice2 = sc.nextLine();
+                        if (fPlayers.get(0).getCharacterName().equalsIgnoreCase(choice2) || fPlayers.get(1).getCharacterName().equalsIgnoreCase(choice2)) {
                             System.out.println("you cannot select a character you have chosen");
                             System.out.println("choose another character");
-                            int choice4 = sc.nextInt();
-                            if (players.get(choice-1) != players.get(choice4 - 1) && fPlayers.get(1)!=players.get(choice4-1))  {
-                                fPlayers.add(players.get(choice4 - 1));
-                                k = false;
-                                allCharactersDifferent =false;
+                            String choice4 = sc.nextLine();
+                            for (int i = 0; i < players.size(); i++) {
+                                if (players.get(i).getCharacterName().equalsIgnoreCase(choice4) && (!players.get(0).getCharacterName().equalsIgnoreCase(choice2) || !players.get(1).getCharacterName().equalsIgnoreCase(choice2))) {
+                                    fPlayers.add(players.get(i));
+                                    System.out.println("character selected successfully");
+                                    allCharactersDifferent =false;
+                                    a = false;
+                                    k = false;
+
+
+                                }
+                            }
+                        } else {
+                            for (int i = 0; i < players.size(); i++) {
+                                if (players.get(i).getCharacterName().equalsIgnoreCase(choice2)) {
+                                    fPlayers.add(players.get(i));
+                                    System.out.println("character selected successfully");
+                                    allCharactersDifferent =false;
+                                    k = false;
+                                }
                             }
                         }
-                    }
-                    else{
-                        fPlayers.add(players.get(choice2-1));
-                        allCharactersDifferent =false;
                     }
 
                 }
                 again=false;
             }
-            catch (Exception e) {
+            catch (InputMismatchException e) {
                 System.out.println("The exception type is: "+ e);
-                System.out.println("Please enter only integer numbers!" );
-                sc.next();
+                System.out.println("enter a new character name");
             }
 
         }
@@ -155,12 +192,12 @@ public abstract class Battlefields extends Location implements Locateable{
             }
 
             while (targeted) {
-
                 System.out.println("choose the character you will fight: ");
                 for(int i = 0; i<fPlayers.size();i++) {
                     System.out.println("press "+ (i+1 ) + " " + fPlayers.get(i).getCharacterName());
                 }
                 int choice = sc.nextInt();
+                sc.nextLine();
                 System.out.println(
                         "It is " + fPlayers.get(choice - 1).getType() + " " + fPlayers.get(choice - 1).getCharacterName()
                                 + "'s turn.");
@@ -232,12 +269,52 @@ public abstract class Battlefields extends Location implements Locateable{
                             round = false;
                             break;
                         case 3:
-
                             System.out.println("Enter 1 to see additional information about the items");
                             System.out.println("Enter 2 to go back to menu");
                             int caseThreeAnswer = sc.nextInt();
-                            if (caseThreeAnswer == 1) {
+                            boolean invBoolean = true;
+                            while (invBoolean) {
+                                if (caseThreeAnswer == 1) {
+                                    System.out.println("press 1 to see awards");
+                                    System.out.println("press 2 to see food");
+                                    System.out.println("press 3 to see weapons");
+                                    System.out.println("press 4 to return first page");
+                                    System.out.println("where would you go?");
+                                    int ch3 = sc.nextInt();
+                                    switch (ch3) {
+                                        case 1:
+                                            for (int i = 0; i < players.size(); i++) {
+                                                for (int j = 0; j < players.get(i).getInv().size(); j++) {
+                                                    System.out.println("type: \t" + fPlayers.get(i).getInv().get(i).getType() + "\t name: \t" + fPlayers.get(i).getInv().get(j).getName());
+                                                }
+                                            }
+                                            break;
+                                        case 2:
+                                            for (int j = 0; j < players.size(); j++) {
+                                                for (int i = 0; i < players.get(j).getInv().size(); i++) {
+                                                    if (players.get(j).getInv().get(i).getInvType().equals("Food")) {
+                                                        players.get(j).getInv().get(i).foodsDisplay();
+                                                    }
+                                                }
+                                            }
+                                            break;
+                                        case 3:
+                                            for (int j = 0; j < players.size(); j++) {
+                                                for (int i = 0; i < players.get(j).getInv().size(); i++) {
 
+                                                        if (players.get(j).getInv().get(i).getItemType().equals("Weapon")) {
+                                                            players.get(j).getInv().get(i).weaponsPrintInfo();
+                                                        }
+
+                                                }invBoolean=false;
+                                            }
+                                            break;
+                                        case 4:
+                                            invBoolean = false;
+                                            break;
+
+                                    }
+                                }
                             }
                             break;
                         case 4:
@@ -258,6 +335,7 @@ public abstract class Battlefields extends Location implements Locateable{
                     System.out.println("enemy drop " + currentEnemies.get(temp).getAward().getName());
                     System.out.println("press f to add this item to the inventory");
                     String invChoice = sc.next();
+                    System.out.println(currentEnemies.get(temp).getAward().getName() + " is picked by " + players.get(choice-1).getCharacterName());
                     if(invChoice.equalsIgnoreCase("f")){
                         players.get(0).getInv().add(currentEnemies.get(temp).getAward());
                     }
@@ -284,6 +362,9 @@ public abstract class Battlefields extends Location implements Locateable{
                             }
                         }
                     }
+                    if(currentEnemies.get(temp).getElectricT()<3 && currentEnemies.get(temp).getElectrified()){
+                        setElectric(true);
+                    }
                     currentEnemies.remove(temp);
                 }
 
@@ -294,7 +375,12 @@ public abstract class Battlefields extends Location implements Locateable{
                     temp = 0;
                 } else {
                     temp =sr.nextInt(0,currentEnemies.size()-1);
+
                 }
+                if(electric){
+                    currentEnemies.get(temp).setElectrified(true);
+                }
+
                 if(a){
                     if(currentEnemies.size()>0) {
                         currentEnemies.get(temp).setNormalAttack(true);
@@ -381,6 +467,9 @@ public abstract class Battlefields extends Location implements Locateable{
                         break;
                     case 4:
                         score();
+                        System.out.println("back home now...");
+                        location = new Home(players);
+                        location.getLocation();
                         break;
 
                     default:
@@ -412,8 +501,7 @@ public abstract class Battlefields extends Location implements Locateable{
             System.out.println("Health: \t" + currentEnemies.get(i).getHealth() +"\t Damege: \t" + currentEnemies.get(i).getDamage()+ "\t Award: \t" + currentEnemies.get(i).getAward().getName());
         }
     }
-    public void score() {
-
+    public void score()  {
         try {
             File file = new File("score.txt");
             if (!file.exists()) {

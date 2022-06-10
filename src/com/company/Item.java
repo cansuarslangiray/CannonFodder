@@ -9,13 +9,6 @@ public class Item {
     private int primogen;
     private String invType;
 
-     public Item(){
-         this.name = null;
-         this.itemType = null;
-         this.priceOfItem = 0;
-         this.primogen = 20;
-     }
-
     public Item(String name, String itemType, int priceOfItem) {
         this.name = name;
         this.itemType = itemType;
@@ -78,6 +71,12 @@ public class Item {
         System.out.println("---------------------------------------------");
         System.out.println("weapons' name: \t" + getName() );
         System.out.println("weapons' price: \t" + getPriceOfItem() );
+
+    }
+    public void foodsDisplay(){
+        System.out.println("---------------------------------------------");
+        System.out.println("Name: \t" + getName() + "Price: \t" + getPriceOfItem());
+        System.out.println();
 
     }
 }

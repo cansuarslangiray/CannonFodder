@@ -134,6 +134,14 @@ public class Enemy {
 
     }
 
+    public int getElectricT() {
+        return electricT;
+    }
+
+    public void setElectricT(int electricT) {
+        this.electricT = electricT;
+    }
+
     public String getName() {
         return name;
     }
@@ -232,18 +240,22 @@ public class Enemy {
             System.out.println(getName() + "is charmed by " + getTarget().getCharacterName());
             getAllyEnemy().setHealth(getAllyEnemy().getHealth()-getDamage());
             System.out.println(getName() + " attacked " + getAllyEnemy().getName() + " for " + getDamage() + " damage.");
+            if(getAllyEnemy().getHealth()<=0){
+                getAllyEnemy().setHealth(0);
+            }
             System.out.println("Current health of the " + getAllyEnemy().getName() + " is "
                     + getAllyEnemy().getHealth());
             setNormalAttack(false);
             setCharmed(false);
         }
+        if(electricT == 3){
+            setElectrified(false);
+            electricT=0;
+        }
         if(getNormalAttack()){
+
             System.out.println(getName() + " attacked " + getTarget().getCharacterName() + " for " + getDamage() + " damage.");
             getTarget().setHealth(y-getDamage());
-            if(electricT == 3){
-                setElectrified(false);
-                electricT=0;
-            }
             setNormalAttack(false);
         }
 

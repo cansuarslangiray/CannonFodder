@@ -45,7 +45,7 @@ public class Objects {
         Weapons catalyst2 = new Catalyst("Starlight","Catalyst",3,33000,4,1,100,1);
 
         Weapons sword = new Sword("summit sharper", "Sword",4,10,4,1,100,1.5);
-        Weapons sword1 = new Sword("mistspiltter reforged","Sword",5,68000,6,100,1,1.6);
+        Weapons sword1 = new Sword("mistspiltter reforged","Sword",5,68000,6,1,100,1.6);
         Weapons sword2 = new Sword("skyword blade","Sword",3,65000,3,1,100,1.9);
 
         Weapons polearms = new Polearms(" Incarnation of Immortality","Polearms",3,55000,3,1,100,1.2);

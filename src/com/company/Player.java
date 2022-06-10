@@ -11,7 +11,6 @@ public class Player {
     Enemy target;
     private Weapons weapons;
     private Armors armors;
-    private Item item;
     ArrayList<Item>ınv = new ArrayList<>();
     Objects objects = new Objects();
     SecureRandom sc = new SecureRandom();
@@ -36,7 +35,6 @@ public class Player {
         this.type = type;
         this.characterName = characterName;
         this.money = money;
-        this.item = new Item();
 
     }
 
@@ -55,14 +53,6 @@ public class Player {
     public void setAlly(Player ally) {
         this.ally = ally;
     }
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
     public double getAllMoney() {
         return allMoney;
     }
@@ -314,6 +304,7 @@ public class Player {
         System.out.println(getCharacterName() + " damaged " + getTarget().getName() + " for " + getDamage() + " damage.");
         getWeapons().setQuality(getWeapons().getQuality()-1);
         if(getTarget().getHealth()<=0){
+            getTarget().setHealth(0);
             System.out.println("Current health of the enemy is " + 0);
         }
         else{

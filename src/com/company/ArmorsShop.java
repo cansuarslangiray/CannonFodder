@@ -24,7 +24,6 @@ public class ArmorsShop extends SafePlace implements Locateable{
     public void buyArmor(int choice, ArrayList<Armors> arm){
 
         if(players.get(1).getAllMoney() >=arm.get(choice-1).getPriceOfItem()) {
-            players.get(1).setItem(arm.get(choice-1));
             double newM = players.get(1).getAllMoney() - arm.get(choice-1).getPriceOfItem();
             players.get(1).setAllMoney(newM);
             System.out.println("You have succesfully purchased.");
