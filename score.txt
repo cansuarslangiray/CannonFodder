@@ -1,5 +1,5 @@
 Number of enemies killed by players 
-name: Toko Fukawascore: 0
-name: Betrascore: 0
-name: Misa Kurobanescore: 0
-name: Yuri Pilsetskyscore: 2
+name: Usagi Tsukinoscore: 0
+name: Kyoko Kirigiriscore: 0
+name: Nao Tomoriscore: 3
+name: Trionscore: 3

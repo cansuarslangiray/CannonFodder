@@ -79,4 +79,9 @@ public class Item {
         System.out.println();
 
     }
+    public void display(){
+        System.out.println("---------------------------------------------");
+        System.out.println("Name: \t" + getName() + "\t dropped coin: \t" + getPriceOfItem() + "\t type: \t" + getItemType());
+
+    }
 }

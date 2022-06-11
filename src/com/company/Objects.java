@@ -77,13 +77,13 @@ public class Objects {
         Food food7= new Food("Scrambled Egg", "Food",50,270);
 
 
-        Rewards foodreward1 = new Rewards("Magic Mushroom(Food)","Reward",0,40);
-        Rewards foodreward2 = new Rewards("Tree Sap(Food)","Reward",0,30);
-        Rewards foodreward3 = new Rewards("Uncanny Leaf(Food)","Reward",0,80);
-        Rewards wepreward1 = new Rewards("Heart of Nature(Weapon)","Reward",4,0,7,1,100,0.5);
-        Rewards wepreward2 = new Rewards("Elder Wand(Weapon)","Reward",5,0,8,1,100,0.4);
-        Rewards wepreward3 = new Rewards("Silence of River(Weapon)","Reward",3,0,6,1,100,0.3);
-        Rewards primogen  =  new Rewards("Primogen","Reward",8000);
+        Rewards foodreward1 = new Rewards("Magic Mushroom(Food)","Food",75,40);
+        Rewards foodreward2 = new Rewards("Tree Sap(Food)","Food",12,30);
+        Rewards foodreward3 = new Rewards("Uncanny Leaf(Food)","Food",96,80);
+        Rewards wepreward1 = new Rewards("Heart of Nature(Weapon)","Weapon",4,85,7,1,100,0.5);
+        Rewards wepreward2 = new Rewards("Elder Wand(Weapon)","Weapons",5,5,8,1,100,0.4);
+        Rewards wepreward3 = new Rewards("Silence of River(Weapon)","Weapons",3,10,6,1,100,0.3);
+        Rewards primogen  =  new Rewards("Primogen","Primogen",800);
 
         Rewards.add(wepreward1);
         Rewards.add(wepreward2);

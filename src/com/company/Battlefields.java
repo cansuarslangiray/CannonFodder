@@ -18,6 +18,15 @@ public abstract class Battlefields extends Location implements Locateable{
     Location location;
     private ArrayList<Enemy> currentEnemies ;
     private ArrayList<Player> fPlayers = new ArrayList<>();
+    private boolean isInv=true;
+
+    public boolean isInv() {
+        return isInv;
+    }
+
+    public void setInv(boolean inv) {
+        isInv = inv;
+    }
 
     public boolean isElectric() {
         return electric;
@@ -204,10 +213,10 @@ public abstract class Battlefields extends Location implements Locateable{
                 while (menu) {
                     System.out.println("------------------------------------------------------");
                     System.out.println("Here are your player options");
-                    System.out.println("Enter attack to basic attack enemy");
-                    System.out.println("Enter ability special to use special ability");
-                    System.out.println("Enter inventory to display inventory");
-                    System.out.println("Enter display to display character information and stats");
+                    System.out.println("Enter attack to basic attack enemy(attack)");
+                    System.out.println("Enter ability special to use special ability(ability)");
+                    System.out.println("Enter inventory to display inventory(inventory)");
+                    System.out.println("Enter display to display character information and stats(display)");
                     System.out.println("------------------------------------------------------");
                     String answer = sc.nextLine();
                     switch (answer) {
@@ -262,59 +271,29 @@ public abstract class Battlefields extends Location implements Locateable{
                                 menu = false;
                             }
                             else{
-                                System.out.println("wait for one round to use it again because you used a previous turn ability");
+                                System.out.println("wait for one round to use it again because you used a previous turn ");
                             }
                             round = false;
                             break;
                         case "inventory":
-                            System.out.println("Enter 1 to see additional information about the items");
-                            System.out.println("Enter 2 to go back to menu");
-                            int caseThreeAnswer = sc.nextInt();
-                            boolean invBoolean = true;
-                            while (invBoolean) {
-                                if (caseThreeAnswer == 1) {
-                                    System.out.println("press 1 to see awards");
-                                    System.out.println("press 2 to see food");
-                                    System.out.println("press 3 to see weapons");
-                                    System.out.println("press 4 to return first page");
-                                    System.out.println("where would you go?");
-                                    int ch3 = sc.nextInt();
-                                    switch (ch3) {
-                                        case 1:
-                                            for (int i = 0; i < players.size(); i++) {
-                                                for (int j = 0; j < players.get(i).getInv().size(); j++) {
-                                                    System.out.println("type: \t" + fPlayers.get(i).getInv().get(i).getType() + "\t name: \t" + fPlayers.get(i).getInv().get(j).getName());
-                                                }
-                                            }
-                                            break;
-                                        case 2:
-                                            for (int j = 0; j < players.size(); j++) {
-                                                for (int i = 0; i < players.get(j).getInv().size(); i++) {
-                                                    if (players.get(j).getInv().get(i).getInvType().equals("Food")) {
-                                                        players.get(j).getInv().get(i).foodsDisplay();
-                                                    }
-                                                }
-                                            }
-                                            break;
-                                        case 3:
-                                            for (int j = 0; j < players.size(); j++) {
-                                                for (int i = 0; i < players.get(j).getInv().size(); i++) {
 
-                                                        if (players.get(j).getInv().get(i).getItemType().equals("Weapon")) {
-                                                            players.get(j).getInv().get(i).weaponsPrintInfo();
-                                                        }
 
-                                                }invBoolean=false;
-                                            }
-                                            break;
-                                        case 4:
-                                            invBoolean = false;
-                                            break;
-
+                            System.out.println("rewards from enemies\n");
+                            for(int i = 0; i<players.size();i++){
+                                if(players.get(i).getInv()!=null){
+                                    setInv(false);
+                                    for(int j = 0; j<players.get(i).getInv().size();j++){
+                                        players.get(i).getInv().get(j).display();
                                     }
                                 }
+                                targeted =false;
+                            }
+                            if(isInv()){
+                                System.out.println("you do not have any rewards");
+                                targeted = false;
                             }
                             break;
+
                         case "display":
                             fPlayers.get(choice - 1).characterPrintInfo();
                             break;
@@ -333,7 +312,8 @@ public abstract class Battlefields extends Location implements Locateable{
                     System.out.println("enemy drop " + currentEnemies.get(temp).getAward().getName());
                     System.out.println("press f to add this item to the inventory");
                     String invChoice = sc.next();
-                    System.out.println(currentEnemies.get(temp).getAward().getName() + " is picked by " + players.get(choice-1).getCharacterName());
+                    System.out.println(currentEnemies.get(temp).getAward().getName() + " is picked by " + fPlayers.get(choice-1).getCharacterName());
+                    fPlayers.get(choice-1).setMoney((int)Math.round(fPlayers.get(choice-1).getMoney() + currentEnemies.get(temp).getAward().getPriceOfItem()));
                     if(invChoice.equalsIgnoreCase("f")){
                         players.get(0).getInv().add(currentEnemies.get(temp).getAward());
                     }
@@ -417,10 +397,6 @@ public abstract class Battlefields extends Location implements Locateable{
                 System.out.println("All enemies are dead..");
                 System.out.println("LEVEL CLEARED");
 
-                for(int i = 0; i < players.get(0).getInv().size();i++){
-                    System.out.println("inv print");
-                    players.get(0).getInv().get(i).weaponsPrintInfo();
-                }
 
                 System.out.println("Do you want to fight or go home?");
                 System.out.println("press 1 to go home");
@@ -452,13 +428,14 @@ public abstract class Battlefields extends Location implements Locateable{
                                         chr.wishCharacter();
                                         chr.wishCharacterPrintInfo(players.get(players.size() - 1));
                                     }
-                                    System.out.println("back home now...");
+
+                                    System.out.println("you are going back home...");
                                     location = new Home(players);
                                     location.getLocation();
                                     }
                         else{
                             System.out.println("you do not have enough Primogen");
-                            System.out.println("back home now...");
+                            System.out.println("you are going back home...");
                             location = new Home(players);
                             location.getLocation();
                         }

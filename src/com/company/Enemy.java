@@ -253,7 +253,6 @@ public class Enemy {
             electricT=0;
         }
         if(getNormalAttack()){
-
             System.out.println(getName() + " attacked " + getTarget().getCharacterName() + " for " + getDamage() + " damage.");
             getTarget().setHealth(y-getDamage());
             setNormalAttack(false);
