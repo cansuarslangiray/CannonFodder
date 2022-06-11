@@ -184,7 +184,7 @@ public class Player {
         this.score = score;
     }
 
-    public void changeStrenght() {
+    public void changeStrenght() {//method of assigning strenght to the character
 
         if (getType().equals("Wizard")) {
             setStrength(sc.nextInt(1, 5));
@@ -205,7 +205,7 @@ public class Player {
         }
     }
 
-    public void changeVitality() {
+    public void changeVitality() {//method of assigning vitality to the character
 
         if (getType().equals("Wizard")) {
             setVitality(sc.nextInt(1, 6));
@@ -225,7 +225,7 @@ public class Player {
         }
     }
 
-    public void changeIntelligence() {
+    public void changeIntelligence() { //method of assigning intelligence to the character
 
         if (getType().equals("Wizard")) {
             setIntelligence(sc.nextInt(6, 12));
@@ -251,7 +251,7 @@ public class Player {
 
     }
 
-    public void rarity() {
+    public void rarity() {//method of assigning rarity to the character
         if (getHealth() >= 67) {
             setRarity(5);
 
@@ -263,7 +263,7 @@ public class Player {
 
         }
     }
-    public void playerDamage(){
+    public void playerDamage(){//method of calculating character's damage
         if(getWeapons().getType().equals("Sword")){
             setDamage(getWeapons().getDamage()*getStrength());
         }
@@ -287,18 +287,19 @@ public class Player {
         }
     }
 
-    public void healthPoint() {
+    public void healthPoint() {//method of calculating character's health
         double hp = (7 * getVitality()) + 2 * getStrength() + 1 * getIntelligence();
         setHealth((int) Math.round(hp));
         setrHealthy((int) Math.round(hp));
     }
 
-    public void assigningWeapons() {
+    public void assigningWeapons() { //method of assigning weapons to the character
+
 
     }
 
 
-    public void attack() {
+    public void attack() {//The method by which the character attacks the enemy
         System.out.println(getCharacterName() + " is attacking " + getTarget().getName() + "...");
         getTarget().setHealth(getTarget().getHealth() - getDamage());
         System.out.println(getCharacterName() + " damaged " + getTarget().getName() + " for " + getDamage() + " damage.");
@@ -318,10 +319,12 @@ public class Player {
     }
 
 
-    public void cast() {
+    public void cast() {//character's own special ability method
+
     }
 
-    public void selectC(){
+    public void selectC(){//A new method that includes methods for determining all of the properties of the characters
+
         rarity();
         changeIntelligence();
         changeVitality();
@@ -331,7 +334,8 @@ public class Player {
         playerDamage();
 
     }
-    public void characterPrintInfo(){
+    public void characterPrintInfo(){//method that extracts information about characters
+
         System.out.println("Information of the Characters ");
         System.out.println("------------------------------------------");
         System.out.println("name: \t" + getCharacterName()+ "\t Type: \t" + getType());

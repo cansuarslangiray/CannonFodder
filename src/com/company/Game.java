@@ -12,7 +12,7 @@ public class Game {
 
 
 
-    public void logIn(){
+    public void logIn(){//method of informing about the game
         System.out.println("Welcome the game!!!");
         System.out.println("Before to start game, you have to know something....");
         System.out.println("Firstly, When you start the game, you will have characters with 3 different abilities , and have one wish. With this wish, you will get the character");
@@ -66,7 +66,7 @@ public class Game {
         System.out.println("Your choice ?");
     }
 
-    public  void charactersInfo(){
+    public  void charactersInfo(){//method of informing about the characters in the game
         firstPagePrintInfo();
         boolean d = true;
         while (d){

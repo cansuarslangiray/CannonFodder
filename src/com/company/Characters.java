@@ -111,7 +111,8 @@ public class Characters {
 
 
 
-    public ArrayList<Player> yourCharacters(){
+    public ArrayList<Player> yourCharacters(){//method of assigning a character to the player at the beginning of the game
+
         boolean a =true;
         while (a){
             double allMoney =0;
@@ -145,7 +146,7 @@ public class Characters {
         return ingame;
     }
 
-    public void wishCharacter(){
+    public void wishCharacter(){//method for gaining characters in the game (when you collect a certain primogen from the enemy)
         int c = random.nextInt(0,6);
         Player player = getCharacters().get(c).get(random.nextInt(0,4));
         boolean a = true;
@@ -162,7 +163,7 @@ public class Characters {
         }
     }
 
-    public void wishCharacterPrintInfo(Player player) {
+    public void wishCharacterPrintInfo(Player player) {//The method of printing what color the character wishes according to its star
         System.out.println("your wish comes true...");
         if (player.getRarity() == 5) {
             System.out.println("falling yellow star");

@@ -50,7 +50,8 @@ public abstract class Battlefields extends Location implements Locateable{
     }
 
 
-    public ArrayList<Enemy> initializeEnemies() {
+    public ArrayList<Enemy> initializeEnemies() {//Creation of enemies based on universe level (two base universe level)
+
         currentEnemies = new ArrayList<>();
         for (int i = 0; i < Math.pow(2, getAdvRank()); i++) {
             Enemy enemy = new Enemy(("enemy(" + (i + 1) + ")"));
@@ -60,8 +61,9 @@ public abstract class Battlefields extends Location implements Locateable{
 
         return currentEnemies;
     }
-    public void fPlayer() {
-            System.out.println();
+    public void fPlayer() {//determining characters to play on the battlefield
+
+        System.out.println();
             System.out.println("You have to choose 3 of your characters to fight before you start the match ");
             System.out.println("information of your characters ");
         int counterCh = 0;
@@ -169,7 +171,7 @@ public abstract class Battlefields extends Location implements Locateable{
     }
 
 
-    public void battle()  {
+    public void battle()  {//battlefield method.
         initializeEnemies();
         fPlayer();
         int temp;
@@ -464,19 +466,19 @@ public abstract class Battlefields extends Location implements Locateable{
 
 
 
-    public void playerStats(Player player){
+    public void playerStats(Player player){//method to display brief player information
         System.out.println("Name:\t"+player.getCharacterName()+"\t Type: \t"+player.getType()+ "\t Health: \t" + player.getHealth() + "\t Damage: \t" + player.getDamage()+"\t Money: \t" + player.getAllMoney()+"\t Weapon: \t" + player.getWeapons().getName());
         if(player.getBlock()>0){
             System.out.println("Armor: " + player.getArmors().getName());
         }
     }
-    public void enemyStats() {
+    public void enemyStats() {//method to display brief enemy information
         for (int i = 0; i <currentEnemies.size(); i++) {
             System.out.println(currentEnemies.get(i).getName()+" Stats: ");
             System.out.println("Health: \t" + currentEnemies.get(i).getHealth() +"\t Damege: \t" + currentEnemies.get(i).getDamage()+ "\t Award: \t" + currentEnemies.get(i).getAward().getName());
         }
     }
-    public void score()  {
+    public void score()  {//method that shows how many enemies each character has killed on the battlefield
         try {
             File file = new File("score.txt");
             if (!file.exists()) {

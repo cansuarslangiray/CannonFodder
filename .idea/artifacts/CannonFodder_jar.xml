@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CannonFodder:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CannonFodder_jar</output-path>
+    <root id="archive" name="CannonFodder.jar">
+      <element id="module-output" name="CannonFodder" />
+    </root>
+  </artifact>
+</component>

@@ -11,7 +11,7 @@ public class Home extends SafePlace implements Locateable{
     }
 
     @Override
-    public boolean getLocation() {
+    public boolean getLocation() {//How to restore your character's health and display other regions
         System.out.println("you are at home now....");
         for(int i = 0 ; i<players.size();i++) {
             if(players.get(i).getHealth()<players.get(i).getrHealthy()) {

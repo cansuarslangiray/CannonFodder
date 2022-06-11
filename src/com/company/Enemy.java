@@ -166,11 +166,11 @@ public class Enemy {
         this.health = health;
     }
 
-    public void changeStrength () {
+    public void changeStrength () {//method of calculating character's strength
         int random = sc.nextInt(1, 5);
         setStrength(random);
     }
-    public void changeVitality () {
+    public void changeVitality () {//method of calculating character's vitality
 
 
         int random5 = sc.nextInt(1, 5);
@@ -179,24 +179,24 @@ public class Enemy {
 
     }
 
-    public void changeIntelligence () {
+    public void changeIntelligence () {//method of calculating character's intelligence
 
         int random5 = sc.nextInt(1, 5);
         setIntelligence(random5);
 
 
     }
-    public void healthPoint() {
+    public void healthPoint() {//method of calculating character's health
         double hp = (7 * getVitality()) + 2 * getStrength() + 1.2 * getIntelligence();
         setHealth((int) Math.round(hp));
 
     }
-    public void calculateDamage () {
+    public void calculateDamage () {//method of calculating character's damage
         setDamage(getDamage() * getIntelligence());
 
     }
 
-    public void sEnemy(){
+    public void sEnemy(){//A new method that includes methods for determining all of the properties of the enemy
         changeIntelligence();
         changeVitality();
         changeStrength();
@@ -205,13 +205,13 @@ public class Enemy {
         rewards();
     }
 
-    public void rewards(){
+    public void rewards(){//method of determining rewards dropped by the enemy
         for(int i = 0 ; i<objects.getRewards().size();i++){
             setAward(objects.getRewards().get(sc.nextInt(0,objects.getRewards().size()-1)));
         }
     }
 
-    public void attack() {
+    public void attack() {//The method by which the enemy attacks the character
         int y = getTarget().getHealth();
         if(getElectrified()){
             System.out.println("electrocuted by " + getTarget().getCharacterName());
