@@ -2,6 +2,7 @@ package com.company;
 
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Game {
@@ -12,7 +13,7 @@ public class Game {
 
 
 
-    public void logIn(){//method of informing about the game
+    public void logIn() {//method of informing about the game
         System.out.println("Welcome the game!!!");
         System.out.println("Before to start game, you have to know something....");
         System.out.println("Firstly, When you start the game, you will have characters with 3 different abilities , and have one wish. With this wish, you will get the character");
@@ -26,23 +27,31 @@ public class Game {
         System.out.println("Before fighting, you can get information about the enemies there, such as their damage value and health, and you can decide accordingly");
         System.out.println("VERY IMPORTANCE!!!, if you lose three character against the enemy you will die");
         System.out.println("and the game is over :(");
-        System.out.println("if you want to start now, press s");
-        String start = sc.next();
-        if(start.equalsIgnoreCase("s")) {
-            players = characters.yourCharacters();
-            for (int i = 0; i < players.size(); i++) {
-                players.get(i).characterPrintInfo();
-            }
-            System.out.println("You have one wish");
-            System.out.println("press w to make, good luck :)");
-            String wish = sc.next();
-            if(wish.equalsIgnoreCase("w")) {
-                characters.wishCharacter();
-                characters.wishCharacterPrintInfo(players.get(players.size() - 1));
-            }
-        }
+        boolean a = true;
+            do {
+                try {
+                    System.out.println("if you want to start now, press s");
+                    String start = sc.next();
+                    if (start.equalsIgnoreCase("s")) {
+                        players = characters.yourCharacters();
+                        for (int i = 0; i < players.size(); i++) {
+                            players.get(i).characterPrintInfo();
+                        }
+                        System.out.println("You have one wish");
+                        System.out.println("press w to make, good luck :)");
+                        String wish = sc.next();
+                        if (wish.equalsIgnoreCase("w")) {
+                            characters.wishCharacter();
+                            characters.wishCharacterPrintInfo(players.get(players.size() - 1));
+                        }
+                        map();
+                        a = false;
+                    }
 
-
+                } catch (InputMismatchException e) {
+                    System.out.println("please enter s");
+                }
+            }while (a);
     }
     public static void safePlace(){
         System.out.println("press 1 to return home");

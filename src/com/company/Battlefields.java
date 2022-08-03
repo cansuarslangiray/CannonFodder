@@ -1,6 +1,5 @@
 
 package com.company;
-
         import java.io.*;
         import java.security.SecureRandom;
         import java.util.*;
@@ -268,7 +267,6 @@ public abstract class Battlefields extends Location implements Locateable{
                                         }
                                     }
                                 }
-
                                 fPlayers.get(choice-1).cast();
                                 menu = false;
                             }
@@ -357,8 +355,10 @@ public abstract class Battlefields extends Location implements Locateable{
                     temp =sr.nextInt(0,currentEnemies.size()-1);
 
                 }
-                if(electric){
-                    currentEnemies.get(temp).setElectrified(true);
+                if(currentEnemies.size()>1) {
+                    if (electric) {
+                        currentEnemies.get(temp).setElectrified(true);
+                    }
                 }
 
                 if(a){

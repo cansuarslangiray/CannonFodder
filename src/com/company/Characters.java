@@ -124,10 +124,7 @@ public class Characters {
             if(ingame.size()==1){
               if(!Objects.equals(player.getType(), ingame.get(0).getType())){
                 ingame.add(player);
-
-
-
-            }
+              }
             }
             if(ingame.size()==2){
                 if(!Objects.equals(player.getType(), ingame.get(0).getType()) && !Objects.equals(player.getType(), ingame.get(1).getType())){

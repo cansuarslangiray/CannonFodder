@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
             Game game = new Game();
             game.logIn();
-            game.map();
-            game.charactersInfo();
+           // game.map();
+            //game.charactersInfo();
     }
 }
